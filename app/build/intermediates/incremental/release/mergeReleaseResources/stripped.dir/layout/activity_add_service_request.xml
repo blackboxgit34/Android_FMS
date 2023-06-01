@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary"
+    tools:context=".ui.ui.customerCare.AddServiceRequestActivity">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbar"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Name*"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:textColor="@color/med_grey"/>
+
+        <Spinner
+            android:id="@+id/spinnerservicerequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:padding="5sp" />
+
+
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_marginHorizontal="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_v"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerservicerequest"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description*"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:textColor="@color/med_grey"/>
+
+        <Spinner
+            android:id="@+id/spComplaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:padding="5sp" />
+
+
+        <View
+            android:id="@+id/vViewUser"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_marginHorizontal="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_v"
+            app:layout_constraintTop_toBottomOf="@+id/spComplaint"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comments*"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:textColor="@color/med_grey"/>
+
+        <EditText
+            android:id="@+id/edtcomment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_90"
+            android:layout_weight="1.9"
+            android:background="@drawable/rect_curve_box"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            android:imeOptions="actionNext"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/font_14"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:paddingLeft="10dp"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/btnsubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_25"
+            android:layout_marginTop="@dimen/margin_30"
+            android:background="@drawable/white_curve_rect"
+            android:text="Submit"
+            android:gravity="center"
+            android:backgroundTint="@color/primary_main_orange"
+            android:paddingVertical="@dimen/margin_x"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_v"
+        android:paddingVertical="@dimen/margin_v"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvVehName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Name"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_v"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="@dimen/margin_v"
+            android:layout_weight="1"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_v"
+            app:trackTint="@drawable/switch_track_selector"
+            app:thumbTint="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/med_grey"/>
+
+
+</LinearLayout>

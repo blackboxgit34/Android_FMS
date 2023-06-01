@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".ui.ui.addonReports.AddOnReportActivity">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbar"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFuel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_150"
+            android:layout_margin="@dimen/margin_xx"
+            app:cardCornerRadius="@dimen/margin_xx">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/fuel_background"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:layout_centerInParent="true"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primary_alpha" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFuelHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fuel Report"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/font_20"
+                    android:textColor="@color/white"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFuelSubHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get all fuel filling and drainage data\nwith 99% accuracy"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                   android:layout_below="@+id/tvFuelHeading"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/font_12"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_150"
+            android:layout_marginHorizontal="@dimen/margin_xx"
+            app:cardCornerRadius="@dimen/margin_xx">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/temperature_back"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:layout_centerInParent="true"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primary_alpha" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTempHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Temperature Report"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_20" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTempSubHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track the temperature sensor\ndata of vehicles"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/tvTempHeading"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/font_12"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvWorkingHour"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_150"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:layout_marginHorizontal="@dimen/margin_xx"
+            app:cardCornerRadius="@dimen/margin_xx">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/working_hour"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:layout_centerInParent="true"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primary_alpha" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWorking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Working Hour Report"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_20" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track the working hour of all vehicles"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/tvWorking"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/font_12"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvImmobalize"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_150"
+            android:layout_marginTop="@dimen/margin_xx"
+            android:layout_marginHorizontal="@dimen/margin_xx"
+            app:cardCornerRadius="@dimen/margin_xx">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/immobilize"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:layout_centerInParent="true"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primary_alpha" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvImmobalize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Immobalization"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_20" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Use immobalizer in case of emergency like vehicle theft."
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/tvImmobalize"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/font_12"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

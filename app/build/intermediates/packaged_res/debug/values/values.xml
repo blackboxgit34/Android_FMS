@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="selectAction">
+        <item>Resend OTP</item>
+        <item>Enter OTP Manually</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="blackprimary">#241427</color>
+    <color name="blackprimary_fade">#47374A</color>
+    <color name="blacktransparent">#9F000000</color>
+    <color name="blue">#82A9F7</color>
+    <color name="dark_blue">#141A58</color>
+    <color name="dark_grey">#777777</color>
+    <color name="dark_grey_status_bar">#D5111111</color>
+    <color name="dark_grey_two">#454545</color>
+    <color name="dms_back">#381F7F</color>
+    <color name="green">#A2B06D</color>
+    <color name="green_alpha_four">#57A2B06D</color>
+    <color name="green_alpha_three">#85A2B06D</color>
+    <color name="green_dark">#848F59</color>
+    <color name="grey_two">#DDDDDD</color>
+    <color name="light_black">#444444</color>
+    <color name="light_black2">#323232</color>
+    <color name="light_blue">#E6F4FF</color>
+    <color name="light_cream">#F4F5F0</color>
+    <color name="max_light_orange">#ffddcb</color>
+    <color name="max_lightgrey">#F6F6F6</color>
+    <color name="med_grey">#BBBBBB</color>
+    <color name="med_grey_two">#888888</color>
+    <color name="med_light_orange">#ffba96</color>
+    <color name="med_light_orange_dark">#FFB38B</color>
+    <color name="orange_gradient_bottom">#FE9E8A</color>
+    <color name="orange_gradient_top">#FE9E8A</color>
+    <color name="primary">#111111</color>
+    <color name="primary_alpha">#8D111111</color>
+    <color name="primary_blue">#5F1E78</color>
+    <color name="primary_dark_orange">#b35220</color>
+    <color name="primary_little_fade">#242424</color>
+    <color name="primary_main_orange">#FF6D2D</color>
+    <color name="primary_main_orangealpha">#6DFF6D2D</color>
+    <color name="primary_orange">#FFAC44</color>
+    <color name="primary_orange_secondary">#ff752d</color>
+    <color name="primaryblack">#2f2f2f</color>
+    <color name="purple">#885EFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#272727</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="red">#FF4646</color>
+    <color name="red_alpha">#C3B53535</color>
+    <color name="red_alpha_four">#39FF4646</color>
+    <color name="red_alpha_one">#97FF4646</color>
+    <color name="red_alpha_three">#4BFF4646</color>
+    <color name="red_alpha_two">#6AFF4646</color>
+    <color name="red_dark">#D53D3D</color>
+    <color name="secondary_red">#FF4343</color>
+    <color name="secondary_yellow">#FFD200</color>
+    <color name="tab_indicator_color">#5CB2FC</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="voilet_red">#c71585</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_translucent">#A4FFFFFF</color>
+    <color name="white_translucent_glass">#3EFFFFFF</color>
+    <color name="yellow">#DFBB14</color>
+    <color name="yellow_alpha_one">#9EFFEB3B</color>
+    <color name="yellow_alpha_two">#5BDFBB14</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">5dp</dimen>
+    <dimen name="font_10">12sp</dimen>
+    <dimen name="font_11">11sp</dimen>
+    <dimen name="font_12">14sp</dimen>
+    <dimen name="font_14">16sp</dimen>
+    <dimen name="font_16">18sp</dimen>
+    <dimen name="font_18">20sp</dimen>
+    <dimen name="font_20">22sp</dimen>
+    <dimen name="font_24">26sp</dimen>
+    <dimen name="font_28">30sp</dimen>
+    <dimen name="image_height">200dp</dimen>
+    <dimen name="margin_10">14dp</dimen>
+    <dimen name="margin_150">150dp</dimen>
+    <dimen name="margin_170">170dp</dimen>
+    <dimen name="margin_180">180dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_200">190dp</dimen>
+    <dimen name="margin_210">210dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_280">280dp</dimen>
+    <dimen name="margin_3">3dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_300">300dp</dimen>
+    <dimen name="margin_301">75dp</dimen>
+    <dimen name="margin_320">310dp</dimen>
+    <dimen name="margin_360">340dp</dimen>
+    <dimen name="margin_380">380dp</dimen>
+    <dimen name="margin_450">450dp</dimen>
+    <dimen name="margin_480">480dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_520">520dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_600">600dp</dimen>
+    <dimen name="margin_65">65dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
+    <dimen name="margin_90">90dp</dimen>
+    <dimen name="margin_top">35dp</dimen>
+    <dimen name="margin_v">5dp</dimen>
+    <dimen name="margin_x">10dp</dimen>
+    <dimen name="margin_xx">15dp</dimen>
+    <dimen name="profile_size">100dp</dimen>
+    <dimen name="slider_image">250dp</dimen>
+    <dimen name="upload_icon">120dp</dimen>
+    <string name="Connection_Time_Out">Oops! Error in connecting to server, Please try later.</string>
+    <string name="above_avg">Above Avg.</string>
+    <string name="access_code">Access Code</string>
+    <string name="action_settings">Ok</string>
+    <string name="add_on_report">Add On Report</string>
+    <string name="alerts">Alerts Settings</string>
+    <string name="amount">Amount</string>
+    <string name="app_name">BlackboxVTS</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancel_url">Cancel Url</string>
+    <string name="closure">Closure</string>
+    <string name="com.google.firebase.crashlytics.mapping_file_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
+    <string name="comment_reply">COMMENT/REPLY</string>
+    <string name="crew">Crew</string>
+    <string name="crew_approval_s">Crew Approval\'s</string>
+    <string name="currency">Currency</string>
+    <string name="customer_care">Customer Care</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="default_notification_channel_id" translatable="false">BlackboxVTS</string>
+    <string name="default_notification_channel_name" translatable="true">VTS</string>
+    <string name="default_web_client_id" translatable="false">645655243350-hphj66q8gj4oneudf0gnp91a88qg8np5.apps.googleusercontent.com</string>
+    <string name="distance_report">Check Distance traveled by vehicles</string>
+    <string name="dms">DMS</string>
+    <string name="e_forms">e-Forms</string>
+    <string name="firebase_database_url" translatable="false">https://stone-bongo-635.firebaseio.com</string>
+    <string name="fleet_report">Fleet Report</string>
+    <string name="fleet_utilization">Fleet Utilization</string>
+    <string name="fms">FMS</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_main">Forgot Password?</string>
+    <string name="fuel_analysis">Fuel Analysis</string>
+    <string name="gcm_defaultSenderId" translatable="false">645655243350</string>
+    <string name="geofencing">Geofencing</string>
+    <string name="go_back_to_login"><u>Go Back to Login</u></string>
+    <string name="google_api_key" translatable="false">AIzaSyDk2VSkRKUKzS6WvKaNvLfGIkTPTFCmnBA</string>
+    <string name="google_app_id" translatable="false">1:645655243350:android:2455d4c87e871587</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDk2VSkRKUKzS6WvKaNvLfGIkTPTFCmnBA</string>
+    <string name="google_storage_bucket" translatable="false">stone-bongo-635.appspot.com</string>
+    <string name="gps_not_enable">Please enable Gps Settings.</string>
+    <string name="gps_setting">GPS Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="higest_mileage">Higest Mileage</string>
+    <string name="initial_office_review">Initial Office Review</string>
+    <string name="inventory_four">Expired\nConsumables</string>
+    <string name="inventory_three">Consumables\nTo Be Expired</string>
+    <string name="inventory_two">Critical Consumables\nbelow Min. Stock</string>
+    <string name="jobs">Jobs</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="live_status">Vehicle Status</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="merchant_id">Merchant Id</string>
+    <string name="moving">Moving</string>
+    <string name="my_bill">My Bill</string>
+    <string name="office_review">Office Review</string>
+    <string name="overspeed_analysis">Check Overspeed analysis</string>
+    <string name="overstoppage_analysis">Check Overstop analysis</string>
+    <string name="parked">Parked</string>
+    <string name="password">Password</string>
+    <string name="pay_button">Pay</string>
+    <string name="pending">Pending</string>
+    <string name="pending_approval">Pending notifications\nTap here to read</string>
+    <string name="pending_bill">Pending bill payments\nTap here to pay</string>
+    <string name="pending_for_approval">Pending for Approval</string>
+    <string name="pending_for_checking">PENDING FOR CHECKING</string>
+    <string name="pms">FMS</string>
+    <string name="project_id" translatable="false">stone-bongo-635</string>
+    <string name="redirect_url">Redirect Url</string>
+    <string name="rsa_url">RSA Key Url</string>
+    <string name="see_all_vehicle"><u>All vehicles</u></string>
+    <string name="settings">Settings</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="stoppage_analysis">Check Stoppage analysis of vehicle</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="title_activity_status">CCAvenueMobile</string>
+    <string name="towed">Towed</string>
+    <string name="unattended">If you feel unattended by our team executives feel free to share your valuable feedback at 9779903124</string>
+    <string name="unreachable">Unreachable</string>
+    <string name="username">Username</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="vehicle_on_map">Live Tracking</string>
+    <string name="vendor">Vendor</string>
+    <string name="welcome">Welcome</string>
+    <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        
+        <item name="colorControlActivated">@color/red</item>
+
+        
+        <item name="colorSwitchThumbNormal">@color/red
+        </item>
+
+        
+        <item name="android:colorForeground">@color/white
+        </item>
+    </style>
+    <style name="Theme.Blackbox" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/black</item>
+        
+        <item name="colorSecondary">@color/light_black</item>
+        <item name="colorSecondaryVariant">@color/light_black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">@color/dark_grey_status_bar</item>
+        
+        <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
+    </style>
+</resources>

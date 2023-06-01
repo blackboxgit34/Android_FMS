@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary"
+    tools:context=".ui.ui.customerCare.CustomerCare">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_210"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cust_care_top_image"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="BlackBox Help Desk"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/font_16"
+                android:layout_marginTop="@dimen/margin_x"
+                android:layout_marginHorizontal="@dimen/margin_x"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/med_grey"
+                android:text="We are available to help you"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/font_12"
+                android:layout_marginHorizontal="@dimen/margin_x"/>
+
+
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Service Request"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/font_14"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"/>
+
+            <TextView
+                android:id="@+id/tvServiceRequest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Service Request"
+                android:padding="@dimen/margin_x"
+                android:gravity="center"
+                android:textSize="@dimen/font_14"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_semibold"
+                android:backgroundTint="@color/light_black"
+                android:layout_marginTop="@dimen/font_20"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:background="@drawable/white_curve_rect"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Customer support"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/font_14"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"/>
+
+            <TextView
+                android:id="@+id/tvCallUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Call Us"
+                android:padding="@dimen/margin_x"
+                android:gravity="center"
+                android:textSize="@dimen/font_14"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_semibold"
+                android:backgroundTint="@color/light_black"
+                android:layout_marginTop="@dimen/font_20"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:background="@drawable/white_curve_rect"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

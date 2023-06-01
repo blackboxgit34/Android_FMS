@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "645655243350",
+    "firebase_url": "https://stone-bongo-635.firebaseio.com",
+    "project_id": "stone-bongo-635",
+    "storage_bucket": "stone-bongo-635.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645655243350:android:2455d4c87e871587",
+        "android_client_info": {
+          "package_name": "com.humbhi.blackbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645655243350-uvprp19il0ebtgmf41cig27tlf5s5mtt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.humbhi.blackbox",
+            "certificate_hash": "36994d305bdaa936ccbe611b493b7951048444f7"
+          }
+        },
+        {
+          "client_id": "645655243350-hphj66q8gj4oneudf0gnp91a88qg8np5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk2VSkRKUKzS6WvKaNvLfGIkTPTFCmnBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645655243350-2cgk4q7989jet6am08d2qqlonqh45863.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "645655243350-nnnenuj8ckj0cpluvus0gg7f7lov895s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.humbhi.BlackBox",
+                "app_store_id": "937229552"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

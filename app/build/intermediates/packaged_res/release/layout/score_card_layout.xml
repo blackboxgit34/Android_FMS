@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_x">
+       <androidx.cardview.widget.CardView
+           android:id="@+id/main_layout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardBackgroundColor="@color/primary_little_fade"
+           android:orientation="vertical"
+           app:cardCornerRadius="@dimen/margin_x">
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:weightSum="2"
+           android:layout_gravity="center_vertical"
+           android:gravity="center_vertical"
+           android:padding="@dimen/margin_x"
+           android:orientation="horizontal">
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_weight="0.7">
+
+               <TextView
+                   android:id="@+id/tvSNo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="1"
+                   android:textSize="@dimen/font_16"
+                   android:layout_centerVertical="true"
+                   android:layout_marginStart="@dimen/margin_x"
+                   android:fontFamily="@font/poppins_bold"
+                   android:padding="@dimen/margin_v"
+                   android:textColor="@color/yellow"/>
+
+               <TextView
+                   android:id="@+id/tvDriverName"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_marginStart="@dimen/margin_x"
+                   android:fontFamily="@font/poppins_semibold"
+                   android:text="Kunal"
+                   android:singleLine="true"
+                   android:drawablePadding="@dimen/margin_x"
+                   android:textColor="@color/white"
+                   android:textSize="@dimen/font_14" />
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentEnd="true"
+                   android:gravity="center_vertical"
+                   android:layout_marginStart="@dimen/margin_x"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:id="@+id/tvAS"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Average Score : 70.8"
+                       android:textColor="@color/med_grey_two"
+                       android:textSize="@dimen/font_12"
+                       android:layout_gravity="center_vertical"
+                       android:fontFamily="@font/poppins_medium"/>
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="40dp"
+                   android:layout_alignParentEnd="true"
+                   android:gravity="center_vertical"
+                   android:layout_marginStart="@dimen/margin_x"
+                   android:orientation="horizontal">
+                   <RatingBar
+                       android:id="@+id/ratingBar"
+                       android:layout_width="wrap_content"
+                       android:layout_height="match_parent"
+                       android:rating="3.5"
+                       android:numStars="5"
+                       android:stepSize="0.5"
+                       style="?android:attr/ratingBarStyleIndicator"
+                       android:progressTint="#FFCC01"
+                       android:isIndicator="true"/>
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="40dp"
+                   android:layout_alignParentEnd="true"
+                   android:gravity="center_vertical"
+                   android:layout_marginStart="@dimen/margin_x"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:id="@+id/tvRamarks"
+                       android:layout_width="wrap_content"
+                       android:layout_height="match_parent"
+                       android:text="Remarks: Risky Driver"
+                       android:gravity="center_vertical"
+                       android:textColor="@color/med_grey_two"
+                       android:textSize="@dimen/font_12"
+                       android:layout_gravity="center_vertical"
+                       android:drawablePadding="@dimen/margin_v"
+                       android:fontFamily="@font/poppins_medium"/>
+
+               </LinearLayout>
+
+           </androidx.appcompat.widget.LinearLayoutCompat>
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           android:layout_weight="1.3">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="@dimen/margin_20"
+               android:src="@drawable/driver"
+               android:layout_gravity="center"/>
+       </androidx.appcompat.widget.LinearLayoutCompat>
+       </androidx.appcompat.widget.LinearLayoutCompat>
+       </androidx.cardview.widget.CardView>
+   </androidx.appcompat.widget.LinearLayoutCompat>
+

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_x"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        app:cardCornerRadius="@dimen/margin_x"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginEnd="@dimen/margin_x"
+                android:layout_marginStart="@dimen/margin_x"
+                android:layout_weight="0.6"
+                android:drawablePadding="@dimen/margin_v"
+                app:fontFamily="@font/poppins_medium"
+                android:drawableTint="@color/med_grey"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Ignition Details"
+                app:drawableTint="@color/red"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_10" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:background="@color/light_black" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_time"
+                    android:drawablePadding="@dimen/margin_v"
+                    app:fontFamily="@font/poppins_medium"
+                    android:drawableTint="@color/med_grey"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="On Time"
+                    app:drawableTint="@color/green"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvOnTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    tools:text="60 km/h"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_time"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:drawableTint="@color/red"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Off Time"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvOffTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    tools:text="45 KM"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:drawableTint="@color/primary_orange"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Total Duration"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.4"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    tools:text="01-08-2022 | 11:30 pm"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:background="@color/light_black" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginEnd="@dimen/margin_x"
+                android:layout_marginStart="@dimen/margin_x"
+                android:layout_weight="0.6"
+                android:drawablePadding="@dimen/margin_v"
+                app:fontFamily="@font/poppins_regular"
+                android:drawableTint="@color/med_grey"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Start Location"
+                app:drawableTint="@color/red"
+                android:textColor="@color/med_grey"
+                android:textSize="@dimen/font_10" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginHorizontal="@dimen/margin_x">
+
+                <ImageView
+                    android:id="@+id/ivLocationIcon"
+                    android:layout_width="@dimen/margin_xx"
+                    android:layout_height="@dimen/margin_xx"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:src="@drawable/ic_location"
+                    app:tint="@color/blue" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/margin_v"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:layout_toRightOf="@+id/ivLocationIcon"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_10"
+                    tools:text="Blackbox GPS technology pvt. ltd. Industrial area phase 1 Chandigarh, India" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:background="@color/light_black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginEnd="@dimen/margin_x"
+                android:layout_marginStart="@dimen/margin_x"
+                android:layout_weight="0.6"
+                android:drawablePadding="@dimen/margin_v"
+                app:fontFamily="@font/poppins_regular"
+                android:drawableTint="@color/med_grey"
+                android:fontFamily="@font/poppins_medium"
+                android:text="End Location"
+                app:drawableTint="@color/red"
+                android:textColor="@color/med_grey"
+                android:textSize="@dimen/font_10" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginHorizontal="@dimen/margin_x">
+
+                <ImageView
+                    android:id="@+id/ivEndLocationIcon"
+                    android:layout_width="@dimen/margin_xx"
+                    android:layout_height="@dimen/margin_xx"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:src="@drawable/ic_location"
+                    app:tint="@color/blue" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvELocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/margin_v"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:layout_toRightOf="@+id/ivEndLocationIcon"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_10"
+                    tools:text="Blackbox GPS technology pvt. ltd. Industrial area phase 1 Chandigarh, India" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

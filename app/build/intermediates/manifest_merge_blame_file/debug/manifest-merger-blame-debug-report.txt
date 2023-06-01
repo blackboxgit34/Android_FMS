@@ -1,0 +1,1061 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    package="com.humbhi.blackbox"
+5    android:versionCode="114"
+6    android:versionName="1.1.10.72" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="21"
+9-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="33" />
+10-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml
+11
+12    <dist:module dist:instant="true" />
+12-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:7:5-40
+12-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:7:18-37
+13
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:9:5-67
+14-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:9:22-64
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:10:5-68
+15-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:10:22-65
+16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+16-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:11:5-75
+16-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:11:22-72
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:12:5-79
+17-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:12:22-76
+18    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+18-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:13:5-81
+18-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:13:22-78
+19    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+19-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:14:5-79
+19-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:14:22-76
+20    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+20-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:15:5-77
+20-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:15:22-74
+21    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+21-->[com.github.hannesa2:paho.mqtt.android:3.3.5] C:\Users\Administrator\.gradle\caches\transforms-3\051defc3a30259cb9a9efc4bc1f18640\transformed\jetified-paho.mqtt.android-3.3.5\AndroidManifest.xml:11:5-79
+21-->[com.github.hannesa2:paho.mqtt.android:3.3.5] C:\Users\Administrator\.gradle\caches\transforms-3\051defc3a30259cb9a9efc4bc1f18640\transformed\jetified-paho.mqtt.android-3.3.5\AndroidManifest.xml:11:22-76
+22
+23    <uses-feature
+23-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:26:5-28:35
+24        android:glEsVersion="0x00020000"
+24-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:27:9-41
+25        android:required="true" />
+25-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:28:9-32
+26
+27    <queries>
+27-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:30:5-34:15
+28
+29        <!-- Needs to be explicitly declared on Android R+ -->
+30        <package android:name="com.google.android.apps.maps" />
+30-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:9-64
+30-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:18-61
+31    </queries> <!-- Required by older versions of Google Play services to create IID tokens -->
+32    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+32-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:28:5-82
+32-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:28:22-79
+33    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+33-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:26:5-110
+33-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:26:22-107
+34    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+34-->[com.google.android.gms:play-services-measurement-impl:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\d334a1d4729ee2d8c13daaee363d8e53\transformed\jetified-play-services-measurement-impl-21.2.0\AndroidManifest.xml:27:5-79
+34-->[com.google.android.gms:play-services-measurement-impl:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\d334a1d4729ee2d8c13daaee363d8e53\transformed\jetified-play-services-measurement-impl-21.2.0\AndroidManifest.xml:27:22-76
+35
+36    <permission
+36-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+37        android:name="com.humbhi.blackbox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+37-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+38        android:protectionLevel="signature" />
+38-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+39
+40    <uses-permission android:name="com.humbhi.blackbox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Permission will be merged into the manifest of the hosting app. -->
+40-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+40-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+41    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
+42    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+42-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:13:5-77
+42-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:13:22-74
+43
+44    <application
+44-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:17:5-357:19
+45        android:name="com.humbhi.blackbox.ui.MyApplication"
+45-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:18:9-41
+46        android:allowBackup="true"
+46-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:19:9-35
+47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+47-->[androidx.core:core:1.9.0] C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+48        android:dataExtractionRules="@xml/data_extraction_rules"
+48-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:20:9-65
+49        android:debuggable="true"
+50        android:fullBackupContent="@xml/backup_rules"
+50-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:21:9-54
+51        android:icon="@drawable/black_box"
+51-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:22:9-43
+52        android:label="@string/app_name"
+52-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:23:9-41
+53        android:largeHeap="true"
+53-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:24:9-33
+54        android:roundIcon="@drawable/black_box"
+54-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:25:9-48
+55        android:supportsRtl="true"
+55-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:26:9-35
+56        android:testOnly="true"
+57        android:theme="@style/Theme.Blackbox"
+57-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:27:9-46
+58        android:usesCleartextTraffic="true" >
+58-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:28:9-44
+59        <activity
+59-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:30:9-33:51
+60            android:name="com.humbhi.blackbox.ui.ui.livetracking.LocateMyVehicle"
+60-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:31:13-63
+61            android:exported="false"
+61-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:32:13-37
+62            android:screenOrientation="portrait" />
+62-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:33:13-49
+63        <activity
+63-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:34:9-37:52
+64            android:name="com.humbhi.blackbox.ui.ui.banner.BillBanner"
+64-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:35:13-52
+65            android:exported="false"
+65-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:36:13-37
+66            android:screenOrientation="portrait" />
+66-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:37:13-49
+67        <activity
+67-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:38:9-41:52
+68            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverToDriverComparison.DriverToDriverComparisonActivity"
+68-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:39:13-109
+69            android:exported="false"
+69-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:40:13-37
+70            android:screenOrientation="portrait" />
+70-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:41:13-49
+71        <activity
+71-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:42:9-45:52
+72            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverMonthlyComparison.DriverMonthlyComparison"
+72-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:43:13-99
+73            android:exported="false"
+73-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:44:13-37
+74            android:screenOrientation="portrait" />
+74-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:45:13-49
+75        <activity
+75-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:46:9-49:52
+76            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.NoDrivingReport.NoDrivingReportActivity"
+76-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:47:13-91
+77            android:exported="false"
+77-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:48:13-37
+78            android:screenOrientation="portrait" />
+78-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:49:13-49
+79        <activity
+79-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:50:9-53:52
+80            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingLimit.DrivingLimitActivity"
+80-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:51:13-85
+81            android:exported="false"
+81-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:52:13-37
+82            android:screenOrientation="portrait" />
+82-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:53:13-49
+83        <activity
+83-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:54:9-57:52
+84            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.driverClassificationReports.SafeDriversActivity"
+84-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:55:13-99
+85            android:exported="false"
+85-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:56:13-37
+86            android:screenOrientation="portrait" />
+86-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:57:13-49
+87        <activity
+87-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:58:9-61:52
+88            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.consolidateReport.consolidateVoilationDetails.ConsolidateVoilationDetails"
+88-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:59:13-125
+89            android:exported="false"
+89-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:60:13-37
+90            android:screenOrientation="portrait" />
+90-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:61:13-49
+91        <activity
+91-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:62:9-65:52
+92            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.consolidateReport.DrBehavConsolidateReportActivity"
+92-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:63:13-102
+93            android:exported="false"
+93-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:64:13-37
+94            android:screenOrientation="portrait" />
+94-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:65:13-49
+95        <activity
+95-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:66:9-69:52
+96            android:name="com.humbhi.blackbox.ui.ui.ais140.AIS140VehicleActivity"
+96-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:67:13-63
+97            android:exported="false"
+97-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:68:13-37
+98            android:screenOrientation="portrait" />
+98-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:69:13-49
+99        <activity
+99-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:70:9-73:52
+100            android:name="com.humbhi.blackbox.ui.ui.addonReports.workingHour.workingHourDetails.WorkingHourDetailActivity"
+100-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:71:13-104
+101            android:exported="false"
+101-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:72:13-37
+102            android:screenOrientation="portrait" />
+102-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:73:13-49
+103        <activity
+103-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:74:9-77:52
+104            android:name="com.humbhi.blackbox.ui.ui.addonReports.workingHour.WorkingHourReportActivity"
+104-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:75:13-85
+105            android:exported="false"
+105-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:76:13-37
+106            android:screenOrientation="portrait" />
+106-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:77:13-49
+107        <activity
+107-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:78:9-81:52
+108            android:name="com.humbhi.blackbox.ui.ui.addonReports.temperature.tempDetails.TemperatureDetailReport"
+108-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:79:13-95
+109            android:exported="false"
+109-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:80:13-37
+110            android:screenOrientation="portrait" />
+110-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:81:13-49
+111        <activity
+111-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:82:9-85:52
+112            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.fuelRodDisconnection.FuelRodDisconnectionActivity"
+112-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:83:13-102
+113            android:exported="false"
+113-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:84:13-37
+114            android:screenOrientation="portrait" />
+114-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:85:13-49
+115        <activity
+115-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:86:9-89:51
+116            android:name="com.humbhi.blackbox.ui.ui.addonReports.immobalize.ImmobilizeActivity"
+116-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:87:13-77
+117            android:exported="false"
+117-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:88:13-37
+118            android:screenOrientation="portrait" />
+118-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:89:13-49
+119        <activity
+119-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:90:9-93:52
+120            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelTheftDetail"
+120-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:91:13-68
+121            android:exported="false"
+121-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:92:13-37
+122            android:screenOrientation="portrait" />
+122-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:93:13-49
+123        <activity
+123-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:94:9-97:52
+124            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.MultiLineChartActivity"
+124-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:95:13-75
+125            android:exported="false"
+125-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:96:13-37
+126            android:screenOrientation="portrait" />
+126-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:97:13-49
+127        <activity
+127-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:98:9-101:52
+128            android:name="com.humbhi.blackbox.ui.ui.livetracking.LiveCarActivity"
+128-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:99:13-63
+129            android:exported="false"
+129-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:100:13-37
+130            android:screenOrientation="portrait" />
+130-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:101:13-49
+131        <activity
+131-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:102:9-105:52
+132            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.rashTurn.RashTurnActivity"
+132-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:103:13-77
+133            android:exported="false"
+133-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:104:13-37
+134            android:screenOrientation="portrait" />
+134-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:105:13-49
+135        <activity
+135-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:106:9-109:52
+136            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingRouteInitialActivity"
+136-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:107:13-79
+137            android:exported="false"
+137-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:108:13-37
+138            android:screenOrientation="portrait" />
+138-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:109:13-49
+139        <activity
+139-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:110:9-113:52
+140            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayInitialSelection"
+140-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:111:13-74
+141            android:exported="false"
+141-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:112:13-37
+142            android:screenOrientation="portrait" />
+142-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:113:13-49
+143        <activity
+143-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:114:9-117:52
+144            android:name="com.humbhi.blackbox.ui.ui.livetracking.GLocationOnMap"
+144-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:115:13-62
+145            android:exported="false"
+145-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:116:13-37
+146            android:screenOrientation="portrait" />
+146-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:117:13-49
+147        <activity
+147-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:118:9-122:52
+148            android:name="com.humbhi.blackbox.ui.Utility.InitialActivity"
+148-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:119:13-55
+149            android:exported="false"
+149-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:120:13-37
+150            android:label="@string/app_name"
+150-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:121:13-45
+151            android:screenOrientation="portrait" />
+151-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:122:13-49
+152        <activity
+152-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:123:9-127:48
+153            android:name="com.humbhi.blackbox.ui.Utility.WebViewActivity"
+153-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:124:13-55
+154            android:configChanges="orientation|screenSize"
+154-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:125:13-59
+155            android:exported="false"
+155-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:126:13-37
+156            android:label="@string/app_name" />
+156-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:127:13-45
+157
+158        <!-- <service android:name="org.eclipse.paho.android.service.MqttService" /> -->
+159
+160        <receiver
+160-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:131:9-137:20
+161            android:name="com.humbhi.blackbox.ui.Utility.SmsReceiver"
+161-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:132:13-51
+162            android:exported="true" >
+162-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:133:13-36
+163            <intent-filter>
+163-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:134:13-136:29
+164                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+164-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:135:17-82
+164-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:135:25-79
+165            </intent-filter>
+166        </receiver>
+167
+168        <activity
+168-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:139:9-142:61
+169            android:name="com.humbhi.blackbox.ui.Utility.StatusActivity"
+169-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:140:13-54
+170            android:exported="false"
+170-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:141:13-37
+171            android:label="@string/title_activity_status" />
+171-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:142:13-58
+172        <activity
+172-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:143:9-146:52
+173            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.harshAccelerationReport.HarshAccelerationActivity"
+173-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:144:13-101
+174            android:exported="false"
+174-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:145:13-37
+175            android:screenOrientation="portrait" />
+175-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:146:13-49
+176        <activity
+176-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:147:9-150:52
+177            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.ScoreCard.ScoreCardActivity"
+177-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:148:13-79
+178            android:exported="false"
+178-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:149:13-37
+179            android:screenOrientation="portrait" />
+179-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:150:13-49
+180        <activity
+180-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:151:9-154:52
+181            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.harshBreakingReport.HarshBreakingActivity"
+181-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:152:13-93
+182            android:exported="false"
+182-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:153:13-37
+183            android:screenOrientation="portrait" />
+183-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:154:13-49
+184        <activity
+184-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:155:9-158:52
+185            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingBehaviourActivity"
+185-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:156:13-76
+186            android:exported="false"
+186-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:157:13-37
+187            android:screenOrientation="portrait" />
+187-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:158:13-49
+188        <activity
+188-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:159:9-162:52
+189            android:name="com.humbhi.blackbox.ui.ui.settings.SettingsActivity"
+189-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:160:13-60
+190            android:exported="false"
+190-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:161:13-37
+191            android:screenOrientation="portrait" />
+191-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:162:13-49
+192        <activity
+192-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:163:9-166:52
+193            android:name="com.humbhi.blackbox.ui.ui.notification.GNotifications"
+193-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:164:13-62
+194            android:exported="false"
+194-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:165:13-37
+195            android:screenOrientation="portrait" />
+195-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:166:13-49
+196        <activity
+196-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:167:9-170:52
+197            android:name="com.humbhi.blackbox.ui.ui.alerts.BatteryAlert"
+197-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:168:13-54
+198            android:exported="false"
+198-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:169:13-37
+199            android:screenOrientation="portrait" />
+199-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:170:13-49
+200        <activity
+200-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:171:9-174:52
+201            android:name="com.humbhi.blackbox.ui.ui.alerts.OverstopAlert"
+201-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:172:13-55
+202            android:exported="false"
+202-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:173:13-37
+203            android:screenOrientation="portrait" />
+203-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:174:13-49
+204        <activity
+204-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:175:9-178:52
+205            android:name="com.humbhi.blackbox.ui.ui.alerts.OverspeedAlert"
+205-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:176:13-56
+206            android:exported="false"
+206-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:177:13-37
+207            android:screenOrientation="portrait" />
+207-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:178:13-49
+208        <activity
+208-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:179:9-182:52
+209            android:name="com.humbhi.blackbox.ui.ui.alerts.IgnitionAlertSetting"
+209-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:180:13-62
+210            android:exported="false"
+210-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:181:13-37
+211            android:screenOrientation="portrait" />
+211-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:182:13-49
+212        <activity
+212-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:183:9-186:52
+213            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlaybackSelection"
+213-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:184:13-71
+214            android:exported="false"
+214-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:185:13-37
+215            android:screenOrientation="portrait" />
+215-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:186:13-49
+216        <activity
+216-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:187:9-190:52
+217            android:name="com.humbhi.blackbox.ui.ui.reports.overspeedReport.overSpeedDetail.OverspeedDetailActivity"
+217-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:188:13-98
+218            android:exported="false"
+218-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:189:13-37
+219            android:screenOrientation="portrait" />
+219-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:190:13-49
+220        <activity
+220-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:191:9-194:52
+221            android:name="com.humbhi.blackbox.ui.ui.reports.distanceReport.distanceReportDetail.DistanceReportDetailActivity"
+221-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:192:13-107
+222            android:exported="false"
+222-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:193:13-37
+223            android:screenOrientation="portrait" />
+223-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:194:13-49
+224        <activity
+224-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:195:9-198:52
+225            android:name="com.humbhi.blackbox.ui.ui.geofencing.addFence.AddGeofenceActivity"
+225-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:196:13-74
+226            android:exported="false"
+226-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:197:13-37
+227            android:screenOrientation="portrait" />
+227-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:198:13-49
+228        <activity
+228-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:199:9-202:52
+229            android:name="com.humbhi.blackbox.ui.ui.geofencing.ManageGeofenceActivity"
+229-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:200:13-68
+230            android:exported="false"
+230-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:201:13-37
+231            android:screenOrientation="portrait" />
+231-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:202:13-49
+232        <activity
+232-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:203:9-206:52
+233            android:name="com.humbhi.blackbox.ui.ui.billingPayments.BillAccountActivity"
+233-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:204:13-70
+234            android:exported="false"
+234-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:205:13-37
+235            android:screenOrientation="portrait" />
+235-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:206:13-49
+236        <activity
+236-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:207:9-210:52
+237            android:name="com.humbhi.blackbox.ui.ui.reports.detailSummeryReport.DetailSummeryReportActivity"
+237-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:208:13-90
+238            android:exported="false"
+238-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:209:13-37
+239            android:screenOrientation="portrait" />
+239-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:210:13-49
+240        <activity
+240-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:211:9-214:52
+241            android:name="com.humbhi.blackbox.ui.ui.reports.monthlyReport.MonthlyReportActivity"
+241-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:212:13-78
+242            android:exported="false"
+242-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:213:13-37
+243            android:screenOrientation="portrait" />
+243-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:214:13-49
+244        <activity
+244-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:215:9-218:52
+245            android:name="com.humbhi.blackbox.ui.ui.reports.overstoppageReport.OverstoppageReportActivtiy"
+245-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:216:13-88
+246            android:exported="false"
+246-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:217:13-37
+247            android:screenOrientation="portrait" />
+247-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:218:13-49
+248        <activity
+248-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:219:9-222:52
+249            android:name="com.humbhi.blackbox.ui.ui.reports.overspeedReport.OverspeedReportActivity"
+249-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:220:13-82
+250            android:exported="false"
+250-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:221:13-37
+251            android:screenOrientation="portrait" />
+251-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:222:13-49
+252        <activity
+252-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:223:9-226:52
+253            android:name="com.humbhi.blackbox.ui.ui.alerts.setAlert.SetAlertActivity"
+253-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:224:13-67
+254            android:exported="false"
+254-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:225:13-37
+255            android:screenOrientation="portrait" />
+255-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:226:13-49
+256        <activity
+256-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:227:9-230:52
+257            android:name="com.humbhi.blackbox.ui.ui.alerts.AlertsOnOffSettings"
+257-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:228:13-61
+258            android:exported="false"
+258-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:229:13-37
+259            android:screenOrientation="portrait" />
+259-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:230:13-49
+260        <activity
+260-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:231:9-234:52
+261            android:name="com.humbhi.blackbox.ui.ui.addonReports.temperature.TemperatureSensorReport"
+261-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:232:13-83
+262            android:exported="false"
+262-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:233:13-37
+263            android:screenOrientation="portrait" />
+263-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:234:13-49
+264        <activity
+264-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:235:9-238:52
+265            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelDisconnectionReport"
+265-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:236:13-76
+266            android:exported="false"
+266-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:237:13-37
+267            android:screenOrientation="portrait" />
+267-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:238:13-49
+268        <activity
+268-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:239:9-242:52
+269            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelGraphJavaActivity"
+269-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:240:13-74
+270            android:exported="false"
+270-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:241:13-37
+271            android:screenOrientation="portrait" />
+271-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:242:13-49
+272        <activity
+272-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:243:9-246:52
+273            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelGraphReport"
+273-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:244:13-68
+274            android:exported="false"
+274-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:245:13-37
+275            android:screenOrientation="portrait" />
+275-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:246:13-49
+276        <activity
+276-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:247:9-250:52
+277            android:name="com.humbhi.blackbox.ui.ui.customerCare.AddServiceRequestActivity"
+277-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:248:13-73
+278            android:exported="false"
+278-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:249:13-37
+279            android:screenOrientation="portrait" />
+279-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:250:13-49
+280        <activity
+280-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:251:9-254:52
+281            android:name="com.humbhi.blackbox.ui.ui.customerCare.callus.CallUsActivity"
+281-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:252:13-69
+282            android:exported="false"
+282-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:253:13-37
+283            android:screenOrientation="portrait" />
+283-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:254:13-49
+284        <activity
+284-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:255:9-258:52
+285            android:name="com.humbhi.blackbox.ui.ui.customerCare.CustomerCare"
+285-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:256:13-60
+286            android:exported="false"
+286-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:257:13-37
+287            android:screenOrientation="portrait" />
+287-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:258:13-49
+288        <activity
+288-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:259:9-262:52
+289            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayBack"
+289-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:260:13-62
+290            android:exported="false"
+290-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:261:13-37
+291            android:screenOrientation="portrait" />
+291-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:262:13-49
+292        <activity
+292-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:263:9-266:52
+293            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelTheftReportActivity"
+293-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:264:13-76
+294            android:exported="false"
+294-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:265:13-37
+295            android:screenOrientation="portrait" />
+295-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:266:13-49
+296        <activity
+296-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:267:9-270:52
+297            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelFillingDetailActivity"
+297-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:268:13-78
+298            android:exported="false"
+298-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:269:13-37
+299            android:screenOrientation="portrait" />
+299-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:270:13-49
+300        <activity
+300-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:271:9-274:52
+301            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelFillinReportActivity"
+301-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:272:13-77
+302            android:exported="false"
+302-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:273:13-37
+303            android:screenOrientation="portrait" />
+303-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:274:13-49
+304        <activity
+304-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:275:9-278:52
+305            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelReportActivity"
+305-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:276:13-71
+306            android:exported="false"
+306-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:277:13-37
+307            android:screenOrientation="portrait" />
+307-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:278:13-49
+308        <activity
+308-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:279:9-282:52
+309            android:name="com.humbhi.blackbox.ui.ui.addonReports.AddOnReportActivity"
+309-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:280:13-67
+310            android:exported="false"
+310-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:281:13-37
+311            android:screenOrientation="portrait" />
+311-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:282:13-49
+312        <activity
+312-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:283:9-286:52
+313            android:name="com.humbhi.blackbox.ui.ui.notification.NotificationActivity"
+313-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:284:13-68
+314            android:exported="false"
+314-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:285:13-37
+315            android:screenOrientation="portrait" />
+315-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:286:13-49
+316        <activity
+316-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:287:9-290:52
+317            android:name="com.humbhi.blackbox.ui.ui.reports.dailyreport.DailyReportActivity"
+317-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:288:13-74
+318            android:exported="false"
+318-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:289:13-37
+319            android:screenOrientation="portrait" />
+319-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:290:13-49
+320        <activity
+320-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:291:9-294:52
+321            android:name="com.humbhi.blackbox.ui.ui.reports.stoppagereport.StoppageReportActivity"
+321-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:292:13-80
+322            android:exported="false"
+322-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:293:13-37
+323            android:screenOrientation="portrait" />
+323-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:294:13-49
+324        <activity
+324-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:295:9-298:52
+325            android:name="com.humbhi.blackbox.ui.ui.reports.distanceReport.DistanceReportActivity"
+325-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:296:13-80
+326            android:exported="false"
+326-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:297:13-37
+327            android:screenOrientation="portrait" />
+327-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:298:13-49
+328        <activity
+328-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:299:9-302:52
+329            android:name="com.humbhi.blackbox.ui.ui.reports.FleetReportsDashboard"
+329-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:300:13-64
+330            android:exported="false"
+330-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:301:13-37
+331            android:screenOrientation="portrait" />
+331-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:302:13-49
+332        <activity
+332-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:303:9-306:52
+333            android:name="com.humbhi.blackbox.ui.ui.livetracking.LiveTrackingActivity"
+333-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:304:13-68
+334            android:exported="false"
+334-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:305:13-37
+335            android:screenOrientation="portrait" />
+335-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:306:13-49
+336        <activity
+336-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:307:9-310:52
+337            android:name="com.humbhi.blackbox.ui.ui.login.forgotpassword.ForgotPasswordActivity"
+337-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:308:13-78
+338            android:exported="false"
+338-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:309:13-37
+339            android:screenOrientation="portrait" />
+339-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:310:13-49
+340
+341        <meta-data
+341-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:312:9-314:71
+342            android:name="com.google.android.maps.v2.API_KEY"
+342-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:313:13-62
+343            android:value="AIzaSyDWF0kOqQ7kKfxFwMmfShRhETCy6IHhaf0" />
+343-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:314:13-68
+344        <meta-data
+344-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:315:9-317:69
+345            android:name="com.google.android.gms.version"
+345-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:316:13-58
+346            android:value="@integer/google_play_services_version" />
+346-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:317:13-66
+347
+348        <activity
+348-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:319:9-322:52
+349            android:name="com.humbhi.blackbox.ui.ui.vehicleStatus.vehicleDetails.VehicleDetailActivity"
+349-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:320:13-85
+350            android:exported="false"
+350-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:321:13-37
+351            android:screenOrientation="portrait" />
+351-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:322:13-49
+352        <activity
+352-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:323:9-326:52
+353            android:name="com.humbhi.blackbox.ui.ui.vehicleStatus.VehicleStatusActivity"
+353-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:324:13-70
+354            android:exported="false"
+354-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:325:13-37
+355            android:screenOrientation="portrait" />
+355-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:326:13-49
+356        <activity
+356-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:327:9-330:52
+357            android:name="com.humbhi.blackbox.ui.ui.dashboard.DashboardActivity"
+357-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:328:13-62
+358            android:exported="false"
+358-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:329:13-37
+359            android:screenOrientation="portrait" />
+359-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:330:13-49
+360        <activity
+360-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:331:9-335:53
+361            android:name="com.humbhi.blackbox.ui.ui.login.LoginActivity"
+361-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:332:13-54
+362            android:exported="false"
+362-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:333:13-37
+363            android:screenOrientation="portrait"
+363-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:334:13-49
+364            android:theme="@style/Theme.Blackbox" />
+364-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:335:13-50
+365        <activity
+365-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:336:9-346:20
+366            android:name="com.humbhi.blackbox.ui.ui.SplashActivity"
+366-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:337:13-49
+367            android:exported="true"
+367-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:338:13-36
+368            android:screenOrientation="portrait"
+368-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:339:13-49
+369            android:theme="@style/Theme.Blackbox" >
+369-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:340:13-50
+370            <intent-filter>
+370-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:341:13-345:29
+371                <action android:name="android.intent.action.MAIN" />
+371-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:342:17-69
+371-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:342:25-66
+372
+373                <category android:name="android.intent.category.LAUNCHER" />
+373-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:344:17-77
+373-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:344:27-74
+374            </intent-filter>
+375        </activity>
+376
+377        <service
+377-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:348:9-356:19
+378            android:name="com.humbhi.blackbox.ui.Firebase.MyFirebaseMessagingService"
+378-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:349:13-67
+379            android:exported="true"
+379-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:350:13-36
+380            android:permission="com.google.android.c2dm.permission.SEND" >
+380-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:351:13-73
+381            <intent-filter>
+381-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:352:13-355:29
+382                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+382-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:353:17-78
+382-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:353:25-75
+383                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+383-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:354:17-81
+383-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:354:25-78
+384            </intent-filter>
+385        </service>
+386        <service android:name="info.mqtt.android.service.MqttService" />
+386-->[com.github.hannesa2:paho.mqtt.android:3.3.5] C:\Users\Administrator\.gradle\caches\transforms-3\051defc3a30259cb9a9efc4bc1f18640\transformed\jetified-paho.mqtt.android-3.3.5\AndroidManifest.xml:15:9-73
+386-->[com.github.hannesa2:paho.mqtt.android:3.3.5] C:\Users\Administrator\.gradle\caches\transforms-3\051defc3a30259cb9a9efc4bc1f18640\transformed\jetified-paho.mqtt.android-3.3.5\AndroidManifest.xml:15:18-70
+387
+388        <activity
+388-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:8:9-11:50
+389            android:name="info.hannes.logcat.LogcatActivity"
+389-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:9:13-61
+390            android:label="Logcat"
+390-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:10:13-35
+391            android:theme="@style/DetailTheme" />
+391-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:11:13-47
+392        <activity
+392-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:12:9-15:50
+393            android:name="info.hannes.logcat.LogfileActivity"
+393-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:13:13-62
+394            android:label="Timber"
+394-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:14:13-35
+395            android:theme="@style/DetailTheme" />
+395-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:15:13-47
+396        <activity
+396-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:16:9-19:50
+397            android:name="info.hannes.logcat.BothLogActivity"
+397-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:17:13-62
+398            android:label="All log"
+398-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:18:13-36
+399            android:theme="@style/DetailTheme" />
+399-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:19:13-47
+400
+401        <provider
+401-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:21:9-29:20
+402            android:name="androidx.core.content.FileProvider"
+402-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:22:13-62
+403            android:authorities="com.humbhi.blackbox.provider"
+403-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:23:13-60
+404            android:exported="false"
+404-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:24:13-37
+405            android:grantUriPermissions="true" >
+405-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:25:13-47
+406            <meta-data
+406-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:26:13-28:58
+407                android:name="android.support.FILE_PROVIDER_PATHS"
+407-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:27:17-67
+408                android:resource="@xml/provider_paths" />
+408-->[com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5] C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\AndroidManifest.xml:28:17-55
+409        </provider>
+410
+411        <service
+411-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:23:9-29:19
+412            android:name="com.google.firebase.components.ComponentDiscoveryService"
+412-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:24:13-84
+413            android:directBootAware="true"
+413-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:34:13-43
+414            android:exported="false" >
+414-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:25:13-37
+415            <meta-data
+415-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:26:13-28:85
+416                android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar"
+416-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:27:17-130
+417                android:value="com.google.firebase.components.ComponentRegistrar" />
+417-->[com.google.firebase:firebase-crashlytics-ktx:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\88efd37261dabfc4f530d71417bec0eb\transformed\jetified-firebase-crashlytics-ktx-18.3.2\AndroidManifest.xml:28:17-82
+418            <meta-data
+418-->[com.google.firebase:firebase-analytics-ktx:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\e7f711a7ecaf26f234d15ae02e88fcd3\transformed\jetified-firebase-analytics-ktx-21.2.0\AndroidManifest.xml:11:13-13:85
+419                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
+419-->[com.google.firebase:firebase-analytics-ktx:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\e7f711a7ecaf26f234d15ae02e88fcd3\transformed\jetified-firebase-analytics-ktx-21.2.0\AndroidManifest.xml:12:17-126
+420                android:value="com.google.firebase.components.ComponentRegistrar" />
+420-->[com.google.firebase:firebase-analytics-ktx:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\e7f711a7ecaf26f234d15ae02e88fcd3\transformed\jetified-firebase-analytics-ktx-21.2.0\AndroidManifest.xml:13:17-82
+421            <meta-data
+421-->[com.google.firebase:firebase-common-ktx:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\271957402529f2625854837d4807ec06\transformed\jetified-firebase-common-ktx-20.2.0\AndroidManifest.xml:14:13-16:85
+422                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+422-->[com.google.firebase:firebase-common-ktx:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\271957402529f2625854837d4807ec06\transformed\jetified-firebase-common-ktx-20.2.0\AndroidManifest.xml:15:17-113
+423                android:value="com.google.firebase.components.ComponentRegistrar" />
+423-->[com.google.firebase:firebase-common-ktx:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\271957402529f2625854837d4807ec06\transformed\jetified-firebase-common-ktx-20.2.0\AndroidManifest.xml:16:17-82
+424            <meta-data
+424-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:55:13-57:85
+425                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+425-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:56:17-119
+426                android:value="com.google.firebase.components.ComponentRegistrar" />
+426-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:57:17-82
+427            <meta-data
+427-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Administrator\.gradle\caches\transforms-3\3bfd62814201fc29661f2e097da919a0\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
+428                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+428-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Administrator\.gradle\caches\transforms-3\3bfd62814201fc29661f2e097da919a0\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
+429                android:value="com.google.firebase.components.ComponentRegistrar" />
+429-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\Administrator\.gradle\caches\transforms-3\3bfd62814201fc29661f2e097da919a0\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
+430            <meta-data
+430-->[com.google.firebase:firebase-crashlytics:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\d992b9fe045d605faffe2a5e1d535273\transformed\jetified-firebase-crashlytics-18.3.2\AndroidManifest.xml:17:13-19:85
+431                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+431-->[com.google.firebase:firebase-crashlytics:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\d992b9fe045d605faffe2a5e1d535273\transformed\jetified-firebase-crashlytics-18.3.2\AndroidManifest.xml:18:17-115
+432                android:value="com.google.firebase.components.ComponentRegistrar" />
+432-->[com.google.firebase:firebase-crashlytics:18.3.2] C:\Users\Administrator\.gradle\caches\transforms-3\d992b9fe045d605faffe2a5e1d535273\transformed\jetified-firebase-crashlytics-18.3.2\AndroidManifest.xml:19:17-82
+433            <meta-data
+433-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\3305b36856c6808fe19dbe4c9dc3ece1\transformed\jetified-play-services-measurement-api-21.2.0\AndroidManifest.xml:31:13-33:85
+434                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+434-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\3305b36856c6808fe19dbe4c9dc3ece1\transformed\jetified-play-services-measurement-api-21.2.0\AndroidManifest.xml:32:17-139
+435                android:value="com.google.firebase.components.ComponentRegistrar" />
+435-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\3305b36856c6808fe19dbe4c9dc3ece1\transformed\jetified-play-services-measurement-api-21.2.0\AndroidManifest.xml:33:17-82
+436            <meta-data
+436-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\8cae74f7cd766e861f3e848b6d114e76\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:17:13-19:85
+437                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+437-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\8cae74f7cd766e861f3e848b6d114e76\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:18:17-127
+438                android:value="com.google.firebase.components.ComponentRegistrar" />
+438-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\8cae74f7cd766e861f3e848b6d114e76\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:19:17-82
+439        </service> <!-- Needs to be explicitly declared on P+ -->
+440        <uses-library
+440-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:39:9-41:40
+441            android:name="org.apache.http.legacy"
+441-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:40:13-50
+442            android:required="false" />
+442-->[com.google.android.gms:play-services-maps:18.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\AndroidManifest.xml:41:13-37
+443
+444        <receiver
+444-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:31:9-38:20
+445            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+445-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:32:13-78
+446            android:exported="true"
+446-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:33:13-36
+447            android:permission="com.google.android.c2dm.permission.SEND" >
+447-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:34:13-73
+448            <intent-filter>
+448-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:35:13-37:29
+449                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+449-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:354:17-81
+449-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:354:25-78
+450            </intent-filter>
+451        </receiver>
+452        <!--
+453             FirebaseMessagingService performs security checks at runtime,
+454             but set to not exported to explicitly avoid allowing another app to call it.
+455        -->
+456        <service
+456-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:44:9-51:19
+457            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+457-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:45:13-82
+458            android:directBootAware="true"
+458-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:46:13-43
+459            android:exported="false" >
+459-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:47:13-37
+460            <intent-filter android:priority="-500" >
+460-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:48:13-50:29
+460-->[com.google.firebase:firebase-messaging:23.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\AndroidManifest.xml:48:28-51
+461                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+461-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:353:17-78
+461-->D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\AndroidManifest.xml:353:25-75
+462            </intent-filter>
+463        </service>
+464
+465        <activity
+465-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\e219f13dfc5b94459c110d637811a649\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+466            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+466-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\e219f13dfc5b94459c110d637811a649\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+467            android:exported="false"
+467-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\e219f13dfc5b94459c110d637811a649\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+468            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+468-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Administrator\.gradle\caches\transforms-3\e219f13dfc5b94459c110d637811a649\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+469
+470        <receiver
+470-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:29:9-33:20
+471            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+471-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:30:13-85
+472            android:enabled="true"
+472-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:31:13-35
+473            android:exported="false" >
+473-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:32:13-37
+474        </receiver>
+475
+476        <service
+476-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:35:9-38:40
+477            android:name="com.google.android.gms.measurement.AppMeasurementService"
+477-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:36:13-84
+478            android:enabled="true"
+478-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:37:13-35
+479            android:exported="false" />
+479-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:38:13-37
+480        <service
+480-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:39:9-43:72
+481            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+481-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:40:13-87
+482            android:enabled="true"
+482-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:41:13-35
+483            android:exported="false"
+483-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:42:13-37
+484            android:permission="android.permission.BIND_JOB_SERVICE" />
+484-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\2f0a3217041d815611b4c222a8835d6a\transformed\jetified-play-services-measurement-21.2.0\AndroidManifest.xml:43:13-69
+485
+486        <provider
+486-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:25:9-30:39
+487            android:name="com.google.firebase.provider.FirebaseInitProvider"
+487-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:26:13-77
+488            android:authorities="com.humbhi.blackbox.firebaseinitprovider"
+488-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:27:13-72
+489            android:directBootAware="true"
+489-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:28:13-43
+490            android:exported="false"
+490-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:29:13-37
+491            android:initOrder="100" />
+491-->[com.google.firebase:firebase-common:20.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:30:13-36
+492        <provider
+492-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+493            android:name="androidx.startup.InitializationProvider"
+493-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+494            android:authorities="com.humbhi.blackbox.androidx-startup"
+494-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+495            android:exported="false" >
+495-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+496            <meta-data
+496-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+497                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+497-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+498                android:value="androidx.startup" />
+498-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+499            <meta-data
+499-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\12f4fd456ec221d1b2a1066ade36ab1c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+500                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+500-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\12f4fd456ec221d1b2a1066ade36ab1c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+501                android:value="androidx.startup" />
+501-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\12f4fd456ec221d1b2a1066ade36ab1c\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+502        </provider> <!-- The activities will be merged into the manifest of the hosting app. -->
+503        <activity
+503-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:18:9-24:45
+504            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+504-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:19:13-100
+505            android:enabled="false"
+505-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:20:13-36
+506            android:exported="false"
+506-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:21:13-37
+507            android:launchMode="singleInstance"
+507-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:22:13-48
+508            android:process=":playcore_missing_splits_activity"
+508-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:23:13-64
+509            android:stateNotNeeded="true" />
+509-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:24:13-42
+510        <activity
+510-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:25:9-29:65
+511            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+511-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:26:13-93
+512            android:exported="false"
+512-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:27:13-37
+513            android:stateNotNeeded="true"
+513-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:28:13-42
+514            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+514-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:29:13-62
+515        <service
+515-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:32:9-39:19
+516            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+516-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:33:13-94
+517            android:enabled="false"
+517-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:34:13-36
+518            android:exported="true" >
+518-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:35:13-36
+519            <meta-data
+519-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:36:13-38:41
+520                android:name="com.google.android.play.core.assetpacks.versionCode"
+520-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:37:17-83
+521                android:value="11003" />
+521-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:38:17-38
+522        </service>
+523        <service
+523-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:40:9-43:40
+524            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+524-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:41:13-95
+525            android:enabled="false"
+525-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:42:13-36
+526            android:exported="false" />
+526-->[com.google.android.play:core:1.10.3] C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\AndroidManifest.xml:43:13-37
+527        <service
+527-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
+528            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+528-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
+529            android:exported="false" >
+529-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
+530            <meta-data
+530-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
+531                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+531-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
+532                android:value="cct" />
+532-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\4ce1c35feda281733207d26077ca6eda\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
+533        </service>
+534        <service
+534-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
+535            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+535-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
+536            android:exported="false"
+536-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
+537            android:permission="android.permission.BIND_JOB_SERVICE" >
+537-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
+538        </service>
+539
+540        <receiver
+540-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
+541            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+541-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
+542            android:exported="false" />
+542-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\Administrator\.gradle\caches\transforms-3\8b076fb39ed9d5f5ece63dfb2ebda4d3\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
+543
+544        <service
+544-->[androidx.room:room-runtime:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\ee197d28b40dd3781b71bf22058b638f\transformed\room-runtime-2.4.1\AndroidManifest.xml:25:9-28:40
+545            android:name="androidx.room.MultiInstanceInvalidationService"
+545-->[androidx.room:room-runtime:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\ee197d28b40dd3781b71bf22058b638f\transformed\room-runtime-2.4.1\AndroidManifest.xml:26:13-74
+546            android:directBootAware="true"
+546-->[androidx.room:room-runtime:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\ee197d28b40dd3781b71bf22058b638f\transformed\room-runtime-2.4.1\AndroidManifest.xml:27:13-43
+547            android:exported="false" />
+547-->[androidx.room:room-runtime:2.4.1] C:\Users\Administrator\.gradle\caches\transforms-3\ee197d28b40dd3781b71bf22058b638f\transformed\room-runtime-2.4.1\AndroidManifest.xml:28:13-37
+548    </application>
+549
+550</manifest>

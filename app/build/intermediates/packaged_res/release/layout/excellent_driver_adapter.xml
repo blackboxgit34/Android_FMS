@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/margin_x"
+    android:orientation="vertical">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:cardBackgroundColor="@color/light_black"
+       app:cardCornerRadius="@dimen/margin_x">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:weightSum="2">
+
+               <TextView
+                   android:id="@+id/tvDriverName"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/poppins_medium"
+                   android:textSize="@dimen/font_12"
+                   android:textColor="@color/med_grey"
+                   android:text="Driver Name"
+                   android:drawableStart="@drawable/ic_user"
+                   android:paddingStart="@dimen/margin_v"
+                  android:drawablePadding="@dimen/margin_v"
+                   android:drawableTint="@color/secondary_yellow"
+                   android:layout_weight="1"
+                   android:layout_margin="@dimen/margin_v"
+                   />
+
+               <TextView
+                   android:id="@+id/tvVehicleName"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/poppins_medium"
+                   android:textSize="@dimen/font_12"
+                   android:textColor="@color/med_grey"
+                   android:layout_weight="1"
+                   android:gravity="end"
+                   android:paddingEnd="@dimen/margin_v"
+                   android:text="Driver Name"
+                   android:layout_margin="@dimen/margin_v"
+                   />
+
+           </androidx.appcompat.widget.LinearLayoutCompat>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="@color/dark_grey"/>
+
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:layout_marginBottom="@dimen/margin_v"
+               android:orientation="horizontal">
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="@dimen/margin_x"
+                   android:orientation="vertical">
+
+                   <com.vaibhavlakhera.circularprogressview.CircularProgressView
+                       android:id="@+id/pvHarshAcc"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       app:animate="true"
+                       app:animateDuration="1000"
+                       app:fillColor="@color/black"
+                       android:layout_margin="@dimen/margin_x"
+                       app:progressValue="10"
+                       app:progressColor="@color/blue"
+                       app:progressInterpolator="@android:anim/accelerate_decelerate_interpolator"
+                       app:progressRoundCap="true"
+                       app:progressTextColor="#FFF"
+                       app:progressTextEnabled="true"
+                       app:progressTextSize="@dimen/font_10"
+                       app:progressTextType="progress"
+                       app:progressWidth="4dp"
+                       app:startAngle="270"
+                       app:totalValue="100"
+                       app:totalColor="@color/red"
+                       app:totalWidth="2dp" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/white"
+                       android:text="Harsh Acc."
+                       android:gravity="center"
+                       android:layout_gravity="center"
+                       android:fontFamily="@font/poppins_regular"
+                       android:textSize="10sp"/>
+
+               </LinearLayout>
+
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="@dimen/margin_x"
+                   android:orientation="vertical">
+
+                   <com.vaibhavlakhera.circularprogressview.CircularProgressView
+                       android:id="@+id/pvHarshBreak"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       app:animate="true"
+                       app:animateDuration="1000"
+                       app:fillColor="@color/black"
+                       android:layout_margin="@dimen/margin_x"
+                       app:progressValue="10"
+                       app:progressColor="@color/red_dark"
+                       app:progressInterpolator="@android:anim/accelerate_decelerate_interpolator"
+                       app:progressRoundCap="true"
+                       app:progressTextColor="#FFF"
+                       app:progressTextEnabled="true"
+                       app:progressTextSize="@dimen/font_10"
+                       app:progressTextType="progress"
+                       app:progressWidth="4dp"
+                       app:startAngle="270"
+                       app:totalValue="100"
+                       app:totalColor="@color/primary_orange"
+                       app:totalWidth="2dp" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/white"
+                       android:text="Harsh Break"
+                       android:layout_gravity="center"
+                       android:fontFamily="@font/poppins_regular"
+                       android:textSize="10sp"/>
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="@dimen/margin_x"
+                   android:orientation="vertical">
+
+                   <com.vaibhavlakhera.circularprogressview.CircularProgressView
+                       android:id="@+id/pvHarshRashTurn"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       app:animate="true"
+                       app:animateDuration="1000"
+                       app:fillColor="@color/black"
+                       android:layout_margin="@dimen/margin_x"
+                       app:progressValue="10"
+                       app:progressColor="@color/secondary_yellow"
+                       app:progressInterpolator="@android:anim/accelerate_decelerate_interpolator"
+                       app:progressRoundCap="true"
+                       app:progressTextColor="#FFF"
+                       app:progressTextEnabled="true"
+                       app:progressTextSize="@dimen/font_10"
+                       app:progressTextType="progress"
+                       app:progressWidth="4dp"
+                       app:startAngle="270"
+                       app:totalValue="100"
+                       app:totalColor="@color/red"
+                       app:totalWidth="2dp" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/white"
+                       android:text="Rash Turn"
+                       android:layout_gravity="center"
+                       android:fontFamily="@font/poppins_regular"
+                       android:textSize="10sp"/>
+
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="@dimen/margin_x"
+                   android:orientation="vertical">
+
+                   <com.vaibhavlakhera.circularprogressview.CircularProgressView
+                       android:id="@+id/pvHarshOS"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       app:animate="true"
+                       app:animateDuration="1000"
+                       app:fillColor="@color/black"
+                       android:layout_margin="@dimen/margin_x"
+                       app:progressValue="10"
+                       app:progressColor="@color/primary_orange_secondary"
+                       app:progressInterpolator="@android:anim/accelerate_decelerate_interpolator"
+                       app:progressRoundCap="true"
+                       app:progressTextColor="#FFF"
+                       app:progressTextEnabled="true"
+                       app:progressTextSize="@dimen/font_10"
+                       app:progressTextType="progress"
+                       app:progressWidth="4dp"
+                       app:startAngle="270"
+                       app:totalValue="100"
+                       app:totalColor="@color/grey_two"
+                       app:totalWidth="2dp" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/white"
+                       android:text="Overspeed"
+                       android:layout_gravity="center"
+                       android:fontFamily="@font/poppins_regular"
+                       android:textSize="10sp"/>
+
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+
+   </androidx.cardview.widget.CardView>
+
+</LinearLayout>

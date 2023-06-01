@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:layout_marginBottom="@dimen/margin_x"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/margin_x"
+        app:cardCornerRadius="@dimen/margin_x">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginVertical="@dimen/margin_x"
+                    android:layout_marginStart="@dimen/margin_x"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/margin_25"
+                        android:layout_height="@dimen/margin_25"
+                        app:tint="@color/green"
+                        android:layout_gravity="start"
+                        android:src="@drawable/ic_location"/>
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="lorem ipsum dummy text jhsd jhsdjhsdf hishfkjsfkjd jhkjf jshjhf jhjuieuwqe uiyweuiwyr  bvcmncvasoiueqw jhsafdjsbafj jahkjasf"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/font_12"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:layout_gravity="center_vertical"
+                        android:drawablePadding="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_regular "/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginVertical="@dimen/margin_x"
+                    android:layout_marginStart="@dimen/margin_x"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/margin_20"
+                        android:layout_height="@dimen/margin_20"
+                        app:tint="@color/med_grey"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_time"/>
+                    <TextView
+                        android:id="@+id/tvDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="safdjsbafj jahkjasf"
+                        android:textColor="@color/med_grey"
+                        android:textSize="@dimen/font_12"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:layout_gravity="center_vertical"
+                        android:drawablePadding="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                </LinearLayout>
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/margin_x">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTemp"
+                    android:layout_width="@dimen/profile_size"
+                    android:layout_height="@dimen/profile_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_circle"
+                    android:backgroundTint="@color/light_black"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="-20.44°C"
+                    android:textColor="@color/secondary_yellow"
+                    android:textSize="@dimen/font_10" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

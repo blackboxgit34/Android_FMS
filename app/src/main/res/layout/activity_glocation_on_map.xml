@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_60"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/Mmap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/rlSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="@dimen/margin_3">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search.."
+                android:imeOptions="actionSearch"
+                android:drawableTint="@color/med_grey"
+                android:padding="@dimen/margin_v"
+                android:singleLine="true"
+                android:layout_margin="@dimen/margin_3"
+                android:background="@drawable/rect_outline"
+                />
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_xx"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mapView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_80"
+        android:layout_marginEnd="@dimen/margin_x"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/margin_x"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/white_border_black_box"
+        android:text="Satelite View"
+        android:textColor="@color/white"
+        android:textSize="@dimen/margin_x"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="@dimen/margin_180"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_80"
+        android:layout_marginStart="@dimen/margin_xx"
+        android:backgroundTint="@color/white_translucent"
+        android:background="@drawable/white_curve_rect"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llTotal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/font_10"/>
+            <TextView
+                android:id="@+id/tvTotalVehicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llStopped"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbParked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parked"
+                android:buttonTint="@color/secondary_yellow"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"
+                android:textColor="@color/primary"
+                />
+            <TextView
+                android:id="@+id/tvParkedVehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRunning"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbMoving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Moving"
+                android:buttonTint="@color/green"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"
+                android:textColor="@color/primary" />
+            <TextView
+                android:id="@+id/tvMovingCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llIdeal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbIgnition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ignition On"
+                android:buttonTint="@color/primary_orange"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tvIgnitionCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llInactive"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbUnreach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Unreachable"
+                android:buttonTint="@color/red"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tvUnreachCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTowed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbTowed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Towed"
+                android:buttonTint="@color/dark_grey"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tvTowdCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHiSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="@dimen/margin_v"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/rbHiSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hi-Speed"
+                android:buttonTint="@color/blue"
+                android:layout_weight="0.7"
+                android:paddingHorizontal="@dimen/margin_v"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tvHighSpeedCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="34"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/margin_xx"
+                android:textSize="@dimen/font_10"/>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:layout_marginTop="@dimen/margin_x"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/primary"
+        android:layout_marginBottom="@dimen/margin_x"
+        app:cardCornerRadius="@dimen/margin_xx">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_x"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="@dimen/margin_xx"
+                        android:layout_marginTop="@dimen/margin_3"
+                        android:layout_marginEnd="@dimen/margin_v"
+                        android:src="@drawable/ic_car_icon_flat"
+                        app:tint="@color/green" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvVehicleName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_18" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text=""
+                        android:textAllCaps="true"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/font_10" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text=""
+                        android:textColor="@color/dark_grey"
+                        android:textSize="@dimen/font_10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_x"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="@dimen/margin_xx"
+                        android:layout_marginTop="@dimen/margin_3"
+                        android:layout_marginEnd="@dimen/margin_v"
+                        android:src="@drawable/ic_speed"
+                        app:tint="@color/red_dark" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="66"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/font_18" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvUnits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="KM/H"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/font_10" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Speed"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="@dimen/font_10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_x"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="@dimen/margin_xx"
+                        android:layout_marginTop="@dimen/margin_3"
+                        android:layout_marginEnd="@dimen/margin_v"
+                        android:src="@drawable/ic_driven"
+                        app:tint="@color/yellow" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="209"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/font_18" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="KM"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/font_10" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_v"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Distance"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="@dimen/font_10" />
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_xx"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:text="Hno 123 Sector 35 C chandigarh, India."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginBottom="@dimen/margin_x"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvProgressStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_xx"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/round_background"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/margin_2"
+                        android:paddingStart="@dimen/margin_v"
+                        android:paddingEnd="@dimen/margin_v"
+                        android:text="Moving"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDataDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_xx"
+                        android:layout_weight="1.5"
+                        android:backgroundTint="@color/green"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="end|center_vertical"
+                        android:text="Update at: 15 Aug 2022"
+
+                        android:textColor="@color/med_grey"
+                        android:textSize="@dimen/font_10" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ImageView
+                android:id="@+id/icClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/margin_x"
+                android:src="@drawable/ic_close" />
+
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
+
+</RelativeLayout>

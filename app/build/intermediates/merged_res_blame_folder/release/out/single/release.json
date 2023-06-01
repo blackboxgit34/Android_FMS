@@ -1,0 +1,2090 @@
+[
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_location.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_location.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_customer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_customer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_grey_filled_rect.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/grey_filled_rect.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_tempo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/tempo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_thermometer.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_thermometer.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_switch_thumb_selector.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/switch_thumb_selector.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_morning.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/morning.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_settings.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_settings.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_account.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_account.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_settings.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_settings.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fueltheftdetailadapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fueltheftdetailadapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_stoppages.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_stoppages.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_fence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_fence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_back.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_thin.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_thin.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_dialog_confirm.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/dialog_confirm.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_rash_turn_chart_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/rash_turn_chart_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_circle_orange.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_circle_orange.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_graph_java.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_graph_java.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_overspeed_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_invoice.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_invoice.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_extra_light.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_extra_light.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_driver_to_driver_comparison.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driver_to_driver_comparison.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_tractor.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/tractor.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_van_sideview.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_van_sideview.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_vehicle_filterbottomsheet.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_filterbottomsheet.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_switch_track_selector.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/switch_track_selector.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alert_overstoppage.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alert_overstoppage.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_overstoppageback.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/overstoppageback.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_shadow_orange.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/shadow_orange.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_monthly_round.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/monthly_round.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_shadow_white.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/shadow_white.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_yellow_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_yellow_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus_yellow.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus_yellow.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_addon_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_addon_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_orange_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_orange_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_info.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_info.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_regular.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_regular.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_dashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_dashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_done_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_done_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_customercare.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_customercare.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_arrow_down.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/arrow_down.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_iv_overspeedicon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/iv_overspeedicon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_orange_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_orange_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_skyblue_circle_bg.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/skyblue_circle_bg.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_bill_banner.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_bill_banner.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_customer_care.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_customer_care.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_immobilize.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_immobilize.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_vehicle_status.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_vehicle_status.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alerts.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alerts.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_user.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_user.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_progress_bar_background.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/progress_bar_background.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_red_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_red_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_livetracking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_livetracking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_van.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/van.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_speedometericon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_speedometericon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_bell.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/bell.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_logout.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_logout.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_customercare.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_customercare.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_duration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_duration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_vehiclestatus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_vehiclestatus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fragment_dashboard.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bell_reminder.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bell_reminder.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_error_bg.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/error_bg.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_handshake_sales.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_handshake_sales.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_battery_low.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_battery_low.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_yellow_circle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_yellow_circle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_livetracking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_livetracking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_blue_circle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_blue_circle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_green_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_green_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_overspeed_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_real_all.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_real_all.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_route_play_back.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_play_back.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_duration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_duration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_working_hour_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/working_hour_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_duration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_duration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_daily_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_daily_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_allvehicle.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_allvehicle.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_harsh_break_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_break_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_car_icon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/car_icon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_arrow_forward_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_arrow_forward_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_round_parking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_round_parking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_orange.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_orange.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_update_dialog.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/update_dialog.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_no_driving_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_no_driving_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_star.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/star.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_curve_rect.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/curve_rect.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_driven.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_driven.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_red_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_red_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_filtericon.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_filtericon.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_glocation_on_map.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_glocation_on_map.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_curve_semicircle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/curve_semicircle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_blue_with_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_blue_with_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_location_on_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_location_on_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_temperature_sensor_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_sensor_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_permit.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/permit.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_left_corner_round.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/left_corner_round.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_bill.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_bill.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/xml_data_extraction_rules.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_bills_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/bills_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_real_all.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_real_all.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_battery_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_battery_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_fleetreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_fleetreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_scooter_sideview.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_scooter_sideview.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_livetracking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_livetracking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_consolidate_voilation_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/consolidate_voilation_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_dailyreport_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/dailyreport_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_forgot_password.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_driving_limit_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/driving_limit_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_sports_car.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/sports_car.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_fuel_theft.jpeg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/fuel_theft.jpeg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_bill.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_bill.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_yellow_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_yellow_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_vehiclestatus_layout.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/vehiclestatus_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_add.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_cancel.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_cancel.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_bill.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_bill.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_curved_progress_bar.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/curved_progress_bar.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/anim_bounce.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/anim/bounce.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_fuel_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_fuel_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_graph_svgrepo_com.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/graph_svgrepo_com.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_moving.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/moving.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_calendar.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_calendar.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_play_arrow_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_play_arrow_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_bus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/bus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_monthly_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_monthly_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_red_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_red_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_fms.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_fms.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_settings.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_settings.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_steering.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_steering.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_fwdarrow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_fwdarrow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_driven.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_driven.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_stoppages.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_stoppages.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_banner.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_banner.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_overspeeddback.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/overspeeddback.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_account.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_account.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_minivan.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/minivan.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_livetracking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_livetracking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_warning.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/warning.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_dashboard.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_black_box.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/black_box.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_delete.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_delete.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_logout.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_logout.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_renew_ais.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_renew_ais.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_top.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_top.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_green_circle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_green_circle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/anim_move_right_out_activity.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/anim/move_right_out_activity.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_customercare.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_customercare.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_curvetop_sheet.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/curvetop_sheet.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_driven.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_driven.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_fleetreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_fleetreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_batteryback.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/batteryback.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_oil_tanker_side.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/oil_tanker_side.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_toolbar_layout.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/toolbar_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_add_service_request.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_service_request.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_info.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_info.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_overstop_alert.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overstop_alert.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_fuel_fill_background.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/fuel_fill_background.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_orange_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_orange_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_allvehicle.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_allvehicle.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fuel_filling_detail_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_filling_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_green_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_green_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_curve_top_card_heading.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/curve_top_card_heading.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_overstopalert_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/overstopalert_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_remove.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_remove.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_addon_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_addon_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_pause_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_pause_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus_blue.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus_blue.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_filling_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_filling_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_red.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_red.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_creame.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_creame.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_geofenceimage.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/geofenceimage.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bxs_map_pin.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bxs_map_pin.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_sort.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_sort.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_circle_red.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_circle_red.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fuel_rod_disconnection_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_rod_disconnection_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fragment_vehicle_status.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fragment_vehicle_status.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_driver_monthly_comparison.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driver_monthly_comparison.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_filter.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_filter.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_login.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_real_all.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_real_all.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_geofence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_geofence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_ac.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_ac.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_parking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/parking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_speedometericon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_speedometericon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/anim_slide_up.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/anim/slide_up.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_accelerate_red.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_accelerate_red.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_background.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_background.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_harsh_acc_report_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_acc_report_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_speedometericon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_speedometericon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_battery_notification.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_battery_notification.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_black_light.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_black_light.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_logout.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_logout.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_upper_curve.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/upper_curve.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_real_all.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_real_all.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_disconnection_back.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/disconnection_back.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_immobilize_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/immobilize_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_fleetreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_fleetreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_icred_distance.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/icred_distance.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_white.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_white.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_car_top.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/car_top.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_play.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_play.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_search.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_search.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_customer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_customer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_oil_tank.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/oil_tank.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_yellow_new_bus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/yellow_new_bus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_icmenu.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/icmenu.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_badge_bg_with_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/badge_bg_with_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_selection.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_selection.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_temperature_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_distance_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_distance_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_fms.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_fms.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_settings.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_filter.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_filter.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_handshake_sales.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_handshake_sales.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_unreachable.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/unreachable.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_renew_ais.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_renew_ais.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fuel_theft_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_theft_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_overspeed_alert.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_alert.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_consolidation_voilation.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_consolidation_voilation.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_live_tracking.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_live_tracking.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_white_curve_rect.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/white_curve_rect.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_temperature_back.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/temperature_back.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_approve_otp_layout.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/approve_otp_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_ais_vehicle_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/ais_vehicle_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_barrel.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/barrel.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_semitruck_sideview.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_semitruck_sideview.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_stoppages.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_stoppages.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_handshake_sales.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_handshake_sales.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_fms.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_fms.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_licence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/licence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_geofence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_geofence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_customer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_customer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_logo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/logo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_theft_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_theft_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_vehiclestatus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_vehiclestatus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_stop_sign.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/stop_sign.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alert_battert_disconnection.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alert_battert_disconnection.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_speedometer_round.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/speedometer_round.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_safe_drivers.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_safe_drivers.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_circle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_circle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_navigation_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_navigation_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/xml_backup_rules.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_live_car.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_live_car.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_driving_limit.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_limit.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_fms.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_fms.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_driver.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/driver.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_white_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_white_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_real_all.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_real_all.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_fillin_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_fillin_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_logout.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_logout.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_filter.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_filter.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_working_hour_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_working_hour_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bike_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bike_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_extra_bold.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_extra_bold.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_vehiclestatus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_vehiclestatus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_stoppage_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_stoppage_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_black_cyrve_rect.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/black_cyrve_rect.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_add_on_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_on_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_dashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_dashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_fence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_fence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_otp_fragment.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/otp_fragment.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_yellow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_yellow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_monthly_report_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/monthly_report_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_green_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_green_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_share_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_share_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_distancereport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_distancereport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_oil_tanker_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_oil_tanker_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_caricon.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_caricon.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_taxi_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_taxi_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_green_with_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_green_with_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_accelerate.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_accelerate.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout-v23_progress_bar.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout-v23/progress_bar.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_blue_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_blue_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_white_alert.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_white_alert.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_temp_detail_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/temp_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_fence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_fence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_bill_account.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_bill_account.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_settings.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_settings.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_renew_ais.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_renew_ais.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_consolidate_voilation_details.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_consolidate_voilation_details.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_duration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_duration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_fuel_background.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/fuel_background.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_speed.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_speed.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_close.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_close.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_yellow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_yellow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_ignition_on.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_ignition_on.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_play_circle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_play_circle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_livetracking.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_livetracking.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_card_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/card_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_icdashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/icdashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_filter.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_filter.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_white_route.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_white_route.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_yellow_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/yellow_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_excellent_driver_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/excellent_driver_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_shadow_blue.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/shadow_blue.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_star.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_star.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_safe_driver_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/safe_driver_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_fence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_fence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_twox.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_twox.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_password_dialog.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/password_dialog.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_speedometer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/speedometer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_addon_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_addon_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_speed_icon_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_speed_icon_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_account.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_account.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-anydpi_ic_speedometericon.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-anydpi/ic_speedometericon.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_temperature.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/temperature.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_geofence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_geofence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_blue_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_blue_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_add_geofence.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_geofence.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_customer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_customer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_fleetreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_fleetreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_account.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_account.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_geofence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_geofence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_invoice.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/invoice.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_yellow_with_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_yellow_with_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_status.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_status.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_vehicle_status.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_status.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_vehicle_status_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_status_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_fms.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_fms.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_driven.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_driven.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ignitionback.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ignitionback.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bx_chevron_right.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bx_chevron_right.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_dashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_dashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_overstoppage_report_activtiy.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overstoppage_report_activtiy.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_addon_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_addon_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ac_off.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ac_off.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_blue.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_blue.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_transparentbottomsheet.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/transparentbottomsheet.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_sideview.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_sideview.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus_red.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus_red.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_driver_icon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/driver_icon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_harsh_acc_chart_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_acc_chart_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_info.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_info.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_delete.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_delete.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_filter.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_filter.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus_orange.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus_orange.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_blue_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_blue_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_bbmainlogo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/bbmainlogo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_working_hour.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/working_hour.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_drive_route.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/drive_route.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_white_border_black_box.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/white_border_black_box.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_dashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_dashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_whitemainlogo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/whitemainlogo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_green_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_green_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_info.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_info.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_driving_route_initial.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_route_initial.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_harsh_acceleration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_harsh_acceleration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_harsh_breaking.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_harsh_breaking.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_red.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_red.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_yellow_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_yellow_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_set_alert.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_set_alert.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_fuel_graph_back.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/fuel_graph_back.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_detail_summery_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_detail_summery_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_temperature_detail_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_detail_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_white_rect.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/white_rect.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_info.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_info.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_overspeed_detail_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_manage_geofence_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/manage_geofence_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_layout_alert_ok_cancel.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/layout_alert_ok_cancel.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_immobilize.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/immobilize.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_stoppage_report_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/stoppage_report_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_rash_turn.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_rash_turn.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_delete.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_delete.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_working_hour_detail_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/working_hour_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_green_flag.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/green_flag.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_rod_disconnection.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_rod_disconnection.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_dashboard.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_dashboard.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_ais140_vehicle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_ais140_vehicle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_vehiclestatus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_vehiclestatus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_alerts_on_off_settings.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_alerts_on_off_settings.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_icon.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_icon.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alert_ignitionon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alert_ignitionon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_renew_ais.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_renew_ais.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_time.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_time.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_shadow_green.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/shadow_green.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_handshake_sales.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_handshake_sales.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_orange_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_orange_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alert_geofence_voilate.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alert_geofence_voilate.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_engine_ignition_on.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/engine_ignition_on.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_main_payment.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_main_payment.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_side_navigation.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/side_navigation.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_notification_list_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/notification_list_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_yellow_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_yellow_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_vehiclestatus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_vehiclestatus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_red_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_red_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_driving_behaviour.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_behaviour.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_overspeed_alertadapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_alertadapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_distance_report_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/distance_report_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_consolidate_voilation_detail_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/consolidate_voilation_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_circle_white.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_circle_white.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_arrow_up.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/arrow_up.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxhdpi_ic_stoppages.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxhdpi/ic_stoppages.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_bill.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_bill.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_logo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/logo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_addon_report.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_addon_report.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_working_hour_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_working_hour_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ictraffic_sign_board.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ictraffic_sign_board.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_allvehicle.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_allvehicle.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_customercare.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_customercare.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_bold.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_bold.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_vehicle_alert_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_alert_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_password.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_password.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_spinner_text.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/spinner_text.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_theft_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_theft_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_call_us.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_call_us.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_geofence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_geofence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_blackbox.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_blackbox.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus_green.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus_green.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_stoppage_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_stoppage_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_manage_geofence.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_manage_geofence.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_multi_line_chart.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_multi_line_chart.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_circle_blue.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_circle_blue.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_fuel_filling_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_filling_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_disconnection_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_disconnection_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_back_blackboxsplash.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/back_blackboxsplash.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_city_bank_layout.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/city_bank_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_speedometericon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_speedometericon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_white_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_white_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_satelite.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/satelite.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_icon_flat.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_icon_flat.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_overstoppage_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/overstoppage_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_speed_imagegauge.jpeg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/speed_imagegauge.jpeg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_info_vector.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_info_vector.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_shadow_red.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/shadow_red.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_rect_outline.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/rect_outline.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_settings.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_settings.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_graph_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_graph_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_icnotification.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/icnotification.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_route.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/route.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_new_bus.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_new_bus.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_no_driving_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/no_driving_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_doublearrow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_doublearrow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_ignition_alert_setting.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_ignition_alert_setting.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_red.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_red.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_fire_speed_icon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/fire_speed_icon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fuel_rod_disconnections.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_rod_disconnections.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_allvehicle.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_allvehicle.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_red_with_shadow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_red_with_shadow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_top_curve_semi.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/top_curve_semi.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_green_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_green_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_logout.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_logout.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_chevron_down.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_chevron_down.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_bill.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_bill.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_all_icons_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/all_icons_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_white_truck_final.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_white_truck_final.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_harsh_break_chart_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_break_chart_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_score_card.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_score_card.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_handshake_sales.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_handshake_sales.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_green_top.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_green_top.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_score_card_layout.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/score_card_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/anim_slide_down.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/anim/slide_down.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_truck_big.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_truck_big.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_cust_care_top_image.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/cust_care_top_image.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_locate_my_vehicle.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_locate_my_vehicle.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_blue_car_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_blue_car_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_tempo_white_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_tempo_white_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_round_bg_yellow.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/round_bg_yellow.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_duration.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_duration.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_splash.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_renew_ais.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_renew_ais.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_allvehicle.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_allvehicle.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_monthlyreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_monthlyreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_customer.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_customer.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-hdpi_ic_fence.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-hdpi/ic_fence.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_fuel_notification.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_fuel_notification.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_alert_overspeed.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_alert_overspeed.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_baseline_warning_24.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_baseline_warning_24.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_alert_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/alert_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_bell_alert.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/bell_alert.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bxs_flag.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bxs_flag.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/anim_move_left_in_activity.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/anim/move_left_in_activity.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_driven.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_driven.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_right_corner_round.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/right_corner_round.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_medium.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_medium.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_vehicle_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_vehicle_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_notification.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_notification.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_delete.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_delete.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_orange.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_orange.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_whitelogo.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/whitelogo.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_fleetreport.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_fleetreport.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_stoppages.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_stoppages.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_route_play_initial_selection.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_play_initial_selection.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_car_sideview.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_car_sideview.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_overspeed_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_semibold.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_semibold.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_bus_side_view.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_bus_side_view.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_temp_back.jpg.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/temp_back.jpg"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_temp_report_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/temp_report_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_detail_summery_adapter.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/detail_summery_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-mdpi_ic_delete.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-mdpi/ic_delete.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_rect_curve_box.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/rect_curve_box.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_green_accelerate.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_green_accelerate.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_distance_report_detail.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_distance_report_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_initial.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_initial.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/font_poppins_light.ttf.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/font/poppins_light.ttf"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ais_140_reminder.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ais_140_reminder.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_harsh_acceleration.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_harsh_acceleration.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_notification.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_dr_behav_consolidate_report.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_dr_behav_consolidate_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_fleet_reports_dashboard.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fleet_reports_dashboard.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_truck_icon.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/truck_icon.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xhdpi_ic_account.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xhdpi/ic_account.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable-xxxhdpi_ic_customercare.png.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable-xxxhdpi/ic_customercare.png"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_activity_route_playback_selection.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_playback_selection.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/drawable_ic_ignition_off.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/drawable/ic_ignition_off.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-merged_res-49:/layout_no_internet.xml.flat",
+        "source": "com.humbhi.blackbox.app-main-50:/layout/no_internet.xml"
+    }
+]

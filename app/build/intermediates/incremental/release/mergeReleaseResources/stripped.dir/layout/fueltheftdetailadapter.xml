@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:layout_marginBottom="@dimen/margin_x"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/margin_x"
+        app:cardCornerRadius="@dimen/margin_x">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_x"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvVehicleName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_16"
+                    tools:text="Total Drain" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/margin_xx"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvTotalDrain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="16 Ltr."
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_20"
+                        android:drawableStart="@drawable/ic_fuel_green"
+                        android:drawablePadding="@dimen/margin_x"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/green"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_v"
+                android:orientation="horizontal">
+
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:layout_weight="0.8"
+                            android:padding="@dimen/margin_v"
+                            android:drawablePadding="@dimen/margin_x"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="@dimen/font_12"
+                            android:drawableStart="@drawable/ic_calendar"
+                            android:text="Before Drain"/>
+                        <TextView
+                            android:id="@+id/tvFirstFilling"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="@dimen/font_12"
+                            android:gravity="center"
+                            android:layout_weight="1.2"
+                            tools:text="195 Ltr."/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:layout_weight="0.8"
+                            android:padding="@dimen/margin_v"
+                            android:drawablePadding="@dimen/margin_x"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="@dimen/font_12"
+                            android:drawableStart="@drawable/ic_calendar"
+                            android:text="After Drain"/>
+                        <TextView
+                            android:id="@+id/tvLastFilling"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="@dimen/font_12"
+                            android:gravity="center"
+                            android:layout_weight="1.2"
+                            tools:text="179 Ltr."/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/light_black2"
+                android:layout_marginTop="@dimen/margin_v">
+
+                <TextView
+                    android:id="@+id/tvDrainLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/font_12"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/margin_x"
+                    android:layout_marginStart="@dimen/margin_v"
+                    android:layout_weight="1.2"
+                    android:layout_marginTop="@dimen/margin_v"
+                    tools:text="0.01 Km W of Micro Turners 1 Rohtak, Haryana (Haryana)"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:background="@color/max_lightgrey"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/margin_v"
+                    android:weightSum="3">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25"
+                            android:layout_height="@dimen/margin_25"
+                            android:layout_marginTop="@dimen/margin_v"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="@color/med_grey" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textAllCaps="true"
+                            android:layout_marginTop="@dimen/margin_v"
+                            android:text="Before Drain Date"
+                            android:gravity="center"
+                            android:textSize="@dimen/font_10"
+                            android:textColor="@color/dark_grey"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvBeforeDrainDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textAllCaps="true"
+                            android:gravity="center"
+                            tools:text="23 Sep, 2022\nat\n12:46 PM"
+                            android:textSize="@dimen/font_10"
+                            android:textColor="@color/white"/>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_x"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/margin_x">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <com.github.anastr.speedviewlib.ImageLinearGauge
+                                android:id="@+id/gGauge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/margin_90"
+                                app:sv_image="@drawable/oil_tank"
+                                app:sv_minSpeed="0"
+                                app:sv_orientation="VERTICAL"
+                                app:sv_speedTextColor="@null"
+                                app:sv_speedometerBackColor="#9e9e9e" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="@dimen/margin_25"
+                            android:layout_height="@dimen/margin_25"
+                            android:layout_marginTop="@dimen/margin_v"
+                            app:tint="@color/med_grey"
+                            android:src="@drawable/ic_calendar"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textAllCaps="true"
+                            android:layout_marginTop="@dimen/margin_v"
+                            android:gravity="center"
+                            android:text="After Drain Date"
+                            android:textSize="@dimen/font_10"
+                            android:textColor="@color/dark_grey"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAfterFilling"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            tools:text="23 Sep, 2022\nat\n1:00 PM"
+                            android:textAllCaps="true"
+                            android:gravity="center"
+                            android:textSize="@dimen/font_10"
+                            android:textColor="@color/white"/>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

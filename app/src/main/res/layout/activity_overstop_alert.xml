@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/med_grey"
+        android:padding="@dimen/margin_x">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="All Vehicles"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:trackTint="@drawable/switch_track_selector"
+            app:thumbTint="@color/white" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin_v"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/etAllSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/med_grey"
+                android:padding="@dimen/margin_v"
+                android:layout_margin="@dimen/margin_x"
+                android:layout_weight="0.3"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:hint="Enter Stoppage limit for all vehicles"
+                android:background="@drawable/rect_curve_box"/>
+            <Button
+                android:id="@+id/btAllSetSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set to All"
+                android:backgroundTint="@color/green"
+                android:textSize="@dimen/font_12"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginEnd="@dimen/margin_x"
+                android:textAllCaps="false"
+                android:layout_weight="0.7"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

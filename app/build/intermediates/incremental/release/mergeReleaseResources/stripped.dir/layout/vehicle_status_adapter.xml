@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_x"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        app:cardCornerRadius="@dimen/margin_x"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_v"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_v">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/statusShadow"
+                        android:layout_width="@dimen/margin_60"
+                        android:layout_height="@dimen/margin_60"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/shadow_green" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivVehicleIcon"
+                        android:layout_width="@dimen/margin_50"
+                        android:layout_height="@dimen/margin_50"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/margin_x"
+                        android:src="@drawable/sports_car" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/margin_v"
+                    android:layout_marginStart="@dimen/margin_v"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVehicleName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_14"
+                            android:layout_weight="0.6"
+                            android:maxLength="20"
+                            tools:text="CH 01 AS 00" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_x"
+                            android:drawableEnd="@drawable/ic_doublearrow"
+                            android:drawablePadding="@dimen/margin_v"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Details"
+                            android:layout_weight="1.4"
+                            android:gravity="end"
+                            android:textColor="@color/primary_orange"
+                            android:textSize="@dimen/font_10" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/margin_v"
+                            android:background="@drawable/round_bg_black_light"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:paddingHorizontal="@dimen/margin_8"
+                            android:paddingVertical="@dimen/margin_2"
+                            android:text="Moving"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="end">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivBatteryStatus"
+                                android:layout_width="@dimen/margin_xx"
+                                android:layout_height="@dimen/margin_20"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:src="@drawable/ic_battery_green" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivFuelStatus"
+                                android:layout_width="@dimen/margin_xx"
+                                android:layout_height="@dimen/margin_20"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:src="@drawable/ic_fuel_green" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivAcStatus"
+                                android:layout_width="@dimen/margin_xx"
+                                android:layout_height="@dimen/margin_20"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:src="@drawable/ic_ac" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivIgnition"
+                                android:layout_width="@dimen/margin_xx"
+                                android:layout_height="@dimen/margin_20"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:src="@drawable/ic_ignition_off" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:background="@color/light_black" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_speed_icon_final"
+                    android:drawablePadding="@dimen/margin_v"
+                    app:fontFamily="@font/poppins_regular"
+                    android:drawableTint="@color/med_grey"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Speed"
+                    app:drawableTint="@color/red"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDistanceSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:text="60 km/h"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:drawableTint="@color/green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Distance"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:text="45 KM"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.6"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:drawableTint="@color/primary_orange"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Date and time"
+                    android:textColor="@color/med_grey"
+                    android:textSize="@dimen/font_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDateTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:layout_marginEnd="@dimen/margin_x"
+                    android:layout_weight="0.4"
+                    android:drawablePadding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:text="01-08-2022 | 11:30 pm"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_10" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:background="@color/light_black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginHorizontal="@dimen/margin_x">
+
+                <ImageView
+                    android:id="@+id/ivLocationIcon"
+                    android:layout_width="@dimen/margin_xx"
+                    android:layout_height="@dimen/margin_xx"
+                    android:layout_marginTop="@dimen/margin_v"
+                    android:src="@drawable/ic_location"
+                    app:tint="@color/blue" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/margin_v"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:layout_toRightOf="@+id/ivLocationIcon"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start"
+                    android:text="Blackbox GPS technology pvt. ltd. Industrial area phase 1 Chandigarh, India"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_10" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

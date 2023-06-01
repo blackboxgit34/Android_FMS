@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.humbhi.blackbox"
+    android:versionCode="114"
+    android:versionName="1.1.10.72" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="33" />
+
+    <dist:module dist:instant="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <queries>
+
+        <!-- Needs to be explicitly declared on Android R+ -->
+        <package android:name="com.google.android.apps.maps" />
+    </queries> <!-- Required by older versions of Google Play services to create IID tokens -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <permission
+        android:name="com.humbhi.blackbox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.humbhi.blackbox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Permission will be merged into the manifest of the hosting app. -->
+    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name="com.humbhi.blackbox.ui.MyApplication"
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:debuggable="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/black_box"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/black_box"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.Blackbox"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.livetracking.LocateMyVehicle"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.banner.BillBanner"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverToDriverComparison.DriverToDriverComparisonActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverMonthlyComparison.DriverMonthlyComparison"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.NoDrivingReport.NoDrivingReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingLimit.DrivingLimitActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.driverClassificationReports.SafeDriversActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.consolidateReport.consolidateVoilationDetails.ConsolidateVoilationDetails"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.consolidateReport.DrBehavConsolidateReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.ais140.AIS140VehicleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.workingHour.workingHourDetails.WorkingHourDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.workingHour.WorkingHourReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.temperature.tempDetails.TemperatureDetailReport"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.fuelRodDisconnection.FuelRodDisconnectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.immobalize.ImmobilizeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelTheftDetail"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.MultiLineChartActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.livetracking.LiveCarActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.rashTurn.RashTurnActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingRouteInitialActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayInitialSelection"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.livetracking.GLocationOnMap"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.Utility.InitialActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.Utility.WebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:label="@string/app_name" />
+
+        <!-- <service android:name="org.eclipse.paho.android.service.MqttService" /> -->
+
+        <receiver
+            android:name="com.humbhi.blackbox.ui.Utility.SmsReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.humbhi.blackbox.ui.Utility.StatusActivity"
+            android:exported="false"
+            android:label="@string/title_activity_status" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.harshAccelerationReport.HarshAccelerationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.ScoreCard.ScoreCardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.harshBreakingReport.HarshBreakingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.drivingBehaviour.DrivingBehaviourActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.settings.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.notification.GNotifications"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.BatteryAlert"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.OverstopAlert"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.OverspeedAlert"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.IgnitionAlertSetting"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlaybackSelection"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.overspeedReport.overSpeedDetail.OverspeedDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.distanceReport.distanceReportDetail.DistanceReportDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.geofencing.addFence.AddGeofenceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.geofencing.ManageGeofenceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.billingPayments.BillAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.detailSummeryReport.DetailSummeryReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.monthlyReport.MonthlyReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.overstoppageReport.OverstoppageReportActivtiy"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.overspeedReport.OverspeedReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.setAlert.SetAlertActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.alerts.AlertsOnOffSettings"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.temperature.TemperatureSensorReport"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelDisconnectionReport"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelGraphJavaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelGraphReport"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.customerCare.AddServiceRequestActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.customerCare.callus.CallUsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.customerCare.CustomerCare"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayBack"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelTheftReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelFillingDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelFillinReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.addonReports.AddOnReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.notification.NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.dailyreport.DailyReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.stoppagereport.StoppageReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.distanceReport.DistanceReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.reports.FleetReportsDashboard"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.livetracking.LiveTrackingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.login.forgotpassword.ForgotPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDWF0kOqQ7kKfxFwMmfShRhETCy6IHhaf0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.vehicleStatus.vehicleDetails.VehicleDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.vehicleStatus.VehicleStatusActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.dashboard.DashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.login.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Blackbox" />
+        <activity
+            android:name="com.humbhi.blackbox.ui.ui.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Blackbox" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.humbhi.blackbox.ui.Firebase.MyFirebaseMessagingService"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service android:name="info.mqtt.android.service.MqttService" />
+
+        <activity
+            android:name="info.hannes.logcat.LogcatActivity"
+            android:label="Logcat"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name="info.hannes.logcat.LogfileActivity"
+            android:label="Timber"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name="info.hannes.logcat.BothLogActivity"
+            android:label="All log"
+            android:theme="@style/DetailTheme" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.humbhi.blackbox.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service> <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <!--
+             FirebaseMessagingService performs security checks at runtime,
+             but set to not exported to explicitly avoid allowing another app to call it.
+        -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.humbhi.blackbox.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.humbhi.blackbox.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider> <!-- The activities will be merged into the manifest of the hosting app. -->
+        <activity
+            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+            android:enabled="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:process=":playcore_missing_splits_activity"
+            android:stateNotNeeded="true" />
+        <activity
+            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+            android:exported="false"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+        <service
+            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+            android:enabled="false"
+            android:exported="true" >
+            <meta-data
+                android:name="com.google.android.play.core.assetpacks.versionCode"
+                android:value="11003" />
+        </service>
+        <service
+            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+            android:enabled="false"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+            android:exported="false" >
+            <meta-data
+                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+                android:value="cct" />
+        </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+        </service>
+
+        <receiver
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+            android:exported="false" />
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

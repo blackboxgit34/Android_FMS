@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Welcome</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password_main">Forgot Password?</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="live_status">Live Status</string>
+    <string name="vehicle_on_map">Vehicle On Map</string>
+    <string name="fleet_report">Fleet Report</string>
+    <string name="add_on_report">Add On Report</string>
+    <string name="fms">FMS</string>
+    <string name="alerts">Alerts Settings</string>
+    <string name="geofencing">Geofencing</string>
+    <string name="settings">Settings</string>
+    <string name="my_bill">My Bill</string>
+    <string name="customer_care">Customer Care</string>
+    <string name="logout">Logout</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="moving">Moving</string>
+    <string name="parked">Parked</string>
+    <string name="unreachable">Unreachable</string>
+    <string name="towed">Towed</string>
+    <string name="see_all_vehicle">See all vehicle</string>
+    <string name="fleet_utilization">Fleet Utilization</string>
+    <string name="fuel_analysis">Fuel Analysis</string>
+    <string name="higest_mileage">Higest Mileage</string>
+    <string name="above_avg">Above Avg.</string>
+    <string name="apply">Apply</string>
+    <string name="go_back_to_login">Go Back to Login</string>
+</resources>
