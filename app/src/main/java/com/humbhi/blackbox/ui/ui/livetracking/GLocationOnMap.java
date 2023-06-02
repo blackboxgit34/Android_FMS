@@ -73,6 +73,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     double lat,longi;
     SupportMapFragment mapFragment;
     EditText etSearch;
+    Boolean isFirstTime = true;
     private ImageView ivSearch,icClose,ivMenu,ivBell,ivBack;
     HashMap<Marker, Object> hm1;
     private LinearLayout llTotal,llRunning,llStopped,llInactive,llIdeal,llTowed,llHiSpeed;
@@ -165,7 +166,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
            @Override
            public void run() {
                getLocationOnMap();
-               handler.postDelayed(this,2*60000);
+               handler.postDelayed(this,30000);
            }
        };
         handler.post(runnable);
@@ -188,9 +189,16 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
 
     private void getLocationOnMap()
     {
-        new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
-                Constants.VEHICLES_ON_MAP+"custid="+CommonData.INSTANCE.getCustIdFromDB()+"&StatusCode="+statusCode+"&sEcho=0&iDisplayStart=0&iDisplayLength=999&sSearch=&iSortCol_0=0&sSortDir_0=")
-                .callService(true);
+        if(isFirstTime) {
+            new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
+                    Constants.VEHICLES_ON_MAP + "custid=" + CommonData.INSTANCE.getCustIdFromDB() + "&StatusCode=" + statusCode + "&sEcho=0&iDisplayStart=0&iDisplayLength=999&sSearch=&iSortCol_0=0&sSortDir_0=")
+                    .callService(true);
+        }
+        else{
+            new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
+                    Constants.VEHICLES_ON_MAP + "custid=" + CommonData.INSTANCE.getCustIdFromDB() + "&StatusCode=" + statusCode + "&sEcho=0&iDisplayStart=0&iDisplayLength=999&sSearch=&iSortCol_0=0&sSortDir_0=")
+                    .callService(false);
+        }
     }
 
     @Override
@@ -361,6 +369,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
                     if (Map != null) {
                         Map.clear();
                     }
+                    isFirstTime = false;
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     String totalVehicles = jsonObject.getString("iTotalRecords");
                     tvTotalVehicles.setText(totalVehicles);
