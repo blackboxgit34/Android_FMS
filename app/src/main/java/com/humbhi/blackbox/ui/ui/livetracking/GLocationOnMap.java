@@ -1,5 +1,6 @@
 package com.humbhi.blackbox.ui.ui.livetracking;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -80,7 +81,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     private RadioButton rbTotal,rbParked,rbMoving,rbIgnition,rbUnreach,rbHighSpeed,rbTowed;
     private CardView cvDetails;
     private TextView tvSpeed,tvDistance,tvLocation,tvProgressStatus,tvDataDate,tvTitle,tvTotalVehicles
-    ,tvParkedVehicle,tvMovingCount,tvIgnitionCount,tvUnreachCount,tvTowdCount,tvHighSpeedCount,mapView,tvVehicleName;
+    ,tvParkedVehicle,tvMovingCount,tvIgnitionCount,tvUnreachCount,tvTowdCount,tvHighSpeedCount,tvVehicleName;
     private String clientId,VehicleStatus="",vehicleType,statusCode="";
     Handler handler = new Handler(Looper.getMainLooper());
     Runnable runnable;
@@ -88,6 +89,9 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     ArrayList<Double> arrLatitude = new ArrayList<Double>();
     ArrayList<Double> arrLongitude = new ArrayList<Double>();
     ArrayList<Marker> markers = new ArrayList<Marker>();
+    private ImageView mapView;
+    private String[] mapTypes = {"Standard", "Satellite", "Terrain", "Hybrid"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,18 +178,31 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
 
         ivSearch.setOnClickListener(view -> getLocationOnMap());
         mapView.setOnClickListener(v -> {
-            if( mapView.getText().equals("Satelite View")){
-                Map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                mapView.setText("Normal View");
-            }
-           else{
-                Map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                mapView.setText("Satelite View");
-            }
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+            dialogBuilder.setTitle("Select Map Type");
+            dialogBuilder.setItems(mapTypes, (dialog, which) -> {
+                String selectedMapType = mapTypes[which];
+                setMapType(selectedMapType);
+            });
+
+            AlertDialog dialog = dialogBuilder.create();
+            dialog.show();
         });
     }
 
-
+    private void setMapType(String mapType) {
+        // Perform any necessary actions to update the map with the chosen type
+        switch (mapType){
+            case "Standard" : Map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                break;
+            case "Hybrid" : Map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+            case "Terrain" : Map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                break;
+            case "Satellite" : Map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                break;
+        }
+    }
 
     private void getLocationOnMap()
     {
@@ -357,6 +374,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
         {
             Map = googleMap;
             hm1 = new HashMap<>();
+            Map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
     }
 

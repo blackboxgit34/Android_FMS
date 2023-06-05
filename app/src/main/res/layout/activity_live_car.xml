@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin_90" />
+            android:layout_marginBottom="40dp"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
                 android:layout_gravity="bottom"
                 app:behavior_hideable="false"
-                app:behavior_peekHeight="240dp"
+                app:behavior_peekHeight="160dp"
                 app:layout_constraintRight_toRightOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -862,21 +862,17 @@
                 android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
-    <TextView
+    <ImageView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/lowerLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/margin_8"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="@dimen/margin_x"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/margin_x"
         android:textAlignment="center"
         android:gravity="center"
-        android:background="@drawable/white_curve_rect"
-        android:backgroundTint="@color/light_black"
-        android:text="Satelite View"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_10"/>
-
+        android:src="@drawable/map_type"
+        android:background="@drawable/round_bg_creame"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
