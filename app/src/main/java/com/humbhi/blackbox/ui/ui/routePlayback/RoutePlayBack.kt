@@ -1,7 +1,9 @@
 package com.humbhi.blackbox.ui.ui.routePlayback
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -12,7 +14,6 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -38,7 +39,6 @@ import org.json.JSONException
 import retrofit2.Response
 import java.io.IOException
 import java.util.*
-import kotlin.collections.ArrayList
 
 class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     GoogleMap.OnMapLoadedCallback, GoogleMap.OnInfoWindowClickListener,
@@ -62,6 +62,7 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     lateinit var  RoutePlaybackResponseModel: RoutePlaybackResponseModel
     private var movementSpeed:Int = 500
     //    var  handler: Handler = Handler()
+    private val mapTypes = arrayOf("Standard", "Satellite", "Terrain", "Hybrid")
     var runnable: Runnable ?= null
     lateinit var DrivingBehaviourRouteDataModel: DrivingBehaviourRouteDataModel
     var playPauseString = "Pause"
@@ -86,13 +87,25 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         speedControls()
         thread = Thread()
         binding.mapView.setOnClickListener {
-            if (binding.mapView.text === "Satelite View") {
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID)
-                binding.mapView.text = "Normal View"
-            } else {
-                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
-                binding.mapView.text = "Satelite View"
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder.setTitle("Select Map Type")
+            dialogBuilder.setItems(mapTypes) { dialog: DialogInterface?, which: Int ->
+                val selectedMapType = mapTypes[which]
+                setMapType(selectedMapType)
             }
+
+            val dialog = dialogBuilder.create()
+            dialog.show()
+        }
+    }
+
+    private fun setMapType(mapType: String) {
+        // Perform any necessary actions to update the map with the chosen type
+        when (mapType) {
+            "Standard" -> mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            "Hybrid" -> mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+            "Terrain" -> mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+            "Satellite" -> mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         }
     }
 
@@ -582,6 +595,8 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.uiSettings.isScrollGesturesEnabled = false
+        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         Log.e("FlaggGet",flag)
         if (flag.equals("DrivingBehaveRoute"))
         {

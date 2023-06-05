@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         />
 
-    <TextView
+    <ImageView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -26,10 +26,8 @@
         android:padding="@dimen/margin_x"
         android:textAlignment="center"
         android:gravity="center"
-        android:background="@drawable/white_border_black_box"
-        android:text="Satelite View"
-        android:textColor="@color/white"
-        android:textSize="@dimen/margin_x"/>
+        android:src="@drawable/map_type"
+        android:background="@drawable/round_bg_creame"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDistanceDetails"
