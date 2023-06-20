@@ -152,12 +152,21 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
     private fun getMonthlyData() {
         if (driverId != "") {
             binding.progressLayout.progressLayout.visibility = View.VISIBLE
-            mPresenter.getMonthlyComparison(
-                getCustIdFromDB(),
-                "$beginMonth%2012:00%20AM", endMonth+"%2012:00%20AM",
-                driverId,
-                ""
-            )
+            if (driverId.contains("I") || driverId.contains("J") || driverId.contains("C") || driverId.contains("E")) {
+                mPresenter.getMonthlyComparison(
+                    getCustIdFromDB(),
+                    "$beginMonth%2012:00%20AM", endMonth + "%2012:00%20AM",
+                    "0",
+                    driverId
+                )
+            } else {
+                mPresenter.getMonthlyComparison(
+                    getCustIdFromDB(),
+                    "$beginMonth%2012:00%20AM", endMonth + "%2012:00%20AM",
+                    driverId,
+                    ""
+                )
+            }
         }
         else{
             Constants.alertDialog(this,"Please select driver.")
@@ -346,6 +355,5 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
     override fun showErrorMessage(string: String) {
         CommonUtil.alertDialogWithOkOnly(this,"Error",string)
     }
-
 
 }

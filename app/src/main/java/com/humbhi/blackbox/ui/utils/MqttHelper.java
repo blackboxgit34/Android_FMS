@@ -33,6 +33,7 @@ public class MqttHelper {
 
     public interface MqttMessageCallback {
         void onMessageReceived(String topic, MqttMessage message);
+        void onDisconnect(Throwable cause);
     }
 
     private MqttHelper(Context context, String brokerAddress, int brokerPort, String clientId) {
@@ -73,7 +74,16 @@ public class MqttHelper {
 
                     @Override
                     public void connectionLost(Throwable cause) {
-                        Log.e("Message","Connection lost");
+                        try {
+                            if (mqttMessageCallback != null) {
+                                mqttMessageCallback.onDisconnect(cause);
+                            }
+                        }
+                        catch (Exception e) {
+                            if(e instanceof SocketTimeoutException){
+                                Toast.makeText(context, "Connection time out", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
 
                     @Override
@@ -184,6 +194,7 @@ public class MqttHelper {
         if (mqttClient != null && mqttClient.isConnected()) {
             try {
                 mqttClient.unsubscribe(topic, null, callback);
+
             } catch (Exception e) {
                 e.printStackTrace();
                 if(e instanceof SocketTimeoutException){

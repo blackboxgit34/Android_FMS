@@ -57,18 +57,14 @@ import retrofit2.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
 
-
 class DashboardActivity : AppCompatActivity(), View.OnClickListener, RetrofitResponse {
     private lateinit var binding: ActivityDashboardBinding
     private var homeFragment = DashboardFragment()
     private lateinit var custId:String
     private lateinit var username:String
     var VersionName = ""
-    var VersionCode = 112
+    var VersionCode = 116
     var counter = 0
-    var REQUEST_APP_UPDATE = 500
-    lateinit var appUpdateManager: AppUpdateManager
-    lateinit var listener: InstallStateUpdatedListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,9 +101,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener, RetrofitRes
                 requestPermissions(permissionList.toArray(arrayOfNulls<String>(0)), 2)
             }
         }
-        checkforUpdate()
+        //checkforUpdate()
+        versionCheckApi()
         getNotificationHistory()
-     //   versionCheckApi()
         binding.navigation.tvUsername.text = username
         addFragmentToActivity(homeFragment)
         checkPermission()
@@ -207,95 +203,6 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener, RetrofitRes
             R.id.tvLogout -> {
                alertDialogWithOkAndCancel(this,"Logout","Are you sure you want to logout?")
 
-            }
-        }
-    }
-
-    private fun checkforUpdate() {
-        appUpdateManager = AppUpdateManagerFactory.create(this)
-        listener = object : InstallStateUpdatedListener {
-            override fun onStateUpdate(state: InstallState) {
-                if (state.installStatus() == InstallStatus.DOWNLOADED) {
-                    //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
-                    Constants.alertDialog(this@DashboardActivity,"Update completed")
-                } else if (state.installStatus() == InstallStatus.INSTALLED) {
-                    if (appUpdateManager != null) {
-                        appUpdateManager.unregisterListener(this)
-                    }
-                } else {
-                    Log.i(TAG, "InstallStateUpdatedListener: state: " + state.installStatus())
-                }
-            }
-        }
-
-        appUpdateManager.registerListener(listener)
-        appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-            // Checks that the platform will allow the specified type of update.
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)
-            ) {
-                // Request the update.
-                try {
-                    newUpdateDialog()
-                 //   appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, REQUEST_APP_UPDATE)
-                }
-                catch (e: IntentSender.SendIntentException) {
-                    e.printStackTrace()
-                    Toast.makeText(this,e.toString(),Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_APP_UPDATE) {
-            if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(
-                    applicationContext,
-                    "Update canceled by user!", Toast.LENGTH_LONG
-                ).show()
-                appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-                    // Checks that the platform will allow the specified type of update.
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                        && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)
-                    ) {
-                        // Request the update.
-                        try {
-                             newUpdateDialog()
-                            //appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, REQUEST_APP_UPDATE)
-                        }
-                        catch (e: IntentSender.SendIntentException) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-            } else if (resultCode == RESULT_OK) {
-                Toast.makeText(
-                    applicationContext,
-                    "Update success!", Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Toast.makeText(
-                    applicationContext,
-                    "Update Failed!",
-                    Toast.LENGTH_LONG
-                ).show()
-                appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-                    // Checks that the platform will allow the specified type of update.
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                        && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)
-                    ) {
-                        // Request the update.
-                        try {
-                            newUpdateDialog()
-                            //appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, REQUEST_APP_UPDATE)
-                        }
-                        catch (e: IntentSender.SendIntentException) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
             }
         }
     }
@@ -439,11 +346,4 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener, RetrofitRes
             }
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("installState", "destroy")
-        appUpdateManager.unregisterListener(listener)
-    }
-
 }

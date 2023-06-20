@@ -73,6 +73,7 @@ class RashTurnActivity : AppCompatActivity(), RashTurnView,View.OnClickListener 
     }
 
     private fun hitAPI(){
+        binding.progress.progressLayout.visibility = View.VISIBLE
         mPresenter.hitRashTurnReportApi(
             "$startDateParam%2000:00:00",
             endDateParam + "%2023:59:59",
@@ -111,6 +112,7 @@ class RashTurnActivity : AppCompatActivity(), RashTurnView,View.OnClickListener 
     }
 
     override fun getRashTurnData(rashTurnDataModel: RashTurnDataModel) {
+        binding.progress.progressLayout.visibility = View.GONE
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecycler.layoutManager = layoutManager
         totalRecords = rashTurnDataModel.iTotalRecords

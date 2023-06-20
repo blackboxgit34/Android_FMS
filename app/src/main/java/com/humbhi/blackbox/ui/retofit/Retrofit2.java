@@ -6,6 +6,8 @@ package com.humbhi.blackbox.ui.retofit;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ import java.net.SocketTimeoutException;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -57,7 +61,8 @@ public class Retrofit2
     private ArrayList<MultipartBody.Part> partList;
     private String number="";
     private static Toast toast;
-
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Handler handlerMain = new Handler(Looper.getMainLooper());
 
     public Retrofit2(Context mContext, RetrofitResponse result, int requestCode, String url)
     {
@@ -155,10 +160,8 @@ public class Retrofit2
         pd.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
-    public void callService(boolean dialog)
-    {
-        if (!Network.isNetworkAvailable(mContext))
-        {
+    public void callService(boolean dialog) {
+        if (!Network.isNetworkAvailable(mContext)) {
             //Alert.showDialog(mContext,"Oops!","Internet connection is not available!");
             Toast.makeText(mContext, "Internet connection is not available!", Toast.LENGTH_SHORT).show();
            /* else
@@ -173,9 +176,9 @@ public class Retrofit2
             pd.show();
         }
         OkHttpClient okHttpClient = new OkHttpClient.Builder()//Use For Time Out
-                .readTimeout(30, TimeUnit.SECONDS)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .callTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .callTimeout(60, TimeUnit.SECONDS)
                 .build();
 
         System.setProperty("http.keepAlive", "false");
@@ -186,61 +189,59 @@ public class Retrofit2
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Log.e("URL", "URL- " +Constants.BASEURL+""+ url);
-        if (postParam == null)
-        {
-            call = retrofitService.callGetService(url);
-        }
+        Log.e("URL", "URL- " + Constants.BASEURL + "" + url);
+        executor.execute(() -> {
+            if (postParam == null) {
+                call = retrofitService.callGetService(url);
+            } else {
 
-        else
-        {
-
-            Log.e("Params", "Params- " + postParam.toString());
-            call = retrofitService.callPostService(url,
-                    RequestBody.create(MediaType.parse("application/json"), postParam.toString()));
-        }
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> callback, Response<ResponseBody> response) {
-
-                try {
-                    if (pd.isShowing()) {
-                        pd.dismiss();
-
-                    }
-                    if (response.isSuccessful()) {
-                        result.onServiceResponse(requestCode, response);
-                    }
-                    else {
-                        Toast.makeText(mContext, "Sorry, Connection time out", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                    if(e instanceof SocketTimeoutException){
-                        Toast.makeText(mContext, "Connection time out.",Toast.LENGTH_SHORT).show();
-                    }
-                }
+                Log.e("Params", "Params- " + postParam.toString());
+                call = retrofitService.callPostService(url,
+                        RequestBody.create(MediaType.parse("application/json"), postParam.toString()));
             }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                try {
-                    if (pd.isShowing()) {
-                        pd.dismiss();
-                    }
-                    call.cancel();
-                    if (t instanceof SocketTimeoutException) {
-                        Toast.makeText(mContext, "Connection time out.", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(mContext, "Something went wrong.", Toast.LENGTH_SHORT).show();
-                    }
-                    Log.e("FAILURE!!!",t.getLocalizedMessage()+"----message----"+t.getMessage());
-                    Toast.makeText(mContext, "Sorry, Connection time out", Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    e.printStackTrace();
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> callback, Response<ResponseBody> response) {
+                    handlerMain.post(() -> {
+                        try {
+                            if (pd.isShowing()) {
+                                pd.dismiss();
+                            }
+                            if (response.isSuccessful()) {
+                                result.onServiceResponse(requestCode, response);
+                            } else {
+                                Toast.makeText(mContext, "Sorry, Connection time out", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            if (e instanceof SocketTimeoutException) {
+                                Toast.makeText(mContext, "Connection time out.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
-            }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    handlerMain.post(() -> {
+                                try {
+                                    if (pd.isShowing()) {
+                                        pd.dismiss();
+                                    }
+                                    call.cancel();
+                                    if (t instanceof SocketTimeoutException) {
+                                        Toast.makeText(mContext, "Connection time out.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(mContext, "Something went wrong.", Toast.LENGTH_SHORT).show();
+                                    }
+                                    Log.e("FAILURE!!!", t.getLocalizedMessage() + "----message----" + t.getMessage());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                    );
+                }
+            });
         });
     }
 
@@ -262,8 +263,9 @@ public class Retrofit2
             pd.show();
         }
         OkHttpClient okHttpClient = new OkHttpClient.Builder()//Use For Time Out
-                .readTimeout(30, TimeUnit.SECONDS)
-                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .callTimeout(60, TimeUnit.SECONDS)
                 .build();
 
         System.setProperty("http.keepAlive", "false");
@@ -274,6 +276,7 @@ public class Retrofit2
                 .build();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         Log.e("URL", "URL- " +Constants.HITECH_BASE+""+ url);
+        executor.execute(()->{
         if (postParam == null)
         {
             call = retrofitService.callGetService(url);
@@ -289,7 +292,7 @@ public class Retrofit2
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> callback, Response<ResponseBody> response) {
-
+                handlerMain.post(()->{
                 try {
                     if (pd.isShowing()) {
                         pd.dismiss();
@@ -307,10 +310,12 @@ public class Retrofit2
                         Toast.makeText(mContext, "Connection time out.",Toast.LENGTH_SHORT).show();
                     }
                 }
+                });
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                handlerMain.post(()->{
                 try {
                     if (pd.isShowing()) {
                         pd.dismiss();
@@ -323,18 +328,14 @@ public class Retrofit2
                         Toast.makeText(mContext, "Something went wrong.", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("FAILURE!!!",t.getLocalizedMessage()+"----message----"+t.getMessage());
-                    Toast.makeText(mContext, "Sorry, Connection time out", Toast.LENGTH_SHORT).show();
-
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-            }
+            });
+        }
+        });
         });
     }
-
-
-
-
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
 
         try {

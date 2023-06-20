@@ -188,6 +188,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -222,7 +223,7 @@
         tools:listitem="@layout/harsh_break_chart_adapter"
         android:layout_marginHorizontal="@dimen/margin_x"/>
 
-    <com.github.mikephil.charting.charts.BarChart
+  <!--  <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/DistanceChart"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/margin_v"
@@ -231,7 +232,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/light_black"/>
+        android:background="@color/light_black"/> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecycler"
@@ -239,6 +240,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <include
+        android:id="@+id/progress"
+        android:visibility="gone"
+        layout="@layout/progress_bar"/>
 
     <TextView
         android:id="@+id/loadMore"

@@ -76,6 +76,7 @@ class HarshAccelerationActivity : AppCompatActivity() ,HarshAccelerationView,Vie
     }
 
     private fun hitAPI(){
+        binding.progress.progressLayout.visibility = View.VISIBLE
         mPresenter.hitHarshAccelerationReportApi(
             "$startDateParam%2000:00:00",
             endDateParam + "%2023:59:59",
@@ -113,6 +114,7 @@ class HarshAccelerationActivity : AppCompatActivity() ,HarshAccelerationView,Vie
     }
 
     override fun getHarshAccelerationData(harshAccelerationDataModel: HarshAccelerationDataModel) {
+        binding.progress.progressLayout.visibility = View.GONE
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecycler.layoutManager = layoutManager
         totalRecords = harshAccelerationDataModel.iTotalRecords

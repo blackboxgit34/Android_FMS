@@ -28,6 +28,7 @@ import com.humbhi.blackbox.ui.data.models.*
 import com.humbhi.blackbox.ui.data.models.CheckDriverBehaviour.CheckDashPage.CheckDashPageModel
 import com.humbhi.blackbox.ui.data.models.CheckInstalledDevices.CheckInstalledDevicesModel
 import com.humbhi.blackbox.ui.data.network.AsyncApicall
+import com.humbhi.blackbox.ui.data.network.CommonResponse
 import com.humbhi.blackbox.ui.data.network.MqttApiClient
 import com.humbhi.blackbox.ui.retofit.NetworkService
 import com.humbhi.blackbox.ui.retofit.NewRetrofitClient
@@ -67,6 +68,7 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
     lateinit var checkInstalledDevicesResponse : CheckInstalledDevicesModel
     var DriverBehaviourAvailability = ""
     var DriverBehaviourAvailabilityClick = ""
+    val Api = NewRetrofitClient.getInstance().create(NetworkService::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,300 +77,41 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         getUserData()
         getAllResult()
-        binding.llDrivingBehaviour.setOnClickListener{
-            if(DriverBehaviourAvailability!=""){
-            if (DriverBehaviourAvailability=="true"){
-                if(DriverBehaviourAvailabilityClick == "true") {
-                    val intent = Intent(activity, DrivingBehaviourActivity::class.java)
-                    intent.putExtra("excellent", excellentDrivers)
-                    intent.putExtra("risky", riskyDrivers)
-                    intent.putExtra("moderate", moderateDrivers)
-                    intent.putExtra("totalVehicle", binding.tvTotalVehicle.text.toString())
-                    startActivity(intent)
-                }
-            }
-            else{
-                binding.progress.progressLayout.visibility = View.VISIBLE
-                val Api = NewRetrofitClient.getInstance().create(NetworkService::class.java)
-                Api.CheckInstalledDevices(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckInstalledDevicesModel> {
-                    override fun onResponse(
-                        call: Call<CheckInstalledDevicesModel>,
-                        response: Response<CheckInstalledDevicesModel>
-                    ) {
-                        binding.progress.progressLayout.visibility = View.GONE
-                        checkInstalledDevicesResponse = response.body()!!
-                        if(checkInstalledDevicesResponse.data.isNotEmpty()){
-                        if(checkInstalledDevicesResponse.data[0].Cnt>0) {
-                            binding.progress.progressLayout.visibility = View.VISIBLE
-                            Api.checkFreeTrail(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                override fun onResponse(
-                                    call: Call<CheckDashPageModel>,
-                                    response: Response<CheckDashPageModel>
-                                ) {
-                                    binding.progress.progressLayout.visibility = View.GONE
-                                    checkDashPageResponse = response.body()!!
-                                    if(checkDashPageResponse.data==1)
-                                    {
-                                        val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-                                        val inflater: LayoutInflater = activity!!.layoutInflater
-                                        val view: View = inflater.inflate(R.layout.dialog_confirm, null)
-                                        builder.setView(view)
-                                        val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
-                                        val noButton: Button = view.findViewById(R.id.dialog_button_no)
-                                        val Title: TextView = view.findViewById(R.id.dialog_title)
-                                        val Msg: TextView = view.findViewById(R.id.dialog_message)
-                                        Title.text = "Your free trial is over. To enable this feature click enable, ₹25 will be added to your existing plan monthly per vehicle."
-                                        Msg.text = "Do you want to enable it?"
-                                        val dialog: AlertDialog = builder.create()
-                                        dialog.setCanceledOnTouchOutside(false)
-                                        dialog.setCancelable(false)
-                                        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                                        yesButton.setOnClickListener {
-                                            binding.progress.progressLayout.visibility = View.VISIBLE
-                                            Api.enableFeature(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                                override fun onResponse(
-                                                    call: Call<CheckDashPageModel>,
-                                                    response: Response<CheckDashPageModel>
-                                                ) {
-                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                    checkDashPageResponse = response.body()!!
-                                                    if(checkDashPageResponse.data==1){
-                                                        Constants.alertDialog(activity,"Driving Behavior Monitoring enabled.")
-                                                    }
-                                                }
-
-                                                override fun onFailure(
-                                                    call: Call<CheckDashPageModel>,
-                                                    t: Throwable
-                                                ) {
-                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                    Constants.alertDialog(activity,"Someting went wrong.")
-                                                }
-
-                                            })
-                                            dialog.dismiss()
-                                        }
-                                        noButton.setOnClickListener{
-                                            dialog.dismiss()
-                                        }
-                                        dialog.show()
-                                    }
-                                    else{
-                                        binding.progress.progressLayout.visibility = View.VISIBLE
-                                        Api.checkIfFreeTrail(CommonData.getCustIdFromDB())
-                                            .enqueue(object : Callback<CheckDashPageModel>{
-                                                override fun onResponse(
-                                                    call: Call<CheckDashPageModel>,
-                                                    response: Response<CheckDashPageModel>
-                                                ) {
-                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                    checkDashPageResponse = response.body()!!
-                                                    if (checkDashPageResponse.data == 1) {
-                                                        Constants.alertDialog(activity, "Thank you. Your Free Trial will be activated in 24 hrs.")
-                                                    }
-                                                    else {
-                                                        val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-                                                        val inflater: LayoutInflater = activity!!.layoutInflater
-                                                        val view: View = inflater.inflate(R.layout.dialog_confirm, null)
-                                                        builder.setView(view)
-                                                        val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
-                                                        val noButton: Button = view.findViewById(R.id.dialog_button_no)
-                                                        val Title: TextView = view.findViewById(R.id.dialog_title)
-                                                        val Msg: TextView = view.findViewById(R.id.dialog_message)
-                                                        Title.text = "Driving Behavior Monitoring feature, for just Rs 25, Start your 1 month free Trial today."
-                                                        Msg.text = "Start your free trial?"
-                                                        val dialog: AlertDialog = builder.create()
-                                                        dialog.setCanceledOnTouchOutside(false)
-                                                        dialog.setCancelable(false)
-                                                        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                                                        yesButton.setOnClickListener {
-                                                            binding.progress.progressLayout.visibility = View.VISIBLE
-                                                            Api.checkIfFreeTrail(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                                                override fun onResponse(
-                                                                    call: Call<CheckDashPageModel>,
-                                                                    response: Response<CheckDashPageModel>
-                                                                ) {
-                                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                                    checkDashPageResponse = response.body()!!
-                                                                    if(checkDashPageResponse.data==1)
-                                                                    {
-                                                                        Constants.alertDialog(activity,"Thank you. Your Free Trial will be activated in 24 hrs.")
-                                                                        dialog.dismiss()
-                                                                    }
-                                                                    else {
-                                                                        binding.progress.progressLayout.visibility = View.VISIBLE
-                                                                        Api.checkFreeTrail(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                                                            override fun onResponse(
-                                                                                call: Call<CheckDashPageModel>,
-                                                                                response: Response<CheckDashPageModel>
-                                                                            ) {
-                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                checkDashPageResponse = response.body()!!
-                                                                                if(checkDashPageResponse.data==1){
-                                                                                    val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-                                                                                    val inflater: LayoutInflater = activity!!.layoutInflater
-                                                                                    val view: View = inflater.inflate(R.layout.dialog_confirm, null)
-                                                                                    builder.setView(view)
-                                                                                    val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
-                                                                                    val noButton: Button = view.findViewById(R.id.dialog_button_no)
-                                                                                    val Title: TextView = view.findViewById(R.id.dialog_title)
-                                                                                    val Msg: TextView = view.findViewById(R.id.dialog_message)
-                                                                                    Title.text = "Your free trial is over. To enable this feature click enable, Rs 25 will be added to your existing plan monthly per vehicle."
-                                                                                    Msg.text = "Do you want to enable it?"
-                                                                                    val dialog: AlertDialog = builder.create()
-                                                                                    dialog.setCanceledOnTouchOutside(false)
-                                                                                    dialog.setCancelable(false)
-                                                                                    dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                                                                                    yesButton.setOnClickListener {
-                                                                                        binding.progress.progressLayout.visibility = View.VISIBLE
-                                                                                        Api.enableFeature(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                                                                            override fun onResponse(
-                                                                                                call: Call<CheckDashPageModel>,
-                                                                                                response: Response<CheckDashPageModel>
-                                                                                            ) {
-                                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                                checkDashPageResponse = response.body()!!
-                                                                                                if(checkDashPageResponse.data==1){
-                                                                                                    Constants.alertDialog(activity,"Driving Behavior Monitoring enabled.")
-                                                                                                }
-                                                                                            }
-
-                                                                                            override fun onFailure(
-                                                                                                call: Call<CheckDashPageModel>,
-                                                                                                t: Throwable
-                                                                                            ) {
-                                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                                Constants.alertDialog(activity,"Someting went wrong.")
-                                                                                            }
-
-                                                                                        })
-                                                                                        dialog.dismiss()
-                                                                                    }
-                                                                                    noButton.setOnClickListener{
-                                                                                        dialog.dismiss()
-                                                                                    }
-                                                                                    dialog.show()
-                                                                                }
-                                                                                else{
-                                                                                    val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-                                                                                    val inflater: LayoutInflater = activity!!.layoutInflater
-                                                                                    val view: View = inflater.inflate(R.layout.dialog_confirm, null)
-                                                                                    builder.setView(view)
-                                                                                    val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
-                                                                                    val noButton: Button = view.findViewById(R.id.dialog_button_no)
-                                                                                    val Title: TextView = view.findViewById(R.id.dialog_title)
-                                                                                    val Msg: TextView = view.findViewById(R.id.dialog_message)
-                                                                                    Title.text = "Driving Behavior Monitoring feature, for just Rs 25, Start your 1 month free Trial today."
-                                                                                    Msg.text = "Start your Free Trial?"
-                                                                                    val dialog: AlertDialog = builder.create()
-                                                                                    dialog.setCanceledOnTouchOutside(false)
-                                                                                    dialog.setCancelable(false)
-                                                                                    dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                                                                                    yesButton.setOnClickListener {
-                                                                                        binding.progress.progressLayout.visibility = View.VISIBLE
-                                                                                        Api.saveFreeTrail(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
-                                                                                            override fun onResponse(
-                                                                                                call: Call<CheckDashPageModel>,
-                                                                                                response: Response<CheckDashPageModel>
-                                                                                            ) {
-                                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                                checkDashPageResponse = response.body()!!
-                                                                                                if(checkDashPageResponse.data==1){
-                                                                                                    Constants.alertDialog(activity,"Thank you. Your Free Trial will be activated in 24 hrs.")
-                                                                                                    dialog.hide()
-                                                                                                }
-                                                                                                else{
-                                                                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                                                                    Constants.alertDialog(activity,"Wait for activation.")
-                                                                                                    dialog.hide()
-                                                                                                }
-                                                                                            }
-
-                                                                                            override fun onFailure(
-                                                                                                call: Call<CheckDashPageModel>,
-                                                                                                t: Throwable
-                                                                                            ) {
-                                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                                Constants.alertDialog(activity,"Something went wrong.")
-                                                                                            }
-                                                                                        })
-                                                                                        dialog.hide()
-                                                                                    }
-                                                                                    noButton.setOnClickListener{
-                                                                                        dialog.dismiss()
-                                                                                    }
-                                                                                    dialog.show()
-                                                                                }
-                                                                            }
-                                                                            override fun onFailure(
-                                                                                call: Call<CheckDashPageModel>,
-                                                                                t: Throwable
-                                                                            ) {
-                                                                                binding.progress.progressLayout.visibility = View.GONE
-                                                                                Constants.alertDialog(activity,"Something went wrong")
-                                                                                dialog.dismiss()
-                                                                            }
-
-                                                                        })
-                                                                        dialog.show()
-                                                                    }
-                                                                }
-
-                                                                override fun onFailure(
-                                                                    call: Call<CheckDashPageModel>,
-                                                                    t: Throwable
-                                                                ) {
-                                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                                    Constants.alertDialog(activity,"Something went wrong.")
-                                                                    dialog.dismiss()
-                                                                }
-                                                            })
-                                                        }
-                                                        noButton.setOnClickListener { // Handle "No" button click
-                                                            dialog.dismiss()
-                                                        }
-                                                        dialog.show()
-                                                    }
-                                                }
-
-                                                override fun onFailure(
-                                                    call: Call<CheckDashPageModel>,
-                                                    t: Throwable
-                                                ) {
-                                                    binding.progress.progressLayout.visibility = View.GONE
-                                                    Constants.alertDialog(activity,"Something went wrong.")
-                                                }
-
-                                            })
-                                    }
+        binding.swipeView.setOnRefreshListener {
+            binding.swipeView.isRefreshing = true
+            getAllResult()
+        }
+        binding.llDrivingBehaviour.setOnClickListener {
+            if (DriverBehaviourAvailability != "") {
+                if (DriverBehaviourAvailability == "true") {
+                    if (DriverBehaviourAvailabilityClick == "true") {
+                        val intent = Intent(activity, DrivingBehaviourActivity::class.java)
+                        intent.putExtra("excellent", excellentDrivers)
+                        intent.putExtra("risky", riskyDrivers)
+                        intent.putExtra("moderate", moderateDrivers)
+                        intent.putExtra("totalVehicle", binding.tvTotalVehicle.text.toString())
+                        startActivity(intent)
+                    }
+                } else {
+                    binding.progress.progressLayout.visibility = View.VISIBLE
+                    Api.CheckInstalledDevices(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckInstalledDevicesModel>{
+                        override fun onResponse(
+                            call: Call<CheckInstalledDevicesModel>,
+                            response: Response<CheckInstalledDevicesModel>
+                        ) {
+                            binding.progress.progressLayout.visibility = View.GONE
+                            checkInstalledDevicesResponse = response.body()!!
+                            if(checkInstalledDevicesResponse.data[0].Cnt==0){
+                                activity?.let { it1 ->
+                                    showConfirmationDialog(
+                                        it1,
+                                        "To enable Driving Behavior Monitoring feature, you need TM33+ or TM88 or AIS140 devices. Please contact your sales executive.",
+                                        "Are you Intrested ?"
+                                    ){ saveInterest() }
                                 }
-
-                                override fun onFailure(
-                                    call: Call<CheckDashPageModel>,
-                                    t: Throwable
-                                ) {
-                                    binding.progress.progressLayout.visibility = View.GONE
-                                    Constants.alertDialog(activity,"Something went wrong.")
-                                }
-                            })
-
-                        }
-                        else{
-                            val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-                            val inflater: LayoutInflater = activity!!.layoutInflater
-                            val view: View = inflater.inflate(R.layout.dialog_confirm, null)
-                            builder.setView(view)
-                            val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
-                            val noButton: Button = view.findViewById(R.id.dialog_button_no)
-                            val Title: TextView = view.findViewById(R.id.dialog_title)
-                            val Msg: TextView = view.findViewById(R.id.dialog_message)
-                            Title.text = "To enable Driving Behavior Monitoring feature, you need TM33+ or TM88 or AIS140 devices. Please contact your sales executive."
-                            Msg.text = "Are you Intrested?"
-                            val dialog: AlertDialog = builder.create()
-                            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-                            yesButton.setOnClickListener {
-                                binding.progress.progressLayout.visibility = View.VISIBLE
-                                Api.saveInterest(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
+                            }
+                            else{
+                                Api.checkIfFreeTrail(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
                                     override fun onResponse(
                                         call: Call<CheckDashPageModel>,
                                         response: Response<CheckDashPageModel>
@@ -376,39 +119,79 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
                                         binding.progress.progressLayout.visibility = View.GONE
                                         checkDashPageResponse = response.body()!!
                                         if(checkDashPageResponse.data==1){
-                                            Constants.alertDialog(activity,"Thank you for showing interest in Driving behavior monitoring. Sales executive will call you soon.")
-                                            dialog.dismiss()
+                                            Constants.alertDialog(activity,"Thank you. Your Free Trial will be activated in 24 hrs.")
+                                        }
+                                        else{
+                                            Api.checkFreeTrail(CommonData.getCustIdFromDB()).enqueue(object : Callback<CheckDashPageModel>{
+                                                override fun onResponse(
+                                                    call: Call<CheckDashPageModel>,
+                                                    response: Response<CheckDashPageModel>
+                                                ) {
+                                                    binding.progress.progressLayout.visibility = View.GONE
+                                                    checkDashPageResponse = response.body()!!
+                                                    if(checkDashPageResponse.data==1){
+                                                        activity?.let { it1 ->
+                                                            showConfirmationDialog(
+                                                                it1,
+                                                                "Your free trial is over. To enable this feature click enable, 25 will be added to your existing plan monthly per vehicle.",
+                                                                "Do you want to enable this feature?"
+                                                            ) { enableFeature() }
+                                                        }
+                                                    }
+                                                    else{
+                                                        activity?.let { it1 ->
+                                                            showConfirmationDialog(
+                                                                it1,
+                                                                "Driving Behavior Monitoring feature, for just Rs 25, Start your 1 month free Trial today.",
+                                                                "Do you want to start your free trail?"
+                                                            ) { saveTrail() }
+                                                        }
+                                                    }
+                                                }
+
+                                                override fun onFailure(
+                                                    call: Call<CheckDashPageModel>,
+                                                    t: Throwable
+                                                ) {
+                                                    binding.progress.progressLayout.visibility = View.GONE
+                                                    if(t is SocketTimeoutException){
+                                                        Constants.alertDialog(activity,"Connection time out.")
+                                                    }
+                                                    else{
+                                                        Constants.alertDialog(activity,"Something went wrong.")
+                                                    }
+                                                }
+                                            })
                                         }
                                     }
-
                                     override fun onFailure(
                                         call: Call<CheckDashPageModel>,
                                         t: Throwable
                                     ) {
                                         binding.progress.progressLayout.visibility = View.GONE
-                                        Constants.alertDialog(activity,"Something went wrong.")
-                                        dialog.dismiss()
+                                        if(t is SocketTimeoutException){
+                                            Constants.alertDialog(activity,"Connection time out.")
+                                        }
+                                        else{
+                                            Constants.alertDialog(activity,"Something went wrong.")
+                                        }
                                     }
 
                                 })
-                                dialog.dismiss()
                             }
-                            noButton.setOnClickListener { // Handle "No" button click
-                                dialog.dismiss()
+                        }
+
+                        override fun onFailure(call: Call<CheckInstalledDevicesModel>, t: Throwable) {
+                            binding.progress.progressLayout.visibility = View.GONE
+                            if(t is SocketTimeoutException){
+                                Constants.alertDialog(activity,"Connection time out.")
                             }
-                            dialog.show()
+                            else{
+                                Constants.alertDialog(activity,"Something went wrong.")
+                            }
                         }
-                    }
-                        else{
-                            Constants.alertDialog(activity,"No data found.")
-                        }
-                    }
-                    override fun onFailure(call: Call<CheckInstalledDevicesModel>, t: Throwable) {
-                        binding.progress.progressLayout.visibility = View.GONE
-                        Constants.alertDialog(activity,"Something went wrong.")
-                    }
-                })
-            }
+                    })
+                }
             }
         }
 
@@ -457,6 +240,94 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
             startActivity(intent)
         }
         return binding.root
+    }
+
+    private fun saveInterest() {
+        binding.progress.progressLayout.visibility = View.VISIBLE
+        Api.saveInterest(CommonData.getCustIdFromDB()).enqueue(object: Callback<CheckDashPageModel>{
+            override fun onResponse(
+                call: Call<CheckDashPageModel>,
+                response: Response<CheckDashPageModel>
+            ) {
+                binding.progress.progressLayout.visibility = View.GONE
+                checkDashPageResponse = response.body()!!
+                if(checkDashPageResponse.data==1){
+                    Constants.alertDialog(activity,"Thank you for showing interest in Driving behavior monitoring. Sales executive will call you soon.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+
+            override fun onFailure(call: Call<CheckDashPageModel>, t: Throwable) {
+                binding.progress.progressLayout.visibility = View.GONE
+                if(t is SocketTimeoutException){
+                    Constants.alertDialog(activity,"Connection time out.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+        })
+    }
+
+    private fun enableFeature(){
+        binding.progress.progressLayout.visibility = View.VISIBLE
+        Api.enableFeature(CommonData.getCustIdFromDB()).enqueue(object:Callback<CheckDashPageModel>{
+            override fun onResponse(
+                call: Call<CheckDashPageModel>,
+                response: Response<CheckDashPageModel>
+            ) {
+                binding.progress.progressLayout.visibility = View.GONE
+                checkDashPageResponse = response.body()!!
+                if(checkDashPageResponse.data==1){
+                    Constants.alertDialog(activity,"Driving Behavior Monitoring enabled.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+
+            override fun onFailure(call: Call<CheckDashPageModel>, t: Throwable) {
+                binding.progress.progressLayout.visibility = View.GONE
+                if(t is SocketTimeoutException){
+                    Constants.alertDialog(activity,"Connection time out.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+        })
+    }
+
+    private  fun saveTrail() {
+        binding.progress.progressLayout.visibility = View.VISIBLE
+        Api.saveFreeTrail(CommonData.getCustIdFromDB()).enqueue(object:Callback<CheckDashPageModel>{
+            override fun onResponse(
+                call: Call<CheckDashPageModel>,
+                response: Response<CheckDashPageModel>
+            ) {
+                binding.progress.progressLayout.visibility = View.GONE
+                checkDashPageResponse = response.body()!!
+                if(checkDashPageResponse.data==1){
+                    Constants.alertDialog(activity,"Thank you. Your Free Trial will be activated in 24 hrs.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+
+            override fun onFailure(call: Call<CheckDashPageModel>, t: Throwable) {
+                binding.progress.progressLayout.visibility = View.GONE
+                if(t is SocketTimeoutException){
+                    Constants.alertDialog(activity,"Connection time out.")
+                }
+                else{
+                    Constants.alertDialog(activity,"Something went wrong.")
+                }
+            }
+        })
+
     }
 
     private fun getUserData(){
@@ -717,6 +588,9 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
                      AsyncApicall.callApi { Api.getSpeedAnalysis(CommonData.getCustIdFromDB()) }
                  withContext(Dispatchers.Main) {
                      if (isAdded) {
+                         if(binding.swipeView.isRefreshing == true){
+                             binding.swipeView.isRefreshing = false
+                         }
                          SpeedData = SppedData.body()!!
                          DisplaySpeedData(SpeedData)
                      }
@@ -729,8 +603,7 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
                          checkDashPageResponse = checkDashPageApi.body()!!
                          if (checkDashPageResponse.data == 1) {
                              withContext(Dispatchers.IO) {
-                                 val DriverBehaviour =
-                                     AsyncApicall.callApi { Api.getDriverBehaviour(CommonData.getCustIdFromDB()) }
+                                 val DriverBehaviour = AsyncApicall.callApi { Api.getDriverBehaviour(CommonData.getCustIdFromDB()) }
                                  withContext(Dispatchers.Main) {
                                      if (isAdded) {
                                          DrivingData = DriverBehaviour.body()!!
@@ -757,8 +630,7 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
                      }
                  }
 
-                 val FuelMilageData =
-                     AsyncApicall.callApi { Api.getMileageAnalysis(CommonData.getCustIdFromDB()) }
+                 val FuelMilageData = AsyncApicall.callApi { Api.getMileageAnalysis(CommonData.getCustIdFromDB()) }
                  withContext(Dispatchers.Main) {
                      if (isAdded) {
                          FuelData = FuelMilageData.body()!!
@@ -780,11 +652,15 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
         when(requestCode) {
             Constants.REQ_EXPIRE_ACCOUNT_DETAILS -> {
                 try {
+                    var fuelRod = false
+                    var tempRod = false
                     var msg = ""
                     val result = JSONObject(response!!.body()!!.string())
                     val table = result.getJSONArray("Table")
                     for (i in 0 until table.length()) {
                         val jsonObject = table.getJSONObject(0)
+                        fuelRod = jsonObject.getBoolean("FuelRodActive")
+                        tempRod = jsonObject.getBoolean("tepsensor")
                         msg = jsonObject.getString("msg")
                         if (msg != "null") {
                             binding.marqueeText.text = msg
@@ -794,6 +670,8 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
                         }
                         binding.marqueeText.isSelected = true
                     }
+                    CommonData.setFuelRodStatus(fuelRod)
+                    CommonData.setTempRodStatus(tempRod)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 } catch (e: IOException) {
@@ -802,4 +680,34 @@ open class DashboardFragment : Fragment() , RetrofitResponse{
             }
         }
     }
+    fun showConfirmationDialog(
+        context: Context,
+        title: String,
+        message: String,
+        onYesClicked: () -> Unit
+    ) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        val inflater: LayoutInflater = requireActivity().layoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_confirm, null)
+        builder.setView(view)
+        val yesButton: Button = view.findViewById(R.id.dialog_button_yes)
+        val noButton: Button = view.findViewById(R.id.dialog_button_no)
+        val Title: TextView = view.findViewById(R.id.dialog_title)
+        val Msg: TextView = view.findViewById(R.id.dialog_message)
+        Title.text = title
+        Msg.text = message
+        val dialog: AlertDialog = builder.create()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setCancelable(false)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        yesButton.setOnClickListener {
+            onYesClicked.invoke()
+            dialog.dismiss()
+        }
+        noButton.setOnClickListener{
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
 }

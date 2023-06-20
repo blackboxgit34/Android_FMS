@@ -59,6 +59,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
     ArrayList<String>vehicleList = new ArrayList<>();
     private String  vehicleID = "",currentFuelLevel = "",totalTankCapacity = "",remainingTank = "",fuelTankDateTime = "",backendStartDate,backendEndDate,startTime,endTime;
     DatePicker picker;
+    String fromNavigate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,6 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
         binding = ActivityFuelGraphJavaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setToolbarDetails();
-
         binding.gauge.setSpeedTextSize(0F);
         binding.gauge.setUnitTextSize(0F);
         String currentDate = CommonUtil.INSTANCE.getCurrentDate();
@@ -80,6 +80,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
         binding.tvStartDate.setOnClickListener(this);
         binding.tvEndDate.setOnClickListener(this);
         binding.btnAppy.setOnClickListener(this);
+        fromNavigate = getIntent().getStringExtra("fromNavigate".toString());
         if(getIntent().hasExtra("vehicleId")){
             binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
             binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
@@ -290,7 +291,6 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                             spinVehicles();
                         }
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -318,17 +318,40 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                                     fuelTankDateTime = data.getJSONObject(3).getString("Data1");
                                     break;
                             }
-
                         }
-
                         remainingTank = String.valueOf((Float.parseFloat(totalTankCapacity) - Float.parseFloat(currentFuelLevel)));
                         binding.tvTotalTankVolume.setText(totalTankCapacity+" Ltr.");
                         binding.tvFuelinTank.setText(currentFuelLevel+" Ltr.");
                         binding.tvEmptyFuel.setText(remainingTank+" Ltr.");
                         binding.tvDataDate.setText(fuelTankDateTime.replace("/"," "));
-                        binding.gauge.setMaxSpeed(Float.parseFloat(totalTankCapacity));
+                        binding.gauge.setMinMaxSpeed(0f,Float.parseFloat(totalTankCapacity));
                         binding.gauge.speedTo(Float.parseFloat(currentFuelLevel));
-
+                        if(fromNavigate.equals("filling fuel")){
+                            binding.fuelFillingLayoutTitle.setText("Fuel Filling Details");
+                            binding.fuelLevelText.setText("Filling fuel level");
+                            binding.tvStartTime.setText("Before Filling Time");
+                            binding.tvEndTime.setText("After Filling Time");
+                            binding.tvFillingFuelLevel.setText(getIntent().getStringExtra("fuelFillingLevel")+" L");
+                            binding.fillingStartTime.setText(getIntent().getStringExtra("startFillingTime"));
+                            binding.fillingEndTime.setText(getIntent().getStringExtra("endFillingTime"));
+                            binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
+                            binding.fuelFillingLayout.setVisibility(View.VISIBLE);
+                        }
+                        else if(fromNavigate.equals("Theft fuel")){
+                            binding.fuelFillingLayoutTitle.setText("Fuel Drain Details");
+                            binding.fuelLevelText.setText("Draining fuel level");
+                            binding.tvStartTime.setText("Before Drain Time");
+                            binding.tvEndTime.setText("After Drain Time");
+                            binding.tvFillingFuelLevel.setText(getIntent().getStringExtra("fuelDrainLevel")+" L");
+                            binding.fillingStartTime.setText(getIntent().getStringExtra("startDate"));
+                            binding.fillingEndTime.setText(getIntent().getStringExtra("endDate"));
+                            binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
+                            binding.fuelFillingLayout.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
+                            binding.fuelFillingLayout.setVisibility(View.GONE);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (JSONException e) {
@@ -447,7 +470,6 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 0); // to get back 13 year add -13
         Date previous_year = cal.getTime();
-
         final java.util.Calendar calendar = java.util.Calendar.getInstance();
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener()
         {
@@ -465,7 +487,6 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                 } else {
                     y = String.valueOf(dayOfMonth);
                 }
-
                 if (flag.equals("1"))
                 {
                     backendStartDate =String.valueOf(year)+ "-" + x + "-" + y ;

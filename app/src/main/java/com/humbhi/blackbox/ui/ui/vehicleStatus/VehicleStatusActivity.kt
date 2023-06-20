@@ -3,19 +3,17 @@ package com.humbhi.blackbox.ui.ui.vehicleStatus
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityVehicleStatusBinding
-import com.humbhi.blackbox.ui.Utility.EndlessRecyclerOnScrollListener
-import com.humbhi.blackbox.ui.adapters.DistanceReportAdapter
 import com.humbhi.blackbox.ui.adapters.VehicleStatusAdapter
 import com.humbhi.blackbox.ui.data.DataManagerImpl
 import com.humbhi.blackbox.ui.data.db.CommonData
@@ -38,6 +36,7 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
     var search = ""
     var totalRecords = 0
     var statusFilter:String = ""
+    private var handler: Handler? = null
 //    var loadMore = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +50,7 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
         )
         binding.tvFilter.setOnClickListener(this)
         setToolbarOptions()
-
+        handler = Handler(Looper.myLooper()!!)
         binding.etSearchBar.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 startlimit = 0
@@ -86,7 +85,40 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
                 }
             }
         }
+        startGettingOnlineDataFromApi()
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            performRefresh()
+        }
+    }
+
+    fun stopRepeatingTask() {
+        handler!!.removeCallbacksAndMessages(null)
+    }
+
+    private fun performRefresh() {
+        binding.swipeRefreshLayout.isRefreshing = true
+        list.clear()
         Api()
+    }
+
+    var mStatusChecker: Runnable = object : Runnable {
+        override fun run() {
+            try {
+                list.clear()
+                Api()
+            } catch (e: Exception) {
+
+            }
+            handler!!.postDelayed(this,60*1000)
+        }
+    }
+
+    private fun startGettingOnlineDataFromApi() {
+        try {
+            handler!!.post(mStatusChecker)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun setToolbarOptions() {
@@ -95,8 +127,7 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
         binding.toolBar.ivBell.visibility = View.GONE
         binding.toolBar.tvTitle.text = "Live Tracking"
         binding.toolBar.ivBack.setOnClickListener {
-            val intent = Intent(this,DashboardActivity::class.java)
-            intent.putExtra("filterValue","")
+            stopRepeatingTask()
             finish()
         }
     }
@@ -151,6 +182,9 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
     }
 
     override fun getVehicleStatus(listData: VehicleLiveStatusModel) {
+        if(binding.swipeRefreshLayout.isRefreshing == true){
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
         binding.tvTotalCount.text = listData.iTotalRecords.toString()+" Vehicle"
         val layoutManager = LinearLayoutManager(this)
         totalRecords = listData.iTotalRecords
@@ -162,6 +196,7 @@ class VehicleStatusActivity : AppCompatActivity(), View.OnClickListener,VehicleS
             this,
             object : VehicleStatusAdapter.VehicleDetails {
                 override fun onVehicleSelection(position: Int) {
+                    stopRepeatingTask()
                     val bundle = Bundle()
                     bundle.putString(IntentConstant.VEHICLE_NAME, list[position].VehicleName)
                     // ExplicitIntentUtil.startActivity(this@VehicleStatusActivity,VehicleDetailActivity::class.java,bundle)

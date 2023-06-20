@@ -267,14 +267,16 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                                 R.drawable.ic_car_green_with_shadow
                             )
                         )
-                    } else if (vehicleType.equals("Bus", ignoreCase = true)) {
+                    }
+                    else if (vehicleType.equals("Bus", ignoreCase = true)) {
                         marker.setIcon(
                             bitmapDescriptorFromVector(
                                 this,
                                 R.drawable.ic_new_bus_green
                             )
                         )
-                    } else if (vehicleType.equals(
+                    }
+                    else if (vehicleType.equals(
                             "Ambulance",
                             ignoreCase = true
                         )
@@ -361,10 +363,10 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         points.clear()
         binding.tvTotalDistanceTravel.text = drivingBehaviourRouteDataModel.DistanceTravelled.replace("km(s)","")
         DrivingBehaviourRouteDataModel = drivingBehaviourRouteDataModel
-        for (i in 0 until drivingBehaviourRouteDataModel.RouteDataList.size){
-            points.add(LatLng(drivingBehaviourRouteDataModel.RouteDataList[i].Latitude.toDouble(),drivingBehaviourRouteDataModel.RouteDataList[i].Longitude.toDouble()))
+        for (i in 0 until drivingBehaviourRouteDataModel.RouteDataList.size)
+        {
+            points.add(LatLng(drivingBehaviourRouteDataModel.RouteDataList[i].Latitude, drivingBehaviourRouteDataModel.RouteDataList[i].Longitude))
         }
-
         if (mMap!=null){
             if (drivingBehaviourRouteDataModel.RouteDataList.isNotEmpty()) {
                 // Start location market
@@ -541,7 +543,8 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
             currentPoint = points[ix]
             if (currentPoint.color == currentColor) {
                 currentSegment.add(currentPoint.coords)
-            } else {
+            }
+            else {
                 currentSegment.add(currentPoint.coords)
                 mMap.addPolyline(
                     PolylineOptions()
@@ -714,49 +717,53 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 }
 
             val drivingDuration = routePlaybackResponseModel.Drivingduration
-            val drivingDurationtokenizer = StringTokenizer(drivingDuration,"-")
-            val drivingDurationDay = drivingDurationtokenizer.nextToken()
-            val drivingDurationHMS = drivingDurationtokenizer.nextToken()
-            val drivingDurationtokenizer1 = StringTokenizer(drivingDurationHMS,":")
-            val drivingDurationHourValue = drivingDurationtokenizer1.nextToken().toInt()
-            val drivingDurationMinuteValue = drivingDurationtokenizer1.nextToken().toInt()
-            val drivingDurationSecondValue = drivingDurationtokenizer1.nextToken().toInt()
-            if(!drivingDurationDay.toString().equals("00")){
-                val drivingDurationhour = drivingDurationDay.toInt()*24+drivingDurationHourValue
-                binding.Drivingduration.text= "${drivingDurationhour}H :"+drivingDurationMinuteValue+"M"
-            }
-            else{
-                binding.Drivingduration.text= "${drivingDurationHourValue}H :"+drivingDurationMinuteValue+"M"
+            if(!drivingDuration.equals("")) {
+                val drivingDurationtokenizer = StringTokenizer(drivingDuration, "-")
+                val drivingDurationDay = drivingDurationtokenizer.nextToken()
+                val drivingDurationHMS = drivingDurationtokenizer.nextToken()
+                val drivingDurationtokenizer1 = StringTokenizer(drivingDurationHMS, ":")
+                val drivingDurationHourValue = drivingDurationtokenizer1.nextToken().toInt()
+                val drivingDurationMinuteValue = drivingDurationtokenizer1.nextToken().toInt()
+                val drivingDurationSecondValue = drivingDurationtokenizer1.nextToken().toInt()
+                if (!drivingDurationDay.toString().equals("00")) {
+                    val drivingDurationhour = drivingDurationDay.toInt() * 24 + drivingDurationHourValue
+                    binding.Drivingduration.text = "${drivingDurationhour}H :" + drivingDurationMinuteValue + "M"
+                } else {
+                    binding.Drivingduration.text = "${drivingDurationHourValue}H :" + drivingDurationMinuteValue + "M"
+                }
             }
             val Stoppageduration = routePlaybackResponseModel.Stoppageduration
-            val Stoppagedurationtokenizer = StringTokenizer(Stoppageduration,"-")
-            val StoppagedurationDay = Stoppagedurationtokenizer.nextToken()
-            val StoppagedurationHMS = Stoppagedurationtokenizer.nextToken()
-            val Stoppagedurationtokenizer1 = StringTokenizer(StoppagedurationHMS,":")
-            val StoppagedurationHourValue = Stoppagedurationtokenizer1.nextToken().toInt()
-            val StoppagedurationMinuteValue = Stoppagedurationtokenizer1.nextToken().toInt()
-            val StoppagedurationSecondValue = Stoppagedurationtokenizer1.nextToken().toInt()
-            if(!StoppagedurationDay.toString().equals("00")){
-                val Stoppagedurationhour = StoppagedurationDay.toInt()*24+StoppagedurationHourValue
-                binding.Stoppageduration.text= "${Stoppagedurationhour}H :"+StoppagedurationMinuteValue+"M"
-            }
-            else{
-                binding.Stoppageduration.text= "${StoppagedurationHourValue}H :"+StoppagedurationMinuteValue+"M"
+            if(!Stoppageduration.equals("")) {
+                val Stoppagedurationtokenizer = StringTokenizer(Stoppageduration, "-")
+                val StoppagedurationDay = Stoppagedurationtokenizer.nextToken()
+                val StoppagedurationHMS = Stoppagedurationtokenizer.nextToken()
+                val Stoppagedurationtokenizer1 = StringTokenizer(StoppagedurationHMS, ":")
+                val StoppagedurationHourValue = Stoppagedurationtokenizer1.nextToken().toInt()
+                val StoppagedurationMinuteValue = Stoppagedurationtokenizer1.nextToken().toInt()
+                val StoppagedurationSecondValue = Stoppagedurationtokenizer1.nextToken().toInt()
+                if (!StoppagedurationDay.toString().equals("00")) {
+                    val Stoppagedurationhour = StoppagedurationDay.toInt() * 24 + StoppagedurationHourValue
+                    binding.Stoppageduration.text = "${Stoppagedurationhour}H :" + StoppagedurationMinuteValue + "M"
+                } else {
+                    binding.Stoppageduration.text = "${StoppagedurationHourValue}H :" + StoppagedurationMinuteValue + "M"
+                }
             }
             val Idlingduration = routePlaybackResponseModel.Idlingduration
-            val Idlingdurationtokenizer = StringTokenizer(Idlingduration,"-")
-            val IdlingdurationDay = Idlingdurationtokenizer.nextToken()
-            val IdlingdurationHMS = Idlingdurationtokenizer.nextToken()
-            val Idlingdurationtokenizer1 = StringTokenizer(IdlingdurationHMS,":")
-            val IdlingdurationHourValue = Idlingdurationtokenizer1.nextToken().toInt()
-            val IdlingdurationMinuteValue = Idlingdurationtokenizer1.nextToken().toInt()
-            val IdlingdurationSecondValue = Idlingdurationtokenizer1.nextToken().toInt()
-            if(!IdlingdurationDay.toString().equals("00")){
-                val Idlingdurationhour = IdlingdurationDay.toInt()*24+IdlingdurationHourValue
-                binding.Idlingduration.text= "${Idlingdurationhour}H :"+IdlingdurationMinuteValue+"M"
-            }
-            else{
-                binding.Idlingduration.text= "${IdlingdurationHourValue}H :"+IdlingdurationMinuteValue+"M"
+            if(!Idlingduration.equals("")) {
+                val Idlingdurationtokenizer = StringTokenizer(Idlingduration, "-")
+                val IdlingdurationDay = Idlingdurationtokenizer.nextToken()
+                val IdlingdurationHMS = Idlingdurationtokenizer.nextToken()
+                val Idlingdurationtokenizer1 = StringTokenizer(IdlingdurationHMS, ":")
+                val IdlingdurationHourValue = Idlingdurationtokenizer1.nextToken().toInt()
+                val IdlingdurationMinuteValue = Idlingdurationtokenizer1.nextToken().toInt()
+                val IdlingdurationSecondValue = Idlingdurationtokenizer1.nextToken().toInt()
+                if (!IdlingdurationDay.toString().equals("00")) {
+                    val Idlingdurationhour = IdlingdurationDay.toInt() * 24 + IdlingdurationHourValue
+                    binding.Idlingduration.text = "${Idlingdurationhour}H :" + IdlingdurationMinuteValue + "M"
+                } else {
+                    binding.Idlingduration.text =
+                        "${IdlingdurationHourValue}H :" + IdlingdurationMinuteValue + "M"
+                }
             }
             i++
         } catch (e: Exception) {

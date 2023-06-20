@@ -15,9 +15,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,7 +84,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     private RadioButton rbTotal,rbParked,rbMoving,rbIgnition,rbUnreach,rbHighSpeed,rbTowed;
     private CardView cvDetails;
     private TextView tvSpeed,tvDistance,tvLocation,tvProgressStatus,tvDataDate,tvTitle,tvTotalVehicles
-    ,tvParkedVehicle,tvMovingCount,tvIgnitionCount,tvUnreachCount,tvTowdCount,tvHighSpeedCount,tvVehicleName;
+            ,tvParkedVehicle,tvMovingCount,tvIgnitionCount,tvUnreachCount,tvTowdCount,tvHighSpeedCount,tvVehicleName;
     private String clientId,VehicleStatus="",vehicleType,statusCode="";
     Handler handler = new Handler(Looper.getMainLooper());
     Runnable runnable;
@@ -91,6 +94,8 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     ArrayList<Marker> markers = new ArrayList<Marker>();
     private ImageView mapView;
     private String[] mapTypes = {"Standard", "Satellite", "Terrain", "Hybrid"};
+    Boolean StatusChangeFromOption = false;
+    private FrameLayout progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +123,7 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
         ivSearch = findViewById(R.id.ivSearch);
         llTotal = findViewById(R.id.llTotal);
         llRunning = findViewById(R.id.llRunning);
+        progress = findViewById(R.id.progress);
         llStopped = findViewById(R.id.llStopped);
         llInactive = findViewById(R.id.llInactive);
         llIdeal = findViewById(R.id.llIdeal);
@@ -166,17 +172,17 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
             }
             return false;
         });
-       runnable = new Runnable() {
-           @Override
-           public void run() {
-               getLocationOnMap();
-               handler.postDelayed(this,30000);
-           }
-       };
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                getLocationOnMap();
+                handler.postDelayed(this,30000);
+            }
+        };
         handler.post(runnable);
         // connect();
-
         ivSearch.setOnClickListener(view -> getLocationOnMap());
+
         mapView.setOnClickListener(v -> {
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
             dialogBuilder.setTitle("Select Map Type");
@@ -184,7 +190,6 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
                 String selectedMapType = mapTypes[which];
                 setMapType(selectedMapType);
             });
-
             AlertDialog dialog = dialogBuilder.create();
             dialog.show();
         });
@@ -207,9 +212,16 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
     private void getLocationOnMap()
     {
         if(isFirstTime) {
+            progress.setVisibility(View.VISIBLE);
             new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
                     Constants.VEHICLES_ON_MAP + "custid=" + CommonData.INSTANCE.getCustIdFromDB() + "&StatusCode=" + statusCode + "&sEcho=0&iDisplayStart=0&iDisplayLength=999&sSearch=&iSortCol_0=0&sSortDir_0=")
-                    .callService(true);
+                    .callService(false);
+        }
+        else if(StatusChangeFromOption==true){
+            progress.setVisibility(View.VISIBLE);
+            new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
+                    Constants.VEHICLES_ON_MAP + "custid=" + CommonData.INSTANCE.getCustIdFromDB() + "&StatusCode=" + statusCode + "&sEcho=0&iDisplayStart=0&iDisplayLength=999&sSearch=&iSortCol_0=0&sSortDir_0=")
+                    .callService(false);
         }
         else{
             new Retrofit2(this, this, Constants.REQ_VEHICLES_ON_MAP,
@@ -223,8 +235,16 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
         switch (view.getId()) {
             case R.id.llTotal:
                 statusCode = "";
-               // getLocationOnMap();
+                // getLocationOnMap();
                 if (llStopped.isShown()){
+                    rbTotal.setChecked(true);
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    StatusChangeFromOption=true;
+                    getLocationOnMap();
                     llStopped.setVisibility(View.GONE);
                     llRunning.setVisibility(View.GONE);
                     llIdeal.setVisibility(View.GONE);
@@ -244,6 +264,13 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
             case R.id.rbTotal:
                 statusCode = "";
                 if (llStopped.isShown()){
+                    rbTotal.setChecked(true);
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    StatusChangeFromOption=true;
                     getLocationOnMap();
                     llStopped.setVisibility(View.GONE);
                     llRunning.setVisibility(View.GONE);
@@ -262,88 +289,267 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
                 }
                 break;
 
-                case R.id.llStopped:
+            case R.id.llStopped:
+                statusCode = "P";
+                if(llTotal.isShown()) {
                     rbParked.setChecked(true);
                     rbMoving.setChecked(false);
                     rbUnreach.setChecked(false);
                     rbIgnition.setChecked(false);
                     rbHighSpeed.setChecked(false);
-                    statusCode = "P";
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
                     getLocationOnMap();
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
-                case R.id.rbParked:
-                    statusCode = "P";
+            case R.id.rbParked:
+                statusCode = "P";
+                if(llTotal.isShown()) {
                     rbParked.setChecked(true);
                     rbMoving.setChecked(false);
                     rbUnreach.setChecked(false);
                     rbIgnition.setChecked(false);
                     rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
                     getLocationOnMap();
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
 
             case R.id.llRunning:
-                    statusCode = "M";
-                rbParked.setChecked(false);
-                rbMoving.setChecked(true);
-                rbUnreach.setChecked(false);
-                rbIgnition.setChecked(false);
-                rbHighSpeed.setChecked(false);
+                statusCode = "M";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(true);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.rbMoving:
-                    statusCode = "M";
-                rbParked.setChecked(false);
-                rbMoving.setChecked(true);
-                rbUnreach.setChecked(false);
-                rbIgnition.setChecked(false);
-                rbHighSpeed.setChecked(false);
+                statusCode = "M";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(true);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.rbIgnition:
-                rbParked.setChecked(false);
-                rbMoving.setChecked(false);
-                rbUnreach.setChecked(false);
-                rbIgnition.setChecked(true);
-                rbHighSpeed.setChecked(false);
-                    statusCode = "I";
+                statusCode = "I";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(true);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.llIdeal:
-                rbParked.setChecked(false);
-                rbMoving.setChecked(false);
-                rbUnreach.setChecked(false);
-                rbIgnition.setChecked(true);
-                rbHighSpeed.setChecked(false);
-                    statusCode = "I";
+                statusCode = "I";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(true);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.llInactive:
-                rbParked.setChecked(false);
-                rbMoving.setChecked(false);
-                rbUnreach.setChecked(true);
-                rbIgnition.setChecked(false);
-                rbHighSpeed.setChecked(false);
-                    statusCode = "U";
+                statusCode = "U";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(true);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.rbUnreach:
-                rbParked.setChecked(false);
-                rbMoving.setChecked(false);
-                rbUnreach.setChecked(true);
-                rbIgnition.setChecked(false);
-                rbHighSpeed.setChecked(false);
-                    statusCode = "U";
+                statusCode = "U";
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(true);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(false);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
                     getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.GONE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
-
             case R.id.rbHiSpeed:
-                rbParked.setChecked(false);
-                rbMoving.setChecked(false);
-                rbUnreach.setChecked(false);
-                rbIgnition.setChecked(false);
-                rbHighSpeed.setChecked(true);
                 statusCode = "H";
-                getLocationOnMap();
+                if(llTotal.isShown()) {
+                    rbParked.setChecked(false);
+                    rbMoving.setChecked(false);
+                    rbUnreach.setChecked(false);
+                    rbIgnition.setChecked(false);
+                    rbHighSpeed.setChecked(true);
+                    rbTotal.setChecked(false);
+                    StatusChangeFromOption = true;
+                    getLocationOnMap();
+                    llTotal.setVisibility(View.GONE);
+                    llStopped.setVisibility(View.GONE);
+                    llRunning.setVisibility(View.GONE);
+                    llIdeal.setVisibility(View.GONE);
+                    llInactive.setVisibility(View.GONE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
+                else{
+                    llTotal.setVisibility(View.VISIBLE);
+                    llStopped.setVisibility(View.VISIBLE);
+                    llRunning.setVisibility(View.VISIBLE);
+                    llIdeal.setVisibility(View.VISIBLE);
+                    llInactive.setVisibility(View.VISIBLE);
+                    llTowed.setVisibility(View.GONE);
+                    llHiSpeed.setVisibility(View.VISIBLE);
+                }
                 break;
         }
     }
@@ -387,10 +593,14 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
                     if (Map != null) {
                         Map.clear();
                     }
+                    progress.setVisibility(View.GONE);
                     isFirstTime = false;
+                    StatusChangeFromOption=false;
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     String totalVehicles = jsonObject.getString("iTotalRecords");
-                    tvTotalVehicles.setText(totalVehicles);
+                    if(Objects.equals(statusCode, "")) {
+                        tvTotalVehicles.setText(totalVehicles);
+                    }
                     JSONArray data = jsonObject.getJSONArray("aaData");
                     int parkedCount = 0;
                     int unreachableCount = 0;
@@ -413,31 +623,33 @@ public class GLocationOnMap extends AppCompatActivity implements OnMapReadyCallb
                         VehicleStatus = obj.getString("ProgressStatus");
                         vehicleType = obj.getString("VIconName");
                         float angle = Float.parseFloat(obj.getString("angle"));
-                        if (VehicleStatus.equals("Stopped")) {
-                            Log.e("ParkedCount", "parked");
-                            parkedCount = parkedCount + 1;
+                        if(Objects.equals(statusCode, "")) {
+                            if (VehicleStatus.equals("Stopped")) {
+                                Log.e("ParkedCount", "parked");
+                                parkedCount = parkedCount + 1;
+                            }
+                            if (VehicleStatus.equals("Unreachable")) {
+                                unreachableCount = unreachableCount + 1;
+                            }
+                            if (VehicleStatus.equals("Moving")) {
+                                MovingCount = MovingCount + 1;
+                            }
+                            if (VehicleStatus.equals("IgnitionOn")) {
+                                ignitionCount = ignitionCount + 1;
+                            }
+                            if (VehicleStatus.equals("Towed")) {
+                                towedCount = towedCount + 1;
+                            }
+                            if (VehicleStatus.equals("Hispeed")) {
+                                highSpeedCount = highSpeedCount + 1;
+                            }
+                            tvParkedVehicle.setText(String.valueOf(parkedCount));
+                            tvMovingCount.setText(String.valueOf(MovingCount));
+                            tvIgnitionCount.setText(String.valueOf(ignitionCount));
+                            tvUnreachCount.setText(String.valueOf(unreachableCount));
+                            tvTowdCount.setText(String.valueOf(towedCount));
+                            tvHighSpeedCount.setText(String.valueOf(highSpeedCount));
                         }
-                        if (VehicleStatus.equals("Unreachable")) {
-                            unreachableCount = unreachableCount + 1;
-                        }
-                        if (VehicleStatus.equals("Moving")) {
-                            MovingCount = MovingCount + 1;
-                        }
-                        if (VehicleStatus.equals("IgnitionOn")) {
-                            ignitionCount = ignitionCount + 1;
-                        }
-                        if (VehicleStatus.equals("Towed")) {
-                            towedCount = towedCount + 1;
-                        }
-                        if (VehicleStatus.equals("Hispeed")) {
-                            highSpeedCount = highSpeedCount + 1;
-                        }
-                        tvParkedVehicle.setText(String.valueOf(parkedCount));
-                        tvMovingCount.setText(String.valueOf(MovingCount));
-                        tvIgnitionCount.setText(String.valueOf(ignitionCount));
-                        tvUnreachCount.setText(String.valueOf(unreachableCount));
-                        tvTowdCount.setText(String.valueOf(towedCount));
-                        tvHighSpeedCount.setText(String.valueOf(highSpeedCount));
                         if (lat != 0 && longi != 0) {
                             marker = Map.addMarker(new MarkerOptions()
                                     .position(new LatLng(lat, longi))

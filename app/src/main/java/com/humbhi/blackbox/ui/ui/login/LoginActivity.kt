@@ -59,14 +59,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener,LoginView, Retro
             finish()
         }
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.d("token failed", task.exception.toString())
-                return@OnCompleteListener
+            try {
+                if (!task.isSuccessful) {
+                    Log.d("token failed", task.exception.toString())
+                    return@OnCompleteListener
+                }
+                // Get new FCM registration token
+                val token = task.result
+                setFirebaseToken(token)
+                setDeviceId(
+                    Settings.Secure.getString(
+                        this.contentResolver,
+                        Settings.Secure.ANDROID_ID
+                    )
+                )
             }
-            // Get new FCM registration token
-            val token = task.result
-            setFirebaseToken(token)
-            setDeviceId(Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID))
+            catch(e: Exception){
+
+            }
             // Log and toast
         })
         checkPermission()

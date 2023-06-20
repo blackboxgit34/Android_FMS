@@ -23,9 +23,9 @@ class FuelTheftDetailAdapter(val list: List<FueltheftMainModel>) :
                 tvDrainLocation.text = list[adapterPosition].StartLocation
                 tvBeforeDrainDate.text = list[adapterPosition].StartDateTime
                 tvAfterFilling.text = list[adapterPosition].EndateTime
-                gGauge.speedTo(50F)
-                gGauge.accelerate = 50F
-                gGauge.maxSpeed = (list[adapterPosition].StartFuelLevel + list[adapterPosition].EndFuelLevel).toFloat()
+                list[adapterPosition].EndFuelLevel?.let { gGauge.speedTo(it.toFloat()) }
+                gGauge.accelerate = 1F
+                gGauge.setMinMaxSpeed(0f,(list[adapterPosition].StartFuelLevel + list[adapterPosition].EndFuelLevel).toFloat())
                 gGauge.speedTextSize = 0F
                 gGauge.unitTextSize = 0F
             }

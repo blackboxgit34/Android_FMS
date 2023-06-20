@@ -76,6 +76,7 @@ class HarshBreakingActivity : AppCompatActivity(), HarshBreakingView,View.OnClic
     }
 
     private fun hitAPI(){
+        binding.progress.progressLayout.visibility = View.VISIBLE
         mPresenter.hitHarshBreakReportApi(
             "$startDateParam%2000:00:00",
             endDateParam + "%2023:59:59",
@@ -114,6 +115,7 @@ class HarshBreakingActivity : AppCompatActivity(), HarshBreakingView,View.OnClic
     }
 
     override fun getHarshBreakingData(harshBreakingModel: HarshBreakingModel) {
+        binding.progress.progressLayout.visibility = View.GONE
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecycler.layoutManager = layoutManager
         totalRecords = harshBreakingModel.iTotalRecords
@@ -143,10 +145,10 @@ class HarshBreakingActivity : AppCompatActivity(), HarshBreakingView,View.OnClic
         chartAdapter = HarshBreakChartAdapter(this, harshBreakingModel.aaData)
         binding.rvChart.adapter = chartAdapter
 
-        for (i in harshBreakingModel.aaData.indices){
-
-            setDistancGraphData(harshBreakingModel.aaData[i].count.toDouble(),i.toFloat())
-        }
+//        for (i in harshBreakingModel.aaData.indices){
+//
+//            setDistancGraphData(harshBreakingModel.aaData[i].count.toDouble(),i.toFloat())
+//        }
     }
 
 
@@ -166,47 +168,47 @@ class HarshBreakingActivity : AppCompatActivity(), HarshBreakingView,View.OnClic
 
     // Driving behaviour chart data
 
-    private fun setDistancGraphData(counts:Double,position: Float) {
-        DistanceChart = binding.DistanceChart
-        val desc: Description
-        val L: Legend
-        L = DistanceChart!!.legend
-        desc = DistanceChart!!.description
-        desc.text = "" // this is the weirdest way to clear something!!
-        L.isEnabled = false
-        val leftAxis = DistanceChart!!.axisLeft
-        val rightAxis = DistanceChart!!.axisRight
-        val xAxis = DistanceChart!!.xAxis
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.textSize = 10f
-        xAxis.setDrawAxisLine(true)
-        xAxis.setDrawGridLines(false)
-        leftAxis.textSize = 10f
-        leftAxis.setDrawLabels(false)
-        leftAxis.setDrawAxisLine(true)
-        leftAxis.setDrawGridLines(false)
-        rightAxis.setDrawAxisLine(false)
-        rightAxis.setDrawGridLines(false)
-        rightAxis.setDrawLabels(false)
-        val data = BarData(setData(counts,position))
-        data.barWidth = 0.4f // set custom bar width
-        DistanceChart!!.data = data
-        DistanceChart!!.setFitBars(true) // make the x-axis fit exactly all bars
-        DistanceChart!!.invalidate() // refresh
-        DistanceChart!!.setScaleEnabled(false)
-        DistanceChart!!.isDoubleTapToZoomEnabled = false
-        //DistanceChart.setBackgroundResource(R.drawable.round_bars);
-        DistanceChart!!.setBackgroundColor(resources.getColor(R.color.black))
-        DistanceChart!!.animateXY(2000, 2000)
-        DistanceChart!!.setDrawBorders(false)
-        DistanceChart!!.description = desc
-        data.setValueTextColor(Color.rgb(255, 255, 255))
-        DistanceChart!!.setDrawValueAboveBar(true)
-//        val customRenderer = BarChartCustomRenderer(
-//            DistanceChart, DistanceChart!!.animator, DistanceChart!!.viewPortHandler
-//        )
-        // DistanceChart!!.renderer = customRenderer
-    }
+//    private fun setDistancGraphData(counts:Double,position: Float) {
+//        DistanceChart = binding.DistanceChart
+//        val desc: Description
+//        val L: Legend
+//        L = DistanceChart!!.legend
+//        desc = DistanceChart!!.description
+//        desc.text = "" // this is the weirdest way to clear something!!
+//        L.isEnabled = false
+//        val leftAxis = DistanceChart!!.axisLeft
+//        val rightAxis = DistanceChart!!.axisRight
+//        val xAxis = DistanceChart!!.xAxis
+//        xAxis.position = XAxis.XAxisPosition.BOTTOM
+//        xAxis.textSize = 10f
+//        xAxis.setDrawAxisLine(true)
+//        xAxis.setDrawGridLines(false)
+//        leftAxis.textSize = 10f
+//        leftAxis.setDrawLabels(false)
+//        leftAxis.setDrawAxisLine(true)
+//        leftAxis.setDrawGridLines(false)
+//        rightAxis.setDrawAxisLine(false)
+//        rightAxis.setDrawGridLines(false)
+//        rightAxis.setDrawLabels(false)
+//        val data = BarData(setData(counts,position))
+//        data.barWidth = 0.4f // set custom bar width
+//        DistanceChart!!.data = data
+//        DistanceChart!!.setFitBars(true) // make the x-axis fit exactly all bars
+//        DistanceChart!!.invalidate() // refresh
+//        DistanceChart!!.setScaleEnabled(false)
+//        DistanceChart!!.isDoubleTapToZoomEnabled = false
+//        //DistanceChart.setBackgroundResource(R.drawable.round_bars);
+//        DistanceChart!!.setBackgroundColor(resources.getColor(R.color.black))
+//        DistanceChart!!.animateXY(2000, 2000)
+//        DistanceChart!!.setDrawBorders(false)
+//        DistanceChart!!.description = desc
+//        data.setValueTextColor(Color.rgb(255, 255, 255))
+//        DistanceChart!!.setDrawValueAboveBar(true)
+////        val customRenderer = BarChartCustomRenderer(
+////            DistanceChart, DistanceChart!!.animator, DistanceChart!!.viewPortHandler
+////        )
+//        // DistanceChart!!.renderer = customRenderer
+//    }
 
     override fun isNetworkConnected(): Boolean {
         return true

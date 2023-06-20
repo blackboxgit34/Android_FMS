@@ -63,6 +63,7 @@ class DrBehavConsolidateReportActivity : AppCompatActivity(),ConsolidateViolatio
     }
 
     private fun hitAPI(){
+        binding.progress.progressLayout.visibility = View.VISIBLE
         mPresenter.hitConsolidationViolationApi(
             "$startDateParam%2000:00:00",
             endDateParam + "%2023:59:59",
@@ -101,6 +102,7 @@ class DrBehavConsolidateReportActivity : AppCompatActivity(),ConsolidateViolatio
     }
 
     override fun getConsolidationViolationData(consolidateVoilationModel: ConsolidateVoilationModel) {
+        binding.progress.progressLayout.visibility = View.GONE
         val layoutManager = LinearLayoutManager(this)
         totalRecords = consolidateVoilationModel.iTotalRecords
         binding.rvRecycler.layoutManager = layoutManager

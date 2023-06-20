@@ -133,11 +133,9 @@ object CommonUtil {
 
     fun lastDayOfPreviousMonth(): String {
         val c = Calendar.getInstance()
-        c.add(Calendar.MONTH,-1)
-        c.add(Calendar.YEAR,0)
-        c.add(Calendar.DATE,c.getActualMaximum(Calendar.DATE))
-        val date = c.get(Calendar.DATE).toString()
-        val month = c.get(Calendar.MONTH).toString()
+        c.add(Calendar.MONTH, -1)
+        val date = c.getActualMaximum(Calendar.DAY_OF_MONTH).toString()
+        val month = (c.get(Calendar.MONTH) + 1).toString()
         val year = c.get(Calendar.YEAR).toString()
         return "${month}/${date}/${year}"
     }
@@ -155,22 +153,18 @@ object CommonUtil {
 
     fun lastDayOfBeforePreviousMonth(): String {
         val c = Calendar.getInstance()
-//        c.add(Calendar.MONTH,-2)
-//        c.add(Calendar.YEAR,0)
-//        c.add(Calendar.DATE,c.getActualMaximum(Calendar.DATE))
-        val date = c.getActualMaximum(Calendar.DATE).toString()
-        val month = c.get(Calendar.MONTH-2).toString()
+        c.add(Calendar.MONTH, -2)
+        val date = c.getActualMaximum(Calendar.DAY_OF_MONTH).toString()
+        val month = (c.get(Calendar.MONTH) + 1).toString()
         val year = c.get(Calendar.YEAR).toString()
         return "${month}/${date}/${year}"
     }
 
     fun firstDayOfBeforeLastMonth(): String {
         val c = Calendar.getInstance()
-        c.add(Calendar.MONTH,-1)
-        c.add(Calendar.YEAR,0)
-        c.set(Calendar.DAY_OF_MONTH,1)
-        val month = c.get(Calendar.MONTH).toString()
-        val date = c.get(Calendar.DAY_OF_MONTH).toString()
+        c.add(Calendar.MONTH,-2)
+        val month = (c.get(Calendar.MONTH) + 1).toString()
+        val date = c.getActualMinimum(Calendar.DAY_OF_MONTH).toString()
         val year = c.get(Calendar.YEAR).toString()
         return "${month}/${date}/${year}"
     }
@@ -212,23 +206,64 @@ object CommonUtil {
     /*
  * Calculate stoppage time*/
     fun calculateStoppageTime(stoppageTime: String):String {
-        var sDays = stoppageTime.substringBefore("-")
+        val sDays = stoppageTime.substringBefore("-")
         val sHours = stoppageTime.substringAfter("-")
+
         if (sDays == "00") {
-            var newStrg = sHours
-            val mString = newStrg.split(":").toTypedArray()
-            if (mString[0] == "00") {
+            val timeString = sHours.split(":").toTypedArray()
+            var hours = timeString[0].toInt()
+            var minutes = timeString[1].toInt()
+            var seconds = timeString[2].toInt()
 
-                return mString[1] + "M " + mString[2] + "S "
-
-            } else {
-                return mString[1] + "M " + mString[2] + "S "
+            if (seconds >= 60) {
+                minutes += seconds / 60
+                seconds %= 60
             }
 
+            if (minutes >= 60) {
+                hours += minutes / 60
+                minutes %= 60
+            }
+
+            return when {
+                hours == 0 && minutes == 0 && seconds == 0 -> "0 seconds"
+                hours == 0 && minutes == 0 -> "$seconds seconds"
+                hours == 0 -> "$minutes minutes $seconds seconds"
+                else -> "$hours hours $minutes minutes $seconds seconds"
+            }
         } else {
-            return sDays + " Days"
+            return "$sDays days"
         }
     }
 
+    fun convertDurationToDHMS(duration: String): String {
+        val parts = duration.split(":")
+        var days = parts[0].toInt()
+        var hours = parts[1].toInt()
+        var minutes = parts[2].toInt()
+        var seconds = parts[3].toInt()
+
+        if (seconds >= 60) {
+            minutes += seconds / 60
+            seconds %= 60
+        }
+
+        if (minutes >= 60) {
+            hours += minutes / 60
+            minutes %= 60
+        }
+
+        if (hours >= 24) {
+            days += hours / 24
+            hours %= 24
+        }
+
+        val dayString = if (days == 1) "day" else "days"
+        val hourString = if (hours == 1) "hour" else "hours"
+        val minuteString = if (minutes == 1) "minute" else "minutes"
+        val secondString = if (seconds == 1) "second" else "seconds"
+
+        return "$days $dayString, $hours $hourString, $minutes $minuteString, $seconds $secondString"
+    }
 
 }

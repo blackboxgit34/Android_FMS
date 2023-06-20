@@ -60,7 +60,6 @@ public class BillBanner extends AppCompatActivity implements RetrofitResponse {
     @Override
     public void onServiceResponse(int requestCode, Response<ResponseBody> response) {
         try
-
         {
             JSONObject result = new JSONObject(response.body().string());
             final String status = result.getString("Status");
@@ -68,14 +67,10 @@ public class BillBanner extends AppCompatActivity implements RetrofitResponse {
             if (hardBanner.equalsIgnoreCase("false"))
             {
                tvNothanks.setVisibility(View.VISIBLE);
-                tvNothanks.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view)
-                    {
-                        Intent intent = new Intent(BillBanner.this, DashboardActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                tvNothanks.setOnClickListener(view -> {
+                    Intent intent = new Intent(BillBanner.this, DashboardActivity.class);
+                    startActivity(intent);
+                    finish();
                 });
             }
             else
@@ -111,10 +106,7 @@ public class BillBanner extends AppCompatActivity implements RetrofitResponse {
                 statusFlag = true;
             }
 
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
 

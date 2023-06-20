@@ -273,6 +273,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_10"
+                            android:layout_gravity="center_vertical"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
                             android:textColor="@color/white"
@@ -305,6 +306,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_10"
+                            android:layout_gravity="center_vertical"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
                             android:textColor="@color/white"
@@ -341,39 +343,7 @@
                             android:textSize="@dimen/font_10"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
-                            android:textColor="@color/white"
-                            android:gravity="center_vertical"
-                            android:drawablePadding="@dimen/margin_x"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Filling fuel level"
-                            android:drawableStart="@drawable/ic_fuel_green"
-                            android:textSize="@dimen/font_12"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textColor="@color/white"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:layout_gravity="center_vertical"
-                            android:drawableTint="@color/primary_orange_secondary"
-                            android:drawablePadding="@dimen/margin_x"
-                            />
-                        <TextView
-                            android:id="@+id/tvFillingFuelLevel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/font_10"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_weight="1"
                             android:textColor="@color/white"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
@@ -405,6 +375,7 @@
                             android:textSize="@dimen/font_10"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/white"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
@@ -437,17 +408,148 @@
                             android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/blue"
                             android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
                             />
                     </LinearLayout>
 
-
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <TextView
+                android:id="@+id/fuelFillingLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:text="Fuel Filling Details"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginStart="@dimen/margin_x"
+                android:textSize="@dimen/font_16"
+                />
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/fuelFillingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_x"
+                android:visibility="gone"
+                android:background="@drawable/rect_outline"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/margin_x"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.5">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/fuelLevelText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Filling fuel level"
+                            android:drawableStart="@drawable/ic_fuel_green"
+                            android:textSize="@dimen/font_12"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:drawableTint="@color/primary_orange_secondary"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvFillingFuelLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_10"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_weight="1"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                        <TextView
+                            android:id="@+id/tvStartTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Filling Start Time"
+                            android:drawableStart="@drawable/ic_calendar"
+                            android:textSize="@dimen/font_12"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:drawableTint="@color/green"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+                        <TextView
+                            android:id="@+id/fillingStartTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_10"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/white"
+                            android:gravity="center_vertical"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                        <TextView
+                            android:id="@+id/tvEndTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Filling End Time"
+                            android:drawableStart="@drawable/ic_calendar"
+                            android:textSize="@dimen/font_12"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:drawableTint="@color/secondary_yellow"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+                        <TextView
+                            android:id="@+id/fillingEndTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_10"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:drawablePadding="@dimen/margin_x"
+                            />
+                    </LinearLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

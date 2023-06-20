@@ -51,6 +51,8 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
     var vehicleModel = ArrayList<AllDriverModel>()
     var vehicleList = ArrayList<String>()
     var list : ArrayList<DataX> = ArrayList<DataX>()
+    var bbid1 = ""
+    var bbid2 = ""
 
     private lateinit var mPresenter: DrToDrCompPresenterImpl
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,16 +125,24 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
         }
     }
 
-    fun getData(){
+    private fun getData(){
         if (driverId1 != "" && driverId2 != "") {
             binding.progressLayout.progressLayout.visibility = View.VISIBLE
+            if (driverId1.contains("I") || driverId1.contains("J") || driverId1.contains("C") || driverId1.contains("E")) {
+                bbid1 = driverId1
+                driverId1 = "0"
+            }
+            if (driverId2.contains("I") || driverId2.contains("J") || driverId2.contains("C") || driverId2.contains("E")) {
+                bbid2 = driverId2
+                driverId2 = "0"
+            }
             mPresenter.apiCallDriverToDriverComparisonReport(
                 CommonData.getCustIdFromDB(),
                 "$beginMonth%2012:00%20AM",
                 driverId1,
                 driverId2,
-                "",
-                "",
+                bbid1,
+                bbid2,
                 driverName1,
                 driverName2
             )
@@ -232,10 +242,6 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
         DistanceChart!!.description = desc
         data.setValueTextColor(Color.rgb(255, 255, 255))
         DistanceChart!!.setDrawValueAboveBar(true)
-//        val customRenderer = BarChartCustomRenderer(
-//            DistanceChart, DistanceChart!!.animator, DistanceChart!!.viewPortHandler
-//        )
-        // DistanceChart!!.renderer = customRenderer
     }
 
 

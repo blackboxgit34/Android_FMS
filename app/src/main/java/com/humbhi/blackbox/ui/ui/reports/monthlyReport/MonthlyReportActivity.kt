@@ -163,24 +163,19 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
             }
             R.id.tvPrevious -> {
                 startDateParam = CommonUtil.firstDayOfLastMonth()
-                endDateParam = CommonUtil.lastDayOfPreviousMonth()
-                binding.tvCurrent.setBackground(
-                    ContextCompat.getDrawable(
-                        this,
-                        R.color.primary_little_fade
-                    )
+                val lastDayOfPreviousMonth = CommonUtil.lastDayOfPreviousMonth()
+                endDateParam = lastDayOfPreviousMonth
+                binding.tvCurrent.background = ContextCompat.getDrawable(
+                    this,
+                    R.color.primary_little_fade
                 );
-                binding.tvPrevious.setBackground(
-                    ContextCompat.getDrawable(
-                        this,
-                        R.drawable.black_cyrve_rect
-                    )
+                binding.tvPrevious.background = ContextCompat.getDrawable(
+                    this,
+                    R.drawable.black_cyrve_rect
                 );
-                binding.tvBeforePrevious.setBackground(
-                    ContextCompat.getDrawable(
-                        this,
-                        R.color.primary_little_fade
-                    )
+                binding.tvBeforePrevious.background = ContextCompat.getDrawable(
+                    this,
+                    R.color.primary_little_fade
                 );
                 startlimit = 0
                 list.clear()

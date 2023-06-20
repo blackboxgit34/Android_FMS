@@ -63,16 +63,16 @@ class BillAccountActivity : AppCompatActivity(),RetrofitResponse {
     }
 
     private fun setupTabLayout() {
-        binding.tabLayout.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                OnTabTapped(tab.getPosition())
+                OnTabTapped(tab.position)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
 
             }
             override fun onTabReselected(tab: TabLayout.Tab) {
-                OnTabTapped(tab.getPosition())
+                OnTabTapped(tab.position)
             }
         })
     }
