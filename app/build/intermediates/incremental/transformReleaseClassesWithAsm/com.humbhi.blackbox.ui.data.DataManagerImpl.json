@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.data.DataManagerImpl","classAnnotations":[],"interfaces":["com.humbhi.blackbox.ui.data.DataManager","com.humbhi.blackbox.ui.data.db.DBHelper","com.humbhi.blackbox.ui.data.network.api.ApiHelper"],"superClasses":["java.lang.Object"]}

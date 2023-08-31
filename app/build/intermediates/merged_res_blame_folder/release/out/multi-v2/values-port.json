@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-47:/values-port/values-port.xml",
+            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-57:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\af3bedfada838e1ac72c01174ced37ba\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\313e3ca2406341ae13b69edfc5c34d77\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

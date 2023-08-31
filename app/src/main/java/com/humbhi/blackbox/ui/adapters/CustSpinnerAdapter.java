@@ -16,7 +16,7 @@ public class CustSpinnerAdapter {
     {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(mContext, R.layout.spinner_text,list)
         {
-            @Override
+       @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent)
             {
                 View view = super.getDropDownView(position, convertView, parent);

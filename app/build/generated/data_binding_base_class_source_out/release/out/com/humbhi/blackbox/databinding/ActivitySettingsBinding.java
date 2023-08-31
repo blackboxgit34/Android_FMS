@@ -4,67 +4,58 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
-import com.skydoves.colorpickerview.ColorPickerView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivitySettingsBinding implements ViewBinding {
   @NonNull
-  private final LinearLayoutCompat rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
-  public final ColorPickerView colorPickerView;
+  public final AppCompatEditText etSearchBar;
 
   @NonNull
-  public final LinearLayout llBus;
+  public final TextView loadMore;
 
   @NonNull
-  public final LinearLayout llCars;
-
-  @NonNull
-  public final LinearLayout llTrucks;
-
-  @NonNull
-  public final RecyclerView rvRecycler;
+  public final ProgressBarBinding progress;
 
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
   @NonNull
-  public final TextView tvHeading;
+  public final LinearLayoutCompat upperLayout;
 
   @NonNull
-  public final TextView tvSelectVehicle;
+  public final RecyclerView vehicleList;
 
-  private ActivitySettingsBinding(@NonNull LinearLayoutCompat rootView,
-      @NonNull ColorPickerView colorPickerView, @NonNull LinearLayout llBus,
-      @NonNull LinearLayout llCars, @NonNull LinearLayout llTrucks,
-      @NonNull RecyclerView rvRecycler, @NonNull ToolbarLayoutBinding toolbar,
-      @NonNull TextView tvHeading, @NonNull TextView tvSelectVehicle) {
+  private ActivitySettingsBinding(@NonNull RelativeLayout rootView,
+      @NonNull AppCompatEditText etSearchBar, @NonNull TextView loadMore,
+      @NonNull ProgressBarBinding progress, @NonNull ToolbarLayoutBinding toolbar,
+      @NonNull LinearLayoutCompat upperLayout, @NonNull RecyclerView vehicleList) {
     this.rootView = rootView;
-    this.colorPickerView = colorPickerView;
-    this.llBus = llBus;
-    this.llCars = llCars;
-    this.llTrucks = llTrucks;
-    this.rvRecycler = rvRecycler;
+    this.etSearchBar = etSearchBar;
+    this.loadMore = loadMore;
+    this.progress = progress;
     this.toolbar = toolbar;
-    this.tvHeading = tvHeading;
-    this.tvSelectVehicle = tvSelectVehicle;
+    this.upperLayout = upperLayout;
+    this.vehicleList = vehicleList;
   }
 
   @Override
   @NonNull
-  public LinearLayoutCompat getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -89,35 +80,24 @@ public final class ActivitySettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.colorPickerView;
-      ColorPickerView colorPickerView = ViewBindings.findChildViewById(rootView, id);
-      if (colorPickerView == null) {
+      id = R.id.etSearchBar;
+      AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
+      if (etSearchBar == null) {
         break missingId;
       }
 
-      id = R.id.llBus;
-      LinearLayout llBus = ViewBindings.findChildViewById(rootView, id);
-      if (llBus == null) {
+      id = R.id.loadMore;
+      TextView loadMore = ViewBindings.findChildViewById(rootView, id);
+      if (loadMore == null) {
         break missingId;
       }
 
-      id = R.id.llCars;
-      LinearLayout llCars = ViewBindings.findChildViewById(rootView, id);
-      if (llCars == null) {
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
         break missingId;
       }
-
-      id = R.id.llTrucks;
-      LinearLayout llTrucks = ViewBindings.findChildViewById(rootView, id);
-      if (llTrucks == null) {
-        break missingId;
-      }
-
-      id = R.id.rvRecycler;
-      RecyclerView rvRecycler = ViewBindings.findChildViewById(rootView, id);
-      if (rvRecycler == null) {
-        break missingId;
-      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
 
       id = R.id.toolbar;
       View toolbar = ViewBindings.findChildViewById(rootView, id);
@@ -126,20 +106,20 @@ public final class ActivitySettingsBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      id = R.id.tvHeading;
-      TextView tvHeading = ViewBindings.findChildViewById(rootView, id);
-      if (tvHeading == null) {
+      id = R.id.upperLayout;
+      LinearLayoutCompat upperLayout = ViewBindings.findChildViewById(rootView, id);
+      if (upperLayout == null) {
         break missingId;
       }
 
-      id = R.id.tvSelectVehicle;
-      TextView tvSelectVehicle = ViewBindings.findChildViewById(rootView, id);
-      if (tvSelectVehicle == null) {
+      id = R.id.vehicleList;
+      RecyclerView vehicleList = ViewBindings.findChildViewById(rootView, id);
+      if (vehicleList == null) {
         break missingId;
       }
 
-      return new ActivitySettingsBinding((LinearLayoutCompat) rootView, colorPickerView, llBus,
-          llCars, llTrucks, rvRecycler, binding_toolbar, tvHeading, tvSelectVehicle);
+      return new ActivitySettingsBinding((RelativeLayout) rootView, etSearchBar, loadMore,
+          binding_progress, binding_toolbar, upperLayout, vehicleList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

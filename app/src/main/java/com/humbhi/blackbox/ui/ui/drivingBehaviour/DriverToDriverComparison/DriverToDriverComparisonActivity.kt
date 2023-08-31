@@ -1,13 +1,11 @@
 package com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverToDriverComparison
 
+import CustomDatePickerFragment
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.DatePicker
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
@@ -20,7 +18,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityDriverToDriverComparisonBinding
-import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter
 import com.humbhi.blackbox.ui.data.DataManagerImpl
 import com.humbhi.blackbox.ui.data.db.CommonData
 import com.humbhi.blackbox.ui.data.models.AllDriverModel
@@ -36,9 +34,10 @@ import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Response
 import java.io.IOException
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
-class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListener, DrToDrComparisonView, RetrofitResponse {
+class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListener, DrToDrComparisonView, RetrofitResponse, CustomDatePickerFragment.OnDateSelectedListener {
     private lateinit var binding: ActivityDriverToDriverComparisonBinding
     var beginMonth = ""
     var endMonth = ""
@@ -53,6 +52,7 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
     var list : ArrayList<DataX> = ArrayList<DataX>()
     var bbid1 = ""
     var bbid2 = ""
+    var flag = ""
 
     private lateinit var mPresenter: DrToDrCompPresenterImpl
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,7 +113,7 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
                 }
             }
             R.id.tvStartDate ->{
-                datepicker("1")
+                showDatePicker()
             }
             R.id.tvEndDate ->{
                 datepicker("2")
@@ -153,44 +153,17 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
     }
 
     private fun datepicker(flag: String) {
-        val cal = Calendar.getInstance()
-        cal.add(Calendar.YEAR, 0) // to get back 13 year add -13
-        val previous_year = cal.time
-        val calendar = Calendar.getInstance()
-        val datePickerDialog = DatePickerDialog(
-            this,
-            { view, year, monthOfYear, dayOfMonth ->
-                var monthOfYear = monthOfYear
-                val x: String
-                val y: String
-                if (monthOfYear < 9) {
-                    monthOfYear = monthOfYear + 1
-                    x = "0$monthOfYear"
-                } else {
-                    x = (monthOfYear + 1).toString()
-                }
-                y = if (dayOfMonth < 10) {
-                    "0$dayOfMonth"
-                } else {
-                    dayOfMonth.toString()
-                }
-                if (flag == "1") {
-                    beginMonth = "$year-$x-01"
-                    binding.tvStartDate.text = "$x-$year"
-                }
-            }, calendar[Calendar.YEAR], calendar[Calendar.MONTH],
-            calendar[Calendar.DAY_OF_MONTH]
-        )
-        try {
-            picker = datePickerDialog.datePicker
-            calendar.add(Calendar.MONTH, 0)
-            picker!!.maxDate = calendar.timeInMillis
-            calendar.add(Calendar.MONTH, -5)
-            picker!!.minDate = calendar.timeInMillis
-        } catch (e: Exception) {
-            picker = datePickerDialog.datePicker
-        }
-        datePickerDialog.show()
+//        RackMonthPicker(this)
+//            .setLocale(Locale.ENGLISH)
+//            .setPositiveButton { month, startDate, endDate, year, monthLabel ->
+//                beginMonth = "$month/$startDate/$year"
+//                binding.tvStartDate.text = monthLabel.toString()
+//                list.clear()
+//            }
+//            .setNegativeButton {
+//                it.dismiss()
+//            }
+//            .show()
     }
 
     private fun setMonthlyComparisonChart(list: ArrayList<DataX>) {
@@ -274,7 +247,11 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
         set.valueTextSize = 12f
         return set
     }
-
+    private fun showDatePicker() {
+        val datePickerFragment = CustomDatePickerFragment()
+        datePickerFragment.setOnDateSelectedListener(this)
+        datePickerFragment.show(supportFragmentManager, "datePicker")
+    }
 
     override fun getDrivingLimitData(driverToDriverCompModel: DriverToDriverCompModel) {
         list = driverToDriverCompModel.data as ArrayList<DataX>
@@ -284,7 +261,10 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {
@@ -305,20 +285,19 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
         //Getting the instance of AutoCompleteTextView
         binding.spDriver1.threshold = 1 //will start working from first character
 
-        binding.spDriver1.setAdapter(CustSpinnerAdapter.getAdapter(this, vehicleList)) //setting the adapter data into the AutoCompleteTextView
+        val adapter = SearchableAdapter(this, vehicleList)
+
+        binding.spDriver1.setAdapter(adapter) //setting the adapter data into the AutoCompleteTextView
 
         binding.spDriver1.setOnItemClickListener { parent, view, position, id ->
-            val selection = parent.getItemAtPosition(position) as String
-            var pos = -1
-
-            for (i in vehicleList.indices) {
-                if (vehicleList[i] == selection) {
-                    pos = i
-                    break
-                }
+            val originalData: ArrayList<String> = adapter.originalData
+            val selection = originalData[position]
+            val originalPosition: Int = adapter.getOriginalPosition(position)
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                driverId1 = vehicleModel[originalPosition].value
+                driverName1 = vehicleModel[originalPosition].text
             }
-            driverId1 = vehicleModel[pos].value
-            driverName1 = vehicleModel[pos].text
         }
         binding.spDriver1.setOnFocusChangeListener { v, hasFocus -> if (hasFocus) binding.spDriver1.showDropDown() }
 
@@ -332,20 +311,19 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
         //Getting the instance of AutoCompleteTextView
         binding.spDriver2.threshold = 1 //will start working from first character
 
-        binding.spDriver2.setAdapter(CustSpinnerAdapter.getAdapter(this, vehicleList)) //setting the adapter data into the AutoCompleteTextView
+        val adapter = SearchableAdapter(this, vehicleList)
+
+        binding.spDriver2.setAdapter(SearchableAdapter(this, vehicleList)) //setting the adapter data into the AutoCompleteTextView
 
         binding.spDriver2.setOnItemClickListener { parent, view, position, id ->
-            val selection = parent.getItemAtPosition(position) as String
-            var pos = -1
-
-            for (i in vehicleList.indices) {
-                if (vehicleList[i] == selection) {
-                    pos = i
-                    break
-                }
+            val originalData: ArrayList<String> = adapter.originalData
+            val selection = originalData[position]
+            val originalPosition: Int = adapter.getOriginalPosition(position)
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                driverId2 = vehicleModel[originalPosition].value
+                driverName2 = vehicleModel[originalPosition].text
             }
-            driverId2 = vehicleModel[pos].value
-            driverName2 = vehicleModel[pos].text
         }
         binding.spDriver2.setOnFocusChangeListener { v, hasFocus -> if (hasFocus) binding.spDriver2.showDropDown() }
 
@@ -382,5 +360,11 @@ class DriverToDriverComparisonActivity : AppCompatActivity(), View.OnClickListen
                     }
                 }
         }
+    }
+
+    override fun onDateSelected(year: Int, month: Int) {
+        list.clear()
+        beginMonth =  "$month/01/$year"
+        binding.tvStartDate.text = "$month/$year"
     }
 }

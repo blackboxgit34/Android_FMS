@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_v"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/margin_x">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin_3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvSNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/font_14"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_x"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/yellow"/>
+
+                <TextView
+                    android:id="@+id/tvDriverName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_x"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Kunal"
+                    android:layout_below="@id/tvSNo"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12" />
+                    <TextView
+                        android:id="@+id/tvAS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Average Score : 70.8"
+                        android:textColor="@color/med_grey_two"
+                        android:textSize="@dimen/font_12"
+                        android:layout_marginStart="@dimen/margin_x"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:layout_below="@id/tvDriverName"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_medium"/>
+                <LinearLayout
+                    android:layout_below="@id/tvAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_x"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvRamarks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remarks: Risky Driver"
+                        android:textColor="@color/med_grey_two"
+                        android:textSize="@dimen/font_12"
+                        android:fontFamily="@font/poppins_medium"/>
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rating="3.5"
+                        android:numStars="5"
+                        android:stepSize="0.5"
+                        android:layout_marginStart="@dimen/margin_30"
+                        android:layout_gravity="center"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:progressTint="#FFCC01"
+                        android:isIndicator="true"/>
+                </LinearLayout>
+            </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>
+

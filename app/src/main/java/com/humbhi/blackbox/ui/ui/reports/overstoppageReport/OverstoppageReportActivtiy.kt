@@ -1,11 +1,13 @@
 package com.humbhi.blackbox.ui.ui.reports.overstoppageReport
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.DatePicker
 import android.widget.TextView
+import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +22,8 @@ import com.humbhi.blackbox.ui.data.models.OverStoppageData
 import com.humbhi.blackbox.ui.data.models.OverStoppageResponseModel
 import com.humbhi.blackbox.ui.data.network.RestClient
 import com.humbhi.blackbox.ui.utils.CommonUtil
+import com.humbhi.blackbox.ui.utils.Constants
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -30,9 +34,13 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
     private lateinit var endDateParam: String
     private lateinit var mPresenter: OverStoppagePresenter
     var picker: DatePicker? = null
+    var startTime = ""
+    var endTime = ""
     var startlimit = 0
     var limit = 20
     var list : java.util.ArrayList<OverStoppageData> = java.util.ArrayList()
+    var customStartDateSelcted = ""
+    var customEndDateSelcted = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,8 +71,8 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
     private fun hitApi() {
         binding.progressLayout.progressLayout.visibility = View.VISIBLE
         mPresenter.hitOverStoppageReportApi(
-            "$startDateParam%2012:00%20AM",
-            endDateParam + "%2011:59%20PM",
+            startDateParam+startTime,
+            endDateParam+endTime,
             "",
             CommonData.getCustIdFromDB(),
             "",
@@ -80,13 +88,28 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
     private fun dateFilter() {
         startDateParam = CommonUtil.getCurrentDate()
         endDateParam = CommonUtil.getCurrentDate()
+        startTime = "%2000:00:00"
+        val enddate = Calendar.getInstance().time
+        val sdf = SimpleDateFormat("HH:mm:ss")
+        binding.llCustomDateRange.tvStartTime.setText("12:00 AM")
+        binding.llCustomDateRange.tvEndTime.setText("11:59 PM")
+        endTime =  "%20" + sdf.format(enddate)
         binding.tvToday.setOnClickListener(this)
         binding.tvYesterday.setOnClickListener(this)
         binding.tvWeek.setOnClickListener(this)
         binding.tvCustom.setOnClickListener(this)
-        binding.tvStartDate.setOnClickListener(this)
-        binding.tvEndDate.setOnClickListener(this)
-        binding.btnAppy.setOnClickListener(this)
+        binding.llCustomDateRange.tvStartTime.text = "12:00 AM"
+        val parts = sdf.format(enddate).split(":")
+        val hour = parts[0].toInt()
+        val minute = parts[1].toInt()
+        val hourOfDay = if (hour.toInt() == 0) 12 else hour.toInt() % 12
+        val amPm = if (hour.toInt() < 12) "AM" else "PM"
+        binding.llCustomDateRange.tvEndTime.text = String.format("%02d:%02d %s", hourOfDay, minute, amPm)
+        binding.llCustomDateRange.tvStartDate.setOnClickListener(this)
+        binding.llCustomDateRange.tvEndDate.setOnClickListener(this)
+        binding.llCustomDateRange.tvStartTime.setOnClickListener(this)
+        binding.llCustomDateRange.tvEndTime.setOnClickListener(this)
+        binding.llCustomDateRange.btnAppy.setOnClickListener(this)
     }
     override fun getOverStoppageReportResponse(overStoppageReportResponseModel: OverStoppageResponseModel) {
         val layoutManager = LinearLayoutManager(this)
@@ -100,12 +123,12 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
         )
         binding.rvRecycler.adapter = adapter
         binding.rvRecycler.scrollToPosition(startlimit)
-        if(totalRecords>20){
-            binding.loadMore.visibility = View.VISIBLE
+         if(totalRecords==list.size){
+            binding.loadMore.visibility = View.GONE
         }
         binding.loadMore.setOnClickListener {
             if(list.size<totalRecords) {
-                binding.llCustomDateRange.visibility = View.GONE
+                binding.llCustomDateRange.customeDate.visibility = View.GONE
                 startlimit += 20
                 hitApi()
             }
@@ -113,7 +136,10 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {
@@ -137,6 +163,10 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                 val currentDate = CommonUtil.getCurrentDate()
                 startDateParam = currentDate
                 endDateParam = currentDate
+                startTime = "%2000:00:00"
+                val enddate = Calendar.getInstance().time
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                endTime =  "%20" + sdf.format(enddate)
                 binding.tvYesterday.background = ContextCompat.getDrawable(
                     this,
                     R.color.primary_little_fade
@@ -153,7 +183,7 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                     this,
                     R.color.primary_little_fade
                 )
-                binding.llCustomDateRange.visibility = View.GONE
+                binding.llCustomDateRange.customeDate.visibility = View.GONE
                 startlimit = 0
                 list.clear()
                 hitApi()
@@ -161,7 +191,9 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
             R.id.tvYesterday -> {
                 val yesterdayDate = CommonUtil.getYesterdayDate()
                 startDateParam = yesterdayDate
-                endDateParam = CommonUtil.getCurrentDate()
+                endDateParam = CommonUtil.getYesterdayDate()
+                startTime = "%2000:00:00"
+                endTime = "%2023:59:00"
                 binding.tvYesterday.background = ContextCompat.getDrawable(
                     this,
                     R.drawable.black_cyrve_rect
@@ -178,7 +210,7 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                     this,
                     R.color.primary_little_fade
                 )
-                binding.llCustomDateRange.visibility = View.GONE
+                binding.llCustomDateRange.customeDate.visibility = View.GONE
                 startlimit = 0
                 list.clear()
                 hitApi()
@@ -188,6 +220,10 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                 val endDate = CommonUtil.getWeekDate()
                 startDateParam = endDate
                 endDateParam = currentDate
+                startTime = "%2000:00:00"
+                val enddate = Calendar.getInstance().time
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                endTime =  "%20" + sdf.format(enddate)
                 binding.tvYesterday.background = ContextCompat.getDrawable(
                     this,
                     R.color.primary_little_fade
@@ -204,7 +240,7 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                     this,
                     R.color.primary_little_fade
                 )
-                binding.llCustomDateRange.visibility = View.GONE
+                binding.llCustomDateRange.customeDate.visibility = View.GONE
                 startlimit = 0
                 list.clear()
                 hitApi()
@@ -226,7 +262,7 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                     this,
                     R.color.primary_little_fade
                 )
-                binding.llCustomDateRange.visibility = View.VISIBLE
+                binding.llCustomDateRange.customeDate.visibility = View.VISIBLE
             }
             R.id.tvStartDate -> {
                 datepicker("1")
@@ -234,11 +270,19 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
             R.id.tvEndDate -> {
                 datepicker("2")
             }
+            R.id.tvStartTime ->{
+                startTime()
+            }
+            R.id.tvEndTime ->{
+                endTime()
+            }
             R.id.btnAppy -> {
-                binding.llCustomDateRange.visibility = View.GONE
-                startlimit = 0
-                list.clear()
-                hitApi()
+                if(!customStartDateSelcted.equals("") && !customEndDateSelcted.equals("")) {
+                    startlimit = 0
+                    binding.llCustomDateRange.customeDate.visibility = View.GONE
+                    list.clear()
+                    hitApi()
+                }
             }
         }
     }
@@ -267,11 +311,14 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
                 }
                 if (flag == "1") {
                     startDateParam = "$year-$x-$y"
-                    binding.tvStartDate.text = "$y-$x-$year"
+                    customStartDateSelcted = startDateParam
+                    binding.llCustomDateRange.tvStartDate.setText("$y-$x-$year")
                 }
                 if (flag == "2") {
+                    endTime = "%2011:59:00"
                     endDateParam = "$year-$x-$y"
-                    binding.tvEndDate.text = "$y-$x-$year"
+                    customEndDateSelcted = endDateParam
+                    binding.llCustomDateRange.tvEndDate.setText("$y-$x-$year")
                 }
             }, calendar[Calendar.YEAR], calendar[Calendar.MONTH],
             calendar[Calendar.DAY_OF_MONTH]
@@ -286,4 +333,44 @@ class OverstoppageReportActivtiy : AppCompatActivity(),OverStoppageReportView,Vi
         }
         datePickerDialog.show()
     }
+    private fun endTime() {
+        val currentTime = Calendar.getInstance()
+        val hour = currentTime.get(Calendar.HOUR_OF_DAY)
+        val minute = currentTime.get(Calendar.MINUTE)
+        val timePickerDialog = TimePickerDialog(this,
+            { view: TimePicker?, hourOfDay: Int, minute: Int ->
+                val hour = hourOfDay % 12
+                binding.llCustomDateRange.tvEndTime.setText(
+                    String.format(
+                        "%02d:%02d %s",
+                        if (hour == 0) 12 else hour,
+                        minute,
+                        if (hourOfDay < 12) "AM" else "PM"
+                    )
+                )
+                endTime = String.format("%%%02d%02d:%02d:00", 20, hourOfDay, minute)
+            }, hour, minute, false
+        )
+        timePickerDialog.show()
+    }
+
+    private fun startTime() {
+        val hour = 0
+        val minute = 0
+        val timePickerDialog = TimePickerDialog(this,
+            { view: TimePicker?, hourOfDay: Int, minute: Int ->
+                val hour = hourOfDay % 12
+                binding.llCustomDateRange.tvStartTime.setText(
+                    String.format(
+                        "%02d:%02d %s",
+                        if (hour == 0) 12 else hour, minute,
+                        if (hourOfDay < 12) "AM" else "PM"
+                    )
+                )
+                startTime = String.format("%%%02d%02d:%02d:00", 20, hourOfDay, minute)
+            }, hour, minute, false
+        )
+        timePickerDialog.show()
+    }
+
 }

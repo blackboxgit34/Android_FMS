@@ -170,4 +170,8 @@
     <string name="rsa_url">RSA Key Url</string>
     <string name="access_code">Access Code</string>
     <string name="title_activity_status">CCAvenueMobile</string>
+    <string name="time_out">Connection time out, please try again</string>
+    <string name="dns_error">Connectivity issue</string>
+    <string name="no_network">No internet available, please try again </string>
+    <string name="something_went_wrong">Something went wrong</string>
 </resources>

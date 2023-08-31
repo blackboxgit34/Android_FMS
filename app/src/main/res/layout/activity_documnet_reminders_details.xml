@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/primary_little_fade"
+    tools:context=".ui.ui.fms.DocumnetRemindersDetails">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVehicles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="@dimen/margin_x"
+        android:layout_marginTop="@dimen/margin_x"
+        android:layout_marginEnd="@dimen/margin_x"
+        android:layout_marginBottom="@dimen/margin_x"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/fms_vehicles_list" />
+
+    <include
+        android:id="@+id/progress"
+        android:visibility="gone"
+        layout="@layout/progress_bar"/>
+
+</RelativeLayout>

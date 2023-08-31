@@ -133,8 +133,8 @@ class SafeDriversActivity : AppCompatActivity(), RetrofitResponse,View.OnClickLi
                     adapter = SafeDriverAdapter(this, list)
                     binding.rvRecycler.adapter = adapter
                     binding.rvRecycler.scrollToPosition(startlimit)
-                    if(totalRecords>20){
-                        binding.loadMore.visibility = View.VISIBLE
+                    if(list.size==totalRecords){
+                        binding.loadMore.visibility = View.GONE
                     }
                     binding.loadMore.setOnClickListener {
                         if(list.size<totalRecords) {
@@ -151,9 +151,7 @@ class SafeDriversActivity : AppCompatActivity(), RetrofitResponse,View.OnClickLi
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.tvToday ->{
-                val rackMonthPicker:  RackMonthPicker
-
-                RackMonthPicker(this)
+                    RackMonthPicker(this)
                     .setLocale(Locale.ENGLISH)
                     .setPositiveButton { month, startDate, endDate, year, monthLabel ->
                         startDateParam = "$month/$startDate/$year"
@@ -162,7 +160,10 @@ class SafeDriversActivity : AppCompatActivity(), RetrofitResponse,View.OnClickLi
                         list.clear()
                         getDriversReport()
                     }
-                    .setNegativeButton {  }.show()
+                    .setNegativeButton {
+                        it.dismiss()
+                    }
+                    .show()
 
             }
             R.id.tvYesterday ->{

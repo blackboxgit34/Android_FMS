@@ -1,14 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/toolBar"/>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_x"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="@dimen/font_16"
+        android:textStyle="bold"/>
+
+    <TextView
         android:id="@+id/textView1"
-        android:layout_width="238dp"
-        android:layout_height="40dp"
-        android:layout_x="55dp"
-        android:layout_y="157dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_x"
+        android:textSize="@dimen/font_12"
+        android:layout_below="@id/header"
+        android:text=""
+        android:textColor="@color/med_grey_two"
+        android:fontFamily="@font/poppins_regular"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginEnd="@dimen/margin_x"
+        android:textStyle="bold"
+        android:layout_below="@id/textView1"
+        android:layout_marginBottom="@dimen/margin_x"
+        android:textSize="@dimen/font_12"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/med_grey_two"
+        android:text="Conditions Apply."/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

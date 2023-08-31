@@ -1,5 +1,7 @@
 package com.humbhi.blackbox.ui.ui.reports.monthlyReport
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.DistanceReportResponseModel
@@ -7,6 +9,7 @@ import com.humbhi.blackbox.ui.data.models.MonthlyDataReponseModel
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
 import com.humbhi.blackbox.ui.ui.reports.distanceReport.DistanceReportView
+import java.net.SocketTimeoutException
 
 class MonthlyReportPresenterImpl(
     private val mMonthlyReportView: MonthlyReportView,
@@ -62,7 +65,17 @@ class MonthlyReportPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mMonthlyReportView.isHideLoading()
-                            mMonthlyReportView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mMonthlyReportView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mMonthlyReportView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mMonthlyReportView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mMonthlyReportView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

@@ -4,8 +4,13 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -17,10 +22,22 @@ import java.lang.String;
 
 public final class ActivityManageGeofenceBinding implements ViewBinding {
   @NonNull
-  private final LinearLayoutCompat rootView;
+  private final RelativeLayout rootView;
+
+  @NonNull
+  public final AppCompatEditText etSearchBar;
 
   @NonNull
   public final LinearLayoutCompat llNoData;
+
+  @NonNull
+  public final TextView loadMore;
+
+  @NonNull
+  public final LinearLayout mainLayout;
+
+  @NonNull
+  public final ProgressBarBinding progress;
 
   @NonNull
   public final RecyclerView rvRecycler;
@@ -28,18 +45,28 @@ public final class ActivityManageGeofenceBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
-  private ActivityManageGeofenceBinding(@NonNull LinearLayoutCompat rootView,
-      @NonNull LinearLayoutCompat llNoData, @NonNull RecyclerView rvRecycler,
-      @NonNull ToolbarLayoutBinding toolbar) {
+  @NonNull
+  public final AppCompatTextView tvAdd;
+
+  private ActivityManageGeofenceBinding(@NonNull RelativeLayout rootView,
+      @NonNull AppCompatEditText etSearchBar, @NonNull LinearLayoutCompat llNoData,
+      @NonNull TextView loadMore, @NonNull LinearLayout mainLayout,
+      @NonNull ProgressBarBinding progress, @NonNull RecyclerView rvRecycler,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull AppCompatTextView tvAdd) {
     this.rootView = rootView;
+    this.etSearchBar = etSearchBar;
     this.llNoData = llNoData;
+    this.loadMore = loadMore;
+    this.mainLayout = mainLayout;
+    this.progress = progress;
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
+    this.tvAdd = tvAdd;
   }
 
   @Override
   @NonNull
-  public LinearLayoutCompat getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -64,11 +91,36 @@ public final class ActivityManageGeofenceBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.etSearchBar;
+      AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
+      if (etSearchBar == null) {
+        break missingId;
+      }
+
       id = R.id.llNoData;
       LinearLayoutCompat llNoData = ViewBindings.findChildViewById(rootView, id);
       if (llNoData == null) {
         break missingId;
       }
+
+      id = R.id.loadMore;
+      TextView loadMore = ViewBindings.findChildViewById(rootView, id);
+      if (loadMore == null) {
+        break missingId;
+      }
+
+      id = R.id.main_layout;
+      LinearLayout mainLayout = ViewBindings.findChildViewById(rootView, id);
+      if (mainLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
 
       id = R.id.rvRecycler;
       RecyclerView rvRecycler = ViewBindings.findChildViewById(rootView, id);
@@ -83,8 +135,14 @@ public final class ActivityManageGeofenceBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityManageGeofenceBinding((LinearLayoutCompat) rootView, llNoData, rvRecycler,
-          binding_toolbar);
+      id = R.id.tvAdd;
+      AppCompatTextView tvAdd = ViewBindings.findChildViewById(rootView, id);
+      if (tvAdd == null) {
+        break missingId;
+      }
+
+      return new ActivityManageGeofenceBinding((RelativeLayout) rootView, etSearchBar, llNoData,
+          loadMore, mainLayout, binding_progress, rvRecycler, binding_toolbar, tvAdd);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

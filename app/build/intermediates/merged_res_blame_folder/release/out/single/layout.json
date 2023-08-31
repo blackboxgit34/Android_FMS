@@ -1,518 +1,630 @@
 [
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_no_driving_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_no_driving_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/harsh_break_chart_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/harsh_break_chart_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_status.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_status.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_bill_banner.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_bill_banner.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/password_dialog.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/password_dialog.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/update_email.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/update_email.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_manage_geofence.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_manage_geofence.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overstoppage_report_activtiy.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overstoppage_report_activtiy.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/ais_vehicle_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/ais_vehicle_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_route_play_initial_selection.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_route_play_initial_selection.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/toolbar_layout.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/toolbar_layout.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_working_hour_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_working_hour_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/update_dialog.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/update_dialog.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dialog_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dialog_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_live_tracking.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_live_tracking.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dialog_confirm.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dialog_confirm.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_login.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_login.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/toolbar_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/toolbar_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_multi_line_chart.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_multi_line_chart.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/chnage_vehicle_type_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/chnage_vehicle_type_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_add_on_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_on_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_fillin_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_fillin_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/monthly_report_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/monthly_report_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fragment_vehicle_status.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fragment_vehicle_status.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_temperature_detail_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_detail_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/overspeed_alertadapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/overspeed_alertadapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/manage_geofence_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/manage_geofence_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_initial.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_initial.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_temperature_sensor_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_sensor_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_banner.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_banner.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_safe_drivers.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_safe_drivers.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/temp_report_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/temp_report_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_consolidate_voilation_details.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_consolidate_voilation_details.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_driver_monthly_comparison.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_driver_monthly_comparison.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/overspeed_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/alert_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/alert_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_immobilize.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_immobilize.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overstop_alert.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overstop_alert.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/distance_report_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/distance_report_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/harsh_acc_report_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/harsh_acc_report_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/vehicle_filterbottomsheet.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_filterbottomsheet.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/detail_summery_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/detail_summery_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_temperature_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_temperature_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_theft_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_theft_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_theft_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_theft_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/marker_layout_info.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/marker_layout_info.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/harsh_acc_chart_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_acc_chart_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overspeed_alert.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overspeed_alert.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_forgot_password.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_forgot_password.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overspeed.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overspeed.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fragment_dashboard.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fragment_dashboard.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/rash_turn_chart_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/rash_turn_chart_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/working_hour_detail_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/working_hour_detail_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/city_bank_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/city_bank_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fuel_filling_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_filling_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_rod_disconnections.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_rod_disconnections.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_working_hour_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_working_hour_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_score_card.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_score_card.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fueltheftdetailadapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fueltheftdetailadapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/ais_vehicle_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/ais_vehicle_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_daily_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_daily_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_filling_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_filling_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/approve_otp_layout.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/approve_otp_layout.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_locate_my_vehicle.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_locate_my_vehicle.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_monthly_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_monthly_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_manage_geofence.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_manage_geofence.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/score_card_layout.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/score_card_layout.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_add_on_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_add_on_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_locate_my_vehicle.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_locate_my_vehicle.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fuel_rod_disconnection_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fuel_rod_disconnection_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_alerts_on_off_settings.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_alerts_on_off_settings.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_route_play_back.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_route_play_back.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_notification.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_notification.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dailyreport_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dailyreport_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/overstopalert_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/overstopalert_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_harsh_breaking.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_harsh_breaking.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fuel_filling_detail_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_filling_detail_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fuel_filling_detail_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fuel_filling_detail_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_rash_turn.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_rash_turn.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fueltheftdetailadapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fueltheftdetailadapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_dr_behav_consolidate_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_dr_behav_consolidate_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_dr_behav_consolidate_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_dr_behav_consolidate_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_distance_report_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_distance_report_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_live_car.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_live_car.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_main_payment.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_main_payment.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_rash_turn.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_rash_turn.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/temp_report_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/temp_report_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dialog_dash.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dialog_dash.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_splash.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_splash.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_documnet_reminders_details.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_documnet_reminders_details.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_score_card.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_score_card.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/harsh_break_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/harsh_break_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_overstop_alert.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overstop_alert.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overspeed_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overspeed_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_bill_banner.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_bill_banner.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/monthly_report_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/monthly_report_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fuel_rod_disconnection_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_rod_disconnection_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_status.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_status.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_live_car.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_live_car.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/no_driving_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/no_driving_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_overspeed_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/manage_geofence_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/manage_geofence_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_distance_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_distance_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fleet_reports_dashboard.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fleet_reports_dashboard.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_graph_java.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_graph_java.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/overstopalert_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/overstopalert_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_route_playback_selection.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_playback_selection.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_disconnection_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_disconnection_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/layout_alert_ok_cancel.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/layout_alert_ok_cancel.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_harsh_acceleration.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_harsh_acceleration.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_harsh_acceleration.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_harsh_acceleration.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_safe_drivers.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_safe_drivers.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_rod_disconnection.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_rod_disconnection.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_distance_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_distance_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_call_us.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_call_us.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_consolidate_voilation_details.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_consolidate_voilation_details.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/vehicle_status.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_status.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/bills_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/bills_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_overstoppage_report_activtiy.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overstoppage_report_activtiy.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/common_detail_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/common_detail_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/all_icons_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/all_icons_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/safe_driver_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/safe_driver_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/overstoppage_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/overstoppage_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_document_reminder.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_document_reminder.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_route_play_back.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_play_back.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_graph_java.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_graph_java.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/city_bank_layout.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/city_bank_layout.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_change_password.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_change_password.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/no_internet.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/no_internet.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/harsh_acc_chart_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/harsh_acc_chart_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/consolidate_voilation_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/consolidate_voilation_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/password_dialog.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/password_dialog.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_settings.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_settings.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_glocation_on_map.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_glocation_on_map.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_harsh_breaking.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_harsh_breaking.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_monthly_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_monthly_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/vehiclestatus_layout.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/vehiclestatus_layout.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/no_internet.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/no_internet.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_dashboard.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_dashboard.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/distance_report_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/distance_report_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_fillin_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_fillin_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_vehicle_management.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_vehicle_management.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/bills_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/bills_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_login.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_login.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_vehicle_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_vehicle_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_call_us.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_call_us.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/harsh_acc_report_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_acc_report_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fms_vehicle_list_details.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fms_vehicle_list_details.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_bill_account.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_bill_account.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_ignition_alert_setting.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_ignition_alert_setting.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/temp_detail_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/temp_detail_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehicle_alert_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehicle_alert_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/consolidate_voilation_detail_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/consolidate_voilation_detail_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_alerts_on_off_settings.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_alerts_on_off_settings.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_theft_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_theft_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_splash.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_splash.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/harsh_break_chart_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_break_chart_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/overspeed_detail_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/overspeed_detail_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_driving_behaviour.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_behaviour.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_detail_summery_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_detail_summery_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_initial.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_initial.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_dashboard.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_dashboard.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/working_hour_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/working_hour_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/notification_list_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/notification_list_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_disconnection_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_disconnection_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_graph_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_graph_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_set_alert.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_set_alert.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehicle_filterbottomsheet.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehicle_filterbottomsheet.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_temperature_sensor_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_temperature_sensor_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/detail_summery_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/detail_summery_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_main_payment.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_main_payment.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_ignition_alert_setting.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_ignition_alert_setting.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_working_hour_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_working_hour_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_add_service_request.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_service_request.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/stoppage_report_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/stoppage_report_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_working_hour_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_working_hour_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_distance_report_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_distance_report_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_stoppage_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_stoppage_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/layout_alert_ok_cancel.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/layout_alert_ok_cancel.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/overspeed_alertadapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_alertadapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/notification_banner.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/notification_banner.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/harsh_break_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/harsh_break_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_driving_behaviour.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_driving_behaviour.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_driving_route_initial.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_route_initial.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/custom_date_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/custom_date_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/overspeed_detail_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/overspeed_detail_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehicle_status.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehicle_status.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_graph_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_graph_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/driving_limit_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/driving_limit_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/spinner_text.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/spinner_text.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fms_vehicles_list.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fms_vehicles_list.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/stoppage_report_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/stoppage_report_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_theft_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_theft_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_route_play_initial_selection.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_route_play_initial_selection.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/working_hour_detail_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/working_hour_detail_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/driving_limit_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/driving_limit_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_rod_disconnection.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_rod_disconnection.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_add_geofence.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_add_geofence.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/all_icons_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/all_icons_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_glocation_on_map.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_glocation_on_map.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_settings.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_settings.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_overspeed_alert.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_alert.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehicle_type_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehicle_type_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/vehicle_alert_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_alert_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_temperature_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_temperature_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fragment_vehicle_status.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fragment_vehicle_status.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_temperature_detail_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_temperature_detail_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_rod_disconnections.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_rod_disconnections.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_notification.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_notification.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/otp_fragment.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/otp_fragment.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_bill_account.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_bill_account.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/no_driving_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/no_driving_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fuel_filling_detail_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fuel_filling_detail_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/side_navigation.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/side_navigation.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_stoppages_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_stoppages_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fuel_filling_detail.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fuel_filling_detail.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/immobilize_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/immobilize_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/vehicle_status_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/vehicle_status_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/score_card_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/score_card_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/dailyreport_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/dailyreport_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fuel_theft_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fuel_theft_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/notification_list_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/notification_list_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/consolidate_voilation_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/consolidate_voilation_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_customer_care.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_customer_care.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_vehicle_status.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_vehicle_status.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_driver_to_driver_comparison.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driver_to_driver_comparison.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_ais140_vehicle.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_ais140_vehicle.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/safe_driver_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/safe_driver_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_forgot_password.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_banner.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_banner.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_stoppage_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_stoppage_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/excellent_driver_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/excellent_driver_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_daily_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_daily_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_fleet_reports_dashboard.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_fleet_reports_dashboard.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/update_dialog.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/update_dialog.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/immobilize_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/immobilize_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_no_driving_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_no_driving_report.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/alert_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/alert_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/spinner_text.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/spinner_text.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_driving_limit.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driving_limit.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overspeed_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overspeed_detail.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/rash_turn_chart_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/rash_turn_chart_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/otp_fragment.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/otp_fragment.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_overspeed_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_overspeed_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/side_navigation.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/side_navigation.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_vehicle_status.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_vehicle_status.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/working_hour_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/working_hour_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_detail_summery_report.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_detail_summery_report.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_overspeed_detail2.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_overspeed_detail2.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/fuel_theft_adapter.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/fuel_theft_adapter.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_add_document.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_add_document.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_driver_monthly_comparison.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_driver_monthly_comparison.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/excellent_driver_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/excellent_driver_adapter.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/activity_ais140_vehicle.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/activity_ais140_vehicle.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/otp_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/otp_layout.xml"
     },
     {
-        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-48:/layout/dialog_confirm.xml",
-        "source": "com.humbhi.blackbox.app-main-50:/layout/dialog_confirm.xml"
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/overspeed_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/overspeed_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_immobilize.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_immobilize.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fmsactivity.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fmsactivity.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_fuel_report.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_fuel_report.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_vehicle_detail.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_vehicle_detail.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_driver_to_driver_comparison.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_driver_to_driver_comparison.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fuel_filling_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fuel_filling_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_driving_limit.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_driving_limit.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/new_score_card_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/new_score_card_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/documents_reminders.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/documents_reminders.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/overstoppage_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/overstoppage_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_live_tracking.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_live_tracking.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_customer_care.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_customer_care.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_route_playback_selection.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_route_playback_selection.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehiclestatus_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehiclestatus_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_driving_route_initial.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_driving_route_initial.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dialog_options_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dialog_options_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/vehicle_status_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/vehicle_status_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_multi_line_chart.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_multi_line_chart.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_set_alert.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_set_alert.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_chnage_vehicle_details.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_chnage_vehicle_details.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/over_speed_db.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/over_speed_db.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/temp_detail_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/temp_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/fragment_dashboard.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_add_service_request.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_add_service_request.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/activity_add_geofence.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/activity_add_geofence.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/consolidate_voilation_detail_adapter.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/consolidate_voilation_detail_adapter.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/dash_reminder_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/dash_reminder_layout.xml"
+    },
+    {
+        "merged": "com.humbhi.blackbox.app-mergeReleaseResources-58:/layout/approve_otp_layout.xml",
+        "source": "com.humbhi.blackbox.app-main-60:/layout/approve_otp_layout.xml"
     }
 ]

@@ -24,12 +24,17 @@ public final class ActivityMainPaymentBinding implements ViewBinding {
   public final FrameLayout otpFrame;
 
   @NonNull
+  public final ToolbarLayoutBinding toolbar;
+
+  @NonNull
   public final WebView webView;
 
   private ActivityMainPaymentBinding(@NonNull RelativeLayout rootView,
-      @NonNull FrameLayout otpFrame, @NonNull WebView webView) {
+      @NonNull FrameLayout otpFrame, @NonNull ToolbarLayoutBinding toolbar,
+      @NonNull WebView webView) {
     this.rootView = rootView;
     this.otpFrame = otpFrame;
+    this.toolbar = toolbar;
     this.webView = webView;
   }
 
@@ -66,13 +71,21 @@ public final class ActivityMainPaymentBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.toolbar;
+      View toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+      ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
+
       id = R.id.webView;
       WebView webView = ViewBindings.findChildViewById(rootView, id);
       if (webView == null) {
         break missingId;
       }
 
-      return new ActivityMainPaymentBinding((RelativeLayout) rootView, otpFrame, webView);
+      return new ActivityMainPaymentBinding((RelativeLayout) rootView, otpFrame, binding_toolbar,
+          webView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

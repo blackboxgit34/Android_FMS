@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:layout_marginTop="@dimen/margin_x"
-                android:text="Please, update app to new version"
+                android:text="Please update app to new version"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:gravity="center"/>

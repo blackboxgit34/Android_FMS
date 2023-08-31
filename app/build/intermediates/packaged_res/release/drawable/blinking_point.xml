@@ -1,0 +1,5 @@
+<!-- res/drawable/blinking_point.xml -->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@android:color/transparent" android:duration="800" />
+    <item android:drawable="@drawable/point_shape" android:duration="800" />
+</animation-list>

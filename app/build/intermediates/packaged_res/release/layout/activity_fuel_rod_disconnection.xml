@@ -40,6 +40,85 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/dateLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_x"
+            android:layout_marginTop="@dimen/margin_x"
+            android:background="@drawable/white_curve_rect"
+            android:backgroundTint="@color/primary_little_fade"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_v"
+                android:background="@drawable/black_cyrve_rect"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingVertical="@dimen/margin_3"
+                android:paddingStart="@dimen/margin_x"
+                android:paddingEnd="@dimen/margin_x"
+                android:text="Today"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_10" />
+
+            <TextView
+                android:id="@+id/tvYesterday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_v"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="@dimen/margin_3"
+                android:paddingStart="@dimen/margin_x"
+                android:paddingEnd="@dimen/margin_x"
+                android:text="Yesterday"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_10" />
+
+
+            <TextView
+                android:id="@+id/tvWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_v"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="@dimen/margin_3"
+                android:paddingStart="@dimen/margin_x"
+                android:paddingEnd="@dimen/margin_x"
+                android:text="Week"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_10" />
+
+
+            <TextView
+                android:id="@+id/tvCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_v"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="@dimen/margin_3"
+                android:paddingStart="@dimen/margin_x"
+                android:paddingEnd="@dimen/margin_x"
+                android:text="Custom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_10" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/llCustomDateRange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            layout="@layout/custom_date_layout"
+            android:layout_below="@id/midLayout"
+            android:layout_marginHorizontal="@dimen/margin_x"
+            android:orientation="vertical"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -60,7 +139,6 @@
         android:text="Load more..."
         android:textColor="@color/white"
         android:textSize="@dimen/font_14"
-        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
         android:gravity="center"

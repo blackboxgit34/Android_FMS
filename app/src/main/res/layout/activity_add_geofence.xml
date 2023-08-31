@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.ui.geofencing.addFence.AddGeofenceActivity">
+    android:layout_height="match_parent">
 
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar"/>
 
-    <RelativeLayout
-
+    <AutoCompleteTextView
+        android:id="@+id/actv_location"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:imeOptions="actionDone"
+        android:background="@drawable/white_rect"
+        android:backgroundTint="@color/cardview_light_background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/toolbar"
+        android:singleLine="true"
+        android:textAlignment="textStart"
+        android:gravity="center_vertical|start"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:focusableInTouchMode="true"
+        android:drawableStart="@drawable/ic_menu_search_24"
+        android:hint="Enter a location"
+        android:padding="@dimen/margin_3"
+        android:textColor="@color/black"
+        android:textColorHint="@color/med_grey"
+        android:textSize="@dimen/font_11" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/actv_location"
+        android:layout_marginTop="@dimen/margin_3">
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/map"
             class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_gravity="center"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
         <RelativeLayout
             android:id="@+id/rlFrame"
             android:layout_width="match_parent"
@@ -29,13 +52,26 @@
                 android:id="@+id/btDraw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/margin_x"
                 android:text="Draw"
                 android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/mapView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/margin_v"
+                android:padding="@dimen/margin_x"
+                android:layout_alignParentEnd="true"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/margin_x"
+                android:src="@drawable/map_type"
+                android:background="@drawable/round_bg_creame"/>
         </RelativeLayout>
 
-
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
@@ -57,10 +93,6 @@
                     android:layout_marginTop="@dimen/margin_v"
                     android:layout_gravity="center|top"
                     />
-
-                <androidx.core.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -95,30 +127,16 @@
                             android:textColor="@color/white"
                             android:fontFamily="@font/poppins_bold"
                             />
+
                         <Spinner
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/margin_25"
-                            android:padding="@dimen/margin_v"
-                            android:background="@drawable/rect_curve_box"/>
-                        <TextView
+                            android:id="@+id/edVehicles"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="City"
-                            android:layout_marginTop="@dimen/margin_v"
-                            android:textSize="@dimen/font_12"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/poppins_bold"
-                            />
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Enter a location"
-                            android:textColorHint="@color/med_grey"
-                            android:textColor="@color/white"
-                            android:padding="@dimen/margin_v"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="@dimen/font_12"
-                            android:background="@drawable/rect_curve_box"/>
+                            android:focusable="true"
+                            android:gravity="start"
+                            android:imeOptions="actionNext"
+                            android:background="@drawable/rect_curve_box"
+                            android:textColor="@color/med_grey" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -145,7 +163,6 @@
                             android:layout_gravity="bottom"
                             android:orientation="horizontal"
                             android:layout_marginTop="@dimen/margin_xx"
-
                             android:layout_marginBottom="@dimen/margin_x"
                             android:weightSum="2">
 
@@ -185,13 +202,9 @@
                                 android:paddingVertical="@dimen/margin_v"
                                 android:textColor="@color/med_grey"/>
 
-
                         </LinearLayout>
+
                     </androidx.appcompat.widget.LinearLayoutCompat>
-
-                </androidx.core.widget.NestedScrollView>
-
-
 
             </FrameLayout>
 
@@ -199,5 +212,4 @@
 
     </RelativeLayout>
 
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

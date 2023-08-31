@@ -4,13 +4,15 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -21,16 +23,25 @@ import java.lang.String;
 
 public final class ActivityAddGeofenceBinding implements ViewBinding {
   @NonNull
-  private final LinearLayoutCompat rootView;
+  private final RelativeLayout rootView;
+
+  @NonNull
+  public final AutoCompleteTextView actvLocation;
 
   @NonNull
   public final Button btDraw;
+
+  @NonNull
+  public final Spinner edVehicles;
 
   @NonNull
   public final FrameLayout fBottomSheet;
 
   @NonNull
   public final FragmentContainerView map;
+
+  @NonNull
+  public final ImageView mapView;
 
   @NonNull
   public final RelativeLayout rlFrame;
@@ -44,14 +55,19 @@ public final class ActivityAddGeofenceBinding implements ViewBinding {
   @NonNull
   public final TextView tvSaveFence;
 
-  private ActivityAddGeofenceBinding(@NonNull LinearLayoutCompat rootView, @NonNull Button btDraw,
-      @NonNull FrameLayout fBottomSheet, @NonNull FragmentContainerView map,
+  private ActivityAddGeofenceBinding(@NonNull RelativeLayout rootView,
+      @NonNull AutoCompleteTextView actvLocation, @NonNull Button btDraw,
+      @NonNull Spinner edVehicles, @NonNull FrameLayout fBottomSheet,
+      @NonNull FragmentContainerView map, @NonNull ImageView mapView,
       @NonNull RelativeLayout rlFrame, @NonNull ToolbarLayoutBinding toolbar,
       @NonNull TextView tvReset, @NonNull TextView tvSaveFence) {
     this.rootView = rootView;
+    this.actvLocation = actvLocation;
     this.btDraw = btDraw;
+    this.edVehicles = edVehicles;
     this.fBottomSheet = fBottomSheet;
     this.map = map;
+    this.mapView = mapView;
     this.rlFrame = rlFrame;
     this.toolbar = toolbar;
     this.tvReset = tvReset;
@@ -60,7 +76,7 @@ public final class ActivityAddGeofenceBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayoutCompat getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -85,9 +101,21 @@ public final class ActivityAddGeofenceBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.actv_location;
+      AutoCompleteTextView actvLocation = ViewBindings.findChildViewById(rootView, id);
+      if (actvLocation == null) {
+        break missingId;
+      }
+
       id = R.id.btDraw;
       Button btDraw = ViewBindings.findChildViewById(rootView, id);
       if (btDraw == null) {
+        break missingId;
+      }
+
+      id = R.id.edVehicles;
+      Spinner edVehicles = ViewBindings.findChildViewById(rootView, id);
+      if (edVehicles == null) {
         break missingId;
       }
 
@@ -100,6 +128,12 @@ public final class ActivityAddGeofenceBinding implements ViewBinding {
       id = R.id.map;
       FragmentContainerView map = ViewBindings.findChildViewById(rootView, id);
       if (map == null) {
+        break missingId;
+      }
+
+      id = R.id.mapView;
+      ImageView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
         break missingId;
       }
 
@@ -128,8 +162,8 @@ public final class ActivityAddGeofenceBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAddGeofenceBinding((LinearLayoutCompat) rootView, btDraw, fBottomSheet,
-          map, rlFrame, binding_toolbar, tvReset, tvSaveFence);
+      return new ActivityAddGeofenceBinding((RelativeLayout) rootView, actvLocation, btDraw,
+          edVehicles, fBottomSheet, map, mapView, rlFrame, binding_toolbar, tvReset, tvSaveFence);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

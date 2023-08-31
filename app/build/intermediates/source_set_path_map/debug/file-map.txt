@@ -1,57 +1,61 @@
-com.humbhi.blackbox.app-jetified-paho.mqtt.android-3.3.5-0 C:\Users\Administrator\.gradle\caches\transforms-3\051defc3a30259cb9a9efc4bc1f18640\transformed\jetified-paho.mqtt.android-3.3.5\res
-com.humbhi.blackbox.app-jetified-savedstate-1.2.0-1 C:\Users\Administrator\.gradle\caches\transforms-3\0a1b89e5bef1db97adc5ed4fa7b9a970\transformed\jetified-savedstate-1.2.0\res
-com.humbhi.blackbox.app-lifecycle-viewmodel-2.5.1-2 C:\Users\Administrator\.gradle\caches\transforms-3\0c157ebcbc84451d74c314866c45366e\transformed\lifecycle-viewmodel-2.5.1\res
-com.humbhi.blackbox.app-jetified-speedviewlib-1.6.0-3 C:\Users\Administrator\.gradle\caches\transforms-3\102719a46a32c6d4c41bb4e42e7dff9d\transformed\jetified-speedviewlib-1.6.0\res
-com.humbhi.blackbox.app-jetified-lifecycle-process-2.4.1-4 C:\Users\Administrator\.gradle\caches\transforms-3\12f4fd456ec221d1b2a1066ade36ab1c\transformed\jetified-lifecycle-process-2.4.1\res
-com.humbhi.blackbox.app-sqlite-2.2.0-5 C:\Users\Administrator\.gradle\caches\transforms-3\134805edb07144bbab0c25d4e79bd869\transformed\sqlite-2.2.0\res
-com.humbhi.blackbox.app-jetified-RackMonthPicker-1.6.1-6 C:\Users\Administrator\.gradle\caches\transforms-3\1db79bbc76ac2254ff3059e2a2b10a29\transformed\jetified-RackMonthPicker-1.6.1\res
-com.humbhi.blackbox.app-jetified-LogcatCoreLib-2.9.5-7 C:\Users\Administrator\.gradle\caches\transforms-3\1f275c75dd961bcc98c17a1f9fd1bb98\transformed\jetified-LogcatCoreLib-2.9.5\res
-com.humbhi.blackbox.app-jetified-Circular-Progress-View-0.1.2-8 C:\Users\Administrator\.gradle\caches\transforms-3\20db08e5383804171f746cab9f61b208\transformed\jetified-Circular-Progress-View-0.1.2\res
-com.humbhi.blackbox.app-jetified-startup-runtime-1.1.1-9 C:\Users\Administrator\.gradle\caches\transforms-3\24c05cc432b5fafad2a2a367fce392f0\transformed\jetified-startup-runtime-1.1.1\res
-com.humbhi.blackbox.app-core-1.9.0-10 C:\Users\Administrator\.gradle\caches\transforms-3\272d4b59a288d5caf817213ce11d9774\transformed\core-1.9.0\res
-com.humbhi.blackbox.app-lifecycle-livedata-core-2.5.1-11 C:\Users\Administrator\.gradle\caches\transforms-3\2e203d9157128208d285d215296fadd0\transformed\lifecycle-livedata-core-2.5.1\res
-com.humbhi.blackbox.app-jetified-lifecycle-viewmodel-savedstate-2.5.1-12 C:\Users\Administrator\.gradle\caches\transforms-3\32886623866f956aa9b40bf4f94a5559\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\res
-com.humbhi.blackbox.app-jetified-viewpager2-1.0.0-13 C:\Users\Administrator\.gradle\caches\transforms-3\33311f19470a3dbf2942c9abeaa709d8\transformed\jetified-viewpager2-1.0.0\res
-com.humbhi.blackbox.app-jetified-cronet-api-98.4758.101-14 C:\Users\Administrator\.gradle\caches\transforms-3\3581976bb68e68814fed6f0c15288406\transformed\jetified-cronet-api-98.4758.101\res
-com.humbhi.blackbox.app-recyclerview-1.2.1-15 C:\Users\Administrator\.gradle\caches\transforms-3\3b60c0835326b24724b900dd0d39e07f\transformed\recyclerview-1.2.1\res
-com.humbhi.blackbox.app-fragment-1.3.6-16 C:\Users\Administrator\.gradle\caches\transforms-3\4b33ccbd00f3377f9332a2b769311159\transformed\fragment-1.3.6\res
-com.humbhi.blackbox.app-material-1.4.0-17 C:\Users\Administrator\.gradle\caches\transforms-3\5a5d5902e2140adf9bd55cf409fbace6\transformed\material-1.4.0\res
-com.humbhi.blackbox.app-jetified-emoji2-views-helper-1.2.0-18 C:\Users\Administrator\.gradle\caches\transforms-3\5d0feaa1a619790644506950b9ac41ad\transformed\jetified-emoji2-views-helper-1.2.0\res
-com.humbhi.blackbox.app-jetified-lifecycle-runtime-ktx-2.4.0-19 C:\Users\Administrator\.gradle\caches\transforms-3\626a46726dc0822edc23fdaa4ac1a867\transformed\jetified-lifecycle-runtime-ktx-2.4.0\res
-com.humbhi.blackbox.app-jetified-appcompat-resources-1.6.1-20 C:\Users\Administrator\.gradle\caches\transforms-3\74b2dd0addb1ed1d348d8ce1365330fb\transformed\jetified-appcompat-resources-1.6.1\res
-com.humbhi.blackbox.app-transition-1.2.0-21 C:\Users\Administrator\.gradle\caches\transforms-3\75f03b31016e68aaba7224ac37b09618\transformed\transition-1.2.0\res
-com.humbhi.blackbox.app-jetified-ticketview-1.1.2-22 C:\Users\Administrator\.gradle\caches\transforms-3\77c7dc63a0994600a90842c920b368fc\transformed\jetified-ticketview-1.1.2\res
-com.humbhi.blackbox.app-jetified-play-services-basement-18.1.0-23 C:\Users\Administrator\.gradle\caches\transforms-3\7c88b4bc476723c2753d5fb345544116\transformed\jetified-play-services-basement-18.1.0\res
-com.humbhi.blackbox.app-jetified-core-1.10.3-24 C:\Users\Administrator\.gradle\caches\transforms-3\7ff4d5f7564282f817b220bf5704725d\transformed\jetified-core-1.10.3\res
-com.humbhi.blackbox.app-jetified-emoji2-1.2.0-25 C:\Users\Administrator\.gradle\caches\transforms-3\8669b7edf8a2fd0e7165a03d91ba83ec\transformed\jetified-emoji2-1.2.0\res
-com.humbhi.blackbox.app-lifecycle-runtime-2.5.1-26 C:\Users\Administrator\.gradle\caches\transforms-3\90e03952605d7681ffc037e7489b8dae\transformed\lifecycle-runtime-2.5.1\res
-com.humbhi.blackbox.app-media-1.0.0-27 C:\Users\Administrator\.gradle\caches\transforms-3\97dceacea2ec501ce93d655553c6d81d\transformed\media-1.0.0\res
-com.humbhi.blackbox.app-jetified-core-ktx-1.9.0-28 C:\Users\Administrator\.gradle\caches\transforms-3\986b91068b26fe2a63a833aab42fc14a\transformed\jetified-core-ktx-1.9.0\res
-com.humbhi.blackbox.app-cardview-1.0.0-29 C:\Users\Administrator\.gradle\caches\transforms-3\9b01208e7f3cb3598a1879f107f6701c\transformed\cardview-1.0.0\res
-com.humbhi.blackbox.app-jetified-activity-1.6.0-30 C:\Users\Administrator\.gradle\caches\transforms-3\a6ff2233c9279bddf57a965a2ca9dc77\transformed\jetified-activity-1.6.0\res
-com.humbhi.blackbox.app-appcompat-1.6.1-31 C:\Users\Administrator\.gradle\caches\transforms-3\af3bedfada838e1ac72c01174ced37ba\transformed\appcompat-1.6.1\res
-com.humbhi.blackbox.app-coordinatorlayout-1.1.0-32 C:\Users\Administrator\.gradle\caches\transforms-3\b3501f187f50346dff5e04078dbba694\transformed\coordinatorlayout-1.1.0\res
-com.humbhi.blackbox.app-jetified-colorpickerview-2.2.4-33 C:\Users\Administrator\.gradle\caches\transforms-3\be05ed9eb6e1936f5fa22f7676b9b91f\transformed\jetified-colorpickerview-2.2.4\res
-com.humbhi.blackbox.app-jetified-notification-badge-1.0.2-34 C:\Users\Administrator\.gradle\caches\transforms-3\c94acc56581e8d54f75c03b22af86aea\transformed\jetified-notification-badge-1.0.2\res
-com.humbhi.blackbox.app-jetified-firebase-messaging-23.1.0-35 C:\Users\Administrator\.gradle\caches\transforms-3\d3bfd732f02ea7a3cc612c192c9df754\transformed\jetified-firebase-messaging-23.1.0\res
-com.humbhi.blackbox.app-jetified-android-maps-utils-2.3.0-36 C:\Users\Administrator\.gradle\caches\transforms-3\d5a4e37cc69981450ca7a18500c4918d\transformed\jetified-android-maps-utils-2.3.0\res
-com.humbhi.blackbox.app-constraintlayout-2.1.2-37 C:\Users\Administrator\.gradle\caches\transforms-3\d72714804f7c8c5808497c4862274930\transformed\constraintlayout-2.1.2\res
-com.humbhi.blackbox.app-jetified-annotation-experimental-1.3.0-38 C:\Users\Administrator\.gradle\caches\transforms-3\daaf0b8ead8b3357cd910349874993e6\transformed\jetified-annotation-experimental-1.3.0\res
-com.humbhi.blackbox.app-jetified-AppIntro-6.2.0-39 C:\Users\Administrator\.gradle\caches\transforms-3\daafbca8b014c88358a91ef11a49d897\transformed\jetified-AppIntro-6.2.0\res
-com.humbhi.blackbox.app-jetified-play-services-base-18.0.1-40 C:\Users\Administrator\.gradle\caches\transforms-3\e219f13dfc5b94459c110d637811a649\transformed\jetified-play-services-base-18.0.1\res
-com.humbhi.blackbox.app-jetified-glide-4.14.2-41 C:\Users\Administrator\.gradle\caches\transforms-3\e609e3d08bb586820644c987b023f2ef\transformed\jetified-glide-4.14.2\res
-com.humbhi.blackbox.app-jetified-shimmer-0.5.0-42 C:\Users\Administrator\.gradle\caches\transforms-3\e79ba3545e960e28e57a12340df308ae\transformed\jetified-shimmer-0.5.0\res
-com.humbhi.blackbox.app-jetified-play-services-maps-18.0.0-43 C:\Users\Administrator\.gradle\caches\transforms-3\e9881da328987063ea564eaf64c3a832\transformed\jetified-play-services-maps-18.0.0\res
-com.humbhi.blackbox.app-jetified-searchablespinnerlibrary-1.3.1-44 C:\Users\Administrator\.gradle\caches\transforms-3\ebebc720f5bd22f06df737d57afd1d97\transformed\jetified-searchablespinnerlibrary-1.3.1\res
-com.humbhi.blackbox.app-room-runtime-2.4.1-45 C:\Users\Administrator\.gradle\caches\transforms-3\ee197d28b40dd3781b71bf22058b638f\transformed\room-runtime-2.4.1\res
-com.humbhi.blackbox.app-jetified-firebase-common-20.2.0-46 C:\Users\Administrator\.gradle\caches\transforms-3\f6c0d1dc5a17d9606083f2f7c2f37b31\transformed\jetified-firebase-common-20.2.0\res
-com.humbhi.blackbox.app-sqlite-framework-2.2.0-47 C:\Users\Administrator\.gradle\caches\transforms-3\f940d7f63d5690a4d5cb9d0df3859d53\transformed\sqlite-framework-2.2.0\res
-com.humbhi.blackbox.app-res-48 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\generated\crashlytics\res\debug
-com.humbhi.blackbox.app-google-services-49 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\generated\res\google-services\debug
-com.humbhi.blackbox.app-resValues-50 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\generated\res\resValues\debug
-com.humbhi.blackbox.app-rs-51 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\generated\res\rs\debug
-com.humbhi.blackbox.app-packageDebugResources-52 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.humbhi.blackbox.app-packageDebugResources-53 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.humbhi.blackbox.app-merged_res-54 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\build\intermediates\merged_res\debug
-com.humbhi.blackbox.app-debug-55 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\debug\res
-com.humbhi.blackbox.app-main-56 D:\Projects(PC-45)-Android\BlackBox VTS\Blackbox\app\src\main\res
+com.humbhi.blackbox.app-jetified-firebase-messaging-23.1.0-0 C:\Users\Administrator\.gradle\caches\transforms-3\00309e5866aaf32501cff3505d774a42\transformed\jetified-firebase-messaging-23.1.0\res
+com.humbhi.blackbox.app-jetified-colorpickerview-2.2.4-1 C:\Users\Administrator\.gradle\caches\transforms-3\0d9c6cbdb371e18949024f7c40a0889b\transformed\jetified-colorpickerview-2.2.4\res
+com.humbhi.blackbox.app-sqlite-2.2.0-2 C:\Users\Administrator\.gradle\caches\transforms-3\148f9a128d656aeb0a72aaeb227d0d70\transformed\sqlite-2.2.0\res
+com.humbhi.blackbox.app-fragment-1.3.6-3 C:\Users\Administrator\.gradle\caches\transforms-3\15fe8ae15200c489bee6b7c7267b0772\transformed\fragment-1.3.6\res
+com.humbhi.blackbox.app-jetified-play-services-base-18.1.0-4 C:\Users\Administrator\.gradle\caches\transforms-3\175b8413f1d2955fe32b58f6c30b6524\transformed\jetified-play-services-base-18.1.0\res
+com.humbhi.blackbox.app-jetified-RackMonthPicker-1.6.1-5 C:\Users\Administrator\.gradle\caches\transforms-3\1beed0e51239684d233fc27013252d3b\transformed\jetified-RackMonthPicker-1.6.1\res
+com.humbhi.blackbox.app-jetified-firebase-common-20.3.1-6 C:\Users\Administrator\.gradle\caches\transforms-3\1e7d3cc781059c04d8fbbfa7ed318df6\transformed\jetified-firebase-common-20.3.1\res
+com.humbhi.blackbox.app-material-1.4.0-7 C:\Users\Administrator\.gradle\caches\transforms-3\2c6f75dfb481f62c5979ef41087b79da\transformed\material-1.4.0\res
+com.humbhi.blackbox.app-jetified-notification-badge-1.0.2-8 C:\Users\Administrator\.gradle\caches\transforms-3\2e77c30324870bd949d350b0fea5e38d\transformed\jetified-notification-badge-1.0.2\res
+com.humbhi.blackbox.app-appcompat-1.6.1-9 C:\Users\Administrator\.gradle\caches\transforms-3\313e3ca2406341ae13b69edfc5c34d77\transformed\appcompat-1.6.1\res
+com.humbhi.blackbox.app-jetified-cronet-api-98.4758.101-10 C:\Users\Administrator\.gradle\caches\transforms-3\368c2e494cc16102fc3bd55194a541d7\transformed\jetified-cronet-api-98.4758.101\res
+com.humbhi.blackbox.app-jetified-lifecycle-process-2.4.1-11 C:\Users\Administrator\.gradle\caches\transforms-3\3a9ced46530f5e89780fe3e5b56edace\transformed\jetified-lifecycle-process-2.4.1\res
+com.humbhi.blackbox.app-media-1.0.0-12 C:\Users\Administrator\.gradle\caches\transforms-3\40e1720f2fca991f26a1e4437dada6a3\transformed\media-1.0.0\res
+com.humbhi.blackbox.app-coordinatorlayout-1.1.0-13 C:\Users\Administrator\.gradle\caches\transforms-3\49775d84d601c3786ae51c0355c13b68\transformed\coordinatorlayout-1.1.0\res
+com.humbhi.blackbox.app-jetified-emoji2-views-helper-1.2.0-14 C:\Users\Administrator\.gradle\caches\transforms-3\4b3f186891f9ab5482d51f23bf592b5c\transformed\jetified-emoji2-views-helper-1.2.0\res
+com.humbhi.blackbox.app-jetified-Circular-Progress-View-0.1.2-15 C:\Users\Administrator\.gradle\caches\transforms-3\564e42d0ff788c25a2e8616b7883f8f5\transformed\jetified-Circular-Progress-View-0.1.2\res
+com.humbhi.blackbox.app-jetified-android-maps-utils-2.3.0-16 C:\Users\Administrator\.gradle\caches\transforms-3\5ba22d88d8137b722807a21c8d0ebc11\transformed\jetified-android-maps-utils-2.3.0\res
+com.humbhi.blackbox.app-lifecycle-livedata-core-2.5.1-17 C:\Users\Administrator\.gradle\caches\transforms-3\5cd20cc9544c2f40283f59c3d48eccb3\transformed\lifecycle-livedata-core-2.5.1\res
+com.humbhi.blackbox.app-jetified-core-1.10.0-18 C:\Users\Administrator\.gradle\caches\transforms-3\5f9c92f7399291313562f0fd0f375933\transformed\jetified-core-1.10.0\res
+com.humbhi.blackbox.app-core-1.9.0-19 C:\Users\Administrator\.gradle\caches\transforms-3\64ce7a4f9c1f615a18b94a2221c589ca\transformed\core-1.9.0\res
+com.humbhi.blackbox.app-jetified-play-services-maps-18.0.0-20 C:\Users\Administrator\.gradle\caches\transforms-3\6add4ef3a83af0f05d8e4da7929323c5\transformed\jetified-play-services-maps-18.0.0\res
+com.humbhi.blackbox.app-jetified-ticketview-1.1.2-21 C:\Users\Administrator\.gradle\caches\transforms-3\6bc2cccd6f184f3619b8b4e496ef42d7\transformed\jetified-ticketview-1.1.2\res
+com.humbhi.blackbox.app-jetified-emoji2-1.2.0-22 C:\Users\Administrator\.gradle\caches\transforms-3\6de113362a44cf0e9122d275ae2d5ec9\transformed\jetified-emoji2-1.2.0\res
+com.humbhi.blackbox.app-sqlite-framework-2.2.0-23 C:\Users\Administrator\.gradle\caches\transforms-3\6eb7cb3573a52b38ce70ea7ccd09bd4f\transformed\sqlite-framework-2.2.0\res
+com.humbhi.blackbox.app-lifecycle-runtime-2.5.1-24 C:\Users\Administrator\.gradle\caches\transforms-3\781532198487c12e5f3d8db9dbbe126d\transformed\lifecycle-runtime-2.5.1\res
+com.humbhi.blackbox.app-swiperefreshlayout-1.1.0-25 C:\Users\Administrator\.gradle\caches\transforms-3\7fd507252f31798d42643f97836344ba\transformed\swiperefreshlayout-1.1.0\res
+com.humbhi.blackbox.app-jetified-startup-runtime-1.1.1-26 C:\Users\Administrator\.gradle\caches\transforms-3\8a911648e9dec9259a86f2aebe9aa422\transformed\jetified-startup-runtime-1.1.1\res
+com.humbhi.blackbox.app-jetified-play-services-basement-18.1.0-27 C:\Users\Administrator\.gradle\caches\transforms-3\8afcdd4324301966f54b6f96c3f8106d\transformed\jetified-play-services-basement-18.1.0\res
+com.humbhi.blackbox.app-constraintlayout-2.1.2-28 C:\Users\Administrator\.gradle\caches\transforms-3\8cfca129a3da44d9cdd44c3d109f4ad1\transformed\constraintlayout-2.1.2\res
+com.humbhi.blackbox.app-jetified-shimmer-0.5.0-29 C:\Users\Administrator\.gradle\caches\transforms-3\8dda68eda1307e63f1e0cdedee2dada4\transformed\jetified-shimmer-0.5.0\res
+com.humbhi.blackbox.app-jetified-viewpager2-1.0.0-30 C:\Users\Administrator\.gradle\caches\transforms-3\98a83d7586ce660b8b111658b445e495\transformed\jetified-viewpager2-1.0.0\res
+com.humbhi.blackbox.app-room-runtime-2.4.1-31 C:\Users\Administrator\.gradle\caches\transforms-3\9a018dbbcdeafa3317f65c1972221921\transformed\room-runtime-2.4.1\res
+com.humbhi.blackbox.app-jetified-savedstate-1.2.0-32 C:\Users\Administrator\.gradle\caches\transforms-3\a4ba6490efbbc72f73b7552f0819592a\transformed\jetified-savedstate-1.2.0\res
+com.humbhi.blackbox.app-recyclerview-1.2.1-33 C:\Users\Administrator\.gradle\caches\transforms-3\a674144945c0b9a73435e28d8d2250a4\transformed\recyclerview-1.2.1\res
+com.humbhi.blackbox.app-transition-1.2.0-34 C:\Users\Administrator\.gradle\caches\transforms-3\a725f2d908daaeebec6b57406a0071d3\transformed\transition-1.2.0\res
+com.humbhi.blackbox.app-jetified-core-ktx-1.9.0-35 C:\Users\Administrator\.gradle\caches\transforms-3\bca380e6707f9a5b116363b0b04b512e\transformed\jetified-core-ktx-1.9.0\res
+com.humbhi.blackbox.app-jetified-annotation-experimental-1.3.0-36 C:\Users\Administrator\.gradle\caches\transforms-3\c4afb635e9594ff843ad296cbad9f5f6\transformed\jetified-annotation-experimental-1.3.0\res
+com.humbhi.blackbox.app-jetified-lifecycle-runtime-ktx-2.4.0-37 C:\Users\Administrator\.gradle\caches\transforms-3\c4fc05560f2e4b9e0ca89fbb4a35ef3d\transformed\jetified-lifecycle-runtime-ktx-2.4.0\res
+com.humbhi.blackbox.app-jetified-AppIntro-6.2.0-38 C:\Users\Administrator\.gradle\caches\transforms-3\c58acb984ccf4101102f91d225c8686a\transformed\jetified-AppIntro-6.2.0\res
+com.humbhi.blackbox.app-jetified-activity-1.6.0-39 C:\Users\Administrator\.gradle\caches\transforms-3\c806485bb7d8dc650a3c06fe014c8961\transformed\jetified-activity-1.6.0\res
+com.humbhi.blackbox.app-cardview-1.0.0-40 C:\Users\Administrator\.gradle\caches\transforms-3\cad283b7eff1d953f9dc0f90dcb44c0f\transformed\cardview-1.0.0\res
+com.humbhi.blackbox.app-work-runtime-2.7.0-41 C:\Users\Administrator\.gradle\caches\transforms-3\ce5423cb5bd3261cc3a641a153ccf16a\transformed\work-runtime-2.7.0\res
+com.humbhi.blackbox.app-jetified-lifecycle-viewmodel-savedstate-2.5.1-42 C:\Users\Administrator\.gradle\caches\transforms-3\d124109951bf60a4f01f9be65bf5bc70\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\res
+com.humbhi.blackbox.app-jetified-lottie-3.0.0-43 C:\Users\Administrator\.gradle\caches\transforms-3\d139d25431b565cacfc66bb44051391c\transformed\jetified-lottie-3.0.0\res
+com.humbhi.blackbox.app-jetified-appcompat-resources-1.6.1-44 C:\Users\Administrator\.gradle\caches\transforms-3\d4a88495d6b785c489b17fc3b9cfd8c0\transformed\jetified-appcompat-resources-1.6.1\res
+com.humbhi.blackbox.app-jetified-searchablespinnerlibrary-1.3.1-45 C:\Users\Administrator\.gradle\caches\transforms-3\da11a3544237fc2e2d7c226f434a2284\transformed\jetified-searchablespinnerlibrary-1.3.1\res
+com.humbhi.blackbox.app-jetified-LogcatCoreLib-2.9.5-46 C:\Users\Administrator\.gradle\caches\transforms-3\e4fe3f2ff61969217659f1096b8e65c4\transformed\jetified-LogcatCoreLib-2.9.5\res
+com.humbhi.blackbox.app-jetified-glide-4.14.2-47 C:\Users\Administrator\.gradle\caches\transforms-3\e79b77a1b26292f6b142afaab6cd3f82\transformed\jetified-glide-4.14.2\res
+com.humbhi.blackbox.app-jetified-paho.mqtt.android-3.3.5-48 C:\Users\Administrator\.gradle\caches\transforms-3\ec901dbe35932d3cbb3391ae9a52fa34\transformed\jetified-paho.mqtt.android-3.3.5\res
+com.humbhi.blackbox.app-lifecycle-viewmodel-2.5.1-49 C:\Users\Administrator\.gradle\caches\transforms-3\eda98a03f0794c1b7168714f36b447fa\transformed\lifecycle-viewmodel-2.5.1\res
+com.humbhi.blackbox.app-jetified-pinview-1.4.4-50 C:\Users\Administrator\.gradle\caches\transforms-3\f9c0e43a638b8fafa9d988aa00a3d94b\transformed\jetified-pinview-1.4.4\res
+com.humbhi.blackbox.app-jetified-speedviewlib-1.6.0-51 C:\Users\Administrator\.gradle\caches\transforms-3\fbdd19944eaa5e058aaa58157693bae5\transformed\jetified-speedviewlib-1.6.0\res
+com.humbhi.blackbox.app-res-52 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\generated\crashlytics\res\debug
+com.humbhi.blackbox.app-google-services-53 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\generated\res\google-services\debug
+com.humbhi.blackbox.app-resValues-54 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\generated\res\resValues\debug
+com.humbhi.blackbox.app-rs-55 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\generated\res\rs\debug
+com.humbhi.blackbox.app-packageDebugResources-56 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.humbhi.blackbox.app-packageDebugResources-57 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.humbhi.blackbox.app-merged_res-58 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\build\intermediates\merged_res\debug
+com.humbhi.blackbox.app-debug-59 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\src\debug\res
+com.humbhi.blackbox.app-main-60 D:\Projects(PC-45)-Android\Github\BlackBox VTS\app\src\main\res

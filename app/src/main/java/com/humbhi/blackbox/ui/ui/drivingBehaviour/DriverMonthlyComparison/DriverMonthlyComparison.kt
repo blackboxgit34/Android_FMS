@@ -1,10 +1,14 @@
 package com.humbhi.blackbox.ui.ui.drivingBehaviour.DriverMonthlyComparison
 
+import CustomDatePickerFragment
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.View
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
@@ -15,9 +19,12 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityDriverMonthlyComparisonBinding
-import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter
+import com.humbhi.blackbox.ui.Utility.areDatesValidAndFirstIsLess
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter
 import com.humbhi.blackbox.ui.data.DataManagerImpl
 import com.humbhi.blackbox.ui.data.db.CommonData.getCustIdFromDB
 import com.humbhi.blackbox.ui.data.models.AllDriverModel
@@ -28,15 +35,18 @@ import com.humbhi.blackbox.ui.retofit.Retrofit2
 import com.humbhi.blackbox.ui.retofit.RetrofitResponse
 import com.humbhi.blackbox.ui.utils.CommonUtil
 import com.humbhi.blackbox.ui.utils.Constants
+import com.kal.rackmonthpicker.RackMonthPicker
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Response
 import java.io.IOException
-import java.util.*
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
-class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnClickListener, DriverMonthlyComparisonView {
+class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnClickListener, DriverMonthlyComparisonView, CustomDatePickerFragment.OnDateSelectedListener {
     private lateinit var binding: ActivityDriverMonthlyComparisonBinding
     var vehicleModel = ArrayList<AllDriverModel>()
     var vehicleList = ArrayList<String>()
@@ -48,7 +58,8 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
     var DistanceChart: BarChart? = null
     var beginMonth = ""
     var endMonth = ""
-    var list : ArrayList<Data> = ArrayList()
+    var flag = ""
+    var list: ArrayList<Data> = ArrayList()
     private lateinit var mPresenter: DriverMonthlyComparisonImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,24 +89,21 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
         ).callService(true)
     }
 
-    fun spinVehicles() {
+    private fun spinVehicles() {
         //Getting the instance of AutoCompleteTextView
         binding.spVehicles.threshold = 0 //will start working from first character
-
-        binding.spVehicles.setAdapter(CustSpinnerAdapter.getAdapter(this, vehicleList)) //setting the adapter data into the AutoCompleteTextView
+        val adapter = SearchableAdapter(this, vehicleList)
+        binding.spVehicles.setAdapter(adapter) //setting the adapter data into the AutoCompleteTextView
 
         binding.spVehicles.setOnItemClickListener { parent, view, position, id ->
-            val selection = parent.getItemAtPosition(position) as String
-            var pos = -1
-
-            for (i in vehicleList.indices) {
-                if (vehicleList[i] == selection) {
-                    pos = i
-                    break
-                }
+            val originalData = adapter.originalData
+            val selection = originalData[position]
+            val originalPosition = adapter.getOriginalPosition(position)
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                driverId = vehicleModel[originalPosition].value
+                driverName = vehicleModel[originalPosition].text
             }
-            driverId = vehicleModel[pos].value
-            driverName = vehicleModel[pos].text
         }
         binding.spVehicles.setOnFocusChangeListener { v, hasFocus -> if (hasFocus) binding.spVehicles.showDropDown() }
 
@@ -127,25 +135,25 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
         when (requestCode) {
             Constants.REQ_DRIVERS_LIST ->
                 if (response!!.isSuccessful) {
-                try {
-                    vehicleList.clear()
-                    // vehicleList.add(0,"Select Vehicle");
-                    val data = JSONArray(response.body()!!.string())
-                     for (i in 0 until  data.length()) {
-                        val obj = data.getJSONObject(i)
-                        val model = AllDriverModel()
-                        model.value = obj.getString("Value")
-                        model.text = obj.getString("Text")
-                        vehicleList.add(obj.getString("Text"))
-                        vehicleModel.add(model)
-                        spinVehicles()
+                    try {
+                        vehicleList.clear()
+                        // vehicleList.add(0,"Select Vehicle");
+                        val data = JSONArray(response.body()!!.string())
+                        for (i in 0 until data.length()) {
+                            val obj = data.getJSONObject(i)
+                            val model = AllDriverModel()
+                            model.value = obj.getString("Value")
+                            model.text = obj.getString("Text")
+                            vehicleList.add(obj.getString("Text"))
+                            vehicleModel.add(model)
+                            spinVehicles()
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
                     }
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                } catch (e: IOException) {
-                    e.printStackTrace()
                 }
-            }
         }
     }
 
@@ -153,96 +161,68 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
         if (driverId != "") {
             binding.progressLayout.progressLayout.visibility = View.VISIBLE
             if (driverId.contains("I") || driverId.contains("J") || driverId.contains("C") || driverId.contains("E")) {
-                mPresenter.getMonthlyComparison(
-                    getCustIdFromDB(),
-                    "$beginMonth%2012:00%20AM", endMonth + "%2012:00%20AM",
-                    "0",
-                    driverId
-                )
+                    mPresenter.getMonthlyComparison(
+                        getCustIdFromDB(),
+                        "$beginMonth%2012:00%20AM", endMonth + "%2011:59%20PM",
+                        "0",
+                        driverId
+                    )
             } else {
-                mPresenter.getMonthlyComparison(
-                    getCustIdFromDB(),
-                    "$beginMonth%2012:00%20AM", endMonth + "%2012:00%20AM",
-                    driverId,
-                    ""
-                )
+                    mPresenter.getMonthlyComparison(
+                        getCustIdFromDB(),
+                        "$beginMonth%2012:00%20AM", endMonth + "%2011:59%20PM",
+                         driverId,
+                        ""
+                    )
             }
-        }
-        else{
-            Constants.alertDialog(this,"Please select driver.")
+        } else {
+            Constants.alertDialog(this, "Please select driver.")
         }
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.tvCustom ->{
-                if( binding.llCustomDateRange.visibility == View.VISIBLE){
+            R.id.tvCustom -> {
+                if (binding.llCustomDateRange.visibility == View.VISIBLE) {
                     binding.llCustomDateRange.visibility = View.GONE
                     binding.btnGetComparison.visibility = View.VISIBLE
-                }
-                else{
-                    binding.tvCustom.background = ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect);
+                } else {
+                    binding.tvCustom.background =
+                        ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect);
                     binding.llCustomDateRange.visibility = View.VISIBLE
                     binding.btnGetComparison.visibility = View.GONE
                 }
+            }
 
+            R.id.tvStartDate -> {
+                flag = "1"
+                showDatePicker()
             }
-            R.id.tvStartDate ->{
-                datepicker("1")
+
+            R.id.tvEndDate -> {
+                flag = "2"
+                showDatePicker()
             }
-            R.id.tvEndDate ->{
-                datepicker("2")
-            }
-            R.id.btnAppy ->{
+
+            R.id.btnAppy -> {
                 binding.llCustomDateRange.visibility = View.GONE
-                getMonthlyData()
-            }
+                if (areDatesValidAndFirstIsLess(
+                        "$beginMonth%2012:00%20AM",
+                        endMonth + "%2011:59%20PM"
+                    )
+                ) {
+                    getMonthlyData()
+                }
+                else{
+                    Constants.alertDialog(this,"Start date must less than the end date.")
+                }
             }
         }
-
-    private fun datepicker(flag: String) {
-        val cal = Calendar.getInstance()
-        cal.add(Calendar.YEAR, 0) // to get back 13 year add -13
-        val previous_year = cal.time
-        val calendar = Calendar.getInstance()
-        val datePickerDialog = DatePickerDialog(
-            this,
-            { view, year, monthOfYear, dayOfMonth ->
-                var monthOfYear = monthOfYear
-                val x: String
-                val y: String
-                if (monthOfYear < 9) {
-                    monthOfYear = monthOfYear + 1
-                    x = "0$monthOfYear"
-                } else {
-                    x = (monthOfYear + 1).toString()
-                }
-                y = if (dayOfMonth < 10) {
-                    "0$dayOfMonth"
-                } else {
-                    dayOfMonth.toString()
-                }
-                if (flag == "1") {
-                    beginMonth = "$year-$x-01"
-                    binding.tvStartDate.text = "$x-$year"
-                }
-                if (flag == "2") {
-                    endMonth = "$year-$x-01"
-                    binding.tvEndDate.text = "$x-$year"
-                }
-            }, calendar[Calendar.YEAR], calendar[Calendar.MONTH],
-            calendar[Calendar.DAY_OF_MONTH]
-        )
-        try {
-            picker = datePickerDialog.datePicker
-            calendar.add(Calendar.MONTH, 0)
-            picker!!.maxDate = calendar.timeInMillis
-            calendar.add(Calendar.MONTH, -5)
-            picker!!.minDate = calendar.timeInMillis
-        } catch (e: Exception) {
-            picker = datePickerDialog.datePicker
-        }
-        datePickerDialog.show()
+    }
+    private fun showDatePicker() {
+        val datePickerFragment = CustomDatePickerFragment()
+        datePickerFragment.setOnDateSelectedListener(this)
+        datePickerFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun setMonthlyComparisonChart(list: ArrayList<Data>) {
@@ -354,6 +334,18 @@ class DriverMonthlyComparison : AppCompatActivity(), RetrofitResponse, View.OnCl
 
     override fun showErrorMessage(string: String) {
         CommonUtil.alertDialogWithOkOnly(this,"Error",string)
+    }
+
+    override fun onDateSelected(year: Int, month: Int) {
+        list.clear()
+        if (flag.equals("1")) {
+            beginMonth = "$month/01/$year"
+            binding.tvStartDate.text = "$month/$year"
+        }
+        else{
+            endMonth = "$month/01/$year"
+            binding.tvEndDate.text = "$month/$year"
+        }
     }
 
 }

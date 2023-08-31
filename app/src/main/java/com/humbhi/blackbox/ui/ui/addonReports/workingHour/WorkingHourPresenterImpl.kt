@@ -1,10 +1,14 @@
 package com.humbhi.blackbox.ui.ui.addonReports.workingHour
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.WorkingHourDataResponse
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import org.chromium.net.NetworkException
+import java.net.SocketTimeoutException
 
 class WorkingHourPresenterImpl(
     private val mWorkingHourView: WorkingHourView,
@@ -58,7 +62,17 @@ class WorkingHourPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mWorkingHourView.isHideLoading()
-                            mWorkingHourView.showErrorMessage("Something went wrong. Try after sometime")
+                            if (throwable is SocketTimeoutException) {
+                                mWorkingHourView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mWorkingHourView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mWorkingHourView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mWorkingHourView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

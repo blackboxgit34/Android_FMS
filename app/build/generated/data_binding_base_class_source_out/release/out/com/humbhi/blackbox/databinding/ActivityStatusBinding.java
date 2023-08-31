@@ -20,11 +20,20 @@ public final class ActivityStatusBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final TextView header;
+
+  @NonNull
   public final TextView textView1;
 
-  private ActivityStatusBinding(@NonNull RelativeLayout rootView, @NonNull TextView textView1) {
+  @NonNull
+  public final ToolbarLayoutBinding toolBar;
+
+  private ActivityStatusBinding(@NonNull RelativeLayout rootView, @NonNull TextView header,
+      @NonNull TextView textView1, @NonNull ToolbarLayoutBinding toolBar) {
     this.rootView = rootView;
+    this.header = header;
     this.textView1 = textView1;
+    this.toolBar = toolBar;
   }
 
   @Override
@@ -54,13 +63,27 @@ public final class ActivityStatusBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.header;
+      TextView header = ViewBindings.findChildViewById(rootView, id);
+      if (header == null) {
+        break missingId;
+      }
+
       id = R.id.textView1;
       TextView textView1 = ViewBindings.findChildViewById(rootView, id);
       if (textView1 == null) {
         break missingId;
       }
 
-      return new ActivityStatusBinding((RelativeLayout) rootView, textView1);
+      id = R.id.toolBar;
+      View toolBar = ViewBindings.findChildViewById(rootView, id);
+      if (toolBar == null) {
+        break missingId;
+      }
+      ToolbarLayoutBinding binding_toolBar = ToolbarLayoutBinding.bind(toolBar);
+
+      return new ActivityStatusBinding((RelativeLayout) rootView, header, textView1,
+          binding_toolBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

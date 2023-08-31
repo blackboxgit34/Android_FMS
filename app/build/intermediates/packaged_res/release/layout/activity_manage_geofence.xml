@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/primary"
     tools:context=".ui.ui.geofencing.ManageGeofenceActivity">
 
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar"/>
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSearchBar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_below="@id/toolbar"
+        android:backgroundTint="@color/primaryblack"
+        android:hint="Search vehicle.."
+        android:textColorHint="@color/grey_two"
+        android:textColor="@color/grey_two"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="@dimen/font_10"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/margin_x"
+        android:layout_margin="@dimen/margin_x"
+        android:padding="@dimen/margin_x"
+        android:singleLine="true"
+        android:imeOptions="actionSearch"
+        android:background="@drawable/white_curve_rect"/>
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etSearchBar"
+        android:layout_above="@id/loadMore"
+        android:orientation="vertical">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/manage_geofence_adapter"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llNoData"
@@ -55,8 +85,18 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    </LinearLayout>
 
+    <TextView
+        android:id="@+id/loadMore"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Load more..."
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_14"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        app:cardBackgroundColor="@color/primary_little_fade"/>
 
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

@@ -15,7 +15,7 @@ import com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelGraphJavaActivity
 import com.humbhi.blackbox.ui.ui.addonReports.fuel.FuelTheftReportActivity
 
 
-class FuelFillingAdapter(private val vehicleSelection: VehicleDetails, val list:List<FuelFillingData>, val context: Context) : RecyclerView.Adapter<FuelFillingAdapter.ViewHolder>() {
+class FuelFillingAdapter(private val vehicleSelection: VehicleDetails,val list:List<FuelFillingData>, val context: Context) : RecyclerView.Adapter<FuelFillingAdapter.ViewHolder>() {
 
 
     // Holds the views for adding it to image and text
@@ -38,16 +38,7 @@ class FuelFillingAdapter(private val vehicleSelection: VehicleDetails, val list:
                     ivGraph.visibility = View.GONE
                 }
                 ivGraph.setOnClickListener{
-                    val intent = Intent(context, FuelGraphJavaActivity::class.java)
-                    intent.putExtra("vehicleId",list[adapterPosition].bbid)
-                    intent.putExtra("fromNavigate","filling fuel")
-                    intent.putExtra("fuelFillingLevel",list[adapterPosition].FuelFillingMainModel[0].DifferenceFuelLevel)
-                    intent.putExtra("startFillingTime",list[adapterPosition].FuelFillingMainModel[0].StartDateTime)
-                    intent.putExtra("endFillingTime",list[adapterPosition].FuelFillingMainModel[0].EndateTime)
-                    intent.putExtra("startDate",list[adapterPosition].FuelFillingMainModel[0].StartDateTime)
-                    intent.putExtra("endDate",list[adapterPosition].FuelFillingMainModel[0].EndateTime)
-                    context.startActivity(intent)
-                    (context as FuelFillinReportActivity).finish()
+                    vehicleSelection.moveToGraph(adapterPosition)
                 }
             }
         }
@@ -78,6 +69,7 @@ class FuelFillingAdapter(private val vehicleSelection: VehicleDetails, val list:
 
     interface VehicleDetails{
         fun onVehicleSelection(position:Int)
+        fun moveToGraph(position:Int)
     }
 
 }

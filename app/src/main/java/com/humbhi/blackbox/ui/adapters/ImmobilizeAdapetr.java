@@ -28,21 +28,23 @@ import java.util.concurrent.TimeUnit;
 public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.MyHolder> {
 
     Context context;
+
     MyClickListener myClicklistener;
+
     ArrayList<ImmobilizeVehicleModel>list;
 
     public ImmobilizeAdapetr(Context context, ArrayList<ImmobilizeVehicleModel>list)
     {
         this.context = context;
         this.list = list;
-
     }
+    long elapsedMinutes;
+    long elapsedHours;
     @NonNull
     @Override
     public ImmobilizeAdapetr.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.immobilize_adapter
-                , viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.immobilize_adapter, viewGroup, false);
         return new MyHolder(view);
     }
 
@@ -59,6 +61,7 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
         else
         {
             holder.tvNotInstalled.setText("Not Installed");
+         //   holder.tvNotInstalled.setText("minutes = "+elapsedMinutes+" , "+" hours ="+elapsedHours);
             holder.tvNotInstalled.setVisibility(View.VISIBLE);
             holder.switch1.setVisibility(View.GONE);
             holder.tvStatus.setVisibility(View.GONE);
@@ -77,9 +80,7 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
             holder.tvNotInstalled.setVisibility(View.VISIBLE);
             holder.tvNotInstalled.setText("Waiting for device");
         }
-
-            holder.tvStatus.setText(list.get(position).getImmobilisze());
-
+        holder.tvStatus.setText(list.get(position).getImmobilisze());
         Calendar c = Calendar.getInstance();
       //  c.add(Calendar.MINUTE, 15);
         SimpleDateFormat df2 = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
@@ -94,16 +95,12 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
             holder.tvVehName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.unreachable, 0);
             Log.e("RED","check");
         }
-
-
     }
+
     private boolean validateFromDate(String start,String End){
         String startDataTime = start;
         String endDateTime = End;
-
-        SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat("yyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyy-MM-dd hh:mm:ss", Locale.ENGLISH);
         try {
             Date startDT = simpleDateFormat.parse(startDataTime);
             Log.e("endDateTime",endDateTime);
@@ -117,10 +114,10 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
             long hoursInMilli = minutesInMilli * 60;
             long daysInMilli = hoursInMilli * 24;
 
-            long elapsedHours = diffInMs / hoursInMilli;
+            elapsedHours = diffInMs / hoursInMilli;
             diffInMs = diffInMs % hoursInMilli;
 
-            long elapsedMinutes = diffInMs / minutesInMilli;
+            elapsedMinutes = diffInMs / minutesInMilli;
             diffInMs = diffInMs % minutesInMilli;
 
             long elapsedSeconds = diffInMs / secondsInMilli;
@@ -128,14 +125,15 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
             Log.e("elapsedMinutes", String.valueOf(elapsedMinutes));
             Log.e("elapsedHours", String.valueOf(elapsedHours));
             if(elapsedMinutes < 15 && elapsedHours<24) {
+                Log.e("status","true");
                 return true;
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        Log.e("status","false");
         return false;
     }
-
 
     @Override
     public int getItemCount() {
@@ -143,20 +141,16 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-
         private TextView tvVehName,tvLocation,tvNotInstalled,tvStatus;
         private SwitchCompat switch1;
-
         public MyHolder(@NonNull View itemView)
         {
             super(itemView);
-
             switch1 = itemView.findViewById(R.id.switch1);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvVehName = itemView.findViewById(R.id.tvVehName);
             tvStatus = itemView.findViewById(R.id.tvStatus);
             tvNotInstalled = itemView.findViewById(R.id.tvNotInstalled);
-
             switch1.setOnClickListener(view -> {
                 if(((SwitchCompat)view).isChecked())
                 {
@@ -171,10 +165,10 @@ public class ImmobilizeAdapetr extends RecyclerView.Adapter<ImmobilizeAdapetr.My
     }
 
     public interface MyClickListener
-
     {
         void onSwitchClick(int poss, View view1);
     }
+
     public void onItemSelectedListener(MyClickListener clickListener)
     {
         myClicklistener = clickListener;

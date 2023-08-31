@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_x"
+        app:cardBackgroundColor="@color/primary_little_fade"
+        app:cardCornerRadius="@dimen/margin_x">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_black"
+                android:paddingHorizontal="@dimen/margin_x"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/ivCarIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_caricon"/>
+                <TextView
+                    android:id="@+id/tvVehName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HP 33"
+                    android:textAlignment="textStart"
+                    android:gravity="start|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/ivCarIcon"
+                    android:layout_toLeftOf="@id/ivAction"
+                    android:padding="@dimen/margin_v"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:id="@+id/ivAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_settings"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin_x"
+                android:layout_toRightOf="@+id/rlGraph2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Driver Name"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="12sp"
+                        android:layout_weight="0.5"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/tvDriverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="akki Lalra[123456]"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="end"
+                        android:textSize="12sp"
+                        android:layout_weight="0.5"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="12sp"
+                        android:layout_weight="0.5"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="In Use"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="end"
+                        android:textSize="12sp"
+                        android:layout_weight="0.5"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:text="Vehicle Type"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold" />
+
+                    <TextView
+                        android:id="@+id/tvVehType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Car"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="end"
+                        android:textSize="12sp"
+                        android:layout_weight="0.5"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

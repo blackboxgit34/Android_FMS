@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.drivingBehaviour.NoDrivingReport
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.NoDrivingModel
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 
 class NoDrivingPresenterIml(
@@ -57,7 +60,17 @@ class NoDrivingPresenterIml(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             noDrivingLimitView.isHideLoading()
-                            noDrivingLimitView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                noDrivingLimitView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                noDrivingLimitView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    noDrivingLimitView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                noDrivingLimitView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

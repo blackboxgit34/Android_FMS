@@ -4,10 +4,10 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -18,10 +18,13 @@ import java.lang.String;
 
 public final class ActivityAis140VehicleBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final AppCompatEditText etSearchBar;
+
+  @NonNull
+  public final ProgressBarBinding progress;
 
   @NonNull
   public final RecyclerView rvRecycler;
@@ -29,18 +32,19 @@ public final class ActivityAis140VehicleBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
-  private ActivityAis140VehicleBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatEditText etSearchBar, @NonNull RecyclerView rvRecycler,
-      @NonNull ToolbarLayoutBinding toolbar) {
+  private ActivityAis140VehicleBinding(@NonNull RelativeLayout rootView,
+      @NonNull AppCompatEditText etSearchBar, @NonNull ProgressBarBinding progress,
+      @NonNull RecyclerView rvRecycler, @NonNull ToolbarLayoutBinding toolbar) {
     this.rootView = rootView;
     this.etSearchBar = etSearchBar;
+    this.progress = progress;
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -71,6 +75,13 @@ public final class ActivityAis140VehicleBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
       id = R.id.rvRecycler;
       RecyclerView rvRecycler = ViewBindings.findChildViewById(rootView, id);
       if (rvRecycler == null) {
@@ -84,8 +95,8 @@ public final class ActivityAis140VehicleBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityAis140VehicleBinding((ConstraintLayout) rootView, etSearchBar, rvRecycler,
-          binding_toolbar);
+      return new ActivityAis140VehicleBinding((RelativeLayout) rootView, etSearchBar,
+          binding_progress, rvRecycler, binding_toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

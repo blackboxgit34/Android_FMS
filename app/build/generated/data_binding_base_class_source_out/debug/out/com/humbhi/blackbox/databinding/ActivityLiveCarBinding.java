@@ -57,10 +57,13 @@ public final class ActivityLiveCarBinding implements ViewBinding {
   public final FragmentContainerView map;
 
   @NonNull
-  public final TextView mapView;
+  public final ImageView mapView;
 
   @NonNull
   public final NestedScrollView nsScroll;
+
+  @NonNull
+  public final LinearLayout progress;
 
   @NonNull
   public final RecyclerView rvAlerts;
@@ -69,7 +72,7 @@ public final class ActivityLiveCarBinding implements ViewBinding {
   public final ToolbarLayoutBinding toolbar;
 
   @NonNull
-  public final ImageView tvAcStatus;
+  public final TextView tvAcStatus;
 
   @NonNull
   public final TextView tvAlerts;
@@ -138,8 +141,9 @@ public final class ActivityLiveCarBinding implements ViewBinding {
       @NonNull FrameLayout fBottomSheet, @NonNull FrameLayout fLayout, @NonNull ImageView l1,
       @NonNull ImageView l2, @NonNull ImageView l3, @NonNull ImageView l4, @NonNull ImageView l5,
       @NonNull ImageView l6, @NonNull LinearLayout lowerLayout, @NonNull FragmentContainerView map,
-      @NonNull TextView mapView, @NonNull NestedScrollView nsScroll, @NonNull RecyclerView rvAlerts,
-      @NonNull ToolbarLayoutBinding toolbar, @NonNull ImageView tvAcStatus,
+      @NonNull ImageView mapView, @NonNull NestedScrollView nsScroll,
+      @NonNull LinearLayout progress, @NonNull RecyclerView rvAlerts,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvAcStatus,
       @NonNull TextView tvAlerts, @NonNull ImageView tvBatteryStatus,
       @NonNull AppCompatTextView tvDataDate, @NonNull AppCompatTextView tvDistance,
       @NonNull AppCompatTextView tvFuelStatus, @NonNull TextView tvHighspeed,
@@ -164,6 +168,7 @@ public final class ActivityLiveCarBinding implements ViewBinding {
     this.map = map;
     this.mapView = mapView;
     this.nsScroll = nsScroll;
+    this.progress = progress;
     this.rvAlerts = rvAlerts;
     this.toolbar = toolbar;
     this.tvAcStatus = tvAcStatus;
@@ -278,7 +283,7 @@ public final class ActivityLiveCarBinding implements ViewBinding {
       }
 
       id = R.id.mapView;
-      TextView mapView = ViewBindings.findChildViewById(rootView, id);
+      ImageView mapView = ViewBindings.findChildViewById(rootView, id);
       if (mapView == null) {
         break missingId;
       }
@@ -286,6 +291,12 @@ public final class ActivityLiveCarBinding implements ViewBinding {
       id = R.id.nsScroll;
       NestedScrollView nsScroll = ViewBindings.findChildViewById(rootView, id);
       if (nsScroll == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      LinearLayout progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
         break missingId;
       }
 
@@ -303,7 +314,7 @@ public final class ActivityLiveCarBinding implements ViewBinding {
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
       id = R.id.tvAcStatus;
-      ImageView tvAcStatus = ViewBindings.findChildViewById(rootView, id);
+      TextView tvAcStatus = ViewBindings.findChildViewById(rootView, id);
       if (tvAcStatus == null) {
         break missingId;
       }
@@ -435,7 +446,7 @@ public final class ActivityLiveCarBinding implements ViewBinding {
       }
 
       return new ActivityLiveCarBinding((ConstraintLayout) rootView, fBottomSheet, fLayout, l1, l2,
-          l3, l4, l5, l6, lowerLayout, map, mapView, nsScroll, rvAlerts, binding_toolbar,
+          l3, l4, l5, l6, lowerLayout, map, mapView, nsScroll, progress, rvAlerts, binding_toolbar,
           tvAcStatus, tvAlerts, tvBatteryStatus, tvDataDate, tvDistance, tvFuelStatus, tvHighspeed,
           tvIgnition, tvIgnitionStatus, tvLocation, tvMoving, tvMovingFromLastStop,
           tvParkAtLastStop, tvParked, tvParkingTimeTotal, tvPlayback, tvProgressStatus, tvSpeed,

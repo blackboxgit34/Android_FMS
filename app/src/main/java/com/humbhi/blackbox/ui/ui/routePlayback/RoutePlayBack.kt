@@ -1,16 +1,24 @@
 package com.humbhi.blackbox.ui.ui.routePlayback
 
+import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Point
+import android.location.Geocoder
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.SeekBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -20,25 +28,44 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityRoutePlayBackBinding
+import com.humbhi.blackbox.ui.Utility.LatLngEvaluator
 import com.humbhi.blackbox.ui.data.DataManagerImpl
+import com.humbhi.blackbox.ui.data.models.DBVoilationCountsModel
 import com.humbhi.blackbox.ui.data.models.DrivingBehaviourRouteDataModel
+import com.humbhi.blackbox.ui.data.models.MarkerData
 import com.humbhi.blackbox.ui.data.models.RoutePlaybackResponseModel
 import com.humbhi.blackbox.ui.data.network.RestClient
+import com.humbhi.blackbox.ui.retofit.NetworkService
+import com.humbhi.blackbox.ui.retofit.NewRetrofitClient
 import com.humbhi.blackbox.ui.retofit.Retrofit2
 import com.humbhi.blackbox.ui.retofit.RetrofitResponse
+import com.humbhi.blackbox.ui.ui.livetracking.LiveCarActivity
 import com.humbhi.blackbox.ui.utils.ColouredPoint
 import com.humbhi.blackbox.ui.utils.CommonUtil
 import com.humbhi.blackbox.ui.utils.Constants
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONException
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
-import java.util.*
+import java.net.SocketTimeoutException
+import java.util.Locale
+import java.util.StringTokenizer
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     GoogleMap.OnMapLoadedCallback, GoogleMap.OnInfoWindowClickListener,
@@ -48,7 +75,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     private lateinit var mPresenter: RoutePlaybackPresenter
     private lateinit var mMap: GoogleMap
     private lateinit var marker:Marker
-    private lateinit var marker2:Marker
     var Angle_Bring = 0f
     var points: ArrayList<LatLng> = ArrayList()
     private lateinit var progress: ProgressDialog
@@ -59,22 +85,32 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     private lateinit var showStoppages:String
     private lateinit var flag:String
     var hm1: HashMap<Marker, Any>? = null
+    var thread : Thread ?= null
     lateinit var  RoutePlaybackResponseModel: RoutePlaybackResponseModel
-    private var movementSpeed:Int = 500
+    private var movementSpeed:Int = 1500
     //    var  handler: Handler = Handler()
     private val mapTypes = arrayOf("Standard", "Satellite", "Terrain", "Hybrid")
-    var runnable: Runnable ?= null
     lateinit var DrivingBehaviourRouteDataModel: DrivingBehaviourRouteDataModel
     var playPauseString = "Pause"
     var playPause = false
-    var thread: Thread ?= null
     var i = 1
     var speed = ""
     var vehicleType = ""
     var start = false
     var startTime = ""
     var endTime = ""
-
+    var backToLive = ""
+    private var lastKnownPositionIndex = 0
+    var animator : ObjectAnimator? = null
+    var speedList: Double = 0.0
+    var markerList : ArrayList<Marker> = ArrayList()
+    var executor = Executors.newSingleThreadExecutor()
+    var OriginalVoilationMarkersList: ArrayList<MarkerData> = ArrayList()
+    var DuplicateVoilationMarkersList: ArrayList<MarkerData> = ArrayList()
+    var VoilationMarkers: ArrayList<Marker> = ArrayList()
+    var mainHandler = Handler(Looper.getMainLooper())
+    var zoom = 0.0f
+    var handler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRoutePlayBackBinding.inflate(layoutInflater)
@@ -85,7 +121,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         mPresenter = RoutePlaybackPresenterImpl(this, DataManagerImpl(RestClient.getRetrofitBuilderForTrackMaster()))
         setToolbarDetails()
         speedControls()
-        thread = Thread()
         binding.mapView.setOnClickListener {
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Select Map Type")
@@ -93,10 +128,23 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 val selectedMapType = mapTypes[which]
                 setMapType(selectedMapType)
             }
-
             val dialog = dialogBuilder.create()
             dialog.show()
         }
+        binding.stoppage.setOnClickListener {
+            if (markerList.size==0) {
+                binding.stoppage.setColorFilter(R.color.primary_main_orange)
+                getStoppagesApi()
+            }
+            else{
+                binding.stoppage.setColorFilter(R.color.black)
+                for (marker in markerList) {
+                    marker.remove()
+                }
+                markerList.clear()
+            }
+        }
+
     }
 
     private fun setMapType(mapType: String) {
@@ -116,12 +164,21 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         binding.toolbar.tvTitle.visibility = View.VISIBLE
         binding.toolbar.tvTitle.text = "Route Playback"
         binding.toolbar.ivBack.setOnClickListener {
-            if(thread != null){
-                thread!!.interrupt()
+            if(intent.hasExtra("backToLive")){
+                val intent = Intent(this,LiveCarActivity::class.java)
+                intent.putExtra("vehicleName",vehicleName)
+                startActivity(intent)
+                finish()
             }
-            finish()
+            else {
+                finish()
+            }
         }
         binding.speedGauge.speedTo(100F)
+        binding.cbHA.setOnCheckedChangeListener { _, isChecked -> updateMarkers("HA", isChecked)}
+        binding.cbHB.setOnCheckedChangeListener { _, isChecked -> updateMarkers("HB", isChecked)}
+        binding.cbRT.setOnCheckedChangeListener { _, isChecked -> updateMarkers("RT", isChecked)}
+        binding.cbOS.setOnCheckedChangeListener { _, isChecked -> updateMarkers("OS", isChecked)}
         getIntentData()
     }
 
@@ -132,7 +189,7 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
             fromDate = intent.getStringExtra("fromDate").toString()
             toDate = intent.getStringExtra("endDate").toString()
             vehicleName = intent.getStringExtra("vehicleName").toString()
-            showStoppages = intent.getStringExtra("showStoppages").toString()
+        //    showStoppages = intent.getStringExtra("showStoppages").toString()
             flag = intent.getStringExtra("flag").toString()
             if(intent.hasExtra("startTime")){
                 startTime = intent.getStringExtra("startTime").toString()
@@ -156,20 +213,21 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
 
     private fun hitApi()
     {
-            mPresenter.hitRoutePlaybackApi(
-                tableName,
-                fromDate + "%20${startTime}",
-                toDate + "%20${endTime}"
-            )
-        }
+        mPresenter.hitRoutePlaybackApi(
+            tableName,
+            fromDate + "%20${startTime}",
+            toDate + "%20${endTime}"
+        )
+    }
 
     private fun hitDrivingBehaviourRouteAPI()
     {
-            mPresenter.hitDrivingBehaviourRouteAPI(
-                tableName,
-                fromDate + "%20${startTime}",
-                toDate + "%20${endTime}"
-            )
+        mPresenter.hitDrivingBehaviourRouteAPI(
+            tableName,
+            fromDate + "%20${startTime}",
+            toDate + "%20${endTime}",
+             vehicleName
+        )
     }
 
     private fun getStoppagesApi()
@@ -184,17 +242,21 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     }
 
     override fun getRoutePlaybackResponse(routePlaybackResponseModel: RoutePlaybackResponseModel) {
+        progress.dismiss()
         points.clear()
-        Log.e("VALUE_CHECK",routePlaybackResponseModel.DistanceTravelled)
-        RoutePlaybackResponseModel = routePlaybackResponseModel
-        binding.tvTotalDistanceTravel.text = routePlaybackResponseModel.DistanceTravelled.replace("km(s)","")
-        binding.tvDistance.text = routePlaybackResponseModel.DistanceTravelled.replace("km(s)","")
-        for (i in 0 until routePlaybackResponseModel.RouteDataList.size){
-            points.add(LatLng(routePlaybackResponseModel.RouteDataList[i].Latitude,routePlaybackResponseModel.RouteDataList[i].Longitude))
-            Log.e("i",i.toString())
-        }
         if (mMap!=null){
             if (routePlaybackResponseModel.RouteDataList.isNotEmpty()) {
+                RoutePlaybackResponseModel = routePlaybackResponseModel
+                binding.tvTotalDistanceTravel.text = routePlaybackResponseModel.DistanceTravelled.replace("km(s)","")
+                binding.tvDistance.text = routePlaybackResponseModel.DistanceTravelled.replace("km(s)","")
+                for (i in 0 until routePlaybackResponseModel.RouteDataList.size){
+                    points.add(LatLng(routePlaybackResponseModel.RouteDataList[i].Latitude,routePlaybackResponseModel.RouteDataList[i].Longitude))
+                    speedList += routePlaybackResponseModel.RouteDataList[i].speed.toDouble()
+                    Log.e("i",i.toString())
+                }
+                val result = (speedList / routePlaybackResponseModel.RouteDataList.size.toDouble()).toString()
+                val formattedResult = String.format("%.2f", result.toDouble())
+                binding.tvAverageSpeed.text = formattedResult
                 // Start location market
                 marker = mMap.addMarker(
                     MarkerOptions().position(
@@ -206,7 +268,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                         .title("Start Location :" + routePlaybackResponseModel.RouteDataList[0].Location)
                         .icon(bitmapDescriptorFromVector(this, R.drawable.ic_bxs_flag))!!
                 )!!
-
                 // set End Marker
                 marker = mMap.addMarker(
                     MarkerOptions().position(
@@ -217,7 +278,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                     )
                         .icon(bitmapDescriptorFromVector(this, R.drawable.green_flag))!!
                 )!!
-
                 binding.tvStartocation.text = routePlaybackResponseModel.RouteDataList[0].Location
                 binding.tvEndLocation.text = routePlaybackResponseModel.RouteDataList[points.size-1].Location
                 val b = LatLngBounds.Builder()
@@ -324,7 +384,9 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 }
                 marker.isFlat=true
                 marker.setAnchor(0.5f,0.5f)
-                bearingBetweenLocations(points[0], points[1])
+                if(points.size>1) {
+                    bearingBetweenLocations(points[0], points[1])
+                }
                 if(!Angle_Bring.toString().equals("0.0")) {
                     marker.rotation = Angle_Bring
                 }
@@ -345,30 +407,42 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 }
             }
             else{
+                progress.dismiss()
                 binding.llRoutePlaybackDetails.visibility = View.GONE
                 showErrorMessage("No route history found for this vehicle.")
             }
         }
 
-        if (showStoppages.equals("1")){
-            val scale = resources.displayMetrics.density
-            val dpAsPixels = (180 * scale + 0.5f)
-            mMap.setPadding(0,0,0,dpAsPixels.toInt())
-            getStoppagesApi()
-        }
+//        if (showStoppages.equals("1")){
+//            val scale = resources.displayMetrics.density
+//            val dpAsPixels = (180 * scale + 0.5f)
+//            mMap.setPadding(0,0,0,dpAsPixels.toInt())
+//            getStoppagesApi()
+//        }
 
     }
 
     override fun getDrivingBehavourRouteData(drivingBehaviourRouteDataModel: DrivingBehaviourRouteDataModel) {
         points.clear()
-        binding.tvTotalDistanceTravel.text = drivingBehaviourRouteDataModel.DistanceTravelled.replace("km(s)","")
-        DrivingBehaviourRouteDataModel = drivingBehaviourRouteDataModel
-        for (i in 0 until drivingBehaviourRouteDataModel.RouteDataList.size)
-        {
-            points.add(LatLng(drivingBehaviourRouteDataModel.RouteDataList[i].Latitude, drivingBehaviourRouteDataModel.RouteDataList[i].Longitude))
-        }
         if (mMap!=null){
             if (drivingBehaviourRouteDataModel.RouteDataList.isNotEmpty()) {
+                getCounts()
+                binding.tvTotalDistanceTravel.text = drivingBehaviourRouteDataModel.DistanceTravelled.replace("km(s)","")
+                DrivingBehaviourRouteDataModel = drivingBehaviourRouteDataModel
+                for (i in 0 until drivingBehaviourRouteDataModel.RouteDataList.size)
+                {
+                    points.add(LatLng(drivingBehaviourRouteDataModel.RouteDataList[i].Latitude, drivingBehaviourRouteDataModel.RouteDataList[i].Longitude))
+                    OriginalVoilationMarkersList.add(MarkerData(drivingBehaviourRouteDataModel.RouteDataList[i].Latitude,
+                        drivingBehaviourRouteDataModel.RouteDataList[i].Longitude,
+                        drivingBehaviourRouteDataModel.RouteDataList[i].datatype,
+                        drivingBehaviourRouteDataModel.RouteDataList[i].speed,
+                        drivingBehaviourRouteDataModel.RouteDataList[i].Location,
+                        drivingBehaviourRouteDataModel.RouteDataList[i].dDate,
+                    ))
+                }
+                binding.tvDistance.text = drivingBehaviourRouteDataModel.DistanceTravelled.replace("km(s)","")
+                binding.tvStartocation.text = drivingBehaviourRouteDataModel.RouteDataList[0].Location
+                binding.tvEndLocation.text = drivingBehaviourRouteDataModel.RouteDataList[points.size-1].Location
                 // Start location market
                 marker = mMap.addMarker(
                     MarkerOptions().position(
@@ -389,142 +463,50 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                             points[points.size - 1].longitude
                         )
                     )
+                        .title("End Location :" + drivingBehaviourRouteDataModel.RouteDataList[points.size-1].Location)
                         .icon(bitmapDescriptorFromVector(this, R.drawable.green_flag))!!
                 )!!
                 val scale = resources.displayMetrics.density
-                val dpAsPixels = (180 * scale + 0.5f)
+                val dpAsPixels = (120 * scale + 0.5f)
                 mMap.setPadding(0,0,0,dpAsPixels.toInt())
                 val builder = LatLngBounds.Builder()
-                builder.include(points.get(0))
-                builder.include(points.get(points.size - 1))
-                val bounds = builder.build()
-                val cu = CameraUpdateFactory.newLatLngBounds(bounds, 200)
-                mMap.moveCamera(cu)
-                val c = LatLngBounds.Builder()
-                for (m in drivingBehaviourRouteDataModel.RouteDataList) {
-                    c.include(LatLng(m.Latitude,m.Longitude))
+                for(cord in points){
+                    builder.include(LatLng(cord.latitude,cord.longitude))
                 }
-                val bounds1 = c.build()
-                val width = resources.displayMetrics.widthPixels
-                val height = resources.displayMetrics.heightPixels
-                val CamerLoc = CameraUpdateFactory.newLatLngBounds(bounds1, width, height, 200)
-                mMap.animateCamera(CamerLoc)
+                val bounds = builder.build()
+                val cu = CameraUpdateFactory.newLatLngBounds(bounds, 100)
+                mMap.moveCamera(cu)
 
                 Log.e("TotalListSize",drivingBehaviourRouteDataModel.RouteDataList.size.toString())
 
-                //timerworking();
-                //    val rotate = Angle_Bring.toDouble()
-                marker = mMap.addMarker(
-                    MarkerOptions().position(
-                        LatLng(
-                            points.get(0).latitude,
-                            points.get(0).longitude
-                        )
-                    )
-                        .flat(true)
-                )!!
-
-                if (vehicleType != "Other") {
-                    if (vehicleType.equals("OilTanker", ignoreCase = true)) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_green_truck_final
-                            )
-                        )
-                    } else if (vehicleType.equals("Car", ignoreCase = true)) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_car_green_with_shadow
-                            )
-                        )
-                    } else if (vehicleType.equals("Bus", ignoreCase = true)) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_green_truck_final
-                            )
-                        )
-                    } else if (vehicleType.equals(
-                            "Ambulance",
-                            ignoreCase = true
-                        )
-                    ) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_green_truck_final
-                            )
-                        )
-                    } else if (vehicleType.equals(
-                            "Truck",
-                            ignoreCase = true
-                        )
-                    ) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_green_truck_final
-                            )
-                        )
-                    } else if (vehicleType.equals("RoadRoller", ignoreCase = true)) {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_car_green_with_shadow
-                            )
-                        )
-                    } else {
-                        marker.setIcon(
-                            bitmapDescriptorFromVector(
-                                this,
-                                R.drawable.ic_green_truck_final
-                            )
-                        )
-                    }
-                }
-
-                else {
-                    marker.setIcon(
-                        bitmapDescriptorFromVector(
-                            this,
-                            R.drawable.ic_green_truck_final
-                        )
-                    )
-                }
-
-                marker.isFlat=true
-                marker.setAnchor(0.5f,0.5f)
-                bearingBetweenLocations(points[i-1], points[i])
-                if(!Angle_Bring.toString().equals("0.0")) {
-                    marker.rotation = Angle_Bring
+                if(drivingBehaviourRouteDataModel.RouteDataList.size>1) {
+                    bearingBetweenLocations(points[i - 1], points[i])
                 }
 
                 val sourcePoints: ArrayList<ColouredPoint> = ArrayList()
 
                 for (filetrData in drivingBehaviourRouteDataModel.RouteDataList.indices){
-                    if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("OS")){
-                        sourcePoints.add(ColouredPoint(LatLng(drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude,drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude), R.color.voilet_red))
-                    }
-                    if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("RT")){
-                        sourcePoints.add(ColouredPoint(LatLng(drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude,drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude), R.color.red))
-                    }
-                    if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("HA")){
-                        sourcePoints.add(ColouredPoint(LatLng(drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude,drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude),  R.color.blue))
-                    }
-                    if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("HB")){
-                        sourcePoints.add(ColouredPoint(LatLng(drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude,drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude),  R.color.secondary_yellow))
+                    val latitude = drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude
+                    val longitude = drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude
+                    if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("RT")) {
+                        sourcePoints.add(ColouredPoint(LatLng(latitude, longitude), ContextCompat.getColor(this, R.color.voilet_red)))
+                    } else if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("OS")) {
+                        sourcePoints.add(ColouredPoint(LatLng(latitude, longitude), ContextCompat.getColor(this, R.color.red)))
+                    } else if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("HA")) {
+                        sourcePoints.add(ColouredPoint(LatLng(latitude, longitude), ContextCompat.getColor(this, R.color.blue)))
+                    } else if (drivingBehaviourRouteDataModel.RouteDataList[filetrData].datatype.equals("HB")) {
+                        sourcePoints.add(ColouredPoint(LatLng(latitude, longitude), ContextCompat.getColor(this, R.color.secondary_yellow)))
                     }
                     else{
-                        sourcePoints.add(ColouredPoint(LatLng(drivingBehaviourRouteDataModel.RouteDataList[filetrData].Latitude,drivingBehaviourRouteDataModel.RouteDataList[filetrData].Longitude),  R.color.black))
+                        sourcePoints.add(ColouredPoint(LatLng(latitude, longitude), ContextCompat.getColor(this, R.color.black)))
                     }
                 }
                 binding.llDrivingVoilationIndicators.visibility = View.VISIBLE
                 showPolyline(sourcePoints)
             }
             else{
-                binding.llRoutePlaybackDetails.visibility = View.GONE
+                progress.dismiss()
+                binding.cvDistanceDetails.visibility = View.GONE
                 showErrorMessage("No route history found for this vehicle.")
             }
         }
@@ -541,10 +523,9 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         ix++
         while (ix < points.size) {
             currentPoint = points[ix]
-            if (currentPoint.color == currentColor) {
+            if (currentPoint.color === currentColor) {
                 currentSegment.add(currentPoint.coords)
-            }
-            else {
+            } else {
                 currentSegment.add(currentPoint.coords)
                 mMap.addPolyline(
                     PolylineOptions()
@@ -576,7 +557,10 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {
@@ -588,7 +572,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
     }
 
     override fun isHideLoading(): Boolean {
-        progress.dismiss()
         return true
     }
 
@@ -598,19 +581,34 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.uiSettings.isScrollGesturesEnabled = false
-        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+        mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+        mMap.moveCamera(
+            CameraUpdateFactory
+                .newCameraPosition(
+                    CameraPosition.Builder()
+                        .target(LatLng(30.709588, 76.810326))
+                        .zoom(11f)
+                        .build()
+                )
+        )
+        val currentZoomLevel = mMap.cameraPosition.zoom
+        zoom = currentZoomLevel
         Log.e("FlaggGet",flag)
         if (flag.equals("DrivingBehaveRoute"))
         {
             Log.e("FlaggGet","Drivingggg")
-            binding.durationLayout.visibility = View.GONE
-            binding.llRoutePlaybackDetails.visibility = View.VISIBLE
+            binding.llRoutePlaybackDetails.visibility = View.GONE
+            binding.cvDistanceDetails.visibility = View.VISIBLE
             hitDrivingBehaviourRouteAPI()
         }
         else{
             Log.e("FlaggGet","NORMALLLL")
             hitApi()
+        }
+        mMap.setOnCameraIdleListener {
+            // Get the current zoom level of the map
+            val currentZoomLevel = mMap.cameraPosition.zoom
+            zoom = currentZoomLevel
         }
     }
 
@@ -685,37 +683,66 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         hideMarker: Boolean,routePlaybackResponseModel: RoutePlaybackResponseModel
     ) {
         try {
-            if (i < directionPoint.size) {
+//            val builder = LatLngBounds.Builder()
+//            for (marker in routePlaybackResponseModel.RouteDataList) {
+//                builder.include(LatLng(marker.Latitude,marker.Longitude))
+//            }
+//// Build the bounds object
+//            // Build the bounds object
+//            val bounds = builder.build()
+//// Animate the camera to show all markers within the bounds
+//            // Animate the camera to show all markers within the bounds
+//            val padding = 150 // adjust this as desired
+//
+//            val cu = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+//            mMap.animateCamera(cu)
+            if(i==directionPoint.size){
+                playPause = false
+                playPauseString = "pause"
+                animator!!.cancel()
+                thread!!.interrupt()
+                binding.playPauseIcon.setImageDrawable(getDrawable(R.drawable.ic_baseline_play_arrow_24))
+                binding.tvOneX.setTextColor(resources.getColor(R.color.black))
+                binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
+                binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
+                binding.tvFourX.setTextColor(resources.getColor(R.color.black))
+            }
+            else{
                 binding.tvCurrentSpeed.text = routePlaybackResponseModel.RouteDataList[i].speed
                 binding.sSeekBar.progress = i
                 binding.sSeekBar.max = routePlaybackResponseModel.RouteDataList.size
                 binding.tvLocation.text = routePlaybackResponseModel.RouteDataList[i].Location
                 binding.tvDateAndTime.text = routePlaybackResponseModel.RouteDataList[i].dDate
                 binding.tvCurrentDistanceCover.text = routePlaybackResponseModel.RouteDataList[i].Cumuladistance
-                marker.position = directionPoint[i]
-                val position2 = CameraPosition.builder()
-                    .target(directionPoint[i])
-                    .zoom(16f)
-                    .build()
-                myMap.moveCamera(CameraUpdateFactory.newCameraPosition(position2))
-                bearingBetweenLocations(directionPoint[i-1], directionPoint[i])
-                val rotate: Float = Angle_Bring
-                if(Angle_Bring.toString() != "0.0") {
-                    marker.rotation = rotate
+                animator?.cancel()
+                animator = ObjectAnimator.ofObject(
+                    marker,
+                    "position",
+                    LatLngEvaluator(),
+                    marker.position,
+                    directionPoint[i]
+                )
+                animator!!.duration = movementSpeed.toLong()
+                if(i<directionPoint.size-1) {
+                    handler.post {
+                        val position2 = CameraPosition.builder()
+                            .target(directionPoint[i])
+                            .zoom(zoom)
+                            .build()
+                        myMap.animateCamera(CameraUpdateFactory.newCameraPosition(position2))
+                    }
+                }
+                animator!!.start()
+                if(directionPoint.size>1) {
+                    bearingBetweenLocations(directionPoint[i - 1], directionPoint[i])
+                    val rotate: Float = Angle_Bring
+                    if (Angle_Bring.toString() != "0.0") {
+                        marker.rotation = rotate
+                    }
                 }
                 marker.setAnchor(0.5f, 0.5f)
                 marker.isFlat = true
             }
-            else {
-                playPause = false
-                playPauseString = "pause"
-                binding.playPauseIcon.setImageDrawable(getDrawable(R.drawable.ic_baseline_play_arrow_24))
-                binding.tvOneX.setTextColor(resources.getColor(R.color.black))
-                binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
-                binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
-                binding.tvFourX.setTextColor(resources.getColor(R.color.black))
-                }
-
             val drivingDuration = routePlaybackResponseModel.Drivingduration
             if(!drivingDuration.equals("")) {
                 val drivingDurationtokenizer = StringTokenizer(drivingDuration, "-")
@@ -771,48 +798,6 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         }
     }
 
-    private fun animateMarkerForDrivingBehaviourRoute(
-        myMap: GoogleMap, marker: Marker, directionPoint: List<LatLng>,
-        hideMarker: Boolean,routePlaybackResponseModel: DrivingBehaviourRouteDataModel
-    ) {
-        try {
-            if (i < directionPoint.size) {
-                bearingBetweenLocations(directionPoint[i-1], directionPoint[i])
-                val rotate: Float = Angle_Bring
-                if(Angle_Bring.toString() != "0.0") {
-                    marker.rotation = rotate
-                }
-                marker.isFlat = true
-                marker.setAnchor(0.5f, 0.5f)
-                marker.position = directionPoint[i]
-                val position2 = CameraPosition.builder()
-                    .target(directionPoint[i])
-                    .zoom(16f)
-                    .build()
-                myMap.moveCamera(CameraUpdateFactory.newCameraPosition(position2))
-                binding.tvCurrentSpeed.text = routePlaybackResponseModel.RouteDataList[i].speed
-                binding.sSeekBar.progress = i
-                binding.sSeekBar.max = routePlaybackResponseModel.RouteDataList.size
-                binding.tvLocation.text = routePlaybackResponseModel.RouteDataList[i].Location
-                binding.tvDateAndTime.text = routePlaybackResponseModel.RouteDataList[i].dDate
-                binding.tvCurrentDistanceCover.text = routePlaybackResponseModel.RouteDataList[i].Cumuladistance
-            }
-            else{
-                playPause = false
-                playPauseString = "pause"
-                binding.playPauseIcon.setImageDrawable(getDrawable(R.drawable.ic_baseline_play_arrow_24))
-                binding.tvOneX.setTextColor(resources.getColor(R.color.black))
-                binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
-                binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
-                binding.tvFourX.setTextColor(resources.getColor(R.color.black))
-            }
-            i++
-        }
-        catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
     private fun bearingBetweenLocations(position: LatLng, position1: LatLng) {
         val PI = 3.14159
         val lat1 = position.latitude * PI / 180
@@ -850,13 +835,8 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 lat = obj.getDouble("StopLatitude")
                 longi = obj.getDouble("StopLongitude")
                 if (lat != 0.0 && longi != 0.0) {
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lat, longi), 14.0f))
-                    marker2 = mMap.addMarker(
-                        MarkerOptions()
-                            .position(LatLng(lat, longi)).flat(true).icon(bitmapDescriptorFromVector(this, R.drawable.ic_bxs_map_pin))
-                    )!!
-                    marker.position = LatLng(lat,longi)
-                    hm1?.put(marker2, obj)
+                    mMap.addMarker(MarkerOptions().position(LatLng(lat, longi)).flat(true).icon(bitmapDescriptorFromVector(this, R.drawable.stop_marker )))
+                        ?.let { markerList.add(it) }
                 }
             }
         } catch (e: JSONException) {
@@ -866,60 +846,31 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
         }
     }
 
-    private fun moveVehicle(){
-        if (flag == "DrivingBehaveRoute") {
-            thread = object : Thread() {
-                override fun run() {
-                    try {
-                        while (!isInterrupted) {
-                            sleep(movementSpeed.toLong())
-                            runOnUiThread {
-                                try {
-                                    animateMarkerForDrivingBehaviourRoute(
-                                        mMap,
-                                        marker,
-                                        points,
-                                        true,
-                                        DrivingBehaviourRouteDataModel
-                                    )
-                                } catch (e: java.lang.Exception) {
-                                    e.printStackTrace()
-                                }
+    private fun moveVehicle() {
+        thread = object : Thread() {
+            override fun run() {
+                try {
+                    while (!isInterrupted) {
+                        sleep(movementSpeed.toLong())
+                        runOnUiThread {
+                            try {
+                                animateMarker(
+                                    mMap,
+                                    marker,
+                                    points,
+                                    true,
+                                    RoutePlaybackResponseModel
+                                )
+                            } catch (e: java.lang.Exception) {
+                                e.printStackTrace()
                             }
                         }
-                    } catch (ignored: InterruptedException) {
                     }
+                } catch (ignored: InterruptedException) {
                 }
             }
-            thread!!.start()
-
         }
-        else{
-            thread = object : Thread() {
-                override fun run() {
-                    try {
-                        while (!isInterrupted) {
-                            sleep(movementSpeed.toLong())
-                            runOnUiThread {
-                                try {
-                                    animateMarker(
-                                        mMap,
-                                        marker,
-                                        points,
-                                        true,
-                                        RoutePlaybackResponseModel
-                                    )
-                                } catch (e: java.lang.Exception) {
-                                    e.printStackTrace()
-                                }
-                            }
-                        }
-                    } catch (ignored: InterruptedException) {
-                    }
-                }
-            }
-            thread!!.start()
-        }
+        thread!!.start()
     }
 
     // speed controls
@@ -930,19 +881,39 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
 //                binding.llLocation.visibility = View.VISIBLE
                 when (speed) {
                     "1x" -> {
-                        movementSpeed = 200
+                        movementSpeed = 1500
+                        binding.tvOneX.setTextColor(resources.getColor(R.color.white))
+                        binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvFourX.setTextColor(resources.getColor(R.color.black))
                     }
+
                     "2x" -> {
-                        movementSpeed = 100
+                        movementSpeed = 1500 / 2
+                        binding.tvOneX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvTwoX.setTextColor(resources.getColor(R.color.white))
+                        binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvFourX.setTextColor(resources.getColor(R.color.black))
                     }
+
                     "3x" -> {
-                        movementSpeed = 70
+                        movementSpeed = 1500 / 3
+                        binding.tvOneX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvThreeX.setTextColor(resources.getColor(R.color.white))
+                        binding.tvFourX.setTextColor(resources.getColor(R.color.black))
                     }
+
                     "4x" -> {
-                        movementSpeed = 40
+                        movementSpeed = 1500 / 4
+                        binding.tvOneX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
+                        binding.tvFourX.setTextColor(resources.getColor(R.color.white))
                     }
+
                     else -> {
-                        movementSpeed = 500
+                        movementSpeed = 1500
                     }
                 }
                 BottomSheetBehavior.from(binding.fBottomSheet).apply {
@@ -972,10 +943,12 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                 binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
                 binding.tvFourX.setTextColor(resources.getColor(R.color.black))
             }
+        }
 
             binding.tvOneX.setOnClickListener {
 //                binding.llLocation.visibility = View.VISIBLE
 //                binding.durationLayout.visibility  = View.VISIBLE
+                if (thread != null) {
                     binding.tvOneX.setTextColor(resources.getColor(R.color.white))
                     binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
                     binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
@@ -987,16 +960,18 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                     })
                     playPauseString = "play"
                     thread!!.interrupt()
-                    movementSpeed = 200
+                    movementSpeed = 1500
                     BottomSheetBehavior.from(binding.fBottomSheet).apply {
                         this.state = BottomSheetBehavior.STATE_EXPANDED
                     }
                     moveVehicle()
+                }
             }
 
             binding.tvTwoX.setOnClickListener {
 //                binding.durationLayout.visibility  = View.VISIBLE
 //                binding.llLocation.visibility = View.VISIBLE
+                if (thread != null) {
                     binding.tvOneX.setTextColor(resources.getColor(R.color.black))
                     binding.tvTwoX.setTextColor(resources.getColor(R.color.white))
                     binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
@@ -1008,16 +983,18 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                     })
                     playPauseString = "play"
                     thread!!.interrupt()
-                    movementSpeed = 100
+                    movementSpeed = 1500 / 2
                     BottomSheetBehavior.from(binding.fBottomSheet).apply {
                         this.state = BottomSheetBehavior.STATE_EXPANDED
                     }
                     moveVehicle()
+                }
             }
 
             binding.tvThreeX.setOnClickListener {
 //                binding.durationLayout.visibility  = View.VISIBLE
 //                binding.llLocation.visibility = View.VISIBLE
+                if (thread != null) {
                     binding.tvOneX.setTextColor(resources.getColor(R.color.black))
                     binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
                     binding.tvThreeX.setTextColor(resources.getColor(R.color.white))
@@ -1029,7 +1006,7 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                     })
                     playPauseString = "play"
                     thread!!.interrupt()
-                    movementSpeed = 70
+                    movementSpeed = 1500 / 3
                     BottomSheetBehavior.from(binding.fBottomSheet).apply {
                         this.state = BottomSheetBehavior.STATE_EXPANDED
                     }
@@ -1040,6 +1017,7 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
             binding.tvFourX.setOnClickListener {
 //                binding.durationLayout.visibility  = View.VISIBLE
 //                binding.llLocation.visibility = View.VISIBLE
+                if (thread != null) {
                     binding.tvOneX.setTextColor(resources.getColor(R.color.black))
                     binding.tvTwoX.setTextColor(resources.getColor(R.color.black))
                     binding.tvThreeX.setTextColor(resources.getColor(R.color.black))
@@ -1051,20 +1029,158 @@ class RoutePlayBack : AppCompatActivity(),RoutePlaybackView, OnMapReadyCallback,
                     })
                     playPauseString = "play"
                     thread!!.interrupt()
-                    movementSpeed = 40
+                    movementSpeed = 1500 / 4
                     BottomSheetBehavior.from(binding.fBottomSheet).apply {
                         this.state = BottomSheetBehavior.STATE_EXPANDED
                     }
                     moveVehicle()
-        }
+                }
+            }
+    }
+
+    // get exact location using latitude and longi
+    fun getAddress(context: Context?, lat: Double, lng: Double) : String {
+        val add = ""
+        executor.execute(Runnable {
+            val geocoder = Geocoder(context!!, Locale.getDefault())
+            try {
+                val addresses =
+                    geocoder.getFromLocation(lat, lng, 1)
+                val obj = addresses!![0]
+                val add = obj.getAddressLine(0)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        })
+        return add
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if(thread != null){
+        if(animator!=null) {
+            animator!!.cancel()
+        }
+        if(thread!=null){
             thread!!.interrupt()
         }
+        handler.removeCallbacksAndMessages(null)
         finish()
+    }
+
+    private fun updateMarkers(data:String, isChecked:Boolean) {
+        for (marker in VoilationMarkers) {
+            if(marker.title.equals(data)) {
+                marker.remove()
+            }
+        }
+        DuplicateVoilationMarkersList.clear() // Clear all existing markers
+        if (isChecked) {
+            for (markers in OriginalVoilationMarkersList) {
+                if (markers.dataType.equals(data)) {
+                    DuplicateVoilationMarkersList.add(markers)
+                    mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+                        override fun getInfoContents(p0: Marker): View? {
+                            if(!marker.title.equals("Start Location :") && !marker.title.equals("End Location :")) {
+                                // Inflate the custom layout for the marker info window
+                                val inflater = LayoutInflater.from(this@RoutePlayBack)
+                                val view = inflater.inflate(R.layout.marker_layout_info, null)
+                                // Find the views within the layout
+                                val textTitle = view.findViewById<TextView>(R.id.Location)
+                                val textDescription = view.findViewById<TextView>(R.id.DateAndTime)
+                                val textSpeed = view.findViewById<TextView>(R.id.Speed)
+                                // Customize the content of the marker info window
+                                val markerData: MarkerData? = getMarkerData(p0)
+                                if (markerData != null) {
+                                    textTitle.text = "Location: " + markerData.location
+                                    textDescription.text = "Date and Time :" + markerData.date
+                                    textSpeed.text =
+                                        "Speed :" + markerData.speed.toString() + " km/h"
+                                }
+                                return view
+                            }
+                            return null
+                        }
+                        override fun getInfoWindow(p0: Marker): View? {
+                            return null // Return null to use the default info window
+                        }
+                    })
+                }
+            }
+            for (markers in DuplicateVoilationMarkersList) {
+                val position = LatLng(markers.latitude, markers.longitude)
+                val markerOptions = MarkerOptions().position(position)
+                when (data) {
+                    "OS" -> markerOptions.icon(
+                        bitmapDescriptorFromVector(this, R.drawable.os_marker)
+                    ).title("OS")
+
+                    "RT" -> markerOptions.icon(
+                        bitmapDescriptorFromVector(this, R.drawable.rt_marker)
+                    ).title("RT")
+
+                    "HA" -> markerOptions.icon(
+                        bitmapDescriptorFromVector(this, R.drawable.ha_marker)
+                    ).title("HA")
+
+                    "HB" -> markerOptions.icon(
+                        bitmapDescriptorFromVector(this, R.drawable.hb_marker)
+                    ).title("HB")
+                }
+                mMap.addMarker(markerOptions)?.let { VoilationMarkers.add(it) }
+            }
+        }
+    }
+
+    private fun getMarkerData(marker: Marker): MarkerData? {
+        // Iterate over the list of results from liveStatus and find the matching marker
+        for (result in OriginalVoilationMarkersList) {
+            val markerPosition = marker.position
+            val resultPosition = LatLng(result.latitude, result.longitude)
+            if (markerPosition == resultPosition) {
+                return result
+            }
+        }
+        return null // No matching data found
+    }
+
+    fun getCounts(){
+        executor.execute{
+            val api = NewRetrofitClient.getInstance().create(NetworkService::class.java)
+            api.getVoilationCounts(tableName, fromDate + "%20${startTime}",toDate + "%20${endTime}").enqueue(object: Callback<DBVoilationCountsModel>{
+                override fun onResponse(
+                    call: Call<DBVoilationCountsModel>,
+                    response: Response<DBVoilationCountsModel>
+                ) {
+                    mainHandler.post{
+                        progress.dismiss()
+                        val responseX = response.body()
+                        if (responseX != null) {
+                            binding.hbCount.text = responseX.data[0].HBc.toString()
+                            binding.haCount.text = responseX.data[0].HAc.toString()
+                            binding.rtCount.text = responseX.data[0].RTc.toString()
+                            binding.osCount.text = responseX.data[0].OSc.toString()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DBVoilationCountsModel>, t: Throwable) {
+                    mainHandler.post{
+                        progress.dismiss()
+                        if (t is SocketTimeoutException) {
+                            Constants.alertDialog(
+                                this@RoutePlayBack,
+                                "Please check your network connection"
+                            )
+                        } else {
+                            Constants.alertDialog(
+                                this@RoutePlayBack,
+                                "Something went wrong"
+                            )
+                        }
+                    }
+                }
+            })
+        }
     }
 
 }

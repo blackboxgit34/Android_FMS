@@ -4,7 +4,6 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +11,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
@@ -21,13 +21,10 @@ import java.lang.String;
 
 public final class ActivityVehicleStatusBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final SwipeRefreshLayout rootView;
 
   @NonNull
   public final AppCompatEditText etSearchBar;
-
-  @NonNull
-  public final RelativeLayout llMainLayout;
 
   @NonNull
   public final ProgressBarBinding llProgressLayout;
@@ -42,6 +39,9 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
   public final RecyclerView rvVehicle;
 
   @NonNull
+  public final SwipeRefreshLayout swipeRefreshLayout;
+
+  @NonNull
   public final ToolbarLayoutBinding toolBar;
 
   @NonNull
@@ -50,19 +50,19 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvTotalCount;
 
-  private ActivityVehicleStatusBinding(@NonNull RelativeLayout rootView,
-      @NonNull AppCompatEditText etSearchBar, @NonNull RelativeLayout llMainLayout,
-      @NonNull ProgressBarBinding llProgressLayout, @NonNull TextView loadMore,
-      @NonNull LinearLayoutCompat midLayout, @NonNull RecyclerView rvVehicle,
+  private ActivityVehicleStatusBinding(@NonNull SwipeRefreshLayout rootView,
+      @NonNull AppCompatEditText etSearchBar, @NonNull ProgressBarBinding llProgressLayout,
+      @NonNull TextView loadMore, @NonNull LinearLayoutCompat midLayout,
+      @NonNull RecyclerView rvVehicle, @NonNull SwipeRefreshLayout swipeRefreshLayout,
       @NonNull ToolbarLayoutBinding toolBar, @NonNull AppCompatTextView tvFilter,
       @NonNull AppCompatTextView tvTotalCount) {
     this.rootView = rootView;
     this.etSearchBar = etSearchBar;
-    this.llMainLayout = llMainLayout;
     this.llProgressLayout = llProgressLayout;
     this.loadMore = loadMore;
     this.midLayout = midLayout;
     this.rvVehicle = rvVehicle;
+    this.swipeRefreshLayout = swipeRefreshLayout;
     this.toolBar = toolBar;
     this.tvFilter = tvFilter;
     this.tvTotalCount = tvTotalCount;
@@ -70,7 +70,7 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public SwipeRefreshLayout getRoot() {
     return rootView;
   }
 
@@ -101,12 +101,6 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.llMainLayout;
-      RelativeLayout llMainLayout = ViewBindings.findChildViewById(rootView, id);
-      if (llMainLayout == null) {
-        break missingId;
-      }
-
       id = R.id.llProgressLayout;
       View llProgressLayout = ViewBindings.findChildViewById(rootView, id);
       if (llProgressLayout == null) {
@@ -132,6 +126,8 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
         break missingId;
       }
 
+      SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) rootView;
+
       id = R.id.toolBar;
       View toolBar = ViewBindings.findChildViewById(rootView, id);
       if (toolBar == null) {
@@ -151,9 +147,9 @@ public final class ActivityVehicleStatusBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityVehicleStatusBinding((RelativeLayout) rootView, etSearchBar, llMainLayout,
-          binding_llProgressLayout, loadMore, midLayout, rvVehicle, binding_toolBar, tvFilter,
-          tvTotalCount);
+      return new ActivityVehicleStatusBinding((SwipeRefreshLayout) rootView, etSearchBar,
+          binding_llProgressLayout, loadMore, midLayout, rvVehicle, swipeRefreshLayout,
+          binding_toolBar, tvFilter, tvTotalCount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

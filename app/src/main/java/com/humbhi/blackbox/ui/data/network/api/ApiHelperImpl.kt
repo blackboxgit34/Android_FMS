@@ -1,8 +1,10 @@
 package com.humbhi.blackbox.ui.data.network.api
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.JsonObject
+import com.humbhi.blackbox.ui.MyApplication
 import com.humbhi.blackbox.ui.data.db.DBHelper
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.CommonResponse
@@ -42,26 +44,22 @@ import com.humbhi.blackbox.ui.data.network.api.ApiEndpoints.GET_VEHICLE_DETAILS
 import com.humbhi.blackbox.ui.data.network.api.ApiEndpoints.GET_VEHICLE_LIVE_STATUS
 import com.humbhi.blackbox.ui.data.network.api.ApiEndpoints.GET_WORKING_HOUR_REPORT
 import com.humbhi.blackbox.ui.data.network.api.ApiEndpoints.LOGIN
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.CLEAR_PASS
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.DEVICE_ID
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.DEVICE_TYPE
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.PASSWORD
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.TOKEN
-import com.humbhi.blackbox.ui.data.network.api.ApiKeys.USERNAME
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Headers
-import org.json.JSONArray
 import retrofit2.Response
 import retrofit2.Retrofit
 import java.lang.reflect.Array
+import java.util.concurrent.Executors
 
 class ApiHelperImpl(
     private var mRetrofit: Retrofit,
     private var mDBHelper: DBHelper
 ) :ApiHelper{
     private var isApiCalling = false
+    var executor = Executors.newSingleThreadExecutor()
+    var mainHandler = Handler(Looper.getMainLooper())
     /*
     * Get api interface
     * @return api interface*/
@@ -74,70 +72,65 @@ class ApiHelperImpl(
         mApiCall: Observable<Response<T>>,
         mApiListener:ApiHelper.ApiListener?
     ){
-        if (!isApiCalling){
-            isApiCalling = true
-            Log.e("CallingApi",isApiCalling.toString())
-            mApiCall.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object :ResponseResolver<T>(mRetrofit){
-                    override fun onSuccess(t: T) {
-                        Log.e("OnSuccess",t.toString())
-                        isApiCalling = false
-                        if (t is CommonResponse){
-                            Log.e("WhatIsT","COMMON_RESPONSE")
-                            val commonResponse = t as CommonResponse
-                            if (commonResponse.errors.isNullOrEmpty()){
-                                mApiListener?.onSuccess(commonResponse)
-                            } else{
-                                mApiListener?.onError(commonResponse.errors[0].getErrorMessageId())
+        executor.execute {
+                if (!isApiCalling) {
+                    isApiCalling = true
+                    Log.e("CallingApi", isApiCalling.toString())
+                    mApiCall.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(object : ResponseResolver<T>(mRetrofit) {
+                            override fun onSuccess(t: T) {
+                                Log.e("OnSuccess", t.toString())
+                                isApiCalling = false
+                                if (t is CommonResponse) {
+                                    Log.e("WhatIsT", "COMMON_RESPONSE")
+                                    val commonResponse = t as CommonResponse
+                                    if (commonResponse.errors.isNullOrEmpty()) {
+                                        mApiListener?.onSuccess(commonResponse)
+                                    } else {
+                                        mApiListener?.onError(commonResponse.errors[0].getErrorMessageId())
+                                    }
+                                } else if (t is Any) {
+                                    Log.e("WhatIsT", "Any")
+                                    var response: CommonResponse? = null
+                                    try {
+                                        response = Gson().fromJson(
+                                            Gson().toJson(t),
+                                            CommonResponse::class.java
+                                        )
+                                    } catch (e: Exception) {
+                                        e.printStackTrace()
+                                    }
+                                    if (response!!.errors.isNullOrEmpty()) {
+                                        mApiListener?.onSuccess(t as Any)
+                                    } else {
+                                        mApiListener?.onError(response.errors[0].getErrorMessageId())
+                                    }
+                                } else if (t is String) {
+                                    Log.e("WhatIsT", "STRING")
+                                    Log.e("t is String", t)
+                                } else if (t is Array) {
+                                }
                             }
-                        }
-                        else if (t is Any){
-                            Log.e("WhatIsT","Any")
-                            var response:CommonResponse? = null
-                            try {
-                                response = Gson().fromJson(
-                                    Gson().toJson(t),
-                                    CommonResponse::class.java
-                                )
-                            }catch (e:Exception){
-                                e.printStackTrace()
+
+                            override fun onFailure(throwable: Throwable) {
+                                Log.e("OnFailure", throwable.message!!)
+                                isApiCalling = false
+                                mApiListener?.onFailure(null, throwable)
                             }
-                            if (response!!.errors.isNullOrEmpty()){
-                                mApiListener?.onSuccess(t as Any)
+
+                            override fun onReceiveHeaders(headers: Headers) {
+                                isApiCalling = false
                             }
-                            else{
-                                mApiListener?.onError(response.errors[0].getErrorMessageId())
+
+                            override fun onError(error: ApiError) {
+                                Log.e("OnError", error.getMessage()!!)
+                                isApiCalling = false
+                                mApiListener?.onFailure(error, null)
                             }
-                        }
-                        else if (t is String){
-                            Log.e("WhatIsT","STRING")
-                            Log.e("t is String",t)
-                        }
-
-                        else if (t is Array){
-                        }
-                    }
-
-                    override fun onFailure(throwable: Throwable) {
-                        Log.e("OnFailure",throwable.message!!)
-                        isApiCalling = false
-                        mApiListener?.onFailure(null,throwable)
-                    }
-
-                    override fun onReceiveHeaders(headers: Headers) {
-                        isApiCalling = false
-
-                    }
-
-                    override fun onError(error: ApiError) {
-                        Log.e("OnError",error.getMessage()!!)
-                        isApiCalling = false
-                        mApiListener?.onFailure(error,null)
-                    }
-
-                })
-        }
+                        })
+                }
+            }
     }
 
     override fun apiCallToLogin(
@@ -435,10 +428,11 @@ class ApiHelperImpl(
         tableName: String,
         fromDate: String,
         toDate: String,
+        vehicleName: String,
         mApiListener: ApiHelper.ApiListener?
     ) {
         val mCommonResponseCall = getApiInterface().getCall(GET_ROUTE_PLAYBACK_DRIVER_BEHAVIOUR+"tableName="+tableName+
-                "&fromDate="+fromDate+"&bbid=&toDate="+toDate)
+                "&fromDate="+fromDate+"&bbid=&toDate="+toDate+"&vehicleName="+vehicleName)
         executeApiCall(mCommonResponseCall,mApiListener)
     }
 
@@ -553,7 +547,7 @@ class ApiHelperImpl(
     ) {
         val mCommonResponseCall = getApiInterface().getCall(
             GET_DRIVERS_COMPARISON+"custid="+custid+
-                "&stMonth="+stMonth+"&edMonth="+edMonth+"&drid="+drid+"&bbid="+bbid)
+                    "&stMonth="+stMonth+"&edMonth="+edMonth+"&drid="+drid+"&bbid="+bbid)
         executeApiCall(mCommonResponseCall,mApiListener)
     }
 

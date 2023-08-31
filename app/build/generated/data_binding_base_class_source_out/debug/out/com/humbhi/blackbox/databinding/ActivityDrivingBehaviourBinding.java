@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -37,6 +38,9 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
   public final CardView cvDriverCompare;
 
   @NonNull
+  public final CardView cvDrivingLimits;
+
+  @NonNull
   public final CardView cvExcellent;
 
   @NonNull
@@ -44,6 +48,12 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
 
   @NonNull
   public final CardView cvHarshBreakReport;
+
+  @NonNull
+  public final CardView cvNoDrivingHoursReport;
+
+  @NonNull
+  public final CardView cvOverSpeedReport;
 
   @NonNull
   public final CardView cvRanking;
@@ -59,6 +69,9 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
 
   @NonNull
   public final CardView cvRoute;
+
+  @NonNull
+  public final CardView cvScoreBoard;
 
   @NonNull
   public final CardView cvTotalVehiclesDetail;
@@ -85,13 +98,10 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
   public final AppCompatImageView ivTotalVehicleIcon;
 
   @NonNull
-  public final LinearLayoutCompat llDrivingLimit;
+  public final LinearLayout llMainLayoutPeogress;
 
   @NonNull
   public final LinearLayoutCompat llModerate;
-
-  @NonNull
-  public final LinearLayoutCompat llNoDrivingHours;
 
   @NonNull
   public final LinearLayoutCompat llRiskyDriverReport;
@@ -100,7 +110,7 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
   public final LinearLayoutCompat llSafeDriverReports;
 
   @NonNull
-  public final LinearLayoutCompat llScore;
+  public final LinearLayoutCompat mainLayout;
 
   @NonNull
   public final RelativeLayout relativeLayout;
@@ -127,16 +137,10 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
   public final AppCompatTextView tvDriverComparison;
 
   @NonNull
-  public final AppCompatTextView tvDriverScore;
-
-  @NonNull
   public final TextView tvExDriver;
 
   @NonNull
   public final AppCompatTextView tvFuelHeading;
-
-  @NonNull
-  public final AppCompatTextView tvFuelSubHeading;
 
   @NonNull
   public final TextView tvHarshAcc;
@@ -188,25 +192,25 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
 
   private ActivityDrivingBehaviourBinding(@NonNull LinearLayoutCompat rootView,
       @NonNull ConstraintLayout clTotalCountVehicle, @NonNull CardView cvConsolidateVoilationReport,
-      @NonNull CardView cvDriverCompare, @NonNull CardView cvExcellent,
-      @NonNull CardView cvHarshAccelerationReport, @NonNull CardView cvHarshBreakReport,
-      @NonNull CardView cvRanking, @NonNull CardView cvRashTurnReport, @NonNull CardView cvReports,
-      @NonNull CardView cvRiskyDriver, @NonNull CardView cvRoute,
+      @NonNull CardView cvDriverCompare, @NonNull CardView cvDrivingLimits,
+      @NonNull CardView cvExcellent, @NonNull CardView cvHarshAccelerationReport,
+      @NonNull CardView cvHarshBreakReport, @NonNull CardView cvNoDrivingHoursReport,
+      @NonNull CardView cvOverSpeedReport, @NonNull CardView cvRanking,
+      @NonNull CardView cvRashTurnReport, @NonNull CardView cvReports,
+      @NonNull CardView cvRiskyDriver, @NonNull CardView cvRoute, @NonNull CardView cvScoreBoard,
       @NonNull CardView cvTotalVehiclesDetail, @NonNull PieChart driverClassificationChart,
       @NonNull LinearLayoutCompat drvrComparisonMonthly,
       @NonNull LinearLayoutCompat drvrToDrvrComparison, @NonNull PieChart fuelChart,
       @NonNull ImageView ivArrowExcellent, @NonNull ImageView ivArrowRisky,
-      @NonNull AppCompatImageView ivTotalVehicleIcon, @NonNull LinearLayoutCompat llDrivingLimit,
-      @NonNull LinearLayoutCompat llModerate, @NonNull LinearLayoutCompat llNoDrivingHours,
-      @NonNull LinearLayoutCompat llRiskyDriverReport,
-      @NonNull LinearLayoutCompat llSafeDriverReports, @NonNull LinearLayoutCompat llScore,
+      @NonNull AppCompatImageView ivTotalVehicleIcon, @NonNull LinearLayout llMainLayoutPeogress,
+      @NonNull LinearLayoutCompat llModerate, @NonNull LinearLayoutCompat llRiskyDriverReport,
+      @NonNull LinearLayoutCompat llSafeDriverReports, @NonNull LinearLayoutCompat mainLayout,
       @NonNull RelativeLayout relativeLayout, @NonNull RelativeLayout relativeLayoutDC,
       @NonNull RecyclerView rvExcellentDrivers, @NonNull RecyclerView rvRiskyDrivers,
       @NonNull ToolbarLayoutBinding toolbar, @NonNull AppCompatTextView tvDriverAnalysis,
       @NonNull AppCompatTextView tvDriverClassification,
-      @NonNull AppCompatTextView tvDriverComparison, @NonNull AppCompatTextView tvDriverScore,
-      @NonNull TextView tvExDriver, @NonNull AppCompatTextView tvFuelHeading,
-      @NonNull AppCompatTextView tvFuelSubHeading, @NonNull TextView tvHarshAcc,
+      @NonNull AppCompatTextView tvDriverComparison, @NonNull TextView tvExDriver,
+      @NonNull AppCompatTextView tvFuelHeading, @NonNull TextView tvHarshAcc,
       @NonNull TextView tvHarshBreak, @NonNull TextView tvHarshOverspeed,
       @NonNull TextView tvModerateDriver, @NonNull AppCompatTextView tvRankingHeading,
       @NonNull TextView tvRashTurn, @NonNull AppCompatTextView tvReportsHeading,
@@ -219,14 +223,18 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
     this.clTotalCountVehicle = clTotalCountVehicle;
     this.cvConsolidateVoilationReport = cvConsolidateVoilationReport;
     this.cvDriverCompare = cvDriverCompare;
+    this.cvDrivingLimits = cvDrivingLimits;
     this.cvExcellent = cvExcellent;
     this.cvHarshAccelerationReport = cvHarshAccelerationReport;
     this.cvHarshBreakReport = cvHarshBreakReport;
+    this.cvNoDrivingHoursReport = cvNoDrivingHoursReport;
+    this.cvOverSpeedReport = cvOverSpeedReport;
     this.cvRanking = cvRanking;
     this.cvRashTurnReport = cvRashTurnReport;
     this.cvReports = cvReports;
     this.cvRiskyDriver = cvRiskyDriver;
     this.cvRoute = cvRoute;
+    this.cvScoreBoard = cvScoreBoard;
     this.cvTotalVehiclesDetail = cvTotalVehiclesDetail;
     this.driverClassificationChart = driverClassificationChart;
     this.drvrComparisonMonthly = drvrComparisonMonthly;
@@ -235,12 +243,11 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
     this.ivArrowExcellent = ivArrowExcellent;
     this.ivArrowRisky = ivArrowRisky;
     this.ivTotalVehicleIcon = ivTotalVehicleIcon;
-    this.llDrivingLimit = llDrivingLimit;
+    this.llMainLayoutPeogress = llMainLayoutPeogress;
     this.llModerate = llModerate;
-    this.llNoDrivingHours = llNoDrivingHours;
     this.llRiskyDriverReport = llRiskyDriverReport;
     this.llSafeDriverReports = llSafeDriverReports;
-    this.llScore = llScore;
+    this.mainLayout = mainLayout;
     this.relativeLayout = relativeLayout;
     this.relativeLayoutDC = relativeLayoutDC;
     this.rvExcellentDrivers = rvExcellentDrivers;
@@ -249,10 +256,8 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
     this.tvDriverAnalysis = tvDriverAnalysis;
     this.tvDriverClassification = tvDriverClassification;
     this.tvDriverComparison = tvDriverComparison;
-    this.tvDriverScore = tvDriverScore;
     this.tvExDriver = tvExDriver;
     this.tvFuelHeading = tvFuelHeading;
-    this.tvFuelSubHeading = tvFuelSubHeading;
     this.tvHarshAcc = tvHarshAcc;
     this.tvHarshBreak = tvHarshBreak;
     this.tvHarshOverspeed = tvHarshOverspeed;
@@ -316,6 +321,12 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.cvDrivingLimits;
+      CardView cvDrivingLimits = ViewBindings.findChildViewById(rootView, id);
+      if (cvDrivingLimits == null) {
+        break missingId;
+      }
+
       id = R.id.cvExcellent;
       CardView cvExcellent = ViewBindings.findChildViewById(rootView, id);
       if (cvExcellent == null) {
@@ -331,6 +342,18 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
       id = R.id.cvHarshBreakReport;
       CardView cvHarshBreakReport = ViewBindings.findChildViewById(rootView, id);
       if (cvHarshBreakReport == null) {
+        break missingId;
+      }
+
+      id = R.id.cvNoDrivingHoursReport;
+      CardView cvNoDrivingHoursReport = ViewBindings.findChildViewById(rootView, id);
+      if (cvNoDrivingHoursReport == null) {
+        break missingId;
+      }
+
+      id = R.id.cvOverSpeedReport;
+      CardView cvOverSpeedReport = ViewBindings.findChildViewById(rootView, id);
+      if (cvOverSpeedReport == null) {
         break missingId;
       }
 
@@ -361,6 +384,12 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
       id = R.id.cvRoute;
       CardView cvRoute = ViewBindings.findChildViewById(rootView, id);
       if (cvRoute == null) {
+        break missingId;
+      }
+
+      id = R.id.cvScoreBoard;
+      CardView cvScoreBoard = ViewBindings.findChildViewById(rootView, id);
+      if (cvScoreBoard == null) {
         break missingId;
       }
 
@@ -412,21 +441,15 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.llDrivingLimit;
-      LinearLayoutCompat llDrivingLimit = ViewBindings.findChildViewById(rootView, id);
-      if (llDrivingLimit == null) {
+      id = R.id.llMainLayoutPeogress;
+      LinearLayout llMainLayoutPeogress = ViewBindings.findChildViewById(rootView, id);
+      if (llMainLayoutPeogress == null) {
         break missingId;
       }
 
       id = R.id.llModerate;
       LinearLayoutCompat llModerate = ViewBindings.findChildViewById(rootView, id);
       if (llModerate == null) {
-        break missingId;
-      }
-
-      id = R.id.llNoDrivingHours;
-      LinearLayoutCompat llNoDrivingHours = ViewBindings.findChildViewById(rootView, id);
-      if (llNoDrivingHours == null) {
         break missingId;
       }
 
@@ -442,9 +465,9 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.llScore;
-      LinearLayoutCompat llScore = ViewBindings.findChildViewById(rootView, id);
-      if (llScore == null) {
+      id = R.id.main_layout;
+      LinearLayoutCompat mainLayout = ViewBindings.findChildViewById(rootView, id);
+      if (mainLayout == null) {
         break missingId;
       }
 
@@ -497,12 +520,6 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvDriverScore;
-      AppCompatTextView tvDriverScore = ViewBindings.findChildViewById(rootView, id);
-      if (tvDriverScore == null) {
-        break missingId;
-      }
-
       id = R.id.tvExDriver;
       TextView tvExDriver = ViewBindings.findChildViewById(rootView, id);
       if (tvExDriver == null) {
@@ -512,12 +529,6 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
       id = R.id.tvFuelHeading;
       AppCompatTextView tvFuelHeading = ViewBindings.findChildViewById(rootView, id);
       if (tvFuelHeading == null) {
-        break missingId;
-      }
-
-      id = R.id.tvFuelSubHeading;
-      AppCompatTextView tvFuelSubHeading = ViewBindings.findChildViewById(rootView, id);
-      if (tvFuelSubHeading == null) {
         break missingId;
       }
 
@@ -618,18 +629,18 @@ public final class ActivityDrivingBehaviourBinding implements ViewBinding {
       }
 
       return new ActivityDrivingBehaviourBinding((LinearLayoutCompat) rootView, clTotalCountVehicle,
-          cvConsolidateVoilationReport, cvDriverCompare, cvExcellent, cvHarshAccelerationReport,
-          cvHarshBreakReport, cvRanking, cvRashTurnReport, cvReports, cvRiskyDriver, cvRoute,
+          cvConsolidateVoilationReport, cvDriverCompare, cvDrivingLimits, cvExcellent,
+          cvHarshAccelerationReport, cvHarshBreakReport, cvNoDrivingHoursReport, cvOverSpeedReport,
+          cvRanking, cvRashTurnReport, cvReports, cvRiskyDriver, cvRoute, cvScoreBoard,
           cvTotalVehiclesDetail, driverClassificationChart, drvrComparisonMonthly,
           drvrToDrvrComparison, fuelChart, ivArrowExcellent, ivArrowRisky, ivTotalVehicleIcon,
-          llDrivingLimit, llModerate, llNoDrivingHours, llRiskyDriverReport, llSafeDriverReports,
-          llScore, relativeLayout, relativeLayoutDC, rvExcellentDrivers, rvRiskyDrivers,
-          binding_toolbar, tvDriverAnalysis, tvDriverClassification, tvDriverComparison,
-          tvDriverScore, tvExDriver, tvFuelHeading, tvFuelSubHeading, tvHarshAcc, tvHarshBreak,
-          tvHarshOverspeed, tvModerateDriver, tvRankingHeading, tvRashTurn, tvReportsHeading,
-          tvRiskyDetails, tvRskyDriver, tvSeeExcellentDriverDetails, tvTotalVehicle,
-          tvTotalVehicleHeading, tvTotalVoilationExDriver, tvTotalVoilationRiskyDrivers,
-          vViewExcellent, vViewRisky);
+          llMainLayoutPeogress, llModerate, llRiskyDriverReport, llSafeDriverReports, mainLayout,
+          relativeLayout, relativeLayoutDC, rvExcellentDrivers, rvRiskyDrivers, binding_toolbar,
+          tvDriverAnalysis, tvDriverClassification, tvDriverComparison, tvExDriver, tvFuelHeading,
+          tvHarshAcc, tvHarshBreak, tvHarshOverspeed, tvModerateDriver, tvRankingHeading,
+          tvRashTurn, tvReportsHeading, tvRiskyDetails, tvRskyDriver, tvSeeExcellentDriverDetails,
+          tvTotalVehicle, tvTotalVehicleHeading, tvTotalVoilationExDriver,
+          tvTotalVoilationRiskyDrivers, vViewExcellent, vViewRisky);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -94,6 +94,18 @@
                 android:gravity="center_vertical"
                 android:buttonTint="@color/white"
                 android:text="@string/unreachable"/>
+            <RadioButton
+                android:id="@+id/rbBatteryDisconnection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="@dimen/font_12"
+                android:padding="@dimen/margin_v"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:buttonTint="@color/white"
+                android:text="Battery Disconnection"/>
 
         </RadioGroup>
 

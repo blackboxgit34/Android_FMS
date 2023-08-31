@@ -116,7 +116,7 @@ object CommonUtil {
 
     private fun week(): Date? {
         val cal = Calendar.getInstance()
-        cal.add(Calendar.DATE, -7)
+        cal.add(Calendar.DATE, -6)
         return cal.time
     }
 

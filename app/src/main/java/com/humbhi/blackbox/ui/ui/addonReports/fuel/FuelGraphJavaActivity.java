@@ -1,8 +1,11 @@
 package com.humbhi.blackbox.ui.ui.addonReports.fuel;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -27,9 +32,14 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.humbhi.blackbox.R;
 import com.humbhi.blackbox.databinding.ActivityFuelGraphJavaBinding;
 import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter;
+import com.humbhi.blackbox.ui.adapters.FuelFillingDetailAdapterForGraphScreen;
+import com.humbhi.blackbox.ui.adapters.FuelTheftDetailAdapterForGraphScreen;
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter;
 import com.humbhi.blackbox.ui.data.db.CommonData;
 import com.humbhi.blackbox.ui.data.models.AllVehicleModel;
+import com.humbhi.blackbox.ui.data.models.FuelData;
 import com.humbhi.blackbox.ui.data.models.FuelGraphModel;
+import com.humbhi.blackbox.ui.data.models.FueltheftMainModel;
 import com.humbhi.blackbox.ui.retofit.Retrofit2;
 import com.humbhi.blackbox.ui.retofit.RetrofitResponse;
 import com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayBack;
@@ -46,6 +56,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;
@@ -59,8 +73,14 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
     ArrayList<String>vehicleList = new ArrayList<>();
     private String  vehicleID = "",currentFuelLevel = "",totalTankCapacity = "",remainingTank = "",fuelTankDateTime = "",backendStartDate,backendEndDate,startTime,endTime;
     DatePicker picker;
-    String fromNavigate;
-
+    String fromNavigate = "";
+    String startDate = "";
+    String endDate = "";
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Handler handlerMain = new Handler(Looper.getMainLooper());
+    String day = "";
+    String customStartDateSelcted = "";
+    String customEndDateSelcted = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,33 +92,77 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
         String currentDate = CommonUtil.INSTANCE.getCurrentDate();
         backendStartDate = currentDate;
         backendEndDate = currentDate;
-        startTime = "00:00";
-        endTime = "23:59";
-        binding.tvYesterday.setOnClickListener(this);
+        binding.llCustomDateRange.tvStartTime.setText("12:00 AM");
+        binding.llCustomDateRange.tvEndTime.setText("11:59 PM");
         binding.tvToday.setOnClickListener(this);
+        binding.tvYesterday.setOnClickListener(this);
+        binding.tvWeek.setOnClickListener(this);
         binding.tvCustom.setOnClickListener(this);
-        binding.tvStartDate.setOnClickListener(this);
-        binding.tvEndDate.setOnClickListener(this);
-        binding.btnAppy.setOnClickListener(this);
+        binding.llCustomDateRange.tvStartDate.setOnClickListener(this);
+        binding.llCustomDateRange.tvEndDate.setOnClickListener(this);
+        binding.llCustomDateRange.tvStartTime.setOnClickListener(this);
+        binding.llCustomDateRange.tvEndTime.setOnClickListener(this);
+        binding.llCustomDateRange.btnAppy.setOnClickListener(this);
         fromNavigate = getIntent().getStringExtra("fromNavigate".toString());
         if(getIntent().hasExtra("vehicleId")){
-            binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-            binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-            binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-            String[] startDate = getIntent().getStringExtra("startDate").split(" ");
-            String[] endDate = getIntent().getStringExtra("endDate").split(" ");
-            backendStartDate = startDate[0];
-            backendEndDate = endDate[0];
+            day =  getIntent().getStringExtra("day").toString();
+            switch (day) {
+                case "Yesterday":
+                    binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                    binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+                    binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    break;
+                case "Today":
+                    binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                    binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+                    binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    break;
+                case "Week":
+                    binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                    binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+                    binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    break;
+                case "Custom":
+                    binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                    binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+                    binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                    break;
+            }
+            startDate = getIntent().getStringExtra("startDate");
+            endDate = getIntent().getStringExtra("endDate");
             vehicleID = getIntent().getStringExtra("vehicleId");
             fuelReportApi(vehicleID);
             binding.tvSelectVehicle.setVisibility(View.GONE);
             binding.searchLayout.setVisibility(View.GONE);
         }
         else{
+            startTime = "%2000:00:00";
+            Calendar calendar = Calendar.getInstance();
+            Date enddate = calendar.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            endTime = "%20" + sdf.format(enddate);
+            String[] parts = sdf.format(enddate).split(":");
+            int hour = Integer.parseInt(parts[0]);
+            int minute = Integer.parseInt(parts[1]);
+            int hourOfDay = (hour == 0) ? 12 : hour % 12;
+            String amPm = (hour < 12) ? "AM" : "PM";
+            String endTime = String.format("%02d:%02d %s", hourOfDay, minute, amPm);
+            binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+            binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+            binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+            binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+            binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
             getAllVehicles();
         }
     }
-
 
     private void setToolbarDetails() {
         binding.toolbar.ivBell.setVisibility(View.GONE);
@@ -109,24 +173,23 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
         binding.toolbar.ivBack.setOnClickListener(view -> finish());
     }
 
-
     private void fuelReportApi(String vehicleId) {
-        new Retrofit2(this, this, Constants.REQ_FUEL_GRAPH_API
-                , Constants.FUEL_GRAPH_API + "vehicleId="+vehicleId+"&beginDate="+backendStartDate+"%2012:00:00%20AM&endDate="+backendEndDate+"%2023:00:00")
-                .callService(true);
+        //       binding.progress.progressLayout.setVisibility(View.VISIBLE);
+        if (startDate.equals("") && endDate.equals("")) {
+            new Retrofit2(this, this, Constants.REQ_FUEL_GRAPH_API, Constants.FUEL_GRAPH_API + "vehicleId=" + vehicleId + "&beginDate=" + backendStartDate + startTime + "&endDate=" + backendEndDate + endTime).callService(true);
+        }
+        else{
+            new Retrofit2(this, this, Constants.REQ_FUEL_GRAPH_API, Constants.FUEL_GRAPH_API + "vehicleId=" + vehicleId + "&beginDate=" + startDate + "&endDate=" + endDate).callService(true);
+        }
     }
 
-    private void
-    getfuelTankDetails(String vehicleId) {
-        new Retrofit2(this, this, Constants.REQ_FUEL_TANK_DETAILS_API
-                , Constants.FUEL_TANK_DETAILS_API + "Vehicleid="+vehicleId)
-                .callService(true);
+    private void getfuelTankDetails(String vehicleId) {
+        new Retrofit2(this, this, Constants.REQ_FUEL_TANK_DETAILS_API, Constants.FUEL_TANK_DETAILS_API + "Vehicleid="+vehicleId).callService(true);
     }
     private void getAllVehicles()
     {
-        new Retrofit2(this, this, Constants.REQ_VEHICLES
-                ,Constants.VEHICLES+"custid="+ CommonData.INSTANCE.getCustIdFromDB())
-                .callService(true);
+     //   binding.progress.progressLayout.setVisibility(View.VISIBLE);
+        new Retrofit2(this, this, Constants.REQ_VEHICLES,Constants.VEHICLES+"custid="+ CommonData.INSTANCE.getCustIdFromDB()).callService(true);
 
     }
     /*
@@ -134,31 +197,24 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
      * */
     public void spinVehicles()
     {
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, vehicleList);
-//        CustSpinnerAdapter.getAdapter(this, vehicleList);
-        //Getting the instance of AutoCompleteTextView
         binding.spVehicles.setThreshold(0);
         //will start working from first character
-        binding.spVehicles.setAdapter(CustSpinnerAdapter.getAdapter(this, vehicleList));//setting the adapter data into the AutoCompleteTextView
+        SearchableAdapter adapter = new SearchableAdapter(this,vehicleList);
+        binding.spVehicles.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
         binding.spVehicles.setOnItemClickListener((parent, view, position, id) -> {
-
-            String selection = (String) parent.getItemAtPosition(position);
-            int pos = -1;
-
-            for (int i = 0; i < vehicleList.size(); i++) {
-                if (vehicleList.get(i).equals(selection)) {
-                    pos = i;
-                    break;
-                }
+            ArrayList<String> originalData = adapter.getOriginalData();
+            String selection = originalData.get(position);
+            int originalPosition = adapter.getOriginalPosition(position);
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                vehicleID = vehicleModel.get(originalPosition).getBbid();
+                fuelReportApi(vehicleID);
             }
-            vehicleID = vehicleModel.get(pos).getBbid();
-            fuelReportApi(vehicleID);
         });
         binding.spVehicles.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus)
                 binding.spVehicles.showDropDown();
         });
-
         binding.spVehicles.setOnTouchListener((v, event) -> {
             binding.spVehicles.showDropDown();
             return false;
@@ -180,22 +236,27 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                         linedata2.clear();
                         list.clear();
                         JSONArray data = new JSONArray(response.body().string());
-                        if (data.length()>0){
+                        if (data.length() > 0) {
                             for (int i = 0; i < data.length(); i++) {
                                 JSONObject obj = data.getJSONObject(i);
-                                FuelGraphModel model = new FuelGraphModel(obj.getString("Speed"), obj.getString("Distance"), obj.getString("Location"), obj.getString("FuelLevel"),obj.getString("DataDate"));
-                                linedata1.add(new Entry(i, (int) Float.parseFloat(obj.getString("FuelLevel"))));
-                                linedata2.add(new Entry(i, (int) Float.parseFloat(obj.getString("Speed"))));
-                                linedata3.add(new Entry(i, (int) Float.parseFloat(obj.getString("Distance"))));
+                                FuelGraphModel model = new FuelGraphModel(obj.getString("Speed"), obj.getString("Distance"), obj.getString("Location"), obj.getString("FuelLevel"), obj.getString("DataDate"));
+                             //   if(!obj.getString("FuelLevel").equals("0")) {
+                                    linedata1.add(new Entry(i, (int) Float.parseFloat(obj.getString("FuelLevel"))));
+                           //     }
+                            //    if(!obj.getString("Speed").equals("0")) {
+                                    linedata2.add(new Entry(i, (int) Float.parseFloat(obj.getString("Speed"))));
+                          //      }
+                            //    if(!obj.getString("Distance").equals("0")) {
+                                    linedata3.add(new Entry(i, (int) Float.parseFloat(obj.getString("Distance"))));
+                            //    }
                                 labels1.add(obj.getString("DataDate"));
                                 list.add(model);
-
                             }
+
                             String[] xaxes = new String[labels1.size()];
                             for (int j = 0; j < labels1.size(); j++) {
                                 xaxes[j] = labels1.get(j);
                             }
-
                             ArrayList<ILineDataSet> lineDataSets = new ArrayList<>();
                             LineDataSet lineDataSet = new LineDataSet(linedata1, "Fuel");
                             lineDataSet.setDrawCircles(false);
@@ -223,11 +284,11 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                             binding.chart1.getAxisLeft().setDrawGridLines(false);
                             binding.chart1.getXAxis().setDrawGridLines(false);
                             binding.chart1.invalidate();
-                            binding.tvSelectedFuel.setText(list.get(list.size()-1).getFuelLevel()+" Ltr.");
-                            binding.tvSelectedSpeed.setText(list.get(list.size()-1).getSpeed()+" Km/h");
-                            binding.tvSelectedDistance.setText(list.get(list.size()-1).getFuelLevel()+" Km");
-                            binding.tvSelectedDateTime.setText(list.get(list.size()-1).getDateTime());
-                            binding.tvSelectedLocation.setText(list.get(list.size()-1).getLocation());
+                            binding.tvSelectedFuel.setText(list.get(list.size() - 1).getFuelLevel() + " Ltr.");
+                            binding.tvSelectedSpeed.setText(list.get(list.size() - 1).getSpeed() + " Km/h");
+                            binding.tvSelectedDistance.setText(list.get(list.size() - 1).getDistance() + " Km");
+                            binding.tvSelectedDateTime.setText(list.get(list.size() - 1).getDateTime());
+                            binding.tvSelectedLocation.setText(list.get(list.size() - 1).getLocation());
                             binding.chart1.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                                 @Override
                                 public void onValueSelected(Entry e, Highlight h) {
@@ -237,15 +298,15 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
 
                                         IDataSet iDataSet = binding.chart1.getData().getDataSets().get(j);
 
-                                        for (int i = 0; i < ((LineDataSet) iDataSet).getValues().size()-1; i++) {
+                                        for (int i = 0; i < ((LineDataSet) iDataSet).getValues().size() - 1; i++) {
                                             if (((LineDataSet) iDataSet).getValues().get(i).getX() == e.getX()) {
                                                 highlight[j] = new Highlight(e.getX(), e.getY(), j);
-                                                Log.e("fuel",list.get(i).getFuelLevel());
-                                                Log.e("distance",list.get(i).getDistance());
-                                                Log.e("speed",list.get(i).getSpeed());
-                                                binding.tvSelectedFuel.setText(list.get(i).getFuelLevel()+" Ltr.");
-                                                binding.tvSelectedSpeed.setText(list.get(i).getSpeed()+" Km/h");
-                                                binding.tvSelectedDistance.setText(list.get(i).getDistance()+" Km");
+                                                Log.e("fuel", list.get(i).getFuelLevel());
+                                                Log.e("distance", list.get(i).getDistance());
+                                                Log.e("speed", list.get(i).getSpeed());
+                                                binding.tvSelectedFuel.setText(list.get(i).getFuelLevel() + " Ltr.");
+                                                binding.tvSelectedSpeed.setText(list.get(i).getSpeed() + " Km/h");
+                                                binding.tvSelectedDistance.setText(list.get(i).getDistance() + " Km");
                                                 binding.tvSelectedDateTime.setText(list.get(i).getDateTime());
                                                 binding.tvSelectedLocation.setText(list.get(i).getLocation());
                                             }
@@ -259,15 +320,43 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
 
                                 }
                             });
+                            if (fromNavigate.equals("filling fuel")) {
+                                binding.fuelFillingLayoutTitle.setText("Fuel Filling Details");
+                                binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
+                                binding.fuelFillingList.hasFixedSize();
+                                binding.fuelFillingList.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+                                ArrayList<FuelData> list = (ArrayList<FuelData>) getIntent().getSerializableExtra("fuelFillingList");
+                                FuelFillingDetailAdapterForGraphScreen adapter = new FuelFillingDetailAdapterForGraphScreen(list, this);
+                                binding.fuelFillingList.setAdapter(adapter);
+                                binding.fuelFillingList.setVisibility(View.VISIBLE);
+                                if(list.size()<2){
+                                    binding.fuelFillingList.setHorizontalScrollBarEnabled(false);
+                                }
+                                else{
+                                    binding.fuelFillingList.setHorizontalScrollBarEnabled(true);
+                                }
+                            } else if (fromNavigate.equals("Theft fuel")) {
+                                binding.fuelFillingLayoutTitle.setText("Fuel Drain Details");
+                                binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
+                                binding.fuelFillingList.hasFixedSize();
+                                binding.fuelFillingList.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+                                ArrayList<FueltheftMainModel> list = (ArrayList<FueltheftMainModel>) getIntent().getSerializableExtra("fuelDrainList");
+                                FuelTheftDetailAdapterForGraphScreen adapter = new FuelTheftDetailAdapterForGraphScreen(list, this);
+                                binding.fuelFillingList.setAdapter(adapter);
+                                binding.fuelFillingList.setVisibility(View.VISIBLE);
+                                if(list.size()<2){
+                                    binding.fuelFillingList.setHorizontalScrollBarEnabled(false);
+                                }
+                            } else {
+                                binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
+                                binding.fuelFillingList.setVisibility(View.GONE);
+                            }
                             getfuelTankDetails(vehicleID);
-                        }
-                        else {
-                            CommonUtil.INSTANCE.alertDialogWithOkOnly(this,"Blackbox","Fuel details not available for this vehicle.");
+                        } else {
+                            CommonUtil.INSTANCE.alertDialogWithOkOnly(this, "Blackbox", "Fuel details not available for this vehicle.");
                         }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
                 }
@@ -277,6 +366,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                 {
                     try
                     {
+                   //     binding.progress.progressLayout.setVisibility(View.GONE);
                         vehicleList.clear();
                         // vehicleList.add(0,"Select Vehicle");
                         JSONArray data = new JSONArray(response.body().string());
@@ -291,9 +381,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                             spinVehicles();
                         }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
                 }
@@ -301,6 +389,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
             case Constants.REQ_FUEL_TANK_DETAILS_API:
                 if (response.isSuccessful()){
                     try {
+                 //       binding.progress.progressLayout.setVisibility(View.GONE);
                         JSONArray data = new JSONArray(response.body().string());
                         for (int i = 0; i <data.length() ; i++) {
 
@@ -326,35 +415,7 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
                         binding.tvDataDate.setText(fuelTankDateTime.replace("/"," "));
                         binding.gauge.setMinMaxSpeed(0f,Float.parseFloat(totalTankCapacity));
                         binding.gauge.speedTo(Float.parseFloat(currentFuelLevel));
-                        if(fromNavigate.equals("filling fuel")){
-                            binding.fuelFillingLayoutTitle.setText("Fuel Filling Details");
-                            binding.fuelLevelText.setText("Filling fuel level");
-                            binding.tvStartTime.setText("Before Filling Time");
-                            binding.tvEndTime.setText("After Filling Time");
-                            binding.tvFillingFuelLevel.setText(getIntent().getStringExtra("fuelFillingLevel")+" L");
-                            binding.fillingStartTime.setText(getIntent().getStringExtra("startFillingTime"));
-                            binding.fillingEndTime.setText(getIntent().getStringExtra("endFillingTime"));
-                            binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
-                            binding.fuelFillingLayout.setVisibility(View.VISIBLE);
-                        }
-                        else if(fromNavigate.equals("Theft fuel")){
-                            binding.fuelFillingLayoutTitle.setText("Fuel Drain Details");
-                            binding.fuelLevelText.setText("Draining fuel level");
-                            binding.tvStartTime.setText("Before Drain Time");
-                            binding.tvEndTime.setText("After Drain Time");
-                            binding.tvFillingFuelLevel.setText(getIntent().getStringExtra("fuelDrainLevel")+" L");
-                            binding.fillingStartTime.setText(getIntent().getStringExtra("startDate"));
-                            binding.fillingEndTime.setText(getIntent().getStringExtra("endDate"));
-                            binding.fuelFillingLayoutTitle.setVisibility(View.VISIBLE);
-                            binding.fuelFillingLayout.setVisibility(View.VISIBLE);
-                        }
-                        else{
-                            binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
-                            binding.fuelFillingLayout.setVisibility(View.GONE);
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -415,98 +476,206 @@ public class FuelGraphJavaActivity extends AppCompatActivity implements Retrofit
 
     @Override
     public void onClick(View v) {
-        Calendar c;
-        SimpleDateFormat df;
+        Calendar calendar = Calendar.getInstance();
+        Date endDate = calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String formattedDate;
         switch (v.getId())
         {
             case R.id.tvYesterday:
-                binding.llCustomDateRange.setVisibility(View.GONE);
+                binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
                 String yesterdayDate = CommonUtil.INSTANCE.getYesterdayDate();
                 backendStartDate = yesterdayDate;
                 backendEndDate = yesterdayDate;
-                binding.tvStartDate.setText(backendStartDate);
-                binding.tvEndDate.setText(backendEndDate);
+                startTime = "%2000:00:00";
+                endTime = "%2023:59:00";
+                binding.llCustomDateRange.tvStartDate.setText(backendStartDate);
+                binding.llCustomDateRange.tvEndDate.setText(backendEndDate);
                 binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
                 binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
                 binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-                fuelReportApi(vehicleID);
+                binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                if(!vehicleID.equals("")) {
+                    binding.fuelFillingList.setVisibility(View.GONE);
+                    binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
+                    fuelReportApi(vehicleID);
+                }
+                else{
+                    Constants.alertDialog(this,"Please select vehicle first");
+                }
                 break;
+
             case R.id.tvToday:
-                binding.llCustomDateRange.setVisibility(View.GONE);
+                binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
                 String currentDate = CommonUtil.INSTANCE.getCurrentDate();
                 backendStartDate = currentDate;
                 backendEndDate = currentDate;
-                binding.tvStartDate.setText(backendStartDate);
-                binding.tvEndDate.setText(backendEndDate);
+                startTime = "%2000:00:00";
+                endTime = "%20" + sdf.format(endDate);
+                binding.llCustomDateRange.tvStartDate.setText(backendStartDate);
+                binding.llCustomDateRange.tvEndDate.setText(backendEndDate);
                 binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
                 binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
                 binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-                fuelReportApi(vehicleID);
+                binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                if(!vehicleID.equals("")) {
+                    binding.fuelFillingList.setVisibility(View.GONE);
+                    binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
+                    fuelReportApi(vehicleID);
+                }
+                else{
+                    Constants.alertDialog(this,"Please select vehicle first");
+                }
                 break;
+
             case R.id.tvCustom:
                 binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
                 binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
                 binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
-                binding.llCustomDateRange.setVisibility(View.VISIBLE);
+                binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                binding.llCustomDateRange.customeDate.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.tvWeek:
+                binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                backendStartDate = CommonUtil.INSTANCE.getWeekDate();
+                backendEndDate = CommonUtil.INSTANCE.getCurrentDate();
+                startTime = "%2000:00:00";
+                endTime = "%20" + sdf.format(endDate);
+                binding.llCustomDateRange.tvStartDate.setText(backendStartDate);
+                binding.llCustomDateRange.tvEndDate.setText(backendEndDate);
+                binding.tvWeek.setBackground(ContextCompat.getDrawable(this, R.drawable.black_cyrve_rect));
+                binding.tvYesterday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                binding.tvToday.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                binding.tvCustom.setBackground(ContextCompat.getDrawable(this, R.color.primary_little_fade));
+                if(!vehicleID.equals("")) {
+                    binding.fuelFillingList.setVisibility(View.GONE);
+                    fuelReportApi(vehicleID);
+                }
+                else{
+                    Constants.alertDialog(this,"Please select vehicle first");
+                }
                 break;
 
             case R.id.btnAppy:
-                fuelReportApi(vehicleID);
-                binding.llCustomDateRange.setVisibility(View.GONE);
+                if(!customStartDateSelcted.equals("") && !customEndDateSelcted.equals("")) {
+                    if (!vehicleID.equals("")) {
+                        binding.fuelFillingList.setVisibility(View.GONE);
+                        binding.fuelFillingLayoutTitle.setVisibility(View.GONE);
+                        fuelReportApi(vehicleID);
+                    } else {
+                        Constants.alertDialog(this, "Please select vehicle first");
+                    }
+                    binding.llCustomDateRange.customeDate.setVisibility(View.GONE);
+                }
+                else{
+                    Constants.alertDialog(this,"Please select both dates first");
+                }
                 break;
+
             case R.id.tvStartDate:
                 datepicker("1");
                 break;
+
             case R.id.tvEndDate:
                 datepicker("2");
+                break;
+
+            case R.id.tvStartTime:
+                startTime();
+                break;
+
+            case R.id.tvEndTime:
+                endTime();
                 break;
         }
     }
 
     // valid upto date picker
-    private void datepicker(final String flag)
-    {
+    private void datepicker(String flag) {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0); // to get back 13 year add -13
+        cal.add(Calendar.YEAR, 0); // to get back 13 years, add -13
         Date previous_year = cal.getTime();
-        final java.util.Calendar calendar = java.util.Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String x, y;
-                if (monthOfYear < 9) {
-                    monthOfYear = monthOfYear + 1;
-                    x = "0" + monthOfYear;
-                } else {
-                    x = String.valueOf(monthOfYear + 1);
-                }
-                if (dayOfMonth < 10) {
-                    y = "0" + dayOfMonth;
-                } else {
-                    y = String.valueOf(dayOfMonth);
-                }
-                if (flag.equals("1"))
-                {
-                    backendStartDate =String.valueOf(year)+ "-" + x + "-" + y ;
-                    binding.tvStartDate.setText(y + "-" + x + "-" + String.valueOf(year));
-                }
-                if (flag.equals("2"))
-                {
-                    backendEndDate =String.valueOf(year)+ "-" + x + "-" + y ;
-                    binding.tvEndDate.setText(y + "-" + x + "-" + String.valueOf(year));
-                }
-            }
-        }, calendar.get(java.util.Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(java.util.Calendar.DAY_OF_MONTH));
-
-        try
-        {
-            picker = datePickerDialog.getDatePicker();
-            picker.setMaxDate(previous_year.getTime());
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    int x;
+                    String y;
+                    if (monthOfYear < 9) {
+                        monthOfYear += 1;
+                        x = monthOfYear;
+                        String formattedMonth = String.format(Locale.getDefault(), "%02d", x);
+                        x = Integer.parseInt(formattedMonth);
+                    } else {
+                        x = monthOfYear + 1;
+                    }
+                    if (dayOfMonth < 10) {
+                        y = "0" + dayOfMonth;
+                    } else {
+                        y = String.valueOf(dayOfMonth);
+                    }
+                    if (flag.equals("1")) {
+                        backendStartDate = year + "-" + x + "-" + y;
+                        customStartDateSelcted = backendStartDate;
+                        binding.llCustomDateRange.tvStartDate.setText(y + "-" + x + "-" + year);
+                    }
+                    if (flag.equals("2")) {
+                        backendEndDate = year + "-" + x + "-" + y;
+                        customEndDateSelcted = backendEndDate;
+                        binding.llCustomDateRange.tvEndDate.setText(y + "-" + x + "-" + year);
+                    }
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+        try {
+            DatePicker datePicker = datePickerDialog.getDatePicker();
+            datePicker.setMaxDate(previous_year.getTime());
         } catch (Exception e) {
-            picker = datePickerDialog.getDatePicker();
+            DatePicker datePicker = datePickerDialog.getDatePicker();
         }
         datePickerDialog.show();
     }
+
+    private void endTime() {
+        Calendar currentTime = Calendar.getInstance();
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                this,
+                (view, hourOfDay, min) -> {
+                    int hourVal = hourOfDay % 12;
+                    String amPm = (hourOfDay < 12) ? "AM" : "PM";
+                    binding.llCustomDateRange.tvEndTime.setText(String.format(Locale.getDefault(), "%02d:%02d %s",
+                            (hourVal == 0) ? 12 : hourVal, min, amPm));
+                    endTime = String.format("%%%02d%02d:%02d:00", 20, hourOfDay, min);
+                },
+                hour,
+                minute,
+                false
+        );
+        timePickerDialog.show();
+    }
+
+    private void startTime() {
+        int hour = 0;
+        int minute = 0;
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                this,
+                (view, hourOfDay, min) -> {
+                    int hourVal = hourOfDay % 12;
+                    String amPm = (hourOfDay < 12) ? "AM" : "PM";
+                    binding.llCustomDateRange.tvStartTime.setText(String.format(Locale.getDefault(), "%02d:%02d %s",
+                            (hourVal == 0) ? 12 : hourVal, min, amPm));
+                    startTime = String.format("%%%02d%02d:%02d:00", 20, hourOfDay, min);
+                },
+                hour,
+                minute,
+                false
+        );
+        timePickerDialog.show();
+    }
+
 }

@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.utils.ClaimsXAxisValueFormatter","classAnnotations":[],"interfaces":["com.github.mikephil.charting.formatter.IAxisValueFormatter","com.github.mikephil.charting.formatter.IValueFormatter"],"superClasses":["com.github.mikephil.charting.formatter.ValueFormatter","java.lang.Object"]}

@@ -23,7 +23,7 @@ import com.humbhi.blackbox.ui.data.db.CommonData
 import com.humbhi.blackbox.ui.data.models.LiveTrackingResponse
 import com.humbhi.blackbox.ui.data.models.LiveTrackingVehicleDataResponse
 import com.humbhi.blackbox.ui.data.network.RestClient
-
+import com.humbhi.blackbox.ui.utils.Constants
 
 class LiveTrackingActivity : AppCompatActivity(), View.OnClickListener, LiveTrackingView, OnMapReadyCallback{
     private lateinit var binding: ActivityLiveTrackingBinding
@@ -166,7 +166,10 @@ class LiveTrackingActivity : AppCompatActivity(), View.OnClickListener, LiveTrac
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {

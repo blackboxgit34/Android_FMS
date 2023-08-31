@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,43 +11,13 @@
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar"/>
 
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toolbar"
+        android:id="@+id/rvRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/margin_x"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
-
-        <TextView
-            android:id="@+id/etSearchBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primaryblack"
-            android:hint="Select Date"
-            android:textColorHint="@color/grey_two"
-            android:textColor="@color/grey_two"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="@dimen/font_12"
-            android:gravity="center"
-            android:drawablePadding="@dimen/margin_x"
-            android:padding="@dimen/margin_x"
-            android:visibility="gone"
-            android:background="@drawable/white_curve_rect"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_60"/>
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/margin_x"
+        tools:listitem="@layout/fueltheftdetailadapter"/>
 
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

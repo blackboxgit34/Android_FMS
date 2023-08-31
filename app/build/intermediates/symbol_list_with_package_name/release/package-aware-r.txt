@@ -11,6 +11,7 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim blink_animation
 anim bounce
 anim btn_checkbox_to_checked_box_inner_merged_animation
 anim btn_checkbox_to_checked_box_outer_merged_animation
@@ -38,6 +39,7 @@ anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
 anim slide_down
 anim slide_up
+anim swipe_anim
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -290,12 +292,16 @@ attr collapsedTitleTextAppearance
 attr collapsingToolbarLayoutStyle
 attr color
 attr colorAccent
+attr colorAssertLine
 attr colorBackgroundFloating
 attr colorButtonNormal
 attr colorControlActivated
 attr colorControlHighlight
 attr colorControlNormal
+attr colorDebugLine
 attr colorError
+attr colorErrorLine
+attr colorInfoLine
 attr colorOnBackground
 attr colorOnError
 attr colorOnPrimary
@@ -311,6 +317,8 @@ attr colorSecondary
 attr colorSecondaryVariant
 attr colorSurface
 attr colorSwitchThumbNormal
+attr colorVerboseLine
+attr colorWarningLine
 attr commitIcon
 attr constraintRotate
 attr constraintSet
@@ -357,6 +365,8 @@ attr counterTextAppearance
 attr counterTextColor
 attr crossfade
 attr currentState
+attr cursorColor
+attr cursorWidth
 attr curveFit
 attr customBoolean
 attr customColorDrawableValue
@@ -504,6 +514,7 @@ attr helperTextEnabled
 attr helperTextTextAppearance
 attr helperTextTextColor
 attr hideAnimationBehavior
+attr hideLineWhenFilled
 attr hideMotionSpec
 attr hideOnContentScroll
 attr hideOnScroll
@@ -547,7 +558,9 @@ attr insetForeground
 attr isLightTheme
 attr isMaterialTheme
 attr itemBackground
+attr itemCount
 attr itemFillColor
+attr itemHeight
 attr itemHorizontalPadding
 attr itemHorizontalTranslationEnabled
 attr itemIconPadding
@@ -555,6 +568,7 @@ attr itemIconSize
 attr itemIconTint
 attr itemMaxLines
 attr itemPadding
+attr itemRadius
 attr itemRippleColor
 attr itemShapeAppearance
 attr itemShapeAppearanceOverlay
@@ -570,6 +584,7 @@ attr itemTextAppearance
 attr itemTextAppearanceActive
 attr itemTextAppearanceInactive
 attr itemTextColor
+attr itemWidth
 attr keyPositionType
 attr keyboardIcon
 attr keylines
@@ -657,8 +672,10 @@ attr layout_wrapBehaviorInParent
 attr liftOnScroll
 attr liftOnScrollTargetViewId
 attr limitBoundsTo
+attr lineColor
 attr lineHeight
 attr lineSpacing
+attr lineWidth
 attr linearProgressIndicatorStyle
 attr listChoiceBackgroundIndicator
 attr listChoiceIndicatorMultipleAnimated
@@ -678,6 +695,20 @@ attr listPreferredItemPaddingStart
 attr liteMode
 attr logo
 attr logoDescription
+attr lottie_autoPlay
+attr lottie_colorFilter
+attr lottie_enableMergePathsForKitKatAndAbove
+attr lottie_fileName
+attr lottie_imageAssetsFolder
+attr lottie_loop
+attr lottie_progress
+attr lottie_rawRes
+attr lottie_renderMode
+attr lottie_repeatCount
+attr lottie_repeatMode
+attr lottie_scale
+attr lottie_speed
+attr lottie_url
 attr mapId
 attr mapType
 attr materialAlertDialogBodyTextStyle
@@ -811,6 +842,7 @@ attr percentWidth
 attr percentX
 attr percentY
 attr perpendicularPath_percent
+attr pinViewStyle
 attr pivotAnchor
 attr placeholderText
 attr placeholderTextAppearance
@@ -1025,6 +1057,7 @@ attr sv_withEffects
 attr sv_withIndicatorLight
 attr sv_withPointer
 attr sv_withTremble
+attr swipeRefreshLayoutProgressSpinnerBackgroundColor
 attr switchMinWidth
 attr switchPadding
 attr switchStyle
@@ -1211,6 +1244,7 @@ attr viewTransitionMode
 attr viewTransitionOnCross
 attr viewTransitionOnNegativeCross
 attr viewTransitionOnPositiveCross
+attr viewType
 attr visibilityMode
 attr voiceIcon
 attr warmth
@@ -1236,7 +1270,11 @@ attr yearTodayStyle
 attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1303,6 +1341,9 @@ color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
 color color_primary
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
@@ -1373,6 +1414,7 @@ color green_dark
 color grey_two
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color light_background
 color light_black
 color light_black2
 color light_blue
@@ -1994,14 +2036,23 @@ dimen notification_large_icon_height
 dimen notification_large_icon_width
 dimen notification_main_column_padding_top
 dimen notification_media_narrow_margin
+dimen notification_padding
 dimen notification_right_icon_size
 dimen notification_right_side_padding_top
 dimen notification_small_icon_background_padding
 dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
+dimen notification_text_margin_top
+dimen notification_text_size
+dimen notification_title_text_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 dimen profile_size
+dimen pv_pin_view_cursor_width
+dimen pv_pin_view_item_line_width
+dimen pv_pin_view_item_radius
+dimen pv_pin_view_item_size
+dimen pv_pin_view_item_spacing
 dimen slider_image
 dimen subtitle_corner_radius
 dimen subtitle_outline_width
@@ -2113,12 +2164,20 @@ drawable amu_bubble_mask
 drawable amu_bubble_shadow
 drawable arrow_down
 drawable arrow_up
+drawable auto
 drawable avd_hide_password
 drawable avd_show_password
 drawable back
 drawable back_blackboxsplash
 drawable badge_bg_with_shadow
 drawable barrel
+drawable baseline_content_copy_24
+drawable baseline_delete_24
+drawable baseline_edit_24
+drawable baseline_navigate_next_24
+drawable baseline_post_add_24
+drawable baseline_yellow_tick
+drawable battery_partiaally
 drawable batteryback
 drawable bbmainlogo
 drawable bell
@@ -2126,7 +2185,9 @@ drawable bell_alert
 drawable bg_button_normal
 drawable bg_button_pressed
 drawable black_box
+drawable black_box_small
 drawable black_cyrve_rect
+drawable blinking_point
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2138,7 +2199,9 @@ drawable btn_radio_on_to_off_mtrl_animation
 drawable bus
 drawable button
 drawable car_icon
+drawable car_service
 drawable car_top
+drawable car_top_white
 drawable card_shadow
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -2171,9 +2234,11 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable disconnection_back
+drawable document_reminders
 drawable drive_route
 drawable driver
 drawable driver_icon
+drawable edittext_no_underline
 drawable engine_ignition_on
 drawable error_bg
 drawable fire_speed_icon
@@ -2182,12 +2247,19 @@ drawable fuel_background
 drawable fuel_fill_background
 drawable fuel_graph_back
 drawable fuel_theft
+drawable full_battery
 drawable geofenceimage
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable graph_svgrepo_com
 drawable green_flag
 drawable grey_filled_rect
+drawable ha_marker
+drawable half_battery
+drawable harsh_acc_checkbox
+drawable harsh_break_checkbox
+drawable hb_marker
+drawable horizontal_scrollbar
 drawable ic_ac
 drawable ic_accelerate
 drawable ic_accelerate_red
@@ -2230,6 +2302,7 @@ drawable ic_bill
 drawable ic_blackbox
 drawable ic_blue_car_side_view
 drawable ic_blue_circle
+drawable ic_blue_tick
 drawable ic_blue_truck_final
 drawable ic_bubble_big_colorpickerview_skydoves
 drawable ic_bubble_small_colorpickerview_skydoves
@@ -2298,6 +2371,9 @@ drawable ic_keyboard_black_24dp
 drawable ic_livetracking
 drawable ic_location
 drawable ic_logout
+drawable ic_menu_delete_24
+drawable ic_menu_search_24
+drawable ic_menu_share_24
 drawable ic_monthlyreport
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
@@ -2310,7 +2386,12 @@ drawable ic_new_bus_orange
 drawable ic_new_bus_red
 drawable ic_new_bus_yellow
 drawable ic_notification
+drawable ic_oil_tanker_blue
 drawable ic_oil_tanker_green
+drawable ic_oil_tanker_orange
+drawable ic_oil_tanker_red
+drawable ic_oil_tanker_white
+drawable ic_oil_tanker_yellow
 drawable ic_orange_car_side_view
 drawable ic_orange_truck_final
 drawable ic_password
@@ -2318,6 +2399,7 @@ drawable ic_play
 drawable ic_play_circle
 drawable ic_real_all
 drawable ic_red_car_side_view
+drawable ic_red_tick
 drawable ic_red_truck_final
 drawable ic_remove
 drawable ic_renew_ais
@@ -2359,12 +2441,14 @@ drawable ic_truck_yellow_side_view
 drawable ic_user
 drawable ic_van_sideview
 drawable ic_vehiclestatus
+drawable ic_voilet_red_tick
 drawable ic_white_alert
 drawable ic_white_car_side_view
 drawable ic_white_route
 drawable ic_white_truck_final
 drawable ic_yellow_car_side_view
 drawable ic_yellow_circle
+drawable ic_yellow_tick
 drawable ic_yellow_truck_final
 drawable icdashboard
 drawable icmenu
@@ -2373,11 +2457,15 @@ drawable icred_distance
 drawable ictraffic_sign_board
 drawable ignitionback
 drawable immobilize
+drawable internet
 drawable invoice
 drawable iv_overspeedicon
 drawable left_corner_round
 drawable licence
 drawable logo
+drawable low_battery
+drawable manage_vehicles
+drawable map_type
 drawable material_cursor_drawable
 drawable material_dialog_window
 drawable material_ic_calendar_black_24dp
@@ -2422,11 +2510,18 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable oil_tank
 drawable oil_tanker_side
+drawable os_marker
+drawable overspeed_checkbox
 drawable overspeeddback
 drawable overstoppageback
 drawable parking
+drawable pd_letter
 drawable permit
+drawable point_shape
 drawable progress_bar_background
+drawable pv_invisible_image
+drawable radio_button_selector
+drawable rash_turn_checkbox
 drawable rect_curve_box
 drawable rect_outline
 drawable right_corner_round
@@ -2437,8 +2532,14 @@ drawable round_bg_creame
 drawable round_bg_green
 drawable round_bg_red
 drawable round_bg_yellow
+drawable rounded_background_light
 drawable route
+drawable rt_marker
+drawable rupee
 drawable satelite
+drawable scoreboard
+drawable seekbar_progress
+drawable service_reminders
 drawable shadow_blue
 drawable shadow_green
 drawable shadow_orange
@@ -2450,7 +2551,10 @@ drawable speedometer
 drawable speedometer_round
 drawable sports_car
 drawable star
+drawable stop_marker
 drawable stop_sign
+drawable swipe_button_background
+drawable swipe_thumb
 drawable switch_thumb_selector
 drawable switch_track_selector
 drawable temp_back
@@ -2470,6 +2574,8 @@ drawable unreachable
 drawable upper_curve
 drawable van
 drawable warning
+drawable whats_new_banner
+drawable whats_new_banner_red
 drawable wheel
 drawable white_border_black_box
 drawable white_curve_rect
@@ -2496,8 +2602,10 @@ id BOTTOM_LEFT
 id BOTTOM_RIGHT
 id BOTTOM_START
 id BUTT
+id Beforefueling
 id CENTER
 id CTRL
+id DateAndTime
 id DistanceChart
 id Drivingduration
 id FLOAT
@@ -2506,9 +2614,11 @@ id HORIZONTAL
 id HalfLineIndicator
 id INTEGER
 id Idlingduration
+id InstllationDate
 id KiteIndicator
 id LEFT
 id LineIndicator
+id Location
 id META
 id Mmap
 id NORMAL
@@ -2521,12 +2631,16 @@ id PlayAndPause
 id QuarterLineIndicator
 id RIGHT
 id ROUND
+id Remarks
+id ReminderDays
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Speed
 id SpindleIndicator
+id Status
 id Stoppage
 id Stoppageduration
 id TOP
@@ -2598,6 +2712,7 @@ id activity_chooser_view_content
 id add
 id adjust_height
 id adjust_width
+id afterFueling
 id alertTitle
 id aligned
 id all
@@ -2607,6 +2722,7 @@ id alphaSlideBarFrame
 id always
 id amount
 id amu_text
+id anim
 id animateToEnd
 id animateToStart
 id antiClockwise
@@ -2619,6 +2735,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id automatic
 id back
 id background
 id badge
@@ -2627,6 +2744,9 @@ id baseline
 id beginOnFirstDraw
 id beginning
 id bestChoice
+id billAmount
+id blinkingPoint
+id blinkingPointBR
 id blocking
 id bottom
 id bottomSheetLayout
@@ -2665,6 +2785,10 @@ id cancelUrl
 id cancel_action
 id cancel_button
 id carryVelocity
+id cbHA
+id cbHB
+id cbOS
+id cbRT
 id center
 id center_horizontal
 id center_vertical
@@ -2691,6 +2815,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id close
 id closest
 id collapseActionView
 id colorPickerView
@@ -2701,10 +2826,13 @@ id constraint
 id container
 id content
 id contentPanel
+id contentTextView
 id contentView
+id content_main
 id contiguous
 id continuousVelocity
 id coordinator
+id coordinatorLayout
 id cos
 id counterclockwise
 id currency
@@ -2712,6 +2840,7 @@ id currentState
 id custom
 id customDate
 id customPanel
+id custome_date
 id cut
 id cvBar
 id cvBattery
@@ -2721,8 +2850,10 @@ id cvDetailSummery
 id cvDetails
 id cvDistanceDetails
 id cvDistanceReport
+id cvDocumentReminders
 id cvDriverAnalysis
 id cvDriverCompare
+id cvDrivingLimits
 id cvExcellent
 id cvFleet
 id cvFuel
@@ -2737,8 +2868,11 @@ id cvHarshBreakReport
 id cvIgnition
 id cvImmobalize
 id cvLiveStatus
+id cvMain
 id cvMainLayout
 id cvMonthlyReport
+id cvNoDrivingHoursReport
+id cvOverSpeedReport
 id cvOverStop
 id cvOverspeed
 id cvOverstoppage
@@ -2748,17 +2882,25 @@ id cvReminders
 id cvReports
 id cvRiskyDriver
 id cvRoute
+id cvScoreBoard
+id cvServiceReminder
 id cvStoppageReport
 id cvTemperature
 id cvTotalVehiclesDetail
+id cvVehicleManagement
 id cvWorkingHour
 id dark
 id dash
+id dash_frgament
+id dateLayout
 id date_picker_actions
+id days
+id daysBR
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id deleteButton
 id deltaRelative
 id dependency_ordering
 id description
@@ -2767,6 +2909,7 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id deviceStatus
 id dialog_button
 id dialog_button_no
 id dialog_button_yes
@@ -2794,12 +2937,14 @@ id driverClassificationChart
 id dropdown_menu
 id drvrComparisonMonthly
 id drvrToDrvrComparison
+id dueDate
 id durationLayout
 id easeIn
 id easeInOut
 id easeOut
 id east
 id edSetSpeed
+id editButton
 id edit_query
 id edtcomment
 id edtpassword
@@ -2810,21 +2955,25 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id etAllSpeed
+id etConfirmPassword
 id etEmail
 id etPassword
-id etSearch
 id etSearchBar
 id etUsername
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id expiredDevices
 id fBottomSheet
 id fLayout
 id fade
+id fence_name
 id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id fillingEndTime
+id fillingStartTime
 id fitToContents
 id fixed
 id fl_container
@@ -2832,10 +2981,15 @@ id fleetChart
 id flip
 id floating
 id forever
+id fragment_container
 id fragment_container_view_tag
 id framlayout
 id frost
 id fuelChart
+id fuelFillingLayout
+id fuelFillingLayoutTitle
+id fuelLevelText
+id fuel_filling_list
 id gGauge
 id gauge
 id ghost_view
@@ -2844,10 +2998,15 @@ id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
+id group
 id group_divider
 id grouping
 id groups
 id guideline
+id haCount
+id hardware
+id hbCount
+id header
 id header_title
 id hideable
 id home
@@ -2874,6 +3033,7 @@ id inward
 id italic
 id item_touch_helper_previous_elevation
 id ivAcStatus
+id ivAction
 id ivAdd
 id ivArrowExcellent
 id ivArrowRisky
@@ -2881,7 +3041,9 @@ id ivBack
 id ivBackNavigation
 id ivBatteryStatus
 id ivBell
+id ivCarIcon
 id ivCircleNotation
+id ivCopy
 id ivDelete
 id ivDetails
 id ivEndLocationIcon
@@ -2896,7 +3058,6 @@ id ivMenu
 id ivNotificationIcon
 id ivPlay
 id ivRoute
-id ivSearch
 id ivShare
 id ivSort
 id ivTotalReminderIcon
@@ -2913,6 +3074,7 @@ id l5
 id l6
 id labeled
 id last
+id lateFee
 id layout
 id layout1
 id lcFuelChart
@@ -2921,6 +3083,7 @@ id leftToRight
 id left_to_right
 id legacy
 id light
+id line
 id line1
 id line3
 id linear
@@ -2928,21 +3091,23 @@ id linear_toolbar
 id listItems
 id listMode
 id list_item
+id llAis140
+id llAis140Details
 id llAllVehicle
 id llAvgSpeed
 id llAvgSpeedProgress
 id llBars
 id llBatteryDisconnected
-id llBus
+id llBillAmount
+id llBillReminder
 id llCarIcon
-id llCars
+id llCurrentSpeed
 id llCustomDateRange
 id llCustomProgress
 id llDate
 id llDrivingBehavProgress
 id llDrivingBehaviour
 id llDrivingData
-id llDrivingLimit
 id llDrivingVoilationIndicators
 id llDueDate
 id llFleetProgress
@@ -2953,14 +3118,16 @@ id llIdeal
 id llIdealPercentage
 id llIgnitionOn
 id llInactive
+id llLateFee
 id llLayout
 id llLocation
 id llMainLayout
+id llMainLayoutPeogress
 id llModerate
 id llMoving
 id llMovingPercentage
 id llNoData
-id llNoDrivingHours
+id llNoFleet
 id llOne
 id llOverspeed
 id llOverspeedProgress
@@ -2972,18 +3139,23 @@ id llRiskyDriverReport
 id llRoutePlaybackDetails
 id llRunning
 id llSafeDriverReports
-id llScore
 id llSelectNotification
 id llSpeedAnalysis
 id llStopped
 id llTotal
+id llTotalPayment
 id llTotalVehicleMain
 id llTotalVhclProgress
 id llTowed
-id llTrucks
 id llTwo
 id llUnreachable
 id loadMore
+id loadingLayout
+id loadingProgress
+id loadingText
+id logLine
+id log_recycler
+id lottie_layer_name
 id lowerLayout
 id main
 id main_layout
@@ -3016,6 +3188,15 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id media_actions
+id menu_clear
+id menu_live
+id menu_search
+id menu_share
+id menu_show_debug
+id menu_show_error
+id menu_show_info
+id menu_show_verbose
+id menu_show_warning
 id merchantId
 id message
 id message_content_root
@@ -3064,27 +3245,36 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id newEmailEditText
 id next
 id noFuelAvailable
+id noItemFound
 id noScroll
 id noState
 id none
 id normal
 id north
 id notification_background
+id notification_image
 id notification_main_column
 id notification_main_column_container
+id notification_text
+id notification_title
 id nsScroll
 id off
+id oldEmailTextView
 id on
 id onInterceptTouchReturnSwipe
 id orderId
+id osCount
+id otpView
 id otp_frame
 id otptext
 id outline
 id outward
 id overshoot
 id packed
+id pager
 id parallax
 id parent
 id parentPanel
@@ -3094,6 +3284,8 @@ id password
 id password_toggle
 id path
 id pathRelative
+id payButton
+id pdDevices
 id peekHeight
 id percent
 id pin
@@ -3111,9 +3303,12 @@ id pvHarshRashTurn
 id pvOStimes
 id radial
 id radio
+id radioButton1
+id radioButton2
 id ratingBar
 id ratio
 id rbAll
+id rbBatteryDisconnection
 id rbHiSpeed
 id rbIgnition
 id rbIgnitionOn
@@ -3122,14 +3317,23 @@ id rbParked
 id rbTotal
 id rbTowed
 id rbUnreach
+id rectangle
 id rectangles
 id recycler_view
 id redirectUrl
+id refresh_layout
 id relativeLayout
 id relativeLayoutDC
+id remainingDays
+id reminderLayout
+id reminderProgress
+id reminderType
+id reminder_icon
+id renewalDevices
 id restart
 id reverse
 id reverseSawtooth
+id rgYearSubscription
 id right
 id rightToLeft
 id right_icon
@@ -3141,12 +3345,16 @@ id rlFrame
 id rlFuelNotAvailable
 id rlGraph2
 id rlSearch
+id rlSpeedAnalysis
 id rounded
 id row_index_key
 id rsaUrl
+id rtCount
 id rvAlerts
 id rvBills
 id rvChart
+id rvDetail
+id rvDetails
 id rvExcellentDrivers
 id rvFuelDisconnections
 id rvFuelFilling
@@ -3156,8 +3364,10 @@ id rvOverSpeed
 id rvRecycler
 id rvRiskyDrivers
 id rvScoreCard
+id rvStoppages
 id rvTemperature
 id rvVehicle
+id rvVehicles
 id rvWorkHour
 id sSeekBar
 id satellite
@@ -3206,10 +3416,12 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id software
 id south
 id spComplaint
 id spDriver1
 id spDriver2
+id spRenewalType
 id spVehicles
 id space_bottom
 id spacer
@@ -3235,10 +3447,13 @@ id staticPostLayout
 id statusShadow
 id status_bar_latest_event_content
 id stop
+id stoppage
 id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id swipeRefreshLayout
+id swipeView
 id switch1
 id switch2
 id switchAll
@@ -3288,6 +3503,7 @@ id time
 id timerText
 id title
 id titleDividerNoCustom
+id titleTextView
 id title_template
 id toggle
 id toolBar
@@ -3295,6 +3511,8 @@ id toolbar
 id top
 id topPanel
 id top_to_bottom
+id totalDevices
+id totalFee
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -3317,6 +3535,7 @@ id tvAfterFilling
 id tvAlertText
 id tvAlerts
 id tvAppVersion
+id tvAverageSpeed
 id tvAvgSpeed
 id tvBackToLogin
 id tvBatDisconnectionVehicle
@@ -3362,7 +3581,6 @@ id tvDriverAnalysis
 id tvDriverClassification
 id tvDriverComparison
 id tvDriverName
-id tvDriverScore
 id tvDriving
 id tvDrivingCount
 id tvDrivingDuration
@@ -3372,6 +3590,7 @@ id tvDuration
 id tvELocation
 id tvEmptyFuel
 id tvEndDate
+id tvEndFuel
 id tvEndLocation
 id tvEndTime
 id tvError
@@ -3380,6 +3599,7 @@ id tvErrorMessage
 id tvErrorOK
 id tvErrorTitle
 id tvExDriver
+id tvExpirationDate
 id tvFMS
 id tvFillingCount
 id tvFillingFuelLevel
@@ -3407,7 +3627,6 @@ id tvHarshBreak
 id tvHarshBreakCount
 id tvHarshOverspeed
 id tvHarshOverspeedCount
-id tvHeading
 id tvHighSpeedCount
 id tvHighestAvg
 id tvHighestLabel
@@ -3452,6 +3671,7 @@ id tvOverspeed
 id tvOverspeedCount
 id tvOverspeedings
 id tvOverstoppages
+id tvPaid
 id tvParkAtLastStop
 id tvParked
 id tvParkedPercentage
@@ -3468,8 +3688,10 @@ id tvRamarks
 id tvRankingHeading
 id tvRashTurn
 id tvRashTurnCount
+id tvRemarks
 id tvReminderCount
 id tvReminderHeading
+id tvRenewalType
 id tvReports
 id tvReportsHeading
 id tvReset
@@ -3492,17 +3714,20 @@ id tvServiceRequest
 id tvSettings
 id tvSpeed
 id tvStartDate
+id tvStartDateTime
 id tvStartLocation
 id tvStartTime
 id tvStartocation
 id tvStatus
 id tvStopCount
+id tvStopDateTime
 id tvStopTime
 id tvStoppage
 id tvStoppageCount
 id tvStoppageLimit
 id tvStoppageTime
 id tvStoppagesCount
+id tvSubmit
 id tvTemp
 id tvTempHeading
 id tvTempSubHeading
@@ -3537,12 +3762,13 @@ id tvUpdateButton
 id tvUsername
 id tvVehName
 id tvVehNum
+id tvVehType
 id tvVehicle
 id tvVehicleName
 id tvVehicleNumber
 id tvVehicleOnMap
+id tvView
 id tvViewDetails
-id tvViewFence
 id tvViewOnMap
 id tvVoilationType
 id tvWeek
@@ -3554,12 +3780,14 @@ id tvYMax
 id tvYesterday
 id tv_badge_text
 id tvoverseedLimit
+id tvstartFuel
 id tvtime
 id tvtotal
 id unchecked
 id uniform
 id unlabeled
 id up
+id upperLayout
 id useLogo
 id vSeperateFMS
 id vSeperateOne
@@ -3568,8 +3796,14 @@ id vViewExcellent
 id vViewPass
 id vViewRisky
 id vViewUser
+id vViewUser1
+id validityStatus
+id vehName
+id vehType
+id vehicleList
 id vertical
 id vertical_only
+id view
 id view_offset_helper
 id view_pager
 id view_transition
@@ -3660,6 +3894,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_document
 layout activity_add_geofence
 layout activity_add_on_report
 layout activity_add_service_request
@@ -3669,6 +3904,8 @@ layout activity_banner
 layout activity_bill_account
 layout activity_bill_banner
 layout activity_call_us
+layout activity_change_password
+layout activity_chnage_vehicle_details
 layout activity_consolidate_voilation_details
 layout activity_customer_care
 layout activity_daily_report
@@ -3676,6 +3913,8 @@ layout activity_dashboard
 layout activity_detail_summery_report
 layout activity_distance_report
 layout activity_distance_report_detail
+layout activity_document_reminder
+layout activity_documnet_reminders_details
 layout activity_dr_behav_consolidate_report
 layout activity_driver_monthly_comparison
 layout activity_driver_to_driver_comparison
@@ -3683,6 +3922,7 @@ layout activity_driving_behaviour
 layout activity_driving_limit
 layout activity_driving_route_initial
 layout activity_fleet_reports_dashboard
+layout activity_fmsactivity
 layout activity_forgot_password
 layout activity_fuel_disconnection_report
 layout activity_fuel_fillin_report
@@ -3703,6 +3943,7 @@ layout activity_initial
 layout activity_live_car
 layout activity_live_tracking
 layout activity_locate_my_vehicle
+layout activity_log
 layout activity_login
 layout activity_main_payment
 layout activity_manage_geofence
@@ -3710,8 +3951,10 @@ layout activity_monthly_report
 layout activity_multi_line_chart
 layout activity_no_driving_report
 layout activity_notification
+layout activity_overspeed
 layout activity_overspeed_alert
 layout activity_overspeed_detail
+layout activity_overspeed_detail2
 layout activity_overspeed_report
 layout activity_overstop_alert
 layout activity_overstoppage_report_activtiy
@@ -3726,10 +3969,12 @@ layout activity_settings
 layout activity_splash
 layout activity_status
 layout activity_stoppage_report
+layout activity_stoppages_detail
 layout activity_temperature_detail_report
 layout activity_temperature_report
 layout activity_temperature_sensor_report
 layout activity_vehicle_detail
+layout activity_vehicle_management
 layout activity_vehicle_status
 layout activity_working_hour_detail
 layout activity_working_hour_report
@@ -3744,11 +3989,16 @@ layout appintro_intro_layout
 layout appintro_intro_layout2
 layout approve_otp_layout
 layout bills_adapter
+layout chnage_vehicle_type_layout
 layout city_bank_layout
+layout common_detail_layout
 layout consolidate_voilation_adapter
 layout consolidate_voilation_detail_adapter
+layout content_log
+layout custom_date_layout
 layout custom_dialog
 layout dailyreport_adapter
+layout dash_reminder_layout
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -3767,15 +4017,24 @@ layout design_text_input_start_icon
 layout detail_summery_adapter
 layout dialog_colorpicker_colorpickerview_skydoves
 layout dialog_confirm
+layout dialog_dash
+layout dialog_layout
 layout dialog_month_picker
+layout dialog_options_layout
 layout distance_report_adapter
+layout documents_reminders
 layout driving_limit_adapter
 layout excellent_driver_adapter
 layout flag_bubble_colorpickerview_skydoves
+layout fms_vehicle_list_details
+layout fms_vehicles_list
+layout fragment_both_logs
 layout fragment_dashboard
+layout fragment_log
 layout fragment_vehicle_status
 layout fuel_filling_adapter
 layout fuel_filling_detail_adapter
+layout fuel_filling_detail_layout
 layout fuel_rod_disconnection_adapter
 layout fuel_theft_adapter
 layout fueltheftdetailadapter
@@ -3784,9 +4043,12 @@ layout harsh_acc_report_adapter
 layout harsh_break_adapter
 layout harsh_break_chart_adapter
 layout immobilize_adapter
+layout item_log
 layout item_view_month
 layout layout_alert_ok_cancel
+layout loading_dialog
 layout manage_geofence_adapter
+layout marker_layout_info
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -3831,11 +4093,13 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout new_score_card_layout
 layout no_driving_adapter
 layout no_internet
 layout notification_action
 layout notification_action_tombstone
 layout notification_badge
+layout notification_banner
 layout notification_list_adapter
 layout notification_media_action
 layout notification_media_cancel_action
@@ -3851,6 +4115,8 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout otp_fragment
+layout otp_layout
+layout over_speed_db
 layout overspeed_adapter
 layout overspeed_alertadapter
 layout overspeed_detail_adapter
@@ -3888,18 +4154,22 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toolbar_layout
 layout update_dialog
+layout update_email
 layout vehicle_alert_adapter
 layout vehicle_filterbottomsheet
 layout vehicle_status
 layout vehicle_status_adapter
+layout vehicle_type_layout
 layout vehiclestatus_layout
 layout working_hour_adapter
 layout working_hour_detail_adapter
+menu menu_log
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
 raw keep_cronet_api
+raw receipt
 string Connection_Time_Out
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -3951,6 +4221,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
+string clear_log
 string clear_text_end_icon_content_description
 string closure
 string com_google_firebase_crashlytics_mapping_file_id
@@ -3983,6 +4254,7 @@ string default_notification_channel_name
 string default_web_client_id
 string distance_report
 string dms
+string dns_error
 string e_forms
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4016,7 +4288,9 @@ string inventory_two
 string item_view_role_description
 string jobs
 string large_text
+string live
 string live_status
+string log_send_no_app
 string login
 string logout
 string material_clock_display_divider
@@ -4078,6 +4352,7 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string my_bill
+string no_network
 string office_review
 string ok
 string overspeed_analysis
@@ -4095,6 +4370,7 @@ string pending_approval
 string pending_bill
 string pending_for_approval
 string pending_for_checking
+string placeholder
 string pms
 string project_id
 string redirect_url
@@ -4102,9 +4378,12 @@ string rsa_url
 string search_menu_title
 string see_all_vehicle
 string settings
+string share
 string sign_in_to_continue
+string something_went_wrong
 string status_bar_notification_info_overflow
 string stoppage_analysis
+string time_out
 string title_activity_scrolling
 string title_activity_status
 string towed
@@ -4124,6 +4403,7 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppBaseTheme
 style AppIntro2ButtonStyleCompat
 style AppIntroButtonStyleCompat
 style AppIntroDefaultHeading
@@ -4131,6 +4411,7 @@ style AppIntroDefaultImage
 style AppIntroDefaultText
 style AppIntroIndicatorContainer
 style AppIntroStyle
+style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -4354,6 +4635,9 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomDatePickerDialog
+style CustomDatePickerStyle
+style DetailTheme
 style EmptyTheme
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
@@ -4366,6 +4650,8 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
 style MyAnimation_Window
+style PinWidget
+style PinWidget_PinView
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents
@@ -4943,6 +5229,7 @@ styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width 
 styleable LinearProgressIndicator indeterminateAnimationType indicatorDirectionLinear
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable LottieAnimationView lottie_autoPlay lottie_colorFilter lottie_enableMergePathsForKitKatAndAbove lottie_fileName lottie_imageAssetsFolder lottie_loop lottie_progress lottie_rawRes lottie_renderMode lottie_repeatCount lottie_repeatMode lottie_scale lottie_speed lottie_url
 styleable MapAttrs ambientEnabled backgroundColor cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapId mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
@@ -4976,6 +5263,8 @@ styleable NavigationView android_background android_fitsSystemWindows android_ma
 styleable NotificationBadge android_textSize android_textColor nbAnimationDuration nbAnimationEnabled nbBackground nbEllipsizeText nbMaxTextLength
 styleable OnClick clickAction targetId
 styleable OnSwipe autoCompleteMode dragDirection dragScale dragThreshold limitBoundsTo maxAcceleration maxVelocity moveWhenScrollAtTop nestedScrollFlags onTouchUp rotationCenterId springBoundary springDamping springMass springStiffness springStopThreshold touchAnchorId touchAnchorSide touchRegionId
+styleable PinView android_itemBackground android_cursorVisible cursorColor cursorWidth hideLineWhenFilled itemCount itemHeight itemRadius itemSpacing itemWidth lineColor lineWidth viewType
+styleable PinViewTheme pinViewStyle
 styleable PointerSpeedometer sv_centerCircleColor sv_centerCircleRadius sv_pointerColor sv_speedometerColor sv_withPointer
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
@@ -5003,6 +5292,7 @@ styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
+styleable SwipeRefreshLayout swipeRefreshLayoutProgressSpinnerBackgroundColor
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text
@@ -5011,6 +5301,7 @@ styleable TextAppearance android_textSize android_typeface android_textStyle and
 styleable TextEffects android_textSize android_typeface android_textStyle android_text android_shadowColor android_shadowDx android_shadowDy android_shadowRadius android_fontFamily borderRound borderRoundPercent textFillColor textOutlineColor textOutlineThickness
 styleable TextInputEditText textInputLayoutFocusedRectEnabled
 styleable TextInputLayout android_enabled android_textColorHint android_maxWidth android_minWidth android_hint boxBackgroundColor boxBackgroundMode boxCollapsedPaddingTop boxCornerRadiusBottomEnd boxCornerRadiusBottomStart boxCornerRadiusTopEnd boxCornerRadiusTopStart boxStrokeColor boxStrokeErrorColor boxStrokeWidth boxStrokeWidthFocused counterEnabled counterMaxLength counterOverflowTextAppearance counterOverflowTextColor counterTextAppearance counterTextColor endIconCheckable endIconContentDescription endIconDrawable endIconMode endIconTint endIconTintMode errorContentDescription errorEnabled errorIconDrawable errorIconTint errorIconTintMode errorTextAppearance errorTextColor expandedHintEnabled helperText helperTextEnabled helperTextTextAppearance helperTextTextColor hintAnimationEnabled hintEnabled hintTextAppearance hintTextColor passwordToggleContentDescription passwordToggleDrawable passwordToggleEnabled passwordToggleTint passwordToggleTintMode placeholderText placeholderTextAppearance placeholderTextColor prefixText prefixTextAppearance prefixTextColor shapeAppearance shapeAppearanceOverlay startIconCheckable startIconContentDescription startIconDrawable startIconTint startIconTintMode suffixText suffixTextAppearance suffixTextColor
+styleable Theme colorAssertLine colorDebugLine colorErrorLine colorInfoLine colorVerboseLine colorWarningLine
 styleable ThemeEnforcement android_textAppearance enforceMaterialTheme enforceTextAppearance
 styleable TicketView android_elevation ticketBackgroundAfterDivider ticketBackgroundBeforeDivider ticketBackgroundColor ticketBorderColor ticketBorderWidth ticketCornerRadius ticketCornerType ticketDividerColor ticketDividerDashGap ticketDividerDashLength ticketDividerPadding ticketDividerType ticketDividerWidth ticketElevation ticketOrientation ticketScallopPositionPercent ticketScallopRadius ticketShadowColor ticketShowBorder ticketShowDivider
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight menu navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
@@ -5027,6 +5318,7 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
+xml provider_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start

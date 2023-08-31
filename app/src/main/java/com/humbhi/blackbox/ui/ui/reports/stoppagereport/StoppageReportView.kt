@@ -1,9 +1,9 @@
 package com.humbhi.blackbox.ui.ui.reports.stoppagereport
 
-import com.humbhi.blackbox.ui.data.models.StoppageReportResponseModel
+import com.humbhi.blackbox.ui.data.models.StoppageReportResponse
 
 interface StoppageReportView {
-    fun getStoppageReportResponse(stoppageReportResponseModel: StoppageReportResponseModel)
+    fun getStoppageReportResponse(stoppageReportResponseModel: StoppageReportResponse)
 
     fun isNetworkConnected(): Boolean
 

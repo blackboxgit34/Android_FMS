@@ -29,8 +29,12 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                 tvDistanceSpeed.text =list.get(adapterPosition).Speed.toString()+" km/h"
                 tvDistance.text = list.get(adapterPosition).Distance.toString()+"KM"
                 val progressStatus = list.get(adapterPosition).ProgressStatus
-                tvStatus.text = progressStatus
-
+                if(progressStatus.equals("BD")){
+                    tvStatus.text = "Battery Disconnection"
+                }
+                else{
+                    tvStatus.text = progressStatus
+                }
                 if (progressStatus == "Stopped"){
                     tvStatus.setBackgroundResource(R.drawable.round_bg_yellow)
                     statusShadow.setBackgroundResource(R.drawable.yellow_shadow)
@@ -47,6 +51,11 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                     statusShadow.setBackgroundResource(R.drawable.shadow_green)
                 }
                 if (progressStatus == "Unreachable"){
+                    tvStatus.background = ContextCompat.getDrawable(context, R.drawable.round_bg_red)
+                    statusShadow.setBackgroundResource(R.drawable.shadow_red)
+                    ivIgnition.setImageResource(R.drawable.ic_ignition_off)
+                }
+                if (progressStatus == "BD"){
                     tvStatus.background = ContextCompat.getDrawable(context, R.drawable.round_bg_red)
                     statusShadow.setBackgroundResource(R.drawable.shadow_red)
                     ivIgnition.setImageResource(R.drawable.ic_ignition_off)
@@ -69,6 +78,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                     when(progressStatus)
                     {
                         "Unreachable"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_tempo_red_side_view)
+                        }
+                        "BD"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_tempo_red_side_view)
                         }
                         "Moving"->{
@@ -94,6 +106,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                         "Unreachable"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_tempo_red_side_view)
                         }
+                        "BD"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_tempo_red_side_view)
+                        }
                         "Moving"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_tempo_green_side_view)
                         }
@@ -115,6 +130,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                     when(progressStatus)
                     {
                         "Unreachable"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
+                        }
+                        "BD"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
                         }
                         "Moving"->{
@@ -143,6 +161,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                         "Unreachable"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_red_car_side_view)
                         }
+                        "BD"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_red_car_side_view)
+                        }
                         "Moving"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_green_car_side_view)
                         }
@@ -165,6 +186,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                     when(progressStatus)
                     {
                         "Unreachable"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
+                        }
+                        "BD"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
                         }
                         "Moving"->{
@@ -198,6 +222,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                         "Unreachable"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_red_car_side_view)
                         }
+                        "BD"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_red_car_side_view)
+                        }
                         "Moving"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_green_car_side_view)
                         }
@@ -218,6 +245,9 @@ private val listData:List<VehicleLiveStatusDataItem>) : RecyclerView.Adapter<Veh
                 else{
                     when(progressStatus) {
                         "Unreachable"->{
+                            ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
+                        }
+                        "BD"->{
                             ivVehicleIcon.setImageResource(R.drawable.ic_truck_red_side_view)
                         }
                         "Moving"->{

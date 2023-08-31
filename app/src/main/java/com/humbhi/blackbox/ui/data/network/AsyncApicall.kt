@@ -1,5 +1,6 @@
 package com.humbhi.blackbox.ui.data.network
 
+import com.google.gson.GsonBuilder
 import com.humbhi.blackbox.ui.retofit.NetworkService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -11,19 +12,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object AsyncApicall {
-
     private const val BASE_URL = "http://api1.trackmaster.in/api/"
-    var interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    var interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+    val gson = GsonBuilder().setLenient().create()
     var okHttpClient = OkHttpClient.Builder() //Use For Time Out
-        .readTimeout(3, TimeUnit.MINUTES)
-        .connectTimeout(2, TimeUnit.MINUTES)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
-        .protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
+        .retryOnConnectionFailure(true) // Enable retries on connection failures
+        .followRedirects(true) // Enable following redirects
+        .followSslRedirects(true) // Enable following SSL redirects
+        .retryOnConnectionFailure(true) // Enable retries on connection failures
+        .protocols(listOf(Protocol.HTTP_1_1))
         .build()
     // Create a Retrofit instance
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()
 

@@ -17,17 +17,32 @@
 
     <ImageView
         android:id="@+id/mapView"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="@dimen/margin_x"
         android:padding="@dimen/margin_x"
         android:textAlignment="center"
         android:gravity="center"
         android:src="@drawable/map_type"
         android:background="@drawable/round_bg_creame"/>
+
+    <ImageView
+        android:id="@+id/stoppage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="@dimen/margin_x"
+        android:padding="@dimen/margin_x"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:src="@drawable/ic_stoppages"
+        android:background="@drawable/round_bg_creame"
+        app:tint="@color/black" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDistanceDetails"
@@ -145,10 +160,7 @@
                     android:textSize="@dimen/font_12" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-
         </RelativeLayout>
-
-
 
     </androidx.cardview.widget.CardView>
 
@@ -184,9 +196,9 @@
                     android:layout_gravity="center_horizontal"/>
 
                 <RelativeLayout
+                    android:layout_marginTop="@dimen/margin_xx"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_xx">
+                    android:layout_height="wrap_content">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/upload_icon"
@@ -250,6 +262,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
+                        android:id="@+id/llCurrentSpeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -276,7 +289,6 @@
                             android:gravity="center"
                             android:layout_gravity="center"/>
                     </LinearLayout>
-
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="@dimen/upload_icon"
@@ -375,12 +387,47 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="@dimen/font_10"
+                        android:text="Average Speed: "
+                        android:gravity="center"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvAverageSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="00"
+                        android:textColor="@color/primary_orange_secondary"
+                        android:textSize="@dimen/font_14" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_grey"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="@dimen/font_10"
+                        android:text=" KM/H"
+                        android:gravity="center"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_50"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/margin_xx"
                     android:background="@color/primary_little_fade">
                     <RelativeLayout
                         android:id="@+id/PlayAndPause"
@@ -480,6 +527,7 @@
                         android:progressTint="@color/blue"
                         android:thumbTint="@color/blue" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/durationLayout"
                     android:layout_width="match_parent"
@@ -640,12 +688,17 @@
         android:id="@+id/llDrivingVoilationIndicators"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="55dp"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
         android:padding="@dimen/margin_v"
         android:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -698,7 +751,8 @@
                 android:layout_height="@dimen/margin_xx"
                 android:layout_marginEnd="@dimen/margin_v"
                 android:layout_marginStart="@dimen/margin_v"
-                android:src="@drawable/ic_circle_red"/>
+                android:src="@drawable/ic_circle_red"
+                app:tint="@color/voilet_red" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -718,21 +772,201 @@
                 android:layout_width="@dimen/margin_xx"
                 android:layout_height="@dimen/margin_xx"
                 android:layout_marginEnd="@dimen/margin_v"
-
                 android:src="@drawable/ic_blue_circle"
-                app:tint="@color/voilet_red" />
+                app:tint="@color/red" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:text="Overspeed"/>
+        </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.55"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counts:"/>
+                <TextView
+                    android:id="@+id/haCount"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_v"
+                    android:textColor="@color/blue"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="11sp"
+                    android:text="21"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.55"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yellow"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counts: "/>
+                <TextView
+                    android:id="@+id/hbCount"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_v"
+                    android:textColor="@color/yellow"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="11sp"
+                    android:text="21"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.55"
+                    android:textColor="@color/voilet_red"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counts: "/>
+                <TextView
+                    android:id="@+id/rtCount"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_v"
+                    android:textColor="@color/voilet_red"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="11sp"
+                    android:text="21"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.55"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:textSize="11sp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Counts: "/>
+                <TextView
+                    android:id="@+id/osCount"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_v"
+                    android:textColor="@color/red"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="11sp"
+                    android:text="21"/>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbHA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" Harsh Acc."
+                android:textSize="11sp"
+                android:button="@drawable/harsh_acc_checkbox" />
+
+            <CheckBox
+                android:id="@+id/cbHB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Harsh break"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:button="@drawable/harsh_break_checkbox" />
+
+            <CheckBox
+                android:id="@+id/cbRT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Rash turn"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:button="@drawable/rash_turn_checkbox" />
+
+            <CheckBox
+                android:id="@+id/cbOS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Overspeed"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:button="@drawable/overspeed_checkbox" />
 
         </LinearLayout>
 
 
-
     </LinearLayout>
+
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar" />
+    <include
+        android:id="@+id/progress"
+        layout="@layout/progress_bar"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

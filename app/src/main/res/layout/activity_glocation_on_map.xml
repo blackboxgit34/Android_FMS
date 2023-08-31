@@ -6,51 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/primary">
 
-    <RelativeLayout
+    <fragment
+        android:id="@+id/Mmap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_60"
-        android:orientation="vertical">
-
-        <fragment
-            android:id="@+id/Mmap"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <RelativeLayout
-            android:id="@+id/rlSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_margin="@dimen/margin_3">
-
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search.."
-                android:imeOptions="actionSearch"
-                android:drawableTint="@color/med_grey"
-                android:padding="@dimen/margin_v"
-                android:singleLine="true"
-                android:layout_margin="@dimen/margin_3"
-                android:background="@drawable/rect_outline"
-                />
-
-            <ImageView
-                android:id="@+id/ivSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/margin_xx"
-                />
-
-        </RelativeLayout>
-
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 
     <ImageView
         android:id="@+id/mapView"

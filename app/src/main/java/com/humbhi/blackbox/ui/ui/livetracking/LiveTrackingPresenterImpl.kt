@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.livetracking
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.LiveTrackingResponse
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class LiveTrackingPresenterImpl(
     private val mLiveTrackView: LiveTrackingView,
@@ -50,7 +53,17 @@ class LiveTrackingPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mLiveTrackView.isHideLoading()
-                            mLiveTrackView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mLiveTrackView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mLiveTrackView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mLiveTrackView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mLiveTrackView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

@@ -2,9 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
+
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:id="@+id/webView"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.02" />

@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.dashboard
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.*
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class DashboardFragPresenterImpl(
     private val mDashboardFragView: DashboardFragView,
@@ -31,7 +34,17 @@ class DashboardFragPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mDashboardFragView.isHideLoading()
-                            mDashboardFragView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mDashboardFragView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mDashboardFragView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mDashboardFragView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mDashboardFragView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })
@@ -59,7 +72,17 @@ class DashboardFragPresenterImpl(
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mDashboardFragView.isHideLoading()
-                        mDashboardFragView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mDashboardFragView.showErrorMessage("Connection time out, please try again")
+                        } else if (throwable is java.net.UnknownHostException) {
+                            mDashboardFragView.showErrorMessage("No internet available, please try again")
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsResolver.DnsException) {
+                                mDashboardFragView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mDashboardFragView.showErrorMessage("Something went wrong")
+                        }
                     }
                 })
             }
@@ -86,7 +109,17 @@ class DashboardFragPresenterImpl(
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mDashboardFragView.isHideLoading()
-                        mDashboardFragView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mDashboardFragView.showErrorMessage("Connection time out, please try again")
+                        } else if (throwable is java.net.UnknownHostException) {
+                            mDashboardFragView.showErrorMessage("No internet available, please try again")
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsResolver.DnsException) {
+                                mDashboardFragView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mDashboardFragView.showErrorMessage("Something went wrong")
+                        }
                     }
                 })
             }
@@ -114,7 +147,17 @@ class DashboardFragPresenterImpl(
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mDashboardFragView.isHideLoading()
-                        mDashboardFragView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mDashboardFragView.showErrorMessage("Connection time out, please try again")
+                        } else if (throwable is java.net.UnknownHostException) {
+                            mDashboardFragView.showErrorMessage("No internet available, please try again")
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsResolver.DnsException) {
+                                mDashboardFragView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mDashboardFragView.showErrorMessage("Something went wrong")
+                        }
                     }
                 })
             }
@@ -141,7 +184,17 @@ class DashboardFragPresenterImpl(
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mDashboardFragView.isHideLoading()
-                        mDashboardFragView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mDashboardFragView.showErrorMessage("Connection time out, please try again")
+                        } else if (throwable is java.net.UnknownHostException) {
+                            mDashboardFragView.showErrorMessage("No internet available, please try again")
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsResolver.DnsException) {
+                                mDashboardFragView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mDashboardFragView.showErrorMessage("Something went wrong")
+                        }
                     }
                 })
             }

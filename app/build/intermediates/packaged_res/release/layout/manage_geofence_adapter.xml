@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_x"
         app:cardBackgroundColor="@color/primary_little_fade"
-        app:cardCornerRadius="@dimen/margin_x"
-        >
+        app:cardCornerRadius="@dimen/margin_x">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,27 +32,6 @@
                     android:gravity="center_vertical"
                     android:drawableStart="@drawable/ic_caricon"
                     android:textColor="@color/white"/>
-
-                <ImageView
-                    android:id="@+id/ivDelete"
-                    android:layout_width="@dimen/margin_20"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_delete"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/margin_xx" />
-
-                <TextView
-                    android:id="@+id/tvViewFence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/margin_xx"
-                    android:layout_toLeftOf="@+id/ivDelete"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="View On Map "
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/font_12" />
             </RelativeLayout>
 
 
@@ -67,8 +45,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="@dimen/margin_x">
+                    android:layout_marginHorizontal="@dimen/margin_v"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -78,92 +56,48 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:drawableStart="@drawable/ic_fence"
+                            android:drawablePadding="@dimen/margin_x"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center_vertical"
                             android:text="Fence Name"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="@dimen/font_14"
-                            android:drawableStart="@drawable/ic_fence"
-                            android:layout_weight="0.5"
-                            android:drawablePadding="@dimen/margin_x"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/white"/>
-
-                        <TextView
-                            android:id="@+id/tvStoppagesCount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="test"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:gravity="end"
-                            android:textSize="12sp"
-                            android:layout_weight="0.5"
-                            android:textColor="@color/white"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_marginVertical="@dimen/margin_v">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Fence Id"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textSize="@dimen/font_14"
-                            android:gravity="center_vertical"
-                            android:drawablePadding="@dimen/margin_x"
-                            android:drawableStart="@drawable/ic_fence"
-                            android:layout_weight="0.5"
-                            android:textColor="@color/white"/>
-
-                        <TextView
-                            android:id="@+id/tvIgnition"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="12345"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:gravity="end"
-                            android:textSize="12sp"
-                            android:layout_weight="0.5"
-                            android:textColor="@color/white"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/margin_v"
-                        android:visibility="gone"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:text="BB-ID"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/font_14"
-
-                            android:drawablePadding="@dimen/margin_x"
-                            android:drawableStart="@drawable/ic_vehiclestatus"
-                            android:fontFamily="@font/poppins_semibold" />
+                            android:textSize="@dimen/font_14" />
 
                         <TextView
-                            android:id="@+id/tvDriving"
+                            android:id="@+id/fence_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="AB98989803123"
+                            android:layout_weight="0.5"
                             android:fontFamily="@font/poppins_semibold"
                             android:gravity="end"
-                            android:textSize="12sp"
-                            android:layout_weight="0.5"
-                            android:textColor="@color/white"/>
+                            android:text="test"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
 
+                        <ImageView
+                            android:id="@+id/ivDelete"
+                            android:layout_width="@dimen/margin_20"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/margin_x"
+                            android:src="@drawable/ic_delete" />
+
+                        <ImageView
+                            android:id="@+id/ivCopy"
+                            android:layout_width="@dimen/margin_20"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_content_copy_24"
+                            app:tint="@color/blue" />
+                    </LinearLayout>
 
                 </LinearLayout>
 

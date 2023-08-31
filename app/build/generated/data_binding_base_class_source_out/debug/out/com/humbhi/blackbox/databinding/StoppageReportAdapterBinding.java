@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
@@ -21,6 +22,9 @@ public final class StoppageReportAdapterBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final RecyclerView rvDetail;
+
+  @NonNull
   public final AppCompatTextView tvStopCount;
 
   @NonNull
@@ -30,9 +34,10 @@ public final class StoppageReportAdapterBinding implements ViewBinding {
   public final TextView tvVehicleNumber;
 
   private StoppageReportAdapterBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatTextView tvStopCount, @NonNull TextView tvStopTime,
-      @NonNull TextView tvVehicleNumber) {
+      @NonNull RecyclerView rvDetail, @NonNull AppCompatTextView tvStopCount,
+      @NonNull TextView tvStopTime, @NonNull TextView tvVehicleNumber) {
     this.rootView = rootView;
+    this.rvDetail = rvDetail;
     this.tvStopCount = tvStopCount;
     this.tvStopTime = tvStopTime;
     this.tvVehicleNumber = tvVehicleNumber;
@@ -65,6 +70,12 @@ public final class StoppageReportAdapterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.rvDetail;
+      RecyclerView rvDetail = ViewBindings.findChildViewById(rootView, id);
+      if (rvDetail == null) {
+        break missingId;
+      }
+
       id = R.id.tvStopCount;
       AppCompatTextView tvStopCount = ViewBindings.findChildViewById(rootView, id);
       if (tvStopCount == null) {
@@ -83,8 +94,8 @@ public final class StoppageReportAdapterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new StoppageReportAdapterBinding((ConstraintLayout) rootView, tvStopCount, tvStopTime,
-          tvVehicleNumber);
+      return new StoppageReportAdapterBinding((ConstraintLayout) rootView, rvDetail, tvStopCount,
+          tvStopTime, tvVehicleNumber);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,6 +4,7 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,6 +47,18 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
   public final CoordinatorLayout bottomSheetLayout;
 
   @NonNull
+  public final CheckBox cbHA;
+
+  @NonNull
+  public final CheckBox cbHB;
+
+  @NonNull
+  public final CheckBox cbOS;
+
+  @NonNull
+  public final CheckBox cbRT;
+
+  @NonNull
   public final CardView cvDistanceDetails;
 
   @NonNull
@@ -53,6 +66,15 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
 
   @NonNull
   public final FrameLayout fBottomSheet;
+
+  @NonNull
+  public final TextView haCount;
+
+  @NonNull
+  public final TextView hbCount;
+
+  @NonNull
+  public final LinearLayout llCurrentSpeed;
 
   @NonNull
   public final LinearLayout llDate;
@@ -70,10 +92,19 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
   public final FragmentContainerView map;
 
   @NonNull
-  public final TextView mapView;
+  public final ImageView mapView;
+
+  @NonNull
+  public final TextView osCount;
 
   @NonNull
   public final ImageView playPauseIcon;
+
+  @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
+  public final TextView rtCount;
 
   @NonNull
   public final AppCompatSeekBar sSeekBar;
@@ -82,7 +113,13 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
   public final PointerSpeedometer speedGauge;
 
   @NonNull
+  public final ImageView stoppage;
+
+  @NonNull
   public final ToolbarLayoutBinding toolbar;
+
+  @NonNull
+  public final TextView tvAverageSpeed;
 
   @NonNull
   public final TextView tvCurrentDistanceCover;
@@ -123,13 +160,17 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
   private ActivityRoutePlayBackBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView Drivingduration, @NonNull TextView Idlingduration,
       @NonNull RelativeLayout PlayAndPause, @NonNull TextView Stoppageduration,
-      @NonNull CoordinatorLayout bottomSheetLayout, @NonNull CardView cvDistanceDetails,
+      @NonNull CoordinatorLayout bottomSheetLayout, @NonNull CheckBox cbHA, @NonNull CheckBox cbHB,
+      @NonNull CheckBox cbOS, @NonNull CheckBox cbRT, @NonNull CardView cvDistanceDetails,
       @NonNull LinearLayoutCompat durationLayout, @NonNull FrameLayout fBottomSheet,
+      @NonNull TextView haCount, @NonNull TextView hbCount, @NonNull LinearLayout llCurrentSpeed,
       @NonNull LinearLayout llDate, @NonNull LinearLayout llDrivingVoilationIndicators,
       @NonNull LinearLayout llLocation, @NonNull LinearLayoutCompat llRoutePlaybackDetails,
-      @NonNull FragmentContainerView map, @NonNull TextView mapView,
-      @NonNull ImageView playPauseIcon, @NonNull AppCompatSeekBar sSeekBar,
-      @NonNull PointerSpeedometer speedGauge, @NonNull ToolbarLayoutBinding toolbar,
+      @NonNull FragmentContainerView map, @NonNull ImageView mapView, @NonNull TextView osCount,
+      @NonNull ImageView playPauseIcon, @NonNull ProgressBarBinding progress,
+      @NonNull TextView rtCount, @NonNull AppCompatSeekBar sSeekBar,
+      @NonNull PointerSpeedometer speedGauge, @NonNull ImageView stoppage,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvAverageSpeed,
       @NonNull TextView tvCurrentDistanceCover, @NonNull TextView tvCurrentSpeed,
       @NonNull TextView tvDateAndTime, @NonNull AppCompatTextView tvDistance,
       @NonNull AppCompatTextView tvEndLocation, @NonNull TextView tvFourX,
@@ -142,19 +183,31 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
     this.PlayAndPause = PlayAndPause;
     this.Stoppageduration = Stoppageduration;
     this.bottomSheetLayout = bottomSheetLayout;
+    this.cbHA = cbHA;
+    this.cbHB = cbHB;
+    this.cbOS = cbOS;
+    this.cbRT = cbRT;
     this.cvDistanceDetails = cvDistanceDetails;
     this.durationLayout = durationLayout;
     this.fBottomSheet = fBottomSheet;
+    this.haCount = haCount;
+    this.hbCount = hbCount;
+    this.llCurrentSpeed = llCurrentSpeed;
     this.llDate = llDate;
     this.llDrivingVoilationIndicators = llDrivingVoilationIndicators;
     this.llLocation = llLocation;
     this.llRoutePlaybackDetails = llRoutePlaybackDetails;
     this.map = map;
     this.mapView = mapView;
+    this.osCount = osCount;
     this.playPauseIcon = playPauseIcon;
+    this.progress = progress;
+    this.rtCount = rtCount;
     this.sSeekBar = sSeekBar;
     this.speedGauge = speedGauge;
+    this.stoppage = stoppage;
     this.toolbar = toolbar;
+    this.tvAverageSpeed = tvAverageSpeed;
     this.tvCurrentDistanceCover = tvCurrentDistanceCover;
     this.tvCurrentSpeed = tvCurrentSpeed;
     this.tvDateAndTime = tvDateAndTime;
@@ -226,6 +279,30 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.cbHA;
+      CheckBox cbHA = ViewBindings.findChildViewById(rootView, id);
+      if (cbHA == null) {
+        break missingId;
+      }
+
+      id = R.id.cbHB;
+      CheckBox cbHB = ViewBindings.findChildViewById(rootView, id);
+      if (cbHB == null) {
+        break missingId;
+      }
+
+      id = R.id.cbOS;
+      CheckBox cbOS = ViewBindings.findChildViewById(rootView, id);
+      if (cbOS == null) {
+        break missingId;
+      }
+
+      id = R.id.cbRT;
+      CheckBox cbRT = ViewBindings.findChildViewById(rootView, id);
+      if (cbRT == null) {
+        break missingId;
+      }
+
       id = R.id.cvDistanceDetails;
       CardView cvDistanceDetails = ViewBindings.findChildViewById(rootView, id);
       if (cvDistanceDetails == null) {
@@ -241,6 +318,24 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
       id = R.id.fBottomSheet;
       FrameLayout fBottomSheet = ViewBindings.findChildViewById(rootView, id);
       if (fBottomSheet == null) {
+        break missingId;
+      }
+
+      id = R.id.haCount;
+      TextView haCount = ViewBindings.findChildViewById(rootView, id);
+      if (haCount == null) {
+        break missingId;
+      }
+
+      id = R.id.hbCount;
+      TextView hbCount = ViewBindings.findChildViewById(rootView, id);
+      if (hbCount == null) {
+        break missingId;
+      }
+
+      id = R.id.llCurrentSpeed;
+      LinearLayout llCurrentSpeed = ViewBindings.findChildViewById(rootView, id);
+      if (llCurrentSpeed == null) {
         break missingId;
       }
 
@@ -275,14 +370,33 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
       }
 
       id = R.id.mapView;
-      TextView mapView = ViewBindings.findChildViewById(rootView, id);
+      ImageView mapView = ViewBindings.findChildViewById(rootView, id);
       if (mapView == null) {
+        break missingId;
+      }
+
+      id = R.id.osCount;
+      TextView osCount = ViewBindings.findChildViewById(rootView, id);
+      if (osCount == null) {
         break missingId;
       }
 
       id = R.id.play_pause_icon;
       ImageView playPauseIcon = ViewBindings.findChildViewById(rootView, id);
       if (playPauseIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
+      id = R.id.rtCount;
+      TextView rtCount = ViewBindings.findChildViewById(rootView, id);
+      if (rtCount == null) {
         break missingId;
       }
 
@@ -298,12 +412,24 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.stoppage;
+      ImageView stoppage = ViewBindings.findChildViewById(rootView, id);
+      if (stoppage == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       View toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
+
+      id = R.id.tvAverageSpeed;
+      TextView tvAverageSpeed = ViewBindings.findChildViewById(rootView, id);
+      if (tvAverageSpeed == null) {
+        break missingId;
+      }
 
       id = R.id.tvCurrentDistanceCover;
       TextView tvCurrentDistanceCover = ViewBindings.findChildViewById(rootView, id);
@@ -378,10 +504,11 @@ public final class ActivityRoutePlayBackBinding implements ViewBinding {
       }
 
       return new ActivityRoutePlayBackBinding((ConstraintLayout) rootView, Drivingduration,
-          Idlingduration, PlayAndPause, Stoppageduration, bottomSheetLayout, cvDistanceDetails,
-          durationLayout, fBottomSheet, llDate, llDrivingVoilationIndicators, llLocation,
-          llRoutePlaybackDetails, map, mapView, playPauseIcon, sSeekBar, speedGauge,
-          binding_toolbar, tvCurrentDistanceCover, tvCurrentSpeed, tvDateAndTime, tvDistance,
+          Idlingduration, PlayAndPause, Stoppageduration, bottomSheetLayout, cbHA, cbHB, cbOS, cbRT,
+          cvDistanceDetails, durationLayout, fBottomSheet, haCount, hbCount, llCurrentSpeed, llDate,
+          llDrivingVoilationIndicators, llLocation, llRoutePlaybackDetails, map, mapView, osCount,
+          playPauseIcon, binding_progress, rtCount, sSeekBar, speedGauge, stoppage, binding_toolbar,
+          tvAverageSpeed, tvCurrentDistanceCover, tvCurrentSpeed, tvDateAndTime, tvDistance,
           tvEndLocation, tvFourX, tvLocation, tvOneX, tvStartocation, tvThreeX,
           tvTotalDistanceTravel, tvTwoX);
     }

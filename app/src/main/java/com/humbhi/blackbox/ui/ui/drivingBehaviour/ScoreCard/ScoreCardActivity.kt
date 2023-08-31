@@ -1,14 +1,19 @@
 package com.humbhi.blackbox.ui.ui.drivingBehaviour.ScoreCard
 
 import android.app.DatePickerDialog
+import android.net.DnsResolver
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.DatePicker
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityScoreCardBinding
+import com.humbhi.blackbox.ui.Utility.CustomDialogFragment
 import com.humbhi.blackbox.ui.Utility.EndlessRecyclerOnScrollListener
 import com.humbhi.blackbox.ui.adapters.ScoreCardAdapter
 import com.humbhi.blackbox.ui.data.db.CommonData
@@ -20,9 +25,13 @@ import com.humbhi.blackbox.ui.retofit.NewRetrofitClient
 import com.humbhi.blackbox.ui.utils.CommonUtil
 import com.humbhi.blackbox.ui.utils.Constants
 import com.kal.rackmonthpicker.RackMonthPicker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -49,11 +58,21 @@ class ScoreCardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.toolbar.ivBack.setOnClickListener {
             finish()
         }
+        binding!!.etSearchBar.setOnEditorActionListener(TextView.OnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                startlimit = 0
+                binding!!.loadMore.visibility = View.GONE
+                list.clear()
+                hitApi()
+            }
+            false
+        })
         dateFilter()
         hitApi()
     }
     private fun dateFilter() {
-        monthOftheYear = CommonUtil.getMonthDateNew()
+        val calendar = Calendar.getInstance()
+        monthOftheYear = (calendar.get(Calendar.MONTH) + 1).toString()
         Year = CommonUtil.getYear()
         binding!!.tvToday.setOnClickListener(this)
         binding!!.tvYesterday.setOnClickListener(this)
@@ -62,12 +81,13 @@ class ScoreCardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.tvStartDate.setOnClickListener(this)
         binding!!.tvEndDate.setOnClickListener(this)
         binding!!.btnAppy.setOnClickListener(this)
+        binding!!.info.setOnClickListener(this)
     }
 
     fun hitApi(){
         binding!!.progressLayout.progressLayout.visibility = View.VISIBLE
         val api = NewRetrofitClient.getInstance().create(NetworkService::class.java)
-        val apiCall = api.getScoreCardReport(monthOftheYear,Year,CommonData.getCustIdFromDB(),"null","","1",startlimit,limit,"","0","asc")
+        val apiCall = api.getScoreCardReport(monthOftheYear,Year,CommonData.getCustIdFromDB(),"null","","1",startlimit,limit,binding!!.etSearchBar.text.toString(),"0","asc")
         apiCall.enqueue(object : Callback<ScoreCardReportModel> {
             override fun onResponse(
                 call: Call<ScoreCardReportModel>,
@@ -82,8 +102,13 @@ class ScoreCardActivity : AppCompatActivity(), View.OnClickListener {
                 val adapter = ScoreCardAdapter(this@ScoreCardActivity,list)
                 binding!!.rvScoreCard.adapter = adapter
                 binding!!.rvScoreCard.scrollToPosition(startlimit)
-                if(totalRecords>20){
-                    binding!!.loadMore.visibility = View.VISIBLE
+                binding!!.info.setOnClickListener {
+                    // Show the dialog when required (e.g., in an onClickListener)
+                    val dialogFragment = CustomDialogFragment.newInstance()
+                    dialogFragment.show(supportFragmentManager, "custom_dialog")
+                }
+                if(list.size==totalRecords){
+                    binding!!.loadMore.visibility = View.GONE
                 }
                 binding!!.loadMore.setOnClickListener {
                     if(list.size<totalRecords) {
@@ -95,7 +120,29 @@ class ScoreCardActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<ScoreCardReportModel>, t: Throwable) {
                 binding!!.progressLayout.progressLayout.visibility = View.GONE
-                Constants.alertDialog(this@ScoreCardActivity,"Something went wrong.")
+                if (t is SocketTimeoutException) {
+                    Constants.alertDialog(
+                        this@ScoreCardActivity,
+                        this@ScoreCardActivity.getString(R.string.time_out)
+                    )
+                } else if (t is UnknownHostException) {
+                    Constants.alertDialog(
+                        this@ScoreCardActivity,
+                        this@ScoreCardActivity.getString(R.string.no_network)
+                    )
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    if (t is DnsResolver.DnsException) {
+                        Constants.alertDialog(
+                            this@ScoreCardActivity,
+                            this@ScoreCardActivity.getString(R.string.dns_error)
+                        )
+                    }
+                } else {
+                    Constants.alertDialog(
+                        this@ScoreCardActivity,
+                        this@ScoreCardActivity.getString(R.string.something_went_wrong)
+                    )
+                }
             }
 
         })
@@ -201,7 +248,7 @@ class ScoreCardActivity : AppCompatActivity(), View.OnClickListener {
         try {
             picker = datePickerDialog.datePicker
             //  picker.setMinDate(System.currentTimeMillis());
-            picker!!.setMaxDate(previous_year.time)
+            picker!!.maxDate = previous_year.time
         } catch (e: Exception) {
             // e.printStackTrace();
             picker = datePickerDialog.datePicker

@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
-import com.nex3z.notificationbadge.NotificationBadge;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,7 +23,7 @@ public final class ToolbarLayoutBinding implements ViewBinding {
   private final Toolbar rootView;
 
   @NonNull
-  public final NotificationBadge badge;
+  public final TextView badge;
 
   @NonNull
   public final AppCompatImageView ivAdd;
@@ -59,7 +58,7 @@ public final class ToolbarLayoutBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvTitle;
 
-  private ToolbarLayoutBinding(@NonNull Toolbar rootView, @NonNull NotificationBadge badge,
+  private ToolbarLayoutBinding(@NonNull Toolbar rootView, @NonNull TextView badge,
       @NonNull AppCompatImageView ivAdd, @NonNull AppCompatImageView ivBack,
       @NonNull AppCompatImageView ivBell, @NonNull ImageView ivLogo,
       @NonNull AppCompatImageView ivMarkIcon, @NonNull AppCompatImageView ivMenu,
@@ -108,7 +107,7 @@ public final class ToolbarLayoutBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.badge;
-      NotificationBadge badge = ViewBindings.findChildViewById(rootView, id);
+      TextView badge = ViewBindings.findChildViewById(rootView, id);
       if (badge == null) {
         break missingId;
       }

@@ -31,6 +31,7 @@ import com.humbhi.blackbox.ui.data.models.VehicleDetailResponse
 import com.humbhi.blackbox.ui.data.network.RestClient
 import com.humbhi.blackbox.ui.ui.routePlayback.RoutePlayBack
 import com.humbhi.blackbox.ui.utils.CommonUtil
+import com.humbhi.blackbox.ui.utils.Constants
 import com.humbhi.blackbox.ui.utils.IntentConstant
 import java.text.SimpleDateFormat
 import java.util.*
@@ -518,7 +519,10 @@ class VehicleDetailActivity : AppCompatActivity(), VehicleDetailView, OnMapReady
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {
@@ -538,13 +542,11 @@ class VehicleDetailActivity : AppCompatActivity(), VehicleDetailView, OnMapReady
     }
 
     override fun showErrorMessage(string: String) {
-
         CommonUtil.alertDialogWithOkOnly(this, "Error", string)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
     }
 
     override fun onPause() {

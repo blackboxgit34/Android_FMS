@@ -19,7 +19,7 @@ class ScoreCardAdapter(val context: Context, val listData: List<AaData>) :
         fun bind(context: Context, list: List<AaData>) {
             ScoreCardLayoutBinding.bind(itemView).apply {
                 tvSNo.text = list[position].SNo.toString()
-                tvDriverName.text = "Driver Name: "+list[position].DriverName
+                tvDriverName.text = list[position].DriverName
                 tvAS.text = "Score: "+list[position].AvgScr.toString()
                 if(list[position].Distance.toInt()==0){
                     tvRamarks.text = "Remarks: N/A"

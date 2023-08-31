@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.addonReports.fuel.fuelFilling
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.FuelFillingResponseData
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class FuelFillingPresenterImpl(
     private val mFuelFillingView: FuelFillingView,
@@ -60,7 +63,19 @@ class FuelFillingPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mFuelFillingView.isHideLoading()
-                            mFuelFillingView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mFuelFillingView.showErrorMessage("Connection time out, please try again")
+                            }
+                            else if (throwable is java.net.UnknownHostException) {
+                                mFuelFillingView.showErrorMessage("No internet available, please try again")
+                            }
+                            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mFuelFillingView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mFuelFillingView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

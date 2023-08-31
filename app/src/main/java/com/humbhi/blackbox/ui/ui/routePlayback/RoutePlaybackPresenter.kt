@@ -9,5 +9,6 @@ interface RoutePlaybackPresenter {
 
     fun hitDrivingBehaviourRouteAPI(  tableName: String,
                                       fromDate: String,
-                                      toDate: String)
+                                      toDate: String,
+                                      vehicleName: String)
 }

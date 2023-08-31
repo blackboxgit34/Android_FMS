@@ -9,6 +9,12 @@ public class AvenuesParams {
     public static final String AMOUNT = "amount";
     public static final String CURRENCY = "currency";
     public static final String ENC_VAL = "enc_val";
+
+    public static final String merchant_param1 = "merchant_param1";
+
+    public static final String merchant_param2 = "merchant_param2";
+
+    public static final String merchant_param3 = "merchant_param3";
     public static final String REDIRECT_URL = "redirect_url";
     public static final String CANCEL_URL = "cancel_url";
     public static final String RSA_KEY_URL = "rsa_key_url";

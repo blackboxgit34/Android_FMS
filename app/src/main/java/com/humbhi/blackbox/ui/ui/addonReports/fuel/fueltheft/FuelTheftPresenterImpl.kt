@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.addonReports.fuel.fueltheft
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.FuelTheftReponseModel
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class FuelTheftPresenterImpl(
     private val mFuelTheftView: FuelTheftView,
@@ -60,7 +63,19 @@ class FuelTheftPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mFuelTheftView.isHideLoading()
-                            mFuelTheftView.showErrorMessage("Something went wrong. Try after sometime")
+                            if (throwable is SocketTimeoutException) {
+                                mFuelTheftView.showErrorMessage("Connection time out, please try again")
+                            }
+                            else if (throwable is java.net.UnknownHostException) {
+                                mFuelTheftView.showErrorMessage("No internet available, please try again")
+                            }
+                            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mFuelTheftView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mFuelTheftView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

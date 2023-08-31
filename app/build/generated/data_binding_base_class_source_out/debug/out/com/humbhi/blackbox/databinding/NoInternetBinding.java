@@ -4,42 +4,25 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.viewbinding.ViewBinding;
-import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
-import java.lang.String;
 
 public final class NoInternetBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final LinearLayoutCompat rootView;
 
-  @NonNull
-  public final TextView tvErrorCancel;
-
-  @NonNull
-  public final AppCompatTextView tvErrorMessage;
-
-  @NonNull
-  public final TextView tvErrorOK;
-
-  private NoInternetBinding(@NonNull CardView rootView, @NonNull TextView tvErrorCancel,
-      @NonNull AppCompatTextView tvErrorMessage, @NonNull TextView tvErrorOK) {
+  private NoInternetBinding(@NonNull LinearLayoutCompat rootView) {
     this.rootView = rootView;
-    this.tvErrorCancel = tvErrorCancel;
-    this.tvErrorMessage = tvErrorMessage;
-    this.tvErrorOK = tvErrorOK;
   }
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public LinearLayoutCompat getRoot() {
     return rootView;
   }
 
@@ -60,31 +43,10 @@ public final class NoInternetBinding implements ViewBinding {
 
   @NonNull
   public static NoInternetBinding bind(@NonNull View rootView) {
-    // The body of this method is generated in a way you would not otherwise write.
-    // This is done to optimize the compiled bytecode for size and performance.
-    int id;
-    missingId: {
-      id = R.id.tvErrorCancel;
-      TextView tvErrorCancel = ViewBindings.findChildViewById(rootView, id);
-      if (tvErrorCancel == null) {
-        break missingId;
-      }
-
-      id = R.id.tvErrorMessage;
-      AppCompatTextView tvErrorMessage = ViewBindings.findChildViewById(rootView, id);
-      if (tvErrorMessage == null) {
-        break missingId;
-      }
-
-      id = R.id.tvErrorOK;
-      TextView tvErrorOK = ViewBindings.findChildViewById(rootView, id);
-      if (tvErrorOK == null) {
-        break missingId;
-      }
-
-      return new NoInternetBinding((CardView) rootView, tvErrorCancel, tvErrorMessage, tvErrorOK);
+    if (rootView == null) {
+      throw new NullPointerException("rootView");
     }
-    String missingId = rootView.getResources().getResourceName(id);
-    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
+
+    return new NoInternetBinding((LinearLayoutCompat) rootView);
   }
 }

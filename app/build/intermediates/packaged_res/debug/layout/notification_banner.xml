@@ -1,0 +1,41 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- Add your custom content here -->
+    <ImageView
+        android:id="@+id/notification_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_fuel_notification" />
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification Title"
+        android:layout_below="@id/notification_image"
+        android:paddingRight="@dimen/margin_x"
+        android:paddingLeft="@dimen/margin_x"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="@dimen/font_11"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/notification_text"
+        android:layout_below="@id/notification_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:paddingRight="@dimen/margin_x"
+        android:paddingLeft="@dimen/margin_x"
+        android:paddingBottom="@dimen/margin_v"
+        android:ellipsize="marquee"
+        android:textSize="@dimen/font_10"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Notification Textsdaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"/>
+
+</RelativeLayout>

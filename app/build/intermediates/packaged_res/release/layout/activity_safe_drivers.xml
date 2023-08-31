@@ -203,7 +203,6 @@
         android:text="Load more..."
         android:textColor="@color/white"
         android:textSize="@dimen/font_14"
-        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
         android:gravity="center"

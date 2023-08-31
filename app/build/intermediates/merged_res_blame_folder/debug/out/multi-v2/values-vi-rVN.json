@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.humbhi.blackbox.app-mergeDebugResources-53:/values-vi-rVN/values-vi-rVN.xml",
+            "outputFile": "com.humbhi.blackbox.app-mergeDebugResources-57:/values-vi-rVN/values-vi-rVN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\daafbca8b014c88358a91ef11a49d897\\transformed\\jetified-AppIntro-6.2.0\\res\\values-vi-rVN\\values-vi-rVN.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\c58acb984ccf4101102f91d225c8686a\\transformed\\jetified-AppIntro-6.2.0\\res\\values-vi-rVN\\values-vi-rVN.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +11,13 @@
 
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar"/>
+
+    <include
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        layout="@layout/progress_bar"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -48,6 +56,19 @@
             android:textColor="@color/white"
             android:textSize="@dimen/font_10" />
 
+        <TextView
+            android:id="@+id/tvWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_v"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingVertical="@dimen/margin_3"
+            android:paddingStart="@dimen/margin_x"
+            android:paddingEnd="@dimen/margin_x"
+            android:text="Week"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_10" />
+
 
         <TextView
             android:id="@+id/tvCustom"
@@ -64,87 +85,15 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <include
         android:id="@+id/llCustomDateRange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:background="@color/primary_little_fade"
+        layout="@layout/custom_date_layout"
+        android:layout_below="@id/midLayout"
         android:layout_marginHorizontal="@dimen/margin_x"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Select Date Range"
-            android:textSize="@dimen/font_12"
-            android:layout_margin="@dimen/margin_v"/>
-
-        <LinearLayout
-            android:id="@+id/customDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_xx"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvStartDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Start Date"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/font_10"
-                android:drawablePadding="@dimen/margin_x"
-                android:fontFamily="@font/poppins_regular"
-                android:drawableStart="@drawable/ic_calendar"
-                android:layout_marginTop="@dimen/margin_x"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/margin_v"
-                android:background="@color/white"/>
-
-            <TextView
-                android:id="@+id/tvEndDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="End Date"
-                android:textSize="@dimen/font_10"
-                android:gravity="center_vertical"
-                android:drawablePadding="@dimen/margin_x"
-                android:fontFamily="@font/poppins_regular"
-                android:drawableStart="@drawable/ic_calendar"
-                android:layout_marginTop="@dimen/margin_x"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/margin_v"
-                android:background="@color/white"/>
-
-            <Button
-                android:id="@+id/btnAppy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_x"
-                android:layout_gravity="center"
-                android:paddingStart="@dimen/margin_50"
-                android:paddingEnd="@dimen/margin_50"
-                android:layout_marginStart="@dimen/margin_xx"
-                android:layout_marginEnd="@dimen/margin_xx"
-                android:backgroundTint="@color/primary"
-                android:text="Apply"
-                android:fontFamily="@font/poppins_medium"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="@dimen/font_12"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        android:orientation="vertical"/>
 
     <TextView
         android:id="@+id/tvSelectVehicle"
@@ -273,6 +222,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_10"
+                            android:layout_gravity="center_vertical"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
                             android:textColor="@color/white"
@@ -305,6 +255,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_10"
+                            android:layout_gravity="center_vertical"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
                             android:textColor="@color/white"
@@ -341,39 +292,7 @@
                             android:textSize="@dimen/font_10"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
-                            android:textColor="@color/white"
-                            android:gravity="center_vertical"
-                            android:drawablePadding="@dimen/margin_x"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Filling fuel level"
-                            android:drawableStart="@drawable/ic_fuel_green"
-                            android:textSize="@dimen/font_12"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:textColor="@color/white"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:layout_gravity="center_vertical"
-                            android:drawableTint="@color/primary_orange_secondary"
-                            android:drawablePadding="@dimen/margin_x"
-                            />
-                        <TextView
-                            android:id="@+id/tvFillingFuelLevel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/font_10"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_weight="1"
                             android:textColor="@color/white"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
@@ -405,6 +324,7 @@
                             android:textSize="@dimen/font_10"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/white"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
@@ -437,19 +357,40 @@
                             android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/blue"
                             android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/margin_x"
                             />
                     </LinearLayout>
 
-
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/fuelFillingLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:text="Fuel Filling Details"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginStart="@dimen/margin_x"
+                android:textSize="@dimen/font_16"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fuel_filling_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_x"
+                android:visibility="gone"
+                android:scrollbars="horizontal"
+                android:scrollbarSize="@dimen/margin_3"
+                android:scrollbarStyle="insideInset"
+                android:scrollbarThumbHorizontal="@drawable/horizontal_scrollbar"
+                tools:listitem="@layout/fuel_filling_detail_layout"
+                android:background="@drawable/rect_outline"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -583,9 +524,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
-
-
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

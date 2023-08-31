@@ -381,12 +381,14 @@ class DataManagerImpl(mRetrofit:Retrofit):DataManager {
         tableName: String,
         fromDate: String,
         toDate: String,
+        vehicleName: String,
         mApiListener: ApiHelper.ApiListener?
     ) {
         mApiHelper.apiCallRoutePlaybackForDrivingBehaviour(
             tableName,
             fromDate,
             toDate,
+            vehicleName,
             mApiListener)
     }
 

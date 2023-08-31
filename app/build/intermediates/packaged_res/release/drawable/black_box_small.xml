@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- black_box_small.xml -->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/black_box"
+    android:scaleType="centerInside"
+    android:gravity="center"
+    android:width="32dp"
+    android:height="32dp" />
+
+

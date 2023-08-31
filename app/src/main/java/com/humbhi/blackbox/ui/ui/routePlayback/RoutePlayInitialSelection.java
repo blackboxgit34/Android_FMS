@@ -5,41 +5,54 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.humbhi.blackbox.R;
 import com.humbhi.blackbox.databinding.ActivityRoutePlayInitialSelectionBinding;
-import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter;
+import com.humbhi.blackbox.ui.MyApplication;
+import com.humbhi.blackbox.ui.Utility.WhatsNewDialogFragment;
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter;
+import com.humbhi.blackbox.ui.data.AisModel;
+import com.humbhi.blackbox.ui.data.Table;
 import com.humbhi.blackbox.ui.data.db.CommonData;
 import com.humbhi.blackbox.ui.data.models.AllVehicleModel;
+import com.humbhi.blackbox.ui.retofit.NetworkService;
+import com.humbhi.blackbox.ui.retofit.NewRetrofitClient;
 import com.humbhi.blackbox.ui.retofit.Retrofit2;
 import com.humbhi.blackbox.ui.retofit.RetrofitResponse;
+import com.humbhi.blackbox.ui.ui.banner.BillBanner;
 import com.humbhi.blackbox.ui.ui.dashboard.DashboardActivity;
+import com.humbhi.blackbox.ui.ui.livetracking.GLocationOnMap;
 import com.humbhi.blackbox.ui.utils.Constants;
-import com.humbhi.blackbox.ui.utils.ExplicitIntentUtil;
+import com.humbhi.blackbox.ui.utils.Network;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RoutePlayInitialSelection extends AppCompatActivity implements RetrofitResponse , View.OnClickListener {
@@ -51,6 +64,11 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
     DatePicker picker;
     ArrayAdapter<String> adapter;
     int hour,minute,second;
+    String SoftBanner = "";
+    String hardBanner = "";
+    int aisCount = 0;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +88,20 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
         binding.toolbar.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(RoutePlayInitialSelection.this, DashboardActivity.class);
+                startActivity(intent);
                 finish();
+                if (Network.isNetworkAvailable(RoutePlayInitialSelection.this)) {
+                    new Retrofit2(RoutePlayInitialSelection.this, RoutePlayInitialSelection.this,
+                            Constants.REQ_EXPIRE_ACCOUNT_DETAILS,
+                            Constants.EXPIRE_ACCOUNT_DETAILS
+                                    + "custid=" + CommonData.INSTANCE.getCustIdFromDB()).callService(false);
+                }
             }
         });
-
+        if(MyApplication.cantSkip.equals("yes")){
+            getAisData();
+        }
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = df.format(c.getTime());
@@ -95,6 +123,81 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
         binding.btnGetRoute.setOnClickListener(this);
     }
 
+    private void getAisData() {
+        NetworkService Api = NewRetrofitClient.INSTANCE.getInstance().create(NetworkService.class);
+        executor.execute(()->{
+            Api.getAis140VehicleStatus(CommonData.INSTANCE.getCustIdFromDB()).enqueue(new Callback<AisModel>() {
+                @Override
+                public void onResponse(Call<AisModel> call, Response<AisModel> response) {
+                    handleAisDataResponse(response);
+                }
+
+                @Override
+                public void onFailure(Call<AisModel> call, Throwable t) {
+                    String errorMessage;
+                    if (t instanceof ConnectException || t instanceof UnknownHostException) {
+                        errorMessage = String.valueOf(R.string.no_network);
+                    } else if (t instanceof SocketTimeoutException) {
+                        errorMessage = String.valueOf(R.string.time_out);
+                    } else if (t instanceof CancellationException || t instanceof SocketException) {
+                        errorMessage = String.valueOf(Integer.parseInt(null)); // Handle network loss
+                    } else {
+                        errorMessage = String.valueOf(R.string.something_went_wrong);
+                    }
+
+                    if (errorMessage != null) {
+                        int finalErrorMessage = Integer.parseInt(errorMessage);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Constants.Toastmsg(RoutePlayInitialSelection.this, getString(finalErrorMessage));
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+   private void handleAisDataResponse(Response<AisModel> response) {
+        if (response != null) {
+            if (response.isSuccessful()) {
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        AisModel responseFromBody = response.body();
+                        List<Table> tableList = responseFromBody.getTable();
+                        Table vehicleWithLeastValidity = null;
+                        for (Table tableEntity : tableList) {
+                            if (vehicleWithLeastValidity == null || tableEntity.getExpireIndays() < vehicleWithLeastValidity.getExpireIndays()) {
+                                vehicleWithLeastValidity = tableEntity;
+                            }
+                        }
+                        String expiry = "";
+                        if (vehicleWithLeastValidity != null) {
+                            int expireIndays = vehicleWithLeastValidity.getExpireIndays();
+                            String paymentStatus = vehicleWithLeastValidity.getPaymentStatus();
+                            if (expireIndays >= 29 && expireIndays <= 9 && paymentStatus.equals("Not Paid")) {
+                                expiry = "attentionAlert";
+                            } else if (expireIndays >= 9 && expireIndays <= 4 && paymentStatus.equals("Not Paid")) {
+                                expiry = "justAlert";
+                            } else if (expireIndays >= 4 && expireIndays <= 0 && paymentStatus.equals("Not Paid")) {
+                                expiry = "expiringToday";
+                            } else if (expireIndays < 0 && paymentStatus.equals("Not Paid")) {
+                                MyApplication.cantSkip = "yes";
+                                expiry = "expired";
+                            }
+                        }
+                        if (!isFinishing()) {
+                            WhatsNewDialogFragment dialogFragment = new WhatsNewDialogFragment(RoutePlayInitialSelection.this, expiry, Objects.requireNonNull(vehicleWithLeastValidity.getCommercialvalidity()), Objects.requireNonNull(vehicleWithLeastValidity.getVehname()));
+                            dialogFragment.show(getSupportFragmentManager(), "WhatsNewDialog");
+                        }
+                    }
+                });
+            }
+        }
+    }
+
     private void getAllVehicles()
     {
         new Retrofit2(this, this, Constants.REQ_LOCATION_ON_MAP
@@ -102,27 +205,22 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                 .callServicehitec(true);
     }
 
-
     /*
      * Spinner CustId
      * */
     public void spinVehicles()
     {
-        //Getting the instance of AutoCompleteTextView
-        ArrayAdapter<String> adapter = CustSpinnerAdapter.getAdapter(this, vehicleList);
-        binding.spVehicles.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        SearchableAdapter adapter = new SearchableAdapter(this, vehicleList);
+        binding.spVehicles.setAdapter(adapter);
         binding.spVehicles.setOnItemClickListener((parent, view, position, id) -> {
-            String selection = (String) parent.getItemAtPosition(position);
-            int pos = -1;
-
-            for (int i = 0; i < vehicleList.size(); i++) {
-                if (vehicleList.get(i).equals(selection)) {
-                    pos = i;
-                    break;
-                }
+            ArrayList<String> originalData = adapter.getOriginalData();
+            String selection = originalData.get(position);
+            int originalPosition = adapter.getOriginalPosition(position);
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                vehicleId = vehicleModel.get(originalPosition).getBbid();
+                vehicleName = vehicleModel.get(originalPosition).getVehname();
             }
-            vehicleId = vehicleModel.get(pos).getBbid();
-            vehicleName = vehicleModel.get(pos).getVehname();
         });
 
         binding.spVehicles.setOnFocusChangeListener((v, hasFocus) -> {
@@ -165,6 +263,54 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                     }
                 }
                 break;
+            case Constants.REQ_EXPIRE_ACCOUNT_DETAILS:
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject result = new JSONObject(response.body().string());
+                            JSONArray table = result.getJSONArray("Table");
+                            for (int i = 0; i < table.length(); i++) {
+                                JSONObject jsonObject = table.getJSONObject(0);
+                                SoftBanner = jsonObject.getString("SoftBanner");
+                                hardBanner = jsonObject.getString("hardBanner");
+                                aisCount = Integer.parseInt(jsonObject.getString("Ais140Count"));
+                            }
+                            CommonData.INSTANCE.setAisCount(String.valueOf(aisCount));
+
+                            // Perform operations based on SoftBanner and hardBanner values
+                            if (!CommonData.INSTANCE.getSkip().equals("yes")) {
+                                if (!"false".equals(SoftBanner)) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent intent = new Intent(RoutePlayInitialSelection.this, BillBanner.class);
+                                            intent.putExtra("SoftBanner", SoftBanner);
+                                            intent.putExtra("hardBanner", hardBanner);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                                }
+                            }
+                            if (!"false".equals(hardBanner)) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(RoutePlayInitialSelection.this, BillBanner.class);
+                                        intent.putExtra("SoftBanner", SoftBanner);
+                                        intent.putExtra("hardBanner", hardBanner);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                            }
+                        } catch (JSONException e) {
+                        } catch (IOException e) {
+                        }
+                    }
+                });
+                break;
         }
     }
 
@@ -182,7 +328,7 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
 //                }
 //                else
 //                {
-                    binding.customDate.setVisibility(View.VISIBLE);
+                    binding.customDate.setVisibility(View.GONE);
               //  }
                 c = Calendar.getInstance();
                 df = new SimpleDateFormat("yyyy-MM-dd");
@@ -192,7 +338,27 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                 backendEndDate = formattedDate;
                 binding.tvStartDate.setText(backendStartDate);
                 binding.tvEndDate.setText(backendEndDate);
-
+                if (validation()){
+                    Intent intent = new Intent(this,RoutePlayBack.class);
+                    intent.putExtra("tableName",vehicleId);
+                    intent.putExtra("fromDate",backendStartDate);
+                    intent.putExtra("endDate",backendEndDate);
+                    intent.putExtra("vehicleName",vehicleName);
+                    intent.putExtra("flag","simple");
+                    if(!startTime.equals("")){
+                        intent.putExtra("startTime",startTime);
+                    }
+                    if( !endTime.equals("")){
+                        intent.putExtra("endTime",endTime);
+                    }
+//                    if (binding.switch1.isChecked()){
+//                        intent.putExtra("showStoppages","1");
+//                    }
+//                    else {
+//                        intent.putExtra("showStoppages","0");
+//                    }
+                    startActivity(intent);
+                }
                 break;
             case R.id.btToday:
 //                if (binding.customDate.isShown())
@@ -201,7 +367,7 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
 //                }
 //                else
 //                {
-                    binding.customDate.setVisibility(View.VISIBLE);
+                binding.customDate.setVisibility(View.GONE);
                 //}
                 c = Calendar.getInstance();
                 df = new SimpleDateFormat("yyyy-MM-dd");
@@ -210,7 +376,27 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                 backendEndDate = formattedDate;
                 binding.tvStartDate.setText(backendStartDate);
                 binding.tvEndDate.setText(backendEndDate);
-
+                if (validation()){
+                    Intent intent = new Intent(this,RoutePlayBack.class);
+                    intent.putExtra("tableName",vehicleId);
+                    intent.putExtra("fromDate",backendStartDate);
+                    intent.putExtra("endDate",backendEndDate);
+                    intent.putExtra("vehicleName",vehicleName);
+                    intent.putExtra("flag","simple");
+                    if(!startTime.equals("")){
+                        intent.putExtra("startTime",startTime);
+                    }
+                    if( !endTime.equals("")){
+                        intent.putExtra("endTime",endTime);
+                    }
+//                    if (binding.switch1.isChecked()){
+//                        intent.putExtra("showStoppages","1");
+//                    }
+//                    else {
+//                        intent.putExtra("showStoppages","0");
+//                    }
+                    startActivity(intent);
+                }
                 break;
             case R.id.btCustom:
 //                if (binding.customDate.isShown())
@@ -248,12 +434,12 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                     if( !endTime.equals("")){
                         intent.putExtra("endTime",endTime);
                     }
-                    if (binding.switch1.isChecked()){
-                        intent.putExtra("showStoppages","1");
-                    }
-                    else {
-                        intent.putExtra("showStoppages","0");
-                    }
+//                    if (binding.switch1.isChecked()){
+//                        intent.putExtra("showStoppages","1");
+//                    }
+//                    else {
+//                        intent.putExtra("showStoppages","0");
+//                    }
                     startActivity(intent);
                 }
                 break;
@@ -352,7 +538,9 @@ public class RoutePlayInitialSelection extends AppCompatActivity implements Retr
                     startTime=hourOfDay + ":" + minute;
                 }, hour, minute, false);
         timePickerDialog.show();
-
     }
-
+    @Override
+    public void onBackPressed() {
+        // Do nothing to prevent going back
+    }
 }

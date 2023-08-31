@@ -1,10 +1,13 @@
 package com.humbhi.blackbox.ui.ui.reports.stoppagereport
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
-import com.humbhi.blackbox.ui.data.models.StoppageReportResponseModel
+import com.humbhi.blackbox.ui.data.models.StoppageReportResponse
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class StoppageReportPresenterImpl(
     private val mStoppageReportView: StoppageReportView,
@@ -48,7 +51,7 @@ class StoppageReportPresenterImpl(
 
                             val getStoppageReport = Gson().fromJson(
                                 Gson().toJson(commonResponse),
-                                StoppageReportResponseModel::class.java
+                                StoppageReportResponse::class.java
                             )
                             mStoppageReportView.getStoppageReportResponse(getStoppageReport)
                         }
@@ -60,7 +63,17 @@ class StoppageReportPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mStoppageReportView.isHideLoading()
-                            mStoppageReportView.showErrorMessage("Something went wrong. Try after sometime")
+                            if (throwable is SocketTimeoutException) {
+                                mStoppageReportView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mStoppageReportView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mStoppageReportView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mStoppageReportView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

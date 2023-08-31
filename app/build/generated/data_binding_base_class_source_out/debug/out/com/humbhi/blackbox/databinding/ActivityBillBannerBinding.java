@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
@@ -18,6 +19,15 @@ import java.lang.String;
 public final class ActivityBillBannerBinding implements ViewBinding {
   @NonNull
   private final LinearLayout rootView;
+
+  @NonNull
+  public final CardView cvMain;
+
+  @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
+  public final TextView tvLogout;
 
   @NonNull
   public final TextView tvName1;
@@ -40,10 +50,14 @@ public final class ActivityBillBannerBinding implements ViewBinding {
   @NonNull
   public final TextView tvTextBill;
 
-  private ActivityBillBannerBinding(@NonNull LinearLayout rootView, @NonNull TextView tvName1,
+  private ActivityBillBannerBinding(@NonNull LinearLayout rootView, @NonNull CardView cvMain,
+      @NonNull ProgressBarBinding progress, @NonNull TextView tvLogout, @NonNull TextView tvName1,
       @NonNull TextView tvName2, @NonNull TextView tvNothanks, @NonNull TextView tvNum1,
       @NonNull TextView tvNum2, @NonNull TextView tvPay, @NonNull TextView tvTextBill) {
     this.rootView = rootView;
+    this.cvMain = cvMain;
+    this.progress = progress;
+    this.tvLogout = tvLogout;
     this.tvName1 = tvName1;
     this.tvName2 = tvName2;
     this.tvNothanks = tvNothanks;
@@ -80,6 +94,25 @@ public final class ActivityBillBannerBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cvMain;
+      CardView cvMain = ViewBindings.findChildViewById(rootView, id);
+      if (cvMain == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
+      id = R.id.tvLogout;
+      TextView tvLogout = ViewBindings.findChildViewById(rootView, id);
+      if (tvLogout == null) {
+        break missingId;
+      }
+
       id = R.id.tvName1;
       TextView tvName1 = ViewBindings.findChildViewById(rootView, id);
       if (tvName1 == null) {
@@ -122,8 +155,8 @@ public final class ActivityBillBannerBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityBillBannerBinding((LinearLayout) rootView, tvName1, tvName2, tvNothanks,
-          tvNum1, tvNum2, tvPay, tvTextBill);
+      return new ActivityBillBannerBinding((LinearLayout) rootView, cvMain, binding_progress,
+          tvLogout, tvName1, tvName2, tvNothanks, tvNum1, tvNum2, tvPay, tvTextBill);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

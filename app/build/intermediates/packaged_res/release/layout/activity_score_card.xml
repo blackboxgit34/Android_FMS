@@ -18,6 +18,43 @@
         android:id="@+id/toolbar"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:layout_marginTop="@dimen/margin_x"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearchBar"
+            android:layout_width="0dp"
+            android:layout_weight="0.9"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_curve_rect"
+            android:backgroundTint="@color/primaryblack"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/margin_x"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Search vehicle.."
+            android:padding="@dimen/margin_x"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="@color/grey_two"
+            android:textColorHint="@color/grey_two"
+            android:textSize="@dimen/font_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -167,11 +204,13 @@
 
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvScoreCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/score_card_layout"
+            android:layout_marginTop="@dimen/margin_x"
             android:layout_marginBottom="40dp"
             />
 
@@ -184,7 +223,6 @@
         android:text="Load more..."
         android:textColor="@color/white"
         android:textSize="@dimen/font_14"
-        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
         android:gravity="center"

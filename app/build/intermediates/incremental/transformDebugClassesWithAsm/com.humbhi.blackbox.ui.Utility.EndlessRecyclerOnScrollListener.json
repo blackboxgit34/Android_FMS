@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.Utility.EndlessRecyclerOnScrollListener","classAnnotations":[],"interfaces":[],"superClasses":["androidx.recyclerview.widget.RecyclerView$OnScrollListener","java.lang.Object"]}

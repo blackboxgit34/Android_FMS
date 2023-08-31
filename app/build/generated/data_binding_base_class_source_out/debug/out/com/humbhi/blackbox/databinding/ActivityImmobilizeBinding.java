@@ -4,6 +4,7 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,16 +21,25 @@ public final class ActivityImmobilizeBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final LinearLayout lowerLayout;
+
+  @NonNull
   public final RecyclerView rvRecycler;
 
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
+  @NonNull
+  public final View view;
+
   private ActivityImmobilizeBinding(@NonNull RelativeLayout rootView,
-      @NonNull RecyclerView rvRecycler, @NonNull ToolbarLayoutBinding toolbar) {
+      @NonNull LinearLayout lowerLayout, @NonNull RecyclerView rvRecycler,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull View view) {
     this.rootView = rootView;
+    this.lowerLayout = lowerLayout;
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
+    this.view = view;
   }
 
   @Override
@@ -59,6 +69,12 @@ public final class ActivityImmobilizeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.lowerLayout;
+      LinearLayout lowerLayout = ViewBindings.findChildViewById(rootView, id);
+      if (lowerLayout == null) {
+        break missingId;
+      }
+
       id = R.id.rvRecycler;
       RecyclerView rvRecycler = ViewBindings.findChildViewById(rootView, id);
       if (rvRecycler == null) {
@@ -72,7 +88,14 @@ public final class ActivityImmobilizeBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityImmobilizeBinding((RelativeLayout) rootView, rvRecycler, binding_toolbar);
+      id = R.id.view;
+      View view = ViewBindings.findChildViewById(rootView, id);
+      if (view == null) {
+        break missingId;
+      }
+
+      return new ActivityImmobilizeBinding((RelativeLayout) rootView, lowerLayout, rvRecycler,
+          binding_toolbar, view);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

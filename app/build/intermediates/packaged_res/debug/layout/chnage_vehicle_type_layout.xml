@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/vehName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="20/11"
+            android:textSize="11sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/grey_two"
+            android:padding="@dimen/margin_v"
+            android:background="@drawable/rect_outline"/>
+        <TextView
+            android:id="@+id/vehType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="9 TON SIDE SHIFTER"
+            android:textSize="11sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/grey_two"
+            android:padding="@dimen/margin_v"
+            android:background="@drawable/rect_outline"/>
+        <TextView
+            android:id="@+id/InstllationDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="70/24/2023 12:23 AM"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="@color/grey_two"
+            android:padding="@dimen/margin_v"
+            android:background="@drawable/rect_outline"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/margin_v"
+            android:background="@drawable/rect_outline">
+            <TextView
+                android:id="@+id/tvSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_x"
+                android:paddingHorizontal="@dimen/margin_x"
+                android:paddingVertical="@dimen/margin_v"
+                android:text="EDIT"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_12"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primary_main_orange"
+                android:background="@drawable/rect_curve_box"
+                android:layout_gravity="center"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.cardview.widget.CardView>

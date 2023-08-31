@@ -1,6 +1,6 @@
 <dependencies>
   <compile
-      roots="com.github.skydoves:colorpickerview:2.2.4@aar,androidx.databinding:viewbinding:7.2.1@aar,com.google.firebase:firebase-crashlytics-ktx:18.3.2@aar,com.google.firebase:firebase-analytics-ktx:21.2.0@aar,com.google.firebase:firebase-common-ktx:20.2.0@aar,org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4@jar,com.google.android.material:material:1.4.0@aar,com.nex3z:notification-badge:1.0.2@aar,androidx.appcompat:appcompat:1.6.1@aar,com.google.maps.android:maps-utils-ktx:3.4.0@aar,com.google.android.gms:play-services-maps:18.0.0@aar,androidx.legacy:legacy-support-v4:1.0.0@aar,com.github.bumptech.glide:glide:4.14.2@aar,androidx.viewpager2:viewpager2:1.0.0@aar,com.google.firebase:firebase-messaging:23.1.0@aar,com.google.android.gms:play-services-base:18.0.1@aar,com.google.android.gms:play-services-cloud-messaging:17.0.1@aar,com.google.firebase:firebase-core:21.1.0@aar,com.google.firebase:firebase-analytics:21.2.0@aar,com.google.android.gms:play-services-measurement:21.2.0@aar,com.google.android.gms:play-services-measurement-sdk:21.2.0@aar,com.google.android.gms:play-services-measurement-impl:21.2.0@aar,com.google.android.gms:play-services-stats:17.0.2@aar,com.google.firebase:firebase-datatransport:18.1.7@aar,com.google.firebase:firebase-crashlytics:18.3.2@aar,com.google.android.gms:play-services-measurement-api:21.2.0@aar,com.google.firebase:firebase-installations:17.1.0@aar,com.google.firebase:firebase-common:20.2.0@aar,com.google.firebase:firebase-iid-interop:17.1.0@aar,com.google.firebase:firebase-installations-interop:17.1.0@aar,com.google.android.gms:play-services-tasks:18.0.1@aar,com.google.firebase:firebase-measurement-connector:19.0.0@aar,com.google.android.gms:play-services-ads-identifier:18.0.0@aar,com.google.android.gms:play-services-measurement-sdk-api:21.2.0@aar,com.google.android.gms:play-services-measurement-base:21.2.0@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.3.6@aar,androidx.fragment:fragment:1.3.6@aar,androidx.activity:activity:1.6.0@aar,androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar,com.github.AppIntro:AppIntro:6.2.0@aar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21@jar,androidx.core:core-ktx:1.9.0@aar,androidx.constraintlayout:constraintlayout:2.1.2@aar,org.chromium.net:cronet-embedded:98.4758.101@aar,com.github.PhilJay:MPAndroidChart:v3.1.0@aar,com.github.anastr:speedviewlib:1.6.0@aar,com.google.maps.android:android-maps-utils:2.3.0@aar,com.squareup.retrofit2:converter-gson:2.9.0@jar,com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar,com.squareup.retrofit2:converter-scalars:2.1.0@jar,com.squareup.retrofit2:retrofit:2.9.0@jar,com.squareup.okhttp3:logging-interceptor:3.9.1@jar,io.github.pilgr:paperdb:2.7.2@aar,io.reactivex.rxjava2:rxandroid:2.0.1@aar,io.reactivex.rxjava2:rxjava:2.1.9@jar,com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1@aar,com.facebook.shimmer:shimmer:0.5.0@aar,com.vipulasri:ticketview:1.1.2@aar,com.mcxiaoke.volley:library:1.0.19@jar,androidx.dynamicanimation:dynamicanimation:1.0.0@aar,androidx.legacy:legacy-support-core-ui:1.0.0@aar,androidx.legacy:legacy-support-core-utils:1.0.0@aar,androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar,org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar,org.eclipse.paho:org.eclipse.paho.android.service:1.1.0@jar,com.fasterxml.jackson.core:jackson-core:2.14.1@jar,com.fasterxml.jackson.core:jackson-annotations:2.14.1@jar,com.fasterxml.jackson.core:jackson-databind:2.14.1@jar,com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar,com.github.kal72:RackMonthPicker:1.6.1@aar,com.google.android.play:core:1.10.3@aar,org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar,androidx.appcompat:appcompat-resources:1.6.1@aar,androidx.drawerlayout:drawerlayout:1.0.0@aar,androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar,androidx.recyclerview:recyclerview:1.1.0@aar,androidx.transition:transition:1.2.0@aar,androidx.vectordrawable:vectordrawable-animated:1.1.0@aar,androidx.vectordrawable:vectordrawable:1.1.0@aar,androidx.media:media:1.0.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.swiperefreshlayout:swiperefreshlayout:1.0.0@aar,androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core:1.9.0@aar,androidx.cursoradapter:cursoradapter:1.0.0@aar,androidx.savedstate:savedstate:1.2.0@aar,androidx.cardview:cardview:1.0.0@aar,androidx.lifecycle:lifecycle-runtime:2.5.1@aar,com.google.android.datatransport:transport-backend-cct:3.1.8@aar,com.google.android.datatransport:transport-runtime:3.1.8@aar,com.google.android.datatransport:transport-api:3.0.0@aar,com.google.firebase:firebase-components:17.0.1@aar,com.google.firebase:firebase-encoders-json:18.0.0@aar,com.google.firebase:firebase-encoders-proto:16.0.0@jar,com.google.firebase:firebase-encoders:17.0.0@jar,com.github.bumptech.glide:gifdecoder:4.14.2@aar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.arch.core:core-runtime:2.1.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-common:2.5.1@jar,androidx.documentfile:documentfile:1.0.0@aar,androidx.print:print:1.0.0@aar,androidx.interpolator:interpolator:1.0.0@aar,androidx.annotation:annotation:1.3.0@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21@jar,androidx.annotation:annotation-experimental:1.3.0@aar,org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,androidx.tracing:tracing:1.0.0@aar,org.chromium.net:cronet-common:98.4758.101@aar,org.chromium.net:cronet-api:98.4758.101@aar,com.google.code.findbugs:jsr305:3.0.1@jar,com.squareup.okhttp3:okhttp:3.14.9@jar,com.squareup.okio:okio:1.17.2@jar,com.google.code.gson:gson:2.8.5@jar,org.reactivestreams:reactive-streams:1.0.3@jar,de.javakaffee:kryo-serializers:0.40@jar,com.esotericsoftware:kryo:4.0.1@jar,com.esotericsoftware:reflectasm:1.11.3@jar,org.ow2.asm:asm:5.0.4@jar,com.esotericsoftware:minlog:1.3.0@jar,org.objenesis:objenesis:2.5.1@jar,com.google.errorprone:error_prone_annotations:2.9.0@jar,com.google.firebase:firebase-annotations:16.1.0@jar,javax.inject:javax.inject:1@jar,com.github.bumptech.glide:disklrucache:4.14.2@jar,com.github.bumptech.glide:annotations:4.14.2@jar,androidx.exifinterface:exifinterface:1.3.3@aar">
+      roots="com.github.skydoves:colorpickerview:2.2.4@aar,androidx.databinding:viewbinding:7.2.1@aar,com.google.firebase:firebase-crashlytics-ktx:18.3.2@aar,com.google.firebase:firebase-analytics-ktx:21.2.0@aar,com.google.firebase:firebase-perf-ktx:20.3.2@aar,com.google.firebase:firebase-common-ktx:20.3.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4@jar,com.google.android.material:material:1.4.0@aar,com.nex3z:notification-badge:1.0.2@aar,com.airbnb.android:lottie:3.0.0@aar,com.google.firebase:firebase-perf:20.3.2@aar,androidx.appcompat:appcompat:1.6.1@aar,androidx.appcompat:appcompat:1.6.1@aar,com.google.maps.android:maps-utils-ktx:3.4.0@aar,com.google.android.gms:play-services-maps:18.0.0@aar,androidx.legacy:legacy-support-v4:1.0.0@aar,com.github.bumptech.glide:glide:4.14.2@aar,androidx.viewpager2:viewpager2:1.0.0@aar,com.google.android.gms:play-services-location:21.0.1@aar,com.google.firebase:firebase-messaging:23.1.0@aar,com.google.android.gms:play-services-base:18.1.0@aar,com.google.android.gms:play-services-cloud-messaging:17.0.1@aar,com.google.firebase:firebase-datatransport:18.1.8@aar,com.google.firebase:firebase-crashlytics:18.3.2@aar,com.google.firebase:firebase-core:21.1.0@aar,com.google.firebase:firebase-analytics:21.2.0@aar,com.google.android.gms:play-services-measurement-api:21.2.0@aar,com.google.firebase:firebase-config:21.2.1@aar,com.google.firebase:firebase-installations:17.1.3@aar,com.google.firebase:firebase-abt:21.1.0@aar,com.google.firebase:firebase-common:20.3.1@aar,com.google.firebase:firebase-iid-interop:17.1.0@aar,com.google.firebase:firebase-installations-interop:17.1.0@aar,com.google.android.gms:play-services-tasks:18.0.2@aar,com.google.android.gms:play-services-measurement:21.2.0@aar,com.google.android.gms:play-services-measurement-sdk:21.2.0@aar,com.google.android.gms:play-services-measurement-impl:21.2.0@aar,com.google.android.gms:play-services-stats:17.0.2@aar,com.google.firebase:firebase-measurement-connector:19.0.0@aar,com.google.android.gms:play-services-ads-identifier:18.0.0@aar,com.google.android.gms:play-services-measurement-sdk-api:21.2.0@aar,com.google.android.gms:play-services-measurement-base:21.2.0@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.3.6@aar,androidx.fragment:fragment:1.3.6@aar,androidx.activity:activity:1.6.0@aar,androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar,com.github.AppIntro:AppIntro:6.2.0@aar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20@jar,androidx.core:core-ktx:1.9.0@aar,androidx.constraintlayout:constraintlayout:2.1.2@aar,org.chromium.net:cronet-embedded:98.4758.101@aar,com.github.PhilJay:MPAndroidChart:v3.1.0@aar,com.github.anastr:speedviewlib:1.6.0@aar,com.google.maps.android:android-maps-utils:2.3.0@aar,com.squareup.retrofit2:converter-gson:2.9.0@jar,com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar,com.squareup.retrofit2:converter-scalars:2.4.0@jar,com.squareup.retrofit2:retrofit:2.9.0@jar,com.squareup.okhttp3:logging-interceptor:4.8.0@jar,io.github.pilgr:paperdb:2.7.2@aar,io.reactivex.rxjava2:rxandroid:2.0.1@aar,io.reactivex.rxjava2:rxjava:2.1.9@jar,com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1@aar,com.facebook.shimmer:shimmer:0.5.0@aar,com.vipulasri:ticketview:1.1.2@aar,com.mcxiaoke.volley:library:1.0.19@jar,androidx.dynamicanimation:dynamicanimation:1.0.0@aar,androidx.legacy:legacy-support-core-ui:1.0.0@aar,androidx.legacy:legacy-support-core-utils:1.0.0@aar,androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar,com.github.hannesa2:paho.mqtt.android:3.3.5@aar,org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar,com.fasterxml.jackson.core:jackson-core:2.14.1@jar,com.fasterxml.jackson.core:jackson-annotations:2.14.1@jar,com.fasterxml.jackson.core:jackson-databind:2.14.1@jar,io.github.chaosleung:pinview:1.4.4@aar,com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar,com.github.kal72:RackMonthPicker:1.6.1@aar,com.google.android.play:core:1.10.0@aar,androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar,androidx.work:work-runtime:2.8.1@aar,org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar,androidx.appcompat:appcompat-resources:1.6.1@aar,androidx.drawerlayout:drawerlayout:1.0.0@aar,androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar,androidx.recyclerview:recyclerview:1.2.1@aar,androidx.recyclerview:recyclerview:1.2.1@aar,androidx.transition:transition:1.2.0@aar,androidx.vectordrawable:vectordrawable-animated:1.1.0@aar,androidx.vectordrawable:vectordrawable:1.1.0@aar,androidx.media:media:1.0.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core:1.9.0@aar,androidx.cursoradapter:cursoradapter:1.0.0@aar,androidx.savedstate:savedstate:1.2.0@aar,androidx.cardview:cardview:1.0.0@aar,androidx.lifecycle:lifecycle-process:2.4.1@aar,androidx.lifecycle:lifecycle-runtime:2.5.1@aar,com.google.android.datatransport:transport-backend-cct:3.1.9@aar,com.google.android.datatransport:transport-runtime:3.1.9@aar,com.google.android.datatransport:transport-api:3.0.0@aar,com.google.firebase:firebase-components:17.1.0@aar,com.google.firebase:firebase-encoders-json:18.0.0@aar,com.google.firebase:firebase-encoders-proto:16.0.0@jar,com.google.firebase:firebase-encoders:17.0.0@jar,com.github.bumptech.glide:gifdecoder:4.14.2@aar,androidx.interpolator:interpolator:1.0.0@aar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-livedata:2.1.0@aar,androidx.arch.core:core-runtime:2.1.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-common:2.5.1@jar,androidx.concurrent:concurrent-futures:1.1.0@jar,androidx.documentfile:documentfile:1.0.0@aar,androidx.print:print:1.0.0@aar,androidx.annotation:annotation:1.5.0@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20@jar,androidx.annotation:annotation-experimental:1.3.0@aar,com.squareup.okhttp3:okhttp:4.8.0@jar,org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar,com.squareup.okio:okio:2.7.0@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.21@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.21@jar,org.jetbrains:annotations:20.1.0@jar,com.google.guava:listenablefuture:1.0@jar,androidx.tracing:tracing:1.0.0@aar,androidx.startup:startup-runtime:1.1.1@aar,org.chromium.net:cronet-common:98.4758.101@aar,org.chromium.net:cronet-api:98.4758.101@aar,com.google.code.findbugs:jsr305:3.0.1@jar,com.google.code.gson:gson:2.8.9@jar,org.reactivestreams:reactive-streams:1.0.3@jar,de.javakaffee:kryo-serializers:0.40@jar,com.esotericsoftware:kryo:4.0.1@jar,com.esotericsoftware:reflectasm:1.11.3@jar,org.ow2.asm:asm:5.0.4@jar,com.esotericsoftware:minlog:1.3.0@jar,org.objenesis:objenesis:2.5.1@jar,com.google.firebase:firebase-annotations:16.2.0@jar,com.google.dagger:dagger:2.27@jar,javax.inject:javax.inject:1@jar,com.google.errorprone:error_prone_annotations:2.9.0@jar,com.github.bumptech.glide:disklrucache:4.14.2@jar,com.github.bumptech.glide:annotations:4.14.2@jar,androidx.exifinterface:exifinterface:1.3.3@aar,com.google.firebase:protolite-well-known-types:18.0.0@aar,com.google.protobuf:protobuf-javalite:3.21.11@jar">
     <dependency
         name="com.github.skydoves:colorpickerview:2.2.4@aar"
         simpleName="com.github.skydoves:colorpickerview"/>
@@ -14,7 +14,10 @@
         name="com.google.firebase:firebase-analytics-ktx:21.2.0@aar"
         simpleName="com.google.firebase:firebase-analytics-ktx"/>
     <dependency
-        name="com.google.firebase:firebase-common-ktx:20.2.0@aar"
+        name="com.google.firebase:firebase-perf-ktx:20.3.2@aar"
+        simpleName="com.google.firebase:firebase-perf-ktx"/>
+    <dependency
+        name="com.google.firebase:firebase-common-ktx:20.3.1@aar"
         simpleName="com.google.firebase:firebase-common-ktx"/>
     <dependency
         name="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar"
@@ -28,6 +31,12 @@
     <dependency
         name="com.nex3z:notification-badge:1.0.2@aar"
         simpleName="com.nex3z:notification-badge"/>
+    <dependency
+        name="com.airbnb.android:lottie:3.0.0@aar"
+        simpleName="com.airbnb.android:lottie"/>
+    <dependency
+        name="com.google.firebase:firebase-perf:20.3.2@aar"
+        simpleName="com.google.firebase:firebase-perf"/>
     <dependency
         name="androidx.appcompat:appcompat:1.6.1@aar"
         simpleName="androidx.appcompat:appcompat"/>
@@ -47,20 +56,53 @@
         name="androidx.viewpager2:viewpager2:1.0.0@aar"
         simpleName="androidx.viewpager2:viewpager2"/>
     <dependency
+        name="com.google.android.gms:play-services-location:21.0.1@aar"
+        simpleName="com.google.android.gms:play-services-location"/>
+    <dependency
         name="com.google.firebase:firebase-messaging:23.1.0@aar"
         simpleName="com.google.firebase:firebase-messaging"/>
     <dependency
-        name="com.google.android.gms:play-services-base:18.0.1@aar"
+        name="com.google.android.gms:play-services-base:18.1.0@aar"
         simpleName="com.google.android.gms:play-services-base"/>
     <dependency
         name="com.google.android.gms:play-services-cloud-messaging:17.0.1@aar"
         simpleName="com.google.android.gms:play-services-cloud-messaging"/>
+    <dependency
+        name="com.google.firebase:firebase-datatransport:18.1.8@aar"
+        simpleName="com.google.firebase:firebase-datatransport"/>
+    <dependency
+        name="com.google.firebase:firebase-crashlytics:18.3.2@aar"
+        simpleName="com.google.firebase:firebase-crashlytics"/>
     <dependency
         name="com.google.firebase:firebase-core:21.1.0@aar"
         simpleName="com.google.firebase:firebase-core"/>
     <dependency
         name="com.google.firebase:firebase-analytics:21.2.0@aar"
         simpleName="com.google.firebase:firebase-analytics"/>
+    <dependency
+        name="com.google.android.gms:play-services-measurement-api:21.2.0@aar"
+        simpleName="com.google.android.gms:play-services-measurement-api"/>
+    <dependency
+        name="com.google.firebase:firebase-config:21.2.1@aar"
+        simpleName="com.google.firebase:firebase-config"/>
+    <dependency
+        name="com.google.firebase:firebase-installations:17.1.3@aar"
+        simpleName="com.google.firebase:firebase-installations"/>
+    <dependency
+        name="com.google.firebase:firebase-abt:21.1.0@aar"
+        simpleName="com.google.firebase:firebase-abt"/>
+    <dependency
+        name="com.google.firebase:firebase-common:20.3.1@aar"
+        simpleName="com.google.firebase:firebase-common"/>
+    <dependency
+        name="com.google.firebase:firebase-iid-interop:17.1.0@aar"
+        simpleName="com.google.firebase:firebase-iid-interop"/>
+    <dependency
+        name="com.google.firebase:firebase-installations-interop:17.1.0@aar"
+        simpleName="com.google.firebase:firebase-installations-interop"/>
+    <dependency
+        name="com.google.android.gms:play-services-tasks:18.0.2@aar"
+        simpleName="com.google.android.gms:play-services-tasks"/>
     <dependency
         name="com.google.android.gms:play-services-measurement:21.2.0@aar"
         simpleName="com.google.android.gms:play-services-measurement"/>
@@ -73,30 +115,6 @@
     <dependency
         name="com.google.android.gms:play-services-stats:17.0.2@aar"
         simpleName="com.google.android.gms:play-services-stats"/>
-    <dependency
-        name="com.google.firebase:firebase-datatransport:18.1.7@aar"
-        simpleName="com.google.firebase:firebase-datatransport"/>
-    <dependency
-        name="com.google.firebase:firebase-crashlytics:18.3.2@aar"
-        simpleName="com.google.firebase:firebase-crashlytics"/>
-    <dependency
-        name="com.google.android.gms:play-services-measurement-api:21.2.0@aar"
-        simpleName="com.google.android.gms:play-services-measurement-api"/>
-    <dependency
-        name="com.google.firebase:firebase-installations:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-installations"/>
-    <dependency
-        name="com.google.firebase:firebase-common:20.2.0@aar"
-        simpleName="com.google.firebase:firebase-common"/>
-    <dependency
-        name="com.google.firebase:firebase-iid-interop:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-iid-interop"/>
-    <dependency
-        name="com.google.firebase:firebase-installations-interop:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-installations-interop"/>
-    <dependency
-        name="com.google.android.gms:play-services-tasks:18.0.1@aar"
-        simpleName="com.google.android.gms:play-services-tasks"/>
     <dependency
         name="com.google.firebase:firebase-measurement-connector:19.0.0@aar"
         simpleName="com.google.firebase:firebase-measurement-connector"/>
@@ -128,7 +146,7 @@
         name="com.github.AppIntro:AppIntro:6.2.0@aar"
         simpleName="com.github.AppIntro:AppIntro"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21@jar"
+        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk8"/>
     <dependency
         name="androidx.core:core-ktx:1.9.0@aar"
@@ -155,13 +173,13 @@
         name="com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar"
         simpleName="com.squareup.retrofit2:adapter-rxjava2"/>
     <dependency
-        name="com.squareup.retrofit2:converter-scalars:2.1.0@jar"
+        name="com.squareup.retrofit2:converter-scalars:2.4.0@jar"
         simpleName="com.squareup.retrofit2:converter-scalars"/>
     <dependency
         name="com.squareup.retrofit2:retrofit:2.9.0@jar"
         simpleName="com.squareup.retrofit2:retrofit"/>
     <dependency
-        name="com.squareup.okhttp3:logging-interceptor:3.9.1@jar"
+        name="com.squareup.okhttp3:logging-interceptor:4.8.0@jar"
         simpleName="com.squareup.okhttp3:logging-interceptor"/>
     <dependency
         name="io.github.pilgr:paperdb:2.7.2@aar"
@@ -197,11 +215,11 @@
         name="androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar"
         simpleName="androidx.localbroadcastmanager:localbroadcastmanager"/>
     <dependency
+        name="com.github.hannesa2:paho.mqtt.android:3.3.5@aar"
+        simpleName="com.github.hannesa2:paho.mqtt.android"/>
+    <dependency
         name="org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar"
         simpleName="org.eclipse.paho:org.eclipse.paho.client.mqttv3"/>
-    <dependency
-        name="org.eclipse.paho:org.eclipse.paho.android.service:1.1.0@jar"
-        simpleName="org.eclipse.paho:org.eclipse.paho.android.service"/>
     <dependency
         name="com.fasterxml.jackson.core:jackson-core:2.14.1@jar"
         simpleName="com.fasterxml.jackson.core:jackson-core"/>
@@ -212,14 +230,23 @@
         name="com.fasterxml.jackson.core:jackson-databind:2.14.1@jar"
         simpleName="com.fasterxml.jackson.core:jackson-databind"/>
     <dependency
+        name="io.github.chaosleung:pinview:1.4.4@aar"
+        simpleName="io.github.chaosleung:pinview"/>
+    <dependency
         name="com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar"
         simpleName="com.github.VaibhavLakhera:Circular-Progress-View"/>
     <dependency
         name="com.github.kal72:RackMonthPicker:1.6.1@aar"
         simpleName="com.github.kal72:RackMonthPicker"/>
     <dependency
-        name="com.google.android.play:core:1.10.3@aar"
+        name="com.google.android.play:core:1.10.0@aar"
         simpleName="com.google.android.play:core"/>
+    <dependency
+        name="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar"
+        simpleName="androidx.swiperefreshlayout:swiperefreshlayout"/>
+    <dependency
+        name="androidx.work:work-runtime:2.8.1@aar"
+        simpleName="androidx.work:work-runtime"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar"
         simpleName="org.jetbrains.kotlin:kotlin-parcelize-runtime"/>
@@ -233,7 +260,7 @@
         name="androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar"
         simpleName="androidx.coordinatorlayout:coordinatorlayout"/>
     <dependency
-        name="androidx.recyclerview:recyclerview:1.1.0@aar"
+        name="androidx.recyclerview:recyclerview:1.2.1@aar"
         simpleName="androidx.recyclerview:recyclerview"/>
     <dependency
         name="androidx.transition:transition:1.2.0@aar"
@@ -260,9 +287,6 @@
         name="androidx.loader:loader:1.0.0@aar"
         simpleName="androidx.loader:loader"/>
     <dependency
-        name="androidx.swiperefreshlayout:swiperefreshlayout:1.0.0@aar"
-        simpleName="androidx.swiperefreshlayout:swiperefreshlayout"/>
-    <dependency
         name="androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar"
         simpleName="androidx.asynclayoutinflater:asynclayoutinflater"/>
     <dependency
@@ -278,19 +302,22 @@
         name="androidx.cardview:cardview:1.0.0@aar"
         simpleName="androidx.cardview:cardview"/>
     <dependency
+        name="androidx.lifecycle:lifecycle-process:2.4.1@aar"
+        simpleName="androidx.lifecycle:lifecycle-process"/>
+    <dependency
         name="androidx.lifecycle:lifecycle-runtime:2.5.1@aar"
         simpleName="androidx.lifecycle:lifecycle-runtime"/>
     <dependency
-        name="com.google.android.datatransport:transport-backend-cct:3.1.8@aar"
+        name="com.google.android.datatransport:transport-backend-cct:3.1.9@aar"
         simpleName="com.google.android.datatransport:transport-backend-cct"/>
     <dependency
-        name="com.google.android.datatransport:transport-runtime:3.1.8@aar"
+        name="com.google.android.datatransport:transport-runtime:3.1.9@aar"
         simpleName="com.google.android.datatransport:transport-runtime"/>
     <dependency
         name="com.google.android.datatransport:transport-api:3.0.0@aar"
         simpleName="com.google.android.datatransport:transport-api"/>
     <dependency
-        name="com.google.firebase:firebase-components:17.0.1@aar"
+        name="com.google.firebase:firebase-components:17.1.0@aar"
         simpleName="com.google.firebase:firebase-components"/>
     <dependency
         name="com.google.firebase:firebase-encoders-json:18.0.0@aar"
@@ -305,6 +332,9 @@
         name="com.github.bumptech.glide:gifdecoder:4.14.2@aar"
         simpleName="com.github.bumptech.glide:gifdecoder"/>
     <dependency
+        name="androidx.interpolator:interpolator:1.0.0@aar"
+        simpleName="androidx.interpolator:interpolator"/>
+    <dependency
         name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
         simpleName="androidx.versionedparcelable:versionedparcelable"/>
     <dependency
@@ -314,7 +344,7 @@
         name="androidx.collection:collection:1.1.0@jar"
         simpleName="androidx.collection:collection"/>
     <dependency
-        name="androidx.lifecycle:lifecycle-livedata:2.0.0@aar"
+        name="androidx.lifecycle:lifecycle-livedata:2.1.0@aar"
         simpleName="androidx.lifecycle:lifecycle-livedata"/>
     <dependency
         name="androidx.arch.core:core-runtime:2.1.0@aar"
@@ -329,38 +359,50 @@
         name="androidx.lifecycle:lifecycle-common:2.5.1@jar"
         simpleName="androidx.lifecycle:lifecycle-common"/>
     <dependency
+        name="androidx.concurrent:concurrent-futures:1.1.0@jar"
+        simpleName="androidx.concurrent:concurrent-futures"/>
+    <dependency
         name="androidx.documentfile:documentfile:1.0.0@aar"
         simpleName="androidx.documentfile:documentfile"/>
     <dependency
         name="androidx.print:print:1.0.0@aar"
         simpleName="androidx.print:print"/>
     <dependency
-        name="androidx.interpolator:interpolator:1.0.0@aar"
-        simpleName="androidx.interpolator:interpolator"/>
-    <dependency
-        name="androidx.annotation:annotation:1.3.0@jar"
+        name="androidx.annotation:annotation:1.5.0@jar"
         simpleName="androidx.annotation:annotation"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21@jar"
+        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
     <dependency
         name="androidx.annotation:annotation-experimental:1.3.0@aar"
         simpleName="androidx.annotation:annotation-experimental"/>
     <dependency
+        name="com.squareup.okhttp3:okhttp:4.8.0@jar"
+        simpleName="com.squareup.okhttp3:okhttp"/>
+    <dependency
         name="org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar"
         simpleName="org.jetbrains.kotlin:kotlin-android-extensions-runtime"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+        name="com.squareup.okio:okio:2.7.0@jar"
+        simpleName="com.squareup.okio:okio"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.21@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
+        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.21@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>
     <dependency
-        name="org.jetbrains:annotations:13.0@jar"
+        name="org.jetbrains:annotations:20.1.0@jar"
         simpleName="org.jetbrains:annotations"/>
+    <dependency
+        name="com.google.guava:listenablefuture:1.0@jar"
+        simpleName="com.google.guava:listenablefuture"/>
     <dependency
         name="androidx.tracing:tracing:1.0.0@aar"
         simpleName="androidx.tracing:tracing"/>
+    <dependency
+        name="androidx.startup:startup-runtime:1.1.1@aar"
+        simpleName="androidx.startup:startup-runtime"/>
     <dependency
         name="org.chromium.net:cronet-common:98.4758.101@aar"
         simpleName="org.chromium.net:cronet-common"/>
@@ -371,13 +413,7 @@
         name="com.google.code.findbugs:jsr305:3.0.1@jar"
         simpleName="com.google.code.findbugs:jsr305"/>
     <dependency
-        name="com.squareup.okhttp3:okhttp:3.14.9@jar"
-        simpleName="com.squareup.okhttp3:okhttp"/>
-    <dependency
-        name="com.squareup.okio:okio:1.17.2@jar"
-        simpleName="com.squareup.okio:okio"/>
-    <dependency
-        name="com.google.code.gson:gson:2.8.5@jar"
+        name="com.google.code.gson:gson:2.8.9@jar"
         simpleName="com.google.code.gson:gson"/>
     <dependency
         name="org.reactivestreams:reactive-streams:1.0.3@jar"
@@ -401,14 +437,17 @@
         name="org.objenesis:objenesis:2.5.1@jar"
         simpleName="org.objenesis:objenesis"/>
     <dependency
-        name="com.google.errorprone:error_prone_annotations:2.9.0@jar"
-        simpleName="com.google.errorprone:error_prone_annotations"/>
-    <dependency
-        name="com.google.firebase:firebase-annotations:16.1.0@jar"
+        name="com.google.firebase:firebase-annotations:16.2.0@jar"
         simpleName="com.google.firebase:firebase-annotations"/>
+    <dependency
+        name="com.google.dagger:dagger:2.27@jar"
+        simpleName="com.google.dagger:dagger"/>
     <dependency
         name="javax.inject:javax.inject:1@jar"
         simpleName="javax.inject:javax.inject"/>
+    <dependency
+        name="com.google.errorprone:error_prone_annotations:2.9.0@jar"
+        simpleName="com.google.errorprone:error_prone_annotations"/>
     <dependency
         name="com.github.bumptech.glide:disklrucache:4.14.2@jar"
         simpleName="com.github.bumptech.glide:disklrucache"/>
@@ -418,9 +457,15 @@
     <dependency
         name="androidx.exifinterface:exifinterface:1.3.3@aar"
         simpleName="androidx.exifinterface:exifinterface"/>
+    <dependency
+        name="com.google.firebase:protolite-well-known-types:18.0.0@aar"
+        simpleName="com.google.firebase:protolite-well-known-types"/>
+    <dependency
+        name="com.google.protobuf:protobuf-javalite:3.21.11@jar"
+        simpleName="com.google.protobuf:protobuf-javalite"/>
   </compile>
   <package
-      roots="com.github.skydoves:colorpickerview:2.2.4@aar,androidx.databinding:viewbinding:7.2.1@aar,com.google.firebase:firebase-crashlytics-ktx:18.3.2@aar,com.google.firebase:firebase-analytics-ktx:21.2.0@aar,com.google.firebase:firebase-common-ktx:20.2.0@aar,org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4@jar,com.google.android.material:material:1.4.0@aar,io.github.pilgr:paperdb:2.7.2@aar,com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar,com.github.kal72:RackMonthPicker:1.6.1@aar,com.nex3z:notification-badge:1.0.2@aar,com.github.AppIntro:AppIntro:6.2.0@aar,androidx.appcompat:appcompat-resources:1.6.1@aar,androidx.constraintlayout:constraintlayout:2.1.2@aar,androidx.appcompat:appcompat:1.6.1@aar,androidx.legacy:legacy-support-v4:1.0.0@aar,com.github.bumptech.glide:glide:4.14.2@aar,androidx.viewpager2:viewpager2:1.0.0@aar,com.google.maps.android:maps-utils-ktx:3.4.0@aar,com.google.android.gms:play-services-maps:18.0.0@aar,com.google.firebase:firebase-messaging:23.1.0@aar,com.google.android.gms:play-services-base:18.0.1@aar,com.google.android.gms:play-services-cloud-messaging:17.0.1@aar,com.google.firebase:firebase-core:21.1.0@aar,com.google.firebase:firebase-analytics:21.2.0@aar,com.google.android.gms:play-services-measurement:21.2.0@aar,com.google.android.gms:play-services-measurement-sdk:21.2.0@aar,com.google.android.gms:play-services-measurement-impl:21.2.0@aar,com.google.android.gms:play-services-stats:17.0.2@aar,com.google.firebase:firebase-datatransport:18.1.7@aar,com.google.firebase:firebase-crashlytics:18.3.2@aar,com.google.android.gms:play-services-measurement-api:21.2.0@aar,com.google.firebase:firebase-installations:17.1.0@aar,com.google.firebase:firebase-common:20.2.0@aar,com.google.firebase:firebase-iid-interop:17.1.0@aar,com.google.firebase:firebase-installations-interop:17.1.0@aar,com.google.android.gms:play-services-tasks:18.0.1@aar,com.google.firebase:firebase-measurement-connector:19.0.0@aar,com.google.android.gms:play-services-ads-identifier:18.0.0@aar,com.google.android.gms:play-services-measurement-sdk-api:21.2.0@aar,com.google.android.gms:play-services-measurement-base:21.2.0@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.3.6@aar,androidx.fragment:fragment:1.3.6@aar,androidx.activity:activity:1.6.0@aar,androidx.dynamicanimation:dynamicanimation:1.0.0@aar,androidx.legacy:legacy-support-core-ui:1.0.0@aar,androidx.legacy:legacy-support-core-utils:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21@jar,androidx.drawerlayout:drawerlayout:1.0.0@aar,androidx.emoji2:emoji2-views-helper:1.2.0@aar,androidx.emoji2:emoji2:1.2.0@aar,androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar,androidx.transition:transition:1.2.0@aar,androidx.vectordrawable:vectordrawable-animated:1.1.0@aar,androidx.vectordrawable:vectordrawable:1.1.0@aar,androidx.media:media:1.0.0@aar,androidx.recyclerview:recyclerview:1.1.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.swiperefreshlayout:swiperefreshlayout:1.0.0@aar,androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core-ktx:1.9.0@aar,org.chromium.net:cronet-embedded:98.4758.101@aar,com.github.PhilJay:MPAndroidChart:v3.1.0@aar,com.github.anastr:speedviewlib:1.6.0@aar,com.google.maps.android:android-maps-utils:2.3.0@aar,com.squareup.retrofit2:converter-gson:2.9.0@jar,com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar,com.squareup.retrofit2:converter-scalars:2.1.0@jar,com.squareup.retrofit2:retrofit:2.9.0@jar,com.squareup.okhttp3:logging-interceptor:3.9.1@jar,io.reactivex.rxjava2:rxandroid:2.0.1@aar,io.reactivex.rxjava2:rxjava:2.1.9@jar,com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1@aar,com.facebook.shimmer:shimmer:0.5.0@aar,com.vipulasri:ticketview:1.1.2@aar,com.mcxiaoke.volley:library:1.0.19@jar,androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar,org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar,org.eclipse.paho:org.eclipse.paho.android.service:1.1.0@jar,com.fasterxml.jackson.core:jackson-core:2.14.1@jar,com.fasterxml.jackson.core:jackson-annotations:2.14.1@jar,com.fasterxml.jackson.core:jackson-databind:2.14.1@jar,com.google.android.play:core:1.10.3@aar,org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar,androidx.cursoradapter:cursoradapter:1.0.0@aar,androidx.lifecycle:lifecycle-process:2.4.1@aar,androidx.lifecycle:lifecycle-runtime:2.5.1@aar,androidx.resourceinspection:resourceinspection-annotation:1.0.1@jar,androidx.savedstate:savedstate:1.2.0@aar,androidx.cardview:cardview:1.0.0@aar,com.google.android.datatransport:transport-backend-cct:3.1.8@aar,com.google.android.datatransport:transport-runtime:3.1.8@aar,com.google.android.datatransport:transport-api:3.0.0@aar,com.google.firebase:firebase-components:17.0.1@aar,com.google.firebase:firebase-encoders-json:18.0.0@aar,com.google.firebase:firebase-encoders-proto:16.0.0@jar,com.google.firebase:firebase-encoders:17.0.0@jar,com.github.bumptech.glide:gifdecoder:4.14.2@aar,androidx.exifinterface:exifinterface:1.3.3@aar,androidx.startup:startup-runtime:1.1.1@aar,androidx.tracing:tracing:1.0.0@aar,androidx.concurrent:concurrent-futures:1.0.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.arch.core:core-runtime:2.1.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.lifecycle:lifecycle-common:2.5.1@jar,androidx.documentfile:documentfile:1.0.0@aar,androidx.print:print:1.0.0@aar,androidx.interpolator:interpolator:1.0.0@aar,androidx.annotation:annotation:1.3.0@jar,org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar,androidx.annotation:annotation-experimental:1.3.0@aar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,org.chromium.net:cronet-common:98.4758.101@aar,com.google.code.findbugs:jsr305:3.0.1@jar,com.squareup.okhttp3:okhttp:3.14.9@jar,com.google.code.gson:gson:2.8.5@jar,org.reactivestreams:reactive-streams:1.0.3@jar,de.javakaffee:kryo-serializers:0.40@jar,com.esotericsoftware:kryo:4.0.1@jar,com.google.errorprone:error_prone_annotations:2.9.0@jar,junit:junit:4.12@jar,com.github.bumptech.glide:disklrucache:4.14.2@jar,com.github.bumptech.glide:annotations:4.14.2@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,org.chromium.net:cronet-api:98.4758.101@aar,com.squareup.okio:okio:1.17.2@jar,com.esotericsoftware:reflectasm:1.11.3@jar,com.esotericsoftware:minlog:1.3.0@jar,org.objenesis:objenesis:2.5.1@jar,javax.inject:javax.inject:1@jar,com.google.firebase:firebase-annotations:16.1.0@jar,org.hamcrest:hamcrest-core:1.3@jar,androidx.constraintlayout:constraintlayout-core:1.0.2@jar,com.google.guava:listenablefuture:1.0@jar,org.ow2.asm:asm:5.0.4@jar">
+      roots="com.github.skydoves:colorpickerview:2.2.4@aar,androidx.databinding:viewbinding:7.2.1@aar,com.github.hannesa2:paho.mqtt.android:3.3.5@aar,com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5@aar,com.google.firebase:firebase-crashlytics-ktx:18.3.2@aar,com.google.firebase:firebase-analytics-ktx:21.2.0@aar,com.google.firebase:firebase-perf-ktx:20.3.2@aar,com.google.firebase:firebase-common-ktx:20.3.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4@jar,com.google.android.material:material:1.4.0@aar,io.github.pilgr:paperdb:2.7.2@aar,io.github.chaosleung:pinview:1.4.4@aar,com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar,com.github.kal72:RackMonthPicker:1.6.1@aar,com.nex3z:notification-badge:1.0.2@aar,com.github.AppIntro:AppIntro:6.2.0@aar,com.airbnb.android:lottie:3.0.0@aar,androidx.appcompat:appcompat-resources:1.6.1@aar,com.google.firebase:firebase-perf:20.3.2@aar,androidx.constraintlayout:constraintlayout:2.1.2@aar,androidx.appcompat:appcompat:1.6.1@aar,androidx.appcompat:appcompat:1.6.1@aar,androidx.legacy:legacy-support-v4:1.0.0@aar,com.github.bumptech.glide:glide:4.14.2@aar,androidx.viewpager2:viewpager2:1.0.0@aar,com.google.android.gms:play-services-location:21.0.1@aar,com.google.firebase:firebase-messaging:23.1.0@aar,com.google.maps.android:maps-utils-ktx:3.4.0@aar,com.google.android.gms:play-services-maps:18.0.0@aar,com.google.android.gms:play-services-base:18.1.0@aar,com.google.android.gms:play-services-cloud-messaging:17.0.1@aar,com.google.firebase:firebase-iid-interop:17.1.0@aar,com.google.firebase:firebase-crashlytics:18.3.2@aar,com.google.firebase:firebase-core:21.1.0@aar,com.google.firebase:firebase-analytics:21.2.0@aar,com.google.android.gms:play-services-measurement-api:21.2.0@aar,com.google.firebase:firebase-config:21.2.1@aar,com.google.firebase:firebase-installations:17.1.3@aar,com.google.firebase:firebase-installations-interop:17.1.0@aar,com.google.firebase:firebase-datatransport:18.1.8@aar,com.google.firebase:firebase-abt:21.1.0@aar,com.google.firebase:firebase-common:20.3.1@aar,com.google.android.gms:play-services-tasks:18.0.2@aar,com.google.android.gms:play-services-measurement:21.2.0@aar,com.google.android.gms:play-services-measurement-sdk:21.2.0@aar,com.google.android.gms:play-services-measurement-impl:21.2.0@aar,com.google.android.gms:play-services-stats:17.0.2@aar,com.google.firebase:firebase-measurement-connector:19.0.0@aar,com.google.android.gms:play-services-ads-identifier:18.0.0@aar,com.google.android.gms:play-services-measurement-sdk-api:21.2.0@aar,com.google.android.gms:play-services-measurement-base:21.2.0@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.3.6@aar,androidx.fragment:fragment:1.3.6@aar,androidx.activity:activity:1.6.0@aar,androidx.dynamicanimation:dynamicanimation:1.0.0@aar,androidx.legacy:legacy-support-core-ui:1.0.0@aar,androidx.legacy:legacy-support-core-utils:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel:2.5.1@aar,androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1@aar,androidx.lifecycle:lifecycle-runtime-ktx:2.4.0@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar,androidx.work:work-runtime:2.8.1@aar,androidx.room:room-runtime:2.5.0@aar,androidx.room:room-common:2.5.0@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20@jar,androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar,androidx.drawerlayout:drawerlayout:1.0.0@aar,androidx.emoji2:emoji2-views-helper:1.2.0@aar,androidx.emoji2:emoji2:1.2.0@aar,androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar,androidx.transition:transition:1.2.0@aar,androidx.vectordrawable:vectordrawable-animated:1.1.0@aar,androidx.vectordrawable:vectordrawable:1.1.0@aar,androidx.media:media:1.0.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar,androidx.recyclerview:recyclerview:1.2.1@aar,androidx.recyclerview:recyclerview:1.2.1@aar,androidx.customview:customview:1.0.0@aar,androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core:1.9.0@aar,androidx.core:core-ktx:1.9.0@aar,org.chromium.net:cronet-embedded:98.4758.101@aar,com.github.PhilJay:MPAndroidChart:v3.1.0@aar,com.github.anastr:speedviewlib:1.6.0@aar,com.google.maps.android:android-maps-utils:2.3.0@aar,com.squareup.retrofit2:converter-gson:2.9.0@jar,com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar,com.squareup.retrofit2:converter-scalars:2.4.0@jar,com.squareup.retrofit2:retrofit:2.9.0@jar,com.squareup.okhttp3:logging-interceptor:4.8.0@jar,io.reactivex.rxjava2:rxandroid:2.0.1@aar,io.reactivex.rxjava2:rxjava:2.1.9@jar,com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1@aar,com.facebook.shimmer:shimmer:0.5.0@aar,com.vipulasri:ticketview:1.1.2@aar,com.mcxiaoke.volley:library:1.0.19@jar,androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar,org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar,com.fasterxml.jackson.core:jackson-core:2.14.1@jar,com.fasterxml.jackson.core:jackson-annotations:2.14.1@jar,com.fasterxml.jackson.core:jackson-databind:2.14.1@jar,com.google.android.play:core:1.10.0@aar,org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar,androidx.cursoradapter:cursoradapter:1.0.0@aar,androidx.lifecycle:lifecycle-service:2.1.0@aar,androidx.lifecycle:lifecycle-process:2.4.1@aar,androidx.lifecycle:lifecycle-process:2.4.1@aar,androidx.lifecycle:lifecycle-runtime:2.5.1@aar,androidx.lifecycle:lifecycle-runtime:2.5.1@aar,androidx.resourceinspection:resourceinspection-annotation:1.0.1@jar,androidx.savedstate:savedstate:1.2.0@aar,androidx.cardview:cardview:1.0.0@aar,com.google.android.datatransport:transport-backend-cct:3.1.9@aar,com.google.android.datatransport:transport-runtime:3.1.9@aar,com.google.android.datatransport:transport-api:3.0.0@aar,com.google.firebase:firebase-encoders-json:18.0.0@aar,com.google.firebase:firebase-encoders-proto:16.0.0@jar,com.google.firebase:firebase-encoders:17.0.0@jar,com.github.bumptech.glide:gifdecoder:4.14.2@aar,androidx.exifinterface:exifinterface:1.3.3@aar,androidx.startup:startup-runtime:1.1.1@aar,androidx.tracing:tracing:1.0.0@aar,com.google.firebase:firebase-components:17.1.0@aar,androidx.interpolator:interpolator:1.0.0@aar,androidx.sqlite:sqlite-framework:2.3.0@aar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-livedata:2.1.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar,androidx.arch.core:core-runtime:2.1.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.lifecycle:lifecycle-common:2.5.1@jar,androidx.documentfile:documentfile:1.0.0@aar,androidx.print:print:1.0.0@aar,androidx.concurrent:concurrent-futures:1.1.0@jar,androidx.sqlite:sqlite:2.3.0@aar,androidx.annotation:annotation:1.5.0@jar,com.squareup.okhttp3:okhttp:4.8.0@jar,org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar,androidx.annotation:annotation-experimental:1.3.0@aar,com.squareup.okio:okio:2.7.0@jar,com.jakewharton.timber:timber:5.0.1@aar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.21@jar,org.chromium.net:cronet-common:98.4758.101@aar,com.google.code.findbugs:jsr305:3.0.1@jar,com.google.code.gson:gson:2.8.9@jar,org.reactivestreams:reactive-streams:1.0.3@jar,de.javakaffee:kryo-serializers:0.40@jar,com.esotericsoftware:kryo:4.0.1@jar,com.google.errorprone:error_prone_annotations:2.9.0@jar,junit:junit:4.12@jar,com.github.bumptech.glide:disklrucache:4.14.2@jar,com.github.bumptech.glide:annotations:4.14.2@jar,com.google.guava:listenablefuture:1.0@jar,org.chromium.net:cronet-api:98.4758.101@aar,com.esotericsoftware:reflectasm:1.11.3@jar,com.esotericsoftware:minlog:1.3.0@jar,org.objenesis:objenesis:2.5.1@jar,com.google.firebase:firebase-annotations:16.2.0@jar,com.google.dagger:dagger:2.27@jar,javax.inject:javax.inject:1@jar,org.hamcrest:hamcrest-core:1.3@jar,com.google.firebase:protolite-well-known-types:18.0.0@aar,com.google.protobuf:protobuf-javalite:3.21.11@jar,androidx.constraintlayout:constraintlayout-core:1.0.2@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.21@jar,org.jetbrains:annotations:20.1.0@jar,org.ow2.asm:asm:5.0.4@jar">
     <dependency
         name="com.github.skydoves:colorpickerview:2.2.4@aar"
         simpleName="com.github.skydoves:colorpickerview"/>
@@ -428,13 +473,22 @@
         name="androidx.databinding:viewbinding:7.2.1@aar"
         simpleName="androidx.databinding:viewbinding"/>
     <dependency
+        name="com.github.hannesa2:paho.mqtt.android:3.3.5@aar"
+        simpleName="com.github.hannesa2:paho.mqtt.android"/>
+    <dependency
+        name="com.github.AppDevNext.Logcat:LogcatCoreLib:2.9.5@aar"
+        simpleName="com.github.AppDevNext.Logcat:LogcatCoreLib"/>
+    <dependency
         name="com.google.firebase:firebase-crashlytics-ktx:18.3.2@aar"
         simpleName="com.google.firebase:firebase-crashlytics-ktx"/>
     <dependency
         name="com.google.firebase:firebase-analytics-ktx:21.2.0@aar"
         simpleName="com.google.firebase:firebase-analytics-ktx"/>
     <dependency
-        name="com.google.firebase:firebase-common-ktx:20.2.0@aar"
+        name="com.google.firebase:firebase-perf-ktx:20.3.2@aar"
+        simpleName="com.google.firebase:firebase-perf-ktx"/>
+    <dependency
+        name="com.google.firebase:firebase-common-ktx:20.3.1@aar"
         simpleName="com.google.firebase:firebase-common-ktx"/>
     <dependency
         name="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4@jar"
@@ -449,6 +503,9 @@
         name="io.github.pilgr:paperdb:2.7.2@aar"
         simpleName="io.github.pilgr:paperdb"/>
     <dependency
+        name="io.github.chaosleung:pinview:1.4.4@aar"
+        simpleName="io.github.chaosleung:pinview"/>
+    <dependency
         name="com.github.VaibhavLakhera:Circular-Progress-View:0.1.2@aar"
         simpleName="com.github.VaibhavLakhera:Circular-Progress-View"/>
     <dependency
@@ -461,8 +518,14 @@
         name="com.github.AppIntro:AppIntro:6.2.0@aar"
         simpleName="com.github.AppIntro:AppIntro"/>
     <dependency
+        name="com.airbnb.android:lottie:3.0.0@aar"
+        simpleName="com.airbnb.android:lottie"/>
+    <dependency
         name="androidx.appcompat:appcompat-resources:1.6.1@aar"
         simpleName="androidx.appcompat:appcompat-resources"/>
+    <dependency
+        name="com.google.firebase:firebase-perf:20.3.2@aar"
+        simpleName="com.google.firebase:firebase-perf"/>
     <dependency
         name="androidx.constraintlayout:constraintlayout:2.1.2@aar"
         simpleName="androidx.constraintlayout:constraintlayout"/>
@@ -479,26 +542,59 @@
         name="androidx.viewpager2:viewpager2:1.0.0@aar"
         simpleName="androidx.viewpager2:viewpager2"/>
     <dependency
+        name="com.google.android.gms:play-services-location:21.0.1@aar"
+        simpleName="com.google.android.gms:play-services-location"/>
+    <dependency
+        name="com.google.firebase:firebase-messaging:23.1.0@aar"
+        simpleName="com.google.firebase:firebase-messaging"/>
+    <dependency
         name="com.google.maps.android:maps-utils-ktx:3.4.0@aar"
         simpleName="com.google.maps.android:maps-utils-ktx"/>
     <dependency
         name="com.google.android.gms:play-services-maps:18.0.0@aar"
         simpleName="com.google.android.gms:play-services-maps"/>
     <dependency
-        name="com.google.firebase:firebase-messaging:23.1.0@aar"
-        simpleName="com.google.firebase:firebase-messaging"/>
-    <dependency
-        name="com.google.android.gms:play-services-base:18.0.1@aar"
+        name="com.google.android.gms:play-services-base:18.1.0@aar"
         simpleName="com.google.android.gms:play-services-base"/>
     <dependency
         name="com.google.android.gms:play-services-cloud-messaging:17.0.1@aar"
         simpleName="com.google.android.gms:play-services-cloud-messaging"/>
+    <dependency
+        name="com.google.firebase:firebase-iid-interop:17.1.0@aar"
+        simpleName="com.google.firebase:firebase-iid-interop"/>
+    <dependency
+        name="com.google.firebase:firebase-crashlytics:18.3.2@aar"
+        simpleName="com.google.firebase:firebase-crashlytics"/>
     <dependency
         name="com.google.firebase:firebase-core:21.1.0@aar"
         simpleName="com.google.firebase:firebase-core"/>
     <dependency
         name="com.google.firebase:firebase-analytics:21.2.0@aar"
         simpleName="com.google.firebase:firebase-analytics"/>
+    <dependency
+        name="com.google.android.gms:play-services-measurement-api:21.2.0@aar"
+        simpleName="com.google.android.gms:play-services-measurement-api"/>
+    <dependency
+        name="com.google.firebase:firebase-config:21.2.1@aar"
+        simpleName="com.google.firebase:firebase-config"/>
+    <dependency
+        name="com.google.firebase:firebase-installations:17.1.3@aar"
+        simpleName="com.google.firebase:firebase-installations"/>
+    <dependency
+        name="com.google.firebase:firebase-installations-interop:17.1.0@aar"
+        simpleName="com.google.firebase:firebase-installations-interop"/>
+    <dependency
+        name="com.google.firebase:firebase-datatransport:18.1.8@aar"
+        simpleName="com.google.firebase:firebase-datatransport"/>
+    <dependency
+        name="com.google.firebase:firebase-abt:21.1.0@aar"
+        simpleName="com.google.firebase:firebase-abt"/>
+    <dependency
+        name="com.google.firebase:firebase-common:20.3.1@aar"
+        simpleName="com.google.firebase:firebase-common"/>
+    <dependency
+        name="com.google.android.gms:play-services-tasks:18.0.2@aar"
+        simpleName="com.google.android.gms:play-services-tasks"/>
     <dependency
         name="com.google.android.gms:play-services-measurement:21.2.0@aar"
         simpleName="com.google.android.gms:play-services-measurement"/>
@@ -511,30 +607,6 @@
     <dependency
         name="com.google.android.gms:play-services-stats:17.0.2@aar"
         simpleName="com.google.android.gms:play-services-stats"/>
-    <dependency
-        name="com.google.firebase:firebase-datatransport:18.1.7@aar"
-        simpleName="com.google.firebase:firebase-datatransport"/>
-    <dependency
-        name="com.google.firebase:firebase-crashlytics:18.3.2@aar"
-        simpleName="com.google.firebase:firebase-crashlytics"/>
-    <dependency
-        name="com.google.android.gms:play-services-measurement-api:21.2.0@aar"
-        simpleName="com.google.android.gms:play-services-measurement-api"/>
-    <dependency
-        name="com.google.firebase:firebase-installations:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-installations"/>
-    <dependency
-        name="com.google.firebase:firebase-common:20.2.0@aar"
-        simpleName="com.google.firebase:firebase-common"/>
-    <dependency
-        name="com.google.firebase:firebase-iid-interop:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-iid-interop"/>
-    <dependency
-        name="com.google.firebase:firebase-installations-interop:17.1.0@aar"
-        simpleName="com.google.firebase:firebase-installations-interop"/>
-    <dependency
-        name="com.google.android.gms:play-services-tasks:18.0.1@aar"
-        simpleName="com.google.android.gms:play-services-tasks"/>
     <dependency
         name="com.google.firebase:firebase-measurement-connector:19.0.0@aar"
         simpleName="com.google.firebase:firebase-measurement-connector"/>
@@ -575,11 +647,26 @@
         name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1@aar"
         simpleName="androidx.lifecycle:lifecycle-viewmodel-savedstate"/>
     <dependency
+        name="androidx.lifecycle:lifecycle-runtime-ktx:2.4.0@aar"
+        simpleName="androidx.lifecycle:lifecycle-runtime-ktx"/>
+    <dependency
         name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar"
         simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-android"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21@jar"
+        name="androidx.work:work-runtime:2.8.1@aar"
+        simpleName="androidx.work:work-runtime"/>
+    <dependency
+        name="androidx.room:room-runtime:2.5.0@aar"
+        simpleName="androidx.room:room-runtime"/>
+    <dependency
+        name="androidx.room:room-common:2.5.0@jar"
+        simpleName="androidx.room:room-common"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk8"/>
+    <dependency
+        name="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar"
+        simpleName="androidx.swiperefreshlayout:swiperefreshlayout"/>
     <dependency
         name="androidx.drawerlayout:drawerlayout:1.0.0@aar"
         simpleName="androidx.drawerlayout:drawerlayout"/>
@@ -605,20 +692,17 @@
         name="androidx.media:media:1.0.0@aar"
         simpleName="androidx.media:media"/>
     <dependency
-        name="androidx.recyclerview:recyclerview:1.1.0@aar"
-        simpleName="androidx.recyclerview:recyclerview"/>
-    <dependency
         name="androidx.viewpager:viewpager:1.0.0@aar"
         simpleName="androidx.viewpager:viewpager"/>
     <dependency
         name="androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar"
         simpleName="androidx.slidingpanelayout:slidingpanelayout"/>
     <dependency
+        name="androidx.recyclerview:recyclerview:1.2.1@aar"
+        simpleName="androidx.recyclerview:recyclerview"/>
+    <dependency
         name="androidx.customview:customview:1.0.0@aar"
         simpleName="androidx.customview:customview"/>
-    <dependency
-        name="androidx.swiperefreshlayout:swiperefreshlayout:1.0.0@aar"
-        simpleName="androidx.swiperefreshlayout:swiperefreshlayout"/>
     <dependency
         name="androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar"
         simpleName="androidx.asynclayoutinflater:asynclayoutinflater"/>
@@ -647,13 +731,13 @@
         name="com.squareup.retrofit2:adapter-rxjava2:2.9.0@jar"
         simpleName="com.squareup.retrofit2:adapter-rxjava2"/>
     <dependency
-        name="com.squareup.retrofit2:converter-scalars:2.1.0@jar"
+        name="com.squareup.retrofit2:converter-scalars:2.4.0@jar"
         simpleName="com.squareup.retrofit2:converter-scalars"/>
     <dependency
         name="com.squareup.retrofit2:retrofit:2.9.0@jar"
         simpleName="com.squareup.retrofit2:retrofit"/>
     <dependency
-        name="com.squareup.okhttp3:logging-interceptor:3.9.1@jar"
+        name="com.squareup.okhttp3:logging-interceptor:4.8.0@jar"
         simpleName="com.squareup.okhttp3:logging-interceptor"/>
     <dependency
         name="io.reactivex.rxjava2:rxandroid:2.0.1@aar"
@@ -680,9 +764,6 @@
         name="org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5@jar"
         simpleName="org.eclipse.paho:org.eclipse.paho.client.mqttv3"/>
     <dependency
-        name="org.eclipse.paho:org.eclipse.paho.android.service:1.1.0@jar"
-        simpleName="org.eclipse.paho:org.eclipse.paho.android.service"/>
-    <dependency
         name="com.fasterxml.jackson.core:jackson-core:2.14.1@jar"
         simpleName="com.fasterxml.jackson.core:jackson-core"/>
     <dependency
@@ -692,7 +773,7 @@
         name="com.fasterxml.jackson.core:jackson-databind:2.14.1@jar"
         simpleName="com.fasterxml.jackson.core:jackson-databind"/>
     <dependency
-        name="com.google.android.play:core:1.10.3@aar"
+        name="com.google.android.play:core:1.10.0@aar"
         simpleName="com.google.android.play:core"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10@jar"
@@ -700,6 +781,9 @@
     <dependency
         name="androidx.cursoradapter:cursoradapter:1.0.0@aar"
         simpleName="androidx.cursoradapter:cursoradapter"/>
+    <dependency
+        name="androidx.lifecycle:lifecycle-service:2.1.0@aar"
+        simpleName="androidx.lifecycle:lifecycle-service"/>
     <dependency
         name="androidx.lifecycle:lifecycle-process:2.4.1@aar"
         simpleName="androidx.lifecycle:lifecycle-process"/>
@@ -716,17 +800,14 @@
         name="androidx.cardview:cardview:1.0.0@aar"
         simpleName="androidx.cardview:cardview"/>
     <dependency
-        name="com.google.android.datatransport:transport-backend-cct:3.1.8@aar"
+        name="com.google.android.datatransport:transport-backend-cct:3.1.9@aar"
         simpleName="com.google.android.datatransport:transport-backend-cct"/>
     <dependency
-        name="com.google.android.datatransport:transport-runtime:3.1.8@aar"
+        name="com.google.android.datatransport:transport-runtime:3.1.9@aar"
         simpleName="com.google.android.datatransport:transport-runtime"/>
     <dependency
         name="com.google.android.datatransport:transport-api:3.0.0@aar"
         simpleName="com.google.android.datatransport:transport-api"/>
-    <dependency
-        name="com.google.firebase:firebase-components:17.0.1@aar"
-        simpleName="com.google.firebase:firebase-components"/>
     <dependency
         name="com.google.firebase:firebase-encoders-json:18.0.0@aar"
         simpleName="com.google.firebase:firebase-encoders-json"/>
@@ -749,8 +830,14 @@
         name="androidx.tracing:tracing:1.0.0@aar"
         simpleName="androidx.tracing:tracing"/>
     <dependency
-        name="androidx.concurrent:concurrent-futures:1.0.0@jar"
-        simpleName="androidx.concurrent:concurrent-futures"/>
+        name="com.google.firebase:firebase-components:17.1.0@aar"
+        simpleName="com.google.firebase:firebase-components"/>
+    <dependency
+        name="androidx.interpolator:interpolator:1.0.0@aar"
+        simpleName="androidx.interpolator:interpolator"/>
+    <dependency
+        name="androidx.sqlite:sqlite-framework:2.3.0@aar"
+        simpleName="androidx.sqlite:sqlite-framework"/>
     <dependency
         name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
         simpleName="androidx.versionedparcelable:versionedparcelable"/>
@@ -758,7 +845,7 @@
         name="androidx.collection:collection:1.1.0@jar"
         simpleName="androidx.collection:collection"/>
     <dependency
-        name="androidx.lifecycle:lifecycle-livedata:2.0.0@aar"
+        name="androidx.lifecycle:lifecycle-livedata:2.1.0@aar"
         simpleName="androidx.lifecycle:lifecycle-livedata"/>
     <dependency
         name="androidx.lifecycle:lifecycle-livedata-core:2.5.1@aar"
@@ -779,11 +866,17 @@
         name="androidx.print:print:1.0.0@aar"
         simpleName="androidx.print:print"/>
     <dependency
-        name="androidx.interpolator:interpolator:1.0.0@aar"
-        simpleName="androidx.interpolator:interpolator"/>
+        name="androidx.concurrent:concurrent-futures:1.1.0@jar"
+        simpleName="androidx.concurrent:concurrent-futures"/>
     <dependency
-        name="androidx.annotation:annotation:1.3.0@jar"
+        name="androidx.sqlite:sqlite:2.3.0@aar"
+        simpleName="androidx.sqlite:sqlite"/>
+    <dependency
+        name="androidx.annotation:annotation:1.5.0@jar"
         simpleName="androidx.annotation:annotation"/>
+    <dependency
+        name="com.squareup.okhttp3:okhttp:4.8.0@jar"
+        simpleName="com.squareup.okhttp3:okhttp"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.10@jar"
         simpleName="org.jetbrains.kotlin:kotlin-android-extensions-runtime"/>
@@ -791,10 +884,16 @@
         name="androidx.annotation:annotation-experimental:1.3.0@aar"
         simpleName="androidx.annotation:annotation-experimental"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21@jar"
+        name="com.squareup.okio:okio:2.7.0@jar"
+        simpleName="com.squareup.okio:okio"/>
+    <dependency
+        name="com.jakewharton.timber:timber:5.0.1@aar"
+        simpleName="com.jakewharton.timber:timber"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.21@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
     <dependency
         name="org.chromium.net:cronet-common:98.4758.101@aar"
@@ -803,10 +902,7 @@
         name="com.google.code.findbugs:jsr305:3.0.1@jar"
         simpleName="com.google.code.findbugs:jsr305"/>
     <dependency
-        name="com.squareup.okhttp3:okhttp:3.14.9@jar"
-        simpleName="com.squareup.okhttp3:okhttp"/>
-    <dependency
-        name="com.google.code.gson:gson:2.8.5@jar"
+        name="com.google.code.gson:gson:2.8.9@jar"
         simpleName="com.google.code.gson:gson"/>
     <dependency
         name="org.reactivestreams:reactive-streams:1.0.3@jar"
@@ -830,17 +926,11 @@
         name="com.github.bumptech.glide:annotations:4.14.2@jar"
         simpleName="com.github.bumptech.glide:annotations"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
-        simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>
-    <dependency
-        name="org.jetbrains:annotations:13.0@jar"
-        simpleName="org.jetbrains:annotations"/>
+        name="com.google.guava:listenablefuture:1.0@jar"
+        simpleName="com.google.guava:listenablefuture"/>
     <dependency
         name="org.chromium.net:cronet-api:98.4758.101@aar"
         simpleName="org.chromium.net:cronet-api"/>
-    <dependency
-        name="com.squareup.okio:okio:1.17.2@jar"
-        simpleName="com.squareup.okio:okio"/>
     <dependency
         name="com.esotericsoftware:reflectasm:1.11.3@jar"
         simpleName="com.esotericsoftware:reflectasm"/>
@@ -851,20 +941,32 @@
         name="org.objenesis:objenesis:2.5.1@jar"
         simpleName="org.objenesis:objenesis"/>
     <dependency
+        name="com.google.firebase:firebase-annotations:16.2.0@jar"
+        simpleName="com.google.firebase:firebase-annotations"/>
+    <dependency
+        name="com.google.dagger:dagger:2.27@jar"
+        simpleName="com.google.dagger:dagger"/>
+    <dependency
         name="javax.inject:javax.inject:1@jar"
         simpleName="javax.inject:javax.inject"/>
-    <dependency
-        name="com.google.firebase:firebase-annotations:16.1.0@jar"
-        simpleName="com.google.firebase:firebase-annotations"/>
     <dependency
         name="org.hamcrest:hamcrest-core:1.3@jar"
         simpleName="org.hamcrest:hamcrest-core"/>
     <dependency
+        name="com.google.firebase:protolite-well-known-types:18.0.0@aar"
+        simpleName="com.google.firebase:protolite-well-known-types"/>
+    <dependency
+        name="com.google.protobuf:protobuf-javalite:3.21.11@jar"
+        simpleName="com.google.protobuf:protobuf-javalite"/>
+    <dependency
         name="androidx.constraintlayout:constraintlayout-core:1.0.2@jar"
         simpleName="androidx.constraintlayout:constraintlayout-core"/>
     <dependency
-        name="com.google.guava:listenablefuture:1.0@jar"
-        simpleName="com.google.guava:listenablefuture"/>
+        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.21@jar"
+        simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>
+    <dependency
+        name="org.jetbrains:annotations:20.1.0@jar"
+        simpleName="org.jetbrains:annotations"/>
     <dependency
         name="org.ow2.asm:asm:5.0.4@jar"
         simpleName="org.ow2.asm:asm"/>

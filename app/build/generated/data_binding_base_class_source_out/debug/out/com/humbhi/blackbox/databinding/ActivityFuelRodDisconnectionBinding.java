@@ -23,7 +23,13 @@ public final class ActivityFuelRodDisconnectionBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final LinearLayoutCompat dateLayout;
+
+  @NonNull
   public final AppCompatEditText etSearchBar;
+
+  @NonNull
+  public final CustomDateLayoutBinding llCustomDateRange;
 
   @NonNull
   public final ProgressBarBinding llCustomProgress;
@@ -40,17 +46,38 @@ public final class ActivityFuelRodDisconnectionBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
+  @NonNull
+  public final TextView tvCustom;
+
+  @NonNull
+  public final TextView tvToday;
+
+  @NonNull
+  public final TextView tvWeek;
+
+  @NonNull
+  public final TextView tvYesterday;
+
   private ActivityFuelRodDisconnectionBinding(@NonNull RelativeLayout rootView,
-      @NonNull AppCompatEditText etSearchBar, @NonNull ProgressBarBinding llCustomProgress,
-      @NonNull TextView loadMore, @NonNull LinearLayoutCompat midLayout,
-      @NonNull RecyclerView rvFuelDisconnections, @NonNull ToolbarLayoutBinding toolbar) {
+      @NonNull LinearLayoutCompat dateLayout, @NonNull AppCompatEditText etSearchBar,
+      @NonNull CustomDateLayoutBinding llCustomDateRange,
+      @NonNull ProgressBarBinding llCustomProgress, @NonNull TextView loadMore,
+      @NonNull LinearLayoutCompat midLayout, @NonNull RecyclerView rvFuelDisconnections,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvCustom, @NonNull TextView tvToday,
+      @NonNull TextView tvWeek, @NonNull TextView tvYesterday) {
     this.rootView = rootView;
+    this.dateLayout = dateLayout;
     this.etSearchBar = etSearchBar;
+    this.llCustomDateRange = llCustomDateRange;
     this.llCustomProgress = llCustomProgress;
     this.loadMore = loadMore;
     this.midLayout = midLayout;
     this.rvFuelDisconnections = rvFuelDisconnections;
     this.toolbar = toolbar;
+    this.tvCustom = tvCustom;
+    this.tvToday = tvToday;
+    this.tvWeek = tvWeek;
+    this.tvYesterday = tvYesterday;
   }
 
   @Override
@@ -80,11 +107,24 @@ public final class ActivityFuelRodDisconnectionBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.dateLayout;
+      LinearLayoutCompat dateLayout = ViewBindings.findChildViewById(rootView, id);
+      if (dateLayout == null) {
+        break missingId;
+      }
+
       id = R.id.etSearchBar;
       AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
       if (etSearchBar == null) {
         break missingId;
       }
+
+      id = R.id.llCustomDateRange;
+      View llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
+      if (llCustomDateRange == null) {
+        break missingId;
+      }
+      CustomDateLayoutBinding binding_llCustomDateRange = CustomDateLayoutBinding.bind(llCustomDateRange);
 
       id = R.id.llCustomProgress;
       View llCustomProgress = ViewBindings.findChildViewById(rootView, id);
@@ -118,8 +158,33 @@ public final class ActivityFuelRodDisconnectionBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityFuelRodDisconnectionBinding((RelativeLayout) rootView, etSearchBar,
-          binding_llCustomProgress, loadMore, midLayout, rvFuelDisconnections, binding_toolbar);
+      id = R.id.tvCustom;
+      TextView tvCustom = ViewBindings.findChildViewById(rootView, id);
+      if (tvCustom == null) {
+        break missingId;
+      }
+
+      id = R.id.tvToday;
+      TextView tvToday = ViewBindings.findChildViewById(rootView, id);
+      if (tvToday == null) {
+        break missingId;
+      }
+
+      id = R.id.tvWeek;
+      TextView tvWeek = ViewBindings.findChildViewById(rootView, id);
+      if (tvWeek == null) {
+        break missingId;
+      }
+
+      id = R.id.tvYesterday;
+      TextView tvYesterday = ViewBindings.findChildViewById(rootView, id);
+      if (tvYesterday == null) {
+        break missingId;
+      }
+
+      return new ActivityFuelRodDisconnectionBinding((RelativeLayout) rootView, dateLayout,
+          etSearchBar, binding_llCustomDateRange, binding_llCustomProgress, loadMore, midLayout,
+          rvFuelDisconnections, binding_toolbar, tvCustom, tvToday, tvWeek, tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

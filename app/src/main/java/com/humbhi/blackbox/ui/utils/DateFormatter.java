@@ -75,7 +75,7 @@ public class DateFormatter {
 	public static final String FORMAT_BLOCK_TIME = "HH:mm:ss";
 	
 	/** Different ways of showing the timezone in a String date */
-	public class TimeZoneFormat {
+	public static class TimeZoneFormat {
 		/** Do not show timezone */
 		public static final int NONE = 	-1;
 		/** Show timezone as | z | "EST" */

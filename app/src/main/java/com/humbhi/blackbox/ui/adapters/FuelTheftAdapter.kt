@@ -36,14 +36,7 @@ class FuelTheftAdapter (private val vehicleSelection:VehicleDetails,val list:Lis
                     ivGraph.visibility = View.GONE
                 }
                 ivGraph.setOnClickListener{
-                   val intent = Intent(context,FuelGraphJavaActivity::class.java)
-                   intent.putExtra("vehicleId",list[adapterPosition].bbid)
-                    intent.putExtra("fromNavigate","Theft fuel")
-                    intent.putExtra("fuelDrainLevel",list[adapterPosition].FueltheftMainModel[0].DifferenceFuelLevel)
-                    intent.putExtra("startDate",list[adapterPosition].FueltheftMainModel[0].StartDateTime)
-                    intent.putExtra("endDate",list[adapterPosition].FueltheftMainModel[0].EndateTime)
-                   context.startActivity(intent)
-                    (context as FuelTheftReportActivity).finish()
+                    vehicleSelection.moveToGraph(absoluteAdapterPosition)
                 }
             }
         }
@@ -74,6 +67,7 @@ class FuelTheftAdapter (private val vehicleSelection:VehicleDetails,val list:Lis
 
     interface VehicleDetails{
         fun onVehicleSelection(position:Int)
+        fun moveToGraph(position:Int)
     }
 
 }

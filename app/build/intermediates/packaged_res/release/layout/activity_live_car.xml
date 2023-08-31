@@ -15,8 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:visibility="visible"
-        >
+        android:visibility="visible">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/map"
@@ -24,10 +23,7 @@
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin_90"
-            />
-
-
+            android:layout_marginBottom="40dp"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -42,6 +38,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
                 android:layout_gravity="bottom"
+                app:behavior_hideable="false"
+                app:behavior_peekHeight="240dp"
                 app:layout_constraintRight_toRightOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -67,6 +65,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_12"
+                            android:textStyle="bold"
                             android:textColor="@color/white"
                             android:drawableStart="@drawable/ic_location"
                             android:gravity="center_vertical"
@@ -79,16 +78,17 @@
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_x"
                             android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/margin_v"
                             android:weightSum="2">
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tvProgressStatus"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.45"
-                                android:text=""
+                                android:layout_weight="1.30"
+                                android:text="Status"
                                 android:layout_marginStart="@dimen/margin_xx"
+                                android:padding="@dimen/margin_3"
                                 android:gravity="center"
                                 android:layout_gravity="center_vertical"
                                 android:background="@drawable/round_bg_green"
@@ -112,16 +112,17 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tvDataDate"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.65"
-                                android:textColor="@color/med_grey"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.70"
                                 android:gravity="end|center_vertical"
                                 android:layout_marginEnd="@dimen/margin_x"
-                                android:text=""
+                                android:text="updated at:10/31/2022 10:40:19 AM"
                                 android:layout_gravity="center_vertical"
                                 android:backgroundTint="@color/green"
-                                android:fontFamily="@font/poppins_medium"
-                                android:textSize="@dimen/font_10" />
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="@dimen/font_10"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
 
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -129,7 +130,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/margin_xx"
+                            android:layout_marginTop="@dimen/margin_x"
                             android:layout_marginBottom="@dimen/margin_v"
                             android:background="@color/primary_little_fade"/>
 
@@ -139,6 +140,7 @@
                             app:cardCornerRadius="@dimen/margin_xx"
                             android:layout_marginTop="@dimen/margin_x"
                             android:layout_marginHorizontal="@dimen/margin_x"
+                            android:paddingHorizontal="@dimen/margin_v"
                             app:cardBackgroundColor="@color/primaryblack">
 
                             <LinearLayout
@@ -171,7 +173,7 @@
                                             android:fontFamily="@font/poppins_semibold"
                                             android:textAllCaps="true"
                                             android:text="Speed"
-                                            android:textSize="@dimen/font_12"
+                                            android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/tvSpeed"
@@ -180,6 +182,7 @@
                                             android:fontFamily="@font/poppins_medium"
                                             android:textAllCaps="true"
                                             android:text=""
+                                            android:textStyle="bold"
                                             android:textSize="@dimen/font_12"
                                             android:textColor="@color/white"/>
 
@@ -204,7 +207,7 @@
                                             android:fontFamily="@font/poppins_semibold"
                                             android:textAllCaps="true"
                                             android:text="Driven"
-                                            android:textSize="@dimen/font_12"
+                                            android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/tvDistance"
@@ -213,7 +216,8 @@
                                             android:fontFamily="@font/poppins_medium"
                                             android:textAllCaps="true"
                                             android:text=""
-                                            android:textSize="@dimen/font_12"
+                                            android:textStyle="bold"
+                                            android:textSize="@dimen/font_14"
                                             android:textColor="@color/white"/>
 
 
@@ -236,8 +240,8 @@
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/poppins_semibold"
                                             android:textAllCaps="true"
-                                            android:text="Stoppages"
-                                            android:textSize="@dimen/font_12"
+                                            android:text="Stoppage Time"
+                                            android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/tvStoppageTime"
@@ -245,6 +249,7 @@
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/poppins_medium"
                                             android:text=""
+                                            android:textStyle="bold"
                                             android:textSize="@dimen/font_12"
                                             android:textColor="@color/white"/>
 
@@ -274,13 +279,6 @@
                                         android:gravity="center"
                                         android:layout_weight="1">
 
-                                        <ImageView
-                                            android:layout_width="@dimen/margin_25"
-                                            android:layout_height="@dimen/margin_25"
-                                            android:layout_marginTop="@dimen/margin_v"
-                                            android:src="@drawable/ic_speed"
-                                            app:tint="@color/med_grey" />
-
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -288,8 +286,15 @@
                                             android:textAllCaps="true"
                                             android:layout_marginTop="@dimen/margin_v"
                                             android:text="Parking"
-                                            android:textSize="@dimen/font_12"
+                                            android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
+
+                                        <ImageView
+                                            android:layout_width="@dimen/margin_25"
+                                            android:layout_height="@dimen/margin_25"
+                                            android:layout_marginTop="@dimen/margin_v"
+                                            android:src="@drawable/ic_speed"
+                                            app:tint="@color/med_grey" />
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -300,16 +305,6 @@
                                         android:gravity="center"
                                         android:layout_marginTop="@dimen/margin_x"
                                         android:layout_weight="1">
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvParkAtLastStop"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/poppins_medium"
-                                            android:textAllCaps="true"
-                                            android:text=""
-                                            android:textSize="@dimen/font_12"
-                                            android:textColor="@color/white"/>
-
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -319,8 +314,16 @@
                                             android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
 
-
-
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvParkAtLastStop"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:textAllCaps="true"
+                                            android:text=""
+                                            android:textStyle="bold"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"/>
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -332,15 +335,6 @@
                                         android:layout_weight="1">
 
                                         <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvParkingTimeTotal"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/poppins_medium"
-                                            android:textAllCaps="true"
-                                            android:text=""
-                                            android:textSize="@dimen/font_12"
-                                            android:textColor="@color/white"/>
-                                        <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/poppins_semibold"
@@ -349,6 +343,16 @@
                                             android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
 
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvParkingTimeTotal"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:textAllCaps="true"
+                                            android:text=""
+                                            android:textStyle="bold"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"/>
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -375,13 +379,6 @@
                                         android:gravity="center"
                                         android:layout_weight="1">
 
-                                        <ImageView
-                                            android:layout_width="@dimen/margin_25"
-                                            android:layout_height="@dimen/margin_25"
-                                            android:layout_marginTop="@dimen/margin_v"
-                                            android:src="@drawable/ic_duration"
-                                            app:tint="@color/med_grey" />
-
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -389,8 +386,15 @@
                                             android:textAllCaps="true"
                                             android:layout_marginTop="@dimen/margin_v"
                                             android:text="Moving"
-                                            android:textSize="@dimen/font_12"
+                                            android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
+
+                                        <ImageView
+                                            android:layout_width="@dimen/margin_25"
+                                            android:layout_height="@dimen/margin_25"
+                                            android:layout_marginTop="@dimen/margin_v"
+                                            android:src="@drawable/ic_duration"
+                                            app:tint="@color/med_grey" />
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -401,15 +405,6 @@
                                         android:gravity="center"
                                         android:layout_marginTop="@dimen/margin_x"
                                         android:layout_weight="1">
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvMovingFromLastStop"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/poppins_medium"
-                                            android:textAllCaps="true"
-                                            android:text=""
-                                            android:textSize="@dimen/font_12"
-                                            android:textColor="@color/white"/>
 
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
@@ -420,7 +415,16 @@
                                             android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
 
-
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvMovingFromLastStop"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:textAllCaps="true"
+                                            android:text=""
+                                            android:textStyle="bold"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"/>
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -433,15 +437,6 @@
                                         android:layout_weight="1">
 
                                         <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/tvTotalMovingTime"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/poppins_medium"
-                                            android:textAllCaps="true"
-                                            android:text=""
-                                            android:textSize="@dimen/font_12"
-                                            android:textColor="@color/white"/>
-                                        <androidx.appcompat.widget.AppCompatTextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/poppins_semibold"
@@ -450,6 +445,16 @@
                                             android:textSize="@dimen/font_10"
                                             android:textColor="@color/dark_grey"/>
 
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tvTotalMovingTime"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:textAllCaps="true"
+                                            android:text=""
+                                            android:textStyle="bold"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"/>
 
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -531,7 +536,7 @@
                                             android:gravity="center_vertical"
                                             android:drawablePadding="@dimen/margin_v"
                                             android:fontFamily="@font/poppins_regular"
-                                            android:text="Fuel:"
+                                            android:text="Fuel Level:"
                                             android:drawableStart="@drawable/ic_fuel_green" />
                                         <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/tvFuelStatus"
@@ -569,7 +574,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="@dimen/margin_20"
                                             android:layout_marginEnd="@dimen/margin_v"
-                                            android:layout_weight="1"
+                                            android:layout_weight="0.8"
                                             android:textSize="@dimen/font_10"
                                             android:textColor="@color/white"
                                             android:drawablePadding="@dimen/margin_v"
@@ -577,13 +582,16 @@
                                             android:fontFamily="@font/poppins_regular"
                                             android:text="AC:"
                                             android:drawableStart="@drawable/ic_ac" />
-                                        <ImageView
+                                        <TextView
                                             android:id="@+id/tvAcStatus"
                                             android:layout_width="match_parent"
-                                            android:layout_height="15dp"
-                                            android:layout_gravity="center_vertical"
+                                            android:layout_height="wrap_content"
                                             android:layout_marginEnd="@dimen/margin_v"
-                                            android:layout_weight="1"
+                                            android:layout_weight="1.2"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/white"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text=""
                                             />
                                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -864,19 +872,28 @@
                 android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
-    <TextView
+    <ImageView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        app:layout_constraintTop_toBottomOf="@id/lowerLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/margin_xx"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="@dimen/margin_x"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/margin_x"
         android:textAlignment="center"
         android:gravity="center"
-        android:background="@drawable/white_border_black_box"
-        android:text="Satelite View"
-        android:textColor="@color/white"
-        android:textSize="@dimen/margin_x"/>
+        android:src="@drawable/map_type"
+        android:background="@drawable/round_bg_creame"/>
+
+    <LinearLayout
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:background="#80444444"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include
+        layout="@layout/progress_bar"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

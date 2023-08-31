@@ -26,6 +26,9 @@ public final class ActivityTemperatureSensorReportBinding implements ViewBinding
   public final AppCompatEditText etSearchBar;
 
   @NonNull
+  public final CustomDateLayoutBinding llCustomDateRange;
+
+  @NonNull
   public final ProgressBarBinding llCustomProgress;
 
   @NonNull
@@ -35,22 +38,46 @@ public final class ActivityTemperatureSensorReportBinding implements ViewBinding
   public final TextView loadMore;
 
   @NonNull
+  public final LinearLayoutCompat midLayout;
+
+  @NonNull
   public final RecyclerView rvTemperature;
 
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
+  @NonNull
+  public final TextView tvCustom;
+
+  @NonNull
+  public final TextView tvToday;
+
+  @NonNull
+  public final TextView tvWeek;
+
+  @NonNull
+  public final TextView tvYesterday;
+
   private ActivityTemperatureSensorReportBinding(@NonNull RelativeLayout rootView,
-      @NonNull AppCompatEditText etSearchBar, @NonNull ProgressBarBinding llCustomProgress,
-      @NonNull LinearLayoutCompat llMainLayout, @NonNull TextView loadMore,
-      @NonNull RecyclerView rvTemperature, @NonNull ToolbarLayoutBinding toolbar) {
+      @NonNull AppCompatEditText etSearchBar, @NonNull CustomDateLayoutBinding llCustomDateRange,
+      @NonNull ProgressBarBinding llCustomProgress, @NonNull LinearLayoutCompat llMainLayout,
+      @NonNull TextView loadMore, @NonNull LinearLayoutCompat midLayout,
+      @NonNull RecyclerView rvTemperature, @NonNull ToolbarLayoutBinding toolbar,
+      @NonNull TextView tvCustom, @NonNull TextView tvToday, @NonNull TextView tvWeek,
+      @NonNull TextView tvYesterday) {
     this.rootView = rootView;
     this.etSearchBar = etSearchBar;
+    this.llCustomDateRange = llCustomDateRange;
     this.llCustomProgress = llCustomProgress;
     this.llMainLayout = llMainLayout;
     this.loadMore = loadMore;
+    this.midLayout = midLayout;
     this.rvTemperature = rvTemperature;
     this.toolbar = toolbar;
+    this.tvCustom = tvCustom;
+    this.tvToday = tvToday;
+    this.tvWeek = tvWeek;
+    this.tvYesterday = tvYesterday;
   }
 
   @Override
@@ -86,6 +113,13 @@ public final class ActivityTemperatureSensorReportBinding implements ViewBinding
         break missingId;
       }
 
+      id = R.id.llCustomDateRange;
+      View llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
+      if (llCustomDateRange == null) {
+        break missingId;
+      }
+      CustomDateLayoutBinding binding_llCustomDateRange = CustomDateLayoutBinding.bind(llCustomDateRange);
+
       id = R.id.llCustomProgress;
       View llCustomProgress = ViewBindings.findChildViewById(rootView, id);
       if (llCustomProgress == null) {
@@ -105,6 +139,12 @@ public final class ActivityTemperatureSensorReportBinding implements ViewBinding
         break missingId;
       }
 
+      id = R.id.midLayout;
+      LinearLayoutCompat midLayout = ViewBindings.findChildViewById(rootView, id);
+      if (midLayout == null) {
+        break missingId;
+      }
+
       id = R.id.rvTemperature;
       RecyclerView rvTemperature = ViewBindings.findChildViewById(rootView, id);
       if (rvTemperature == null) {
@@ -118,8 +158,33 @@ public final class ActivityTemperatureSensorReportBinding implements ViewBinding
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
+      id = R.id.tvCustom;
+      TextView tvCustom = ViewBindings.findChildViewById(rootView, id);
+      if (tvCustom == null) {
+        break missingId;
+      }
+
+      id = R.id.tvToday;
+      TextView tvToday = ViewBindings.findChildViewById(rootView, id);
+      if (tvToday == null) {
+        break missingId;
+      }
+
+      id = R.id.tvWeek;
+      TextView tvWeek = ViewBindings.findChildViewById(rootView, id);
+      if (tvWeek == null) {
+        break missingId;
+      }
+
+      id = R.id.tvYesterday;
+      TextView tvYesterday = ViewBindings.findChildViewById(rootView, id);
+      if (tvYesterday == null) {
+        break missingId;
+      }
+
       return new ActivityTemperatureSensorReportBinding((RelativeLayout) rootView, etSearchBar,
-          binding_llCustomProgress, llMainLayout, loadMore, rvTemperature, binding_toolbar);
+          binding_llCustomDateRange, binding_llCustomProgress, llMainLayout, loadMore, midLayout,
+          rvTemperature, binding_toolbar, tvCustom, tvToday, tvWeek, tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

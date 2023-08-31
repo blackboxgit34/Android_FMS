@@ -27,6 +27,9 @@ public final class VehicleFilterbottomsheetBinding implements ViewBinding {
   public final RadioButton rbAll;
 
   @NonNull
+  public final RadioButton rbBatteryDisconnection;
+
+  @NonNull
   public final RadioButton rbHiSpeed;
 
   @NonNull
@@ -42,12 +45,14 @@ public final class VehicleFilterbottomsheetBinding implements ViewBinding {
   public final RadioButton rbUnreach;
 
   private VehicleFilterbottomsheetBinding(@NonNull CardView rootView, @NonNull Button idBtnDismiss,
-      @NonNull RadioButton rbAll, @NonNull RadioButton rbHiSpeed, @NonNull RadioButton rbIgnitionOn,
+      @NonNull RadioButton rbAll, @NonNull RadioButton rbBatteryDisconnection,
+      @NonNull RadioButton rbHiSpeed, @NonNull RadioButton rbIgnitionOn,
       @NonNull RadioButton rbMoving, @NonNull RadioButton rbParked,
       @NonNull RadioButton rbUnreach) {
     this.rootView = rootView;
     this.idBtnDismiss = idBtnDismiss;
     this.rbAll = rbAll;
+    this.rbBatteryDisconnection = rbBatteryDisconnection;
     this.rbHiSpeed = rbHiSpeed;
     this.rbIgnitionOn = rbIgnitionOn;
     this.rbMoving = rbMoving;
@@ -94,6 +99,12 @@ public final class VehicleFilterbottomsheetBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rbBatteryDisconnection;
+      RadioButton rbBatteryDisconnection = ViewBindings.findChildViewById(rootView, id);
+      if (rbBatteryDisconnection == null) {
+        break missingId;
+      }
+
       id = R.id.rbHiSpeed;
       RadioButton rbHiSpeed = ViewBindings.findChildViewById(rootView, id);
       if (rbHiSpeed == null) {
@@ -125,7 +136,7 @@ public final class VehicleFilterbottomsheetBinding implements ViewBinding {
       }
 
       return new VehicleFilterbottomsheetBinding((CardView) rootView, idBtnDismiss, rbAll,
-          rbHiSpeed, rbIgnitionOn, rbMoving, rbParked, rbUnreach);
+          rbBatteryDisconnection, rbHiSpeed, rbIgnitionOn, rbMoving, rbParked, rbUnreach);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

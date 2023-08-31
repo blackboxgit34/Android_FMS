@@ -2,8 +2,6 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:background="@color/primaryblack">
 
@@ -11,6 +9,7 @@
         android:id="@+id/ivMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:src="@drawable/icmenu"
         android:tint="@color/white"
         android:padding="@dimen/margin_x"
@@ -23,17 +22,18 @@
         android:src="@drawable/ic_back"
         android:tint="@color/white"
         android:padding="@dimen/margin_x"
-       android:visibility="gone"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"
         android:layout_gravity="center"
         android:fontFamily="@font/poppins_semibold"
-        android:textSize="@dimen/font_16"
+        android:textSize="@dimen/font_12"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:text="Dashboard"/>
@@ -54,7 +54,7 @@
         android:gravity="end|center_horizontal"
         android:text="12"
         android:visibility="gone"
-        android:layout_marginEnd="@dimen/margin_x"
+        android:layout_marginEnd="@dimen/margin_v"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/font_10"/>
@@ -86,36 +86,36 @@
         android:tint="@color/white"
         />
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="@dimen/margin_x"
-        android:layout_marginEnd="@dimen/margin_x">
-
-        <com.nex3z.notificationbadge.NotificationBadge
-            android:id="@+id/badge"
-            android:visibility="gone"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_toRightOf="@id/ivBell"
-            android:layout_alignTop="@id/ivBell"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginTop="-2dp"
-            android:textAlignment="center"
-            android:textSize="@dimen/font_10"
-            app:nbBackground="@drawable/badge_bg_with_shadow"
-            app:nbMaxTextLength="2"/>
+        android:layout_marginEnd="@dimen/margin_8"
+        android:layout_gravity="end|center_vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivBell"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_notification"
-            android:layout_gravity="end"
             android:tint="@color/secondary_yellow"
+            android:padding="@dimen/margin_x"
             />
 
+        <TextView
+            android:id="@+id/badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/ivBell"
+            android:layout_alignEnd="@id/ivBell"
+            android:visibility="gone"
+            android:text="99+"
+            android:layout_marginTop="@dimen/margin_3"
+            android:textAlignment="center"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:background="@drawable/badge_bg_with_shadow"/>
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -123,22 +123,22 @@
         android:layout_width="@dimen/margin_25"
         android:layout_height="@dimen/margin_25"
         android:src="@drawable/ic_sort"
-        android:layout_gravity="end"
+        android:layout_gravity="end|center_vertical"
         android:tint="@color/white"
         android:visibility="gone"
-        android:layout_marginEnd="@dimen/margin_x"
+        android:layout_marginEnd="@dimen/margin_v"
         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
-        android:layout_gravity="end"
+        android:src="@drawable/baseline_post_add_24"
+        android:layout_gravity="end|center_vertical"
         android:visibility="gone"
         android:tint="@color/white"
-       android:padding="@dimen/margin_x"
-        android:layout_marginEnd="@dimen/margin_x"
+        android:padding="@dimen/margin_x"
+        android:layout_marginEnd="@dimen/margin_v"
         />
 
 </androidx.appcompat.widget.Toolbar>

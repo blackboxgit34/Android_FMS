@@ -1,10 +1,14 @@
 package com.humbhi.blackbox.ui.ui.login
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.LoginResponse
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import org.chromium.net.NetworkException
+import java.net.SocketTimeoutException
 
 class LoginPresenterImpl (
     private val mLoginView: LoginView,
@@ -37,7 +41,19 @@ class LoginPresenterImpl (
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mLoginView.isHideLoading()
-                        mLoginView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mLoginView.showErrorMessage("Connection time out, please try again")
+                        }
+                        else if (throwable is java.net.UnknownHostException) {
+                            mLoginView.showErrorMessage("No internet available, please try again")
+                        }
+                        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsResolver.DnsException) {
+                                mLoginView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mLoginView.showErrorMessage("Something went wrong")
+                        }
                     }
                 })
             }

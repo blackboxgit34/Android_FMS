@@ -21,6 +21,7 @@ import com.humbhi.blackbox.ui.data.network.RestClient
 import com.humbhi.blackbox.ui.ui.reports.stoppagereport.StoppageReportPresenter
 import com.humbhi.blackbox.ui.ui.reports.stoppagereport.StoppageReportPresenterImpl
 import com.humbhi.blackbox.ui.utils.CommonUtil
+import com.humbhi.blackbox.ui.utils.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -36,6 +37,7 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
     var totalRecords = 0
     var startDateParam = ""
     var endDateParam = ""
+    var endtime = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,13 +75,16 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
         binding.tvCurrent.setOnClickListener(this)
         binding.tvPrevious.setOnClickListener(this)
         binding.tvBeforePrevious.setOnClickListener(this)
+        val enddate = Calendar.getInstance().time
+        val sdf = SimpleDateFormat("HH:mm:ss")
+        endtime =  "%20" + sdf.format(enddate)
     }
 
     private fun hitApi() {
         binding.progressLayout.progressLayout.visibility = View.VISIBLE
         mPresenter.hitMonthlyReportApi(
             "$startDateParam%2012:00%20AM",
-            endDateParam + "%2011:59%20PM",
+            endDateParam + endtime,
             "",
             CommonData.getCustIdFromDB(),
             "",
@@ -104,8 +109,8 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
         adapter = MonthlyReportAdapter(this,list)
         binding.rvRecycler.adapter = adapter
         binding.rvRecycler.scrollToPosition(startlimit)
-        if(totalRecords>20){
-            binding.loadMore.visibility = View.VISIBLE
+         if(totalRecords==list.size){
+            binding.loadMore.visibility = View.GONE
         }
         binding.loadMore.setOnClickListener {
             if(list.size<totalRecords) {
@@ -116,7 +121,10 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {
@@ -138,6 +146,9 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
             R.id.tvCurrent -> {
                 val currentDate = CommonUtil.getCurrentDate()
                 startDateParam = CommonUtil.firstDayOfMonth()
+                val enddate = Calendar.getInstance().time
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                endtime =  "%20" + sdf.format(enddate)
                 endDateParam = currentDate
                 binding.tvCurrent.setBackground(
                     ContextCompat.getDrawable(
@@ -164,6 +175,7 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
             R.id.tvPrevious -> {
                 startDateParam = CommonUtil.firstDayOfLastMonth()
                 val lastDayOfPreviousMonth = CommonUtil.lastDayOfPreviousMonth()
+                endtime = "%2023:59:00"
                 endDateParam = lastDayOfPreviousMonth
                 binding.tvCurrent.background = ContextCompat.getDrawable(
                     this,
@@ -184,6 +196,7 @@ class MonthlyReportActivity : AppCompatActivity(),MonthlyReportView,View.OnClick
             R.id.tvBeforePrevious -> {
                 val currentDate = CommonUtil.firstDayOfBeforeLastMonth()
                 val endDate = CommonUtil.lastDayOfBeforePreviousMonth()
+                endtime = "%2023:59:00"
                 startDateParam = currentDate
                 endDateParam = endDate
                 binding.tvCurrent.setBackground(

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/primary_little_fade"
+    android:background="@drawable/round_bg_black_light"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/margin_20"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter OTP"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        android:layout_gravity="center"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/otpView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_x"
+        app:viewType="rectangle"
+        app:cursorColor="@color/white"
+        app:lineColor="@color/white"
+        android:layout_marginTop="@dimen/margin_xx"
+        android:gravity="center"
+        style="@style/PinWidget.PinView"
+        app:itemCount="4"
+        android:inputType="number"
+        app:itemRadius="@dimen/margin_8"
+        android:layout_marginHorizontal="@dimen/margin_x"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/white"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

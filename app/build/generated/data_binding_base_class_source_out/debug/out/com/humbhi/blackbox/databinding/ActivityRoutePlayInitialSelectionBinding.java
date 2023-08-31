@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -42,12 +41,6 @@ public final class ActivityRoutePlayInitialSelectionBinding implements ViewBindi
   public final AutoCompleteTextView spVehicles;
 
   @NonNull
-  public final CheckBox switch1;
-
-  @NonNull
-  public final CheckBox switch2;
-
-  @NonNull
   public final ToolbarLayoutBinding toolbar;
 
   @NonNull
@@ -65,9 +58,9 @@ public final class ActivityRoutePlayInitialSelectionBinding implements ViewBindi
   private ActivityRoutePlayInitialSelectionBinding(@NonNull LinearLayoutCompat rootView,
       @NonNull Button bt24Hour, @NonNull Button btCustom, @NonNull Button btToday,
       @NonNull Button btnGetRoute, @NonNull LinearLayout customDate,
-      @NonNull AutoCompleteTextView spVehicles, @NonNull CheckBox switch1,
-      @NonNull CheckBox switch2, @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvEndDate,
-      @NonNull TextView tvEndTime, @NonNull TextView tvStartDate, @NonNull TextView tvStartTime) {
+      @NonNull AutoCompleteTextView spVehicles, @NonNull ToolbarLayoutBinding toolbar,
+      @NonNull TextView tvEndDate, @NonNull TextView tvEndTime, @NonNull TextView tvStartDate,
+      @NonNull TextView tvStartTime) {
     this.rootView = rootView;
     this.bt24Hour = bt24Hour;
     this.btCustom = btCustom;
@@ -75,8 +68,6 @@ public final class ActivityRoutePlayInitialSelectionBinding implements ViewBindi
     this.btnGetRoute = btnGetRoute;
     this.customDate = customDate;
     this.spVehicles = spVehicles;
-    this.switch1 = switch1;
-    this.switch2 = switch2;
     this.toolbar = toolbar;
     this.tvEndDate = tvEndDate;
     this.tvEndTime = tvEndTime;
@@ -147,18 +138,6 @@ public final class ActivityRoutePlayInitialSelectionBinding implements ViewBindi
         break missingId;
       }
 
-      id = R.id.switch1;
-      CheckBox switch1 = ViewBindings.findChildViewById(rootView, id);
-      if (switch1 == null) {
-        break missingId;
-      }
-
-      id = R.id.switch2;
-      CheckBox switch2 = ViewBindings.findChildViewById(rootView, id);
-      if (switch2 == null) {
-        break missingId;
-      }
-
       id = R.id.toolbar;
       View toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
@@ -191,8 +170,8 @@ public final class ActivityRoutePlayInitialSelectionBinding implements ViewBindi
       }
 
       return new ActivityRoutePlayInitialSelectionBinding((LinearLayoutCompat) rootView, bt24Hour,
-          btCustom, btToday, btnGetRoute, customDate, spVehicles, switch1, switch2, binding_toolbar,
-          tvEndDate, tvEndTime, tvStartDate, tvStartTime);
+          btCustom, btToday, btnGetRoute, customDate, spVehicles, binding_toolbar, tvEndDate,
+          tvEndTime, tvStartDate, tvStartTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

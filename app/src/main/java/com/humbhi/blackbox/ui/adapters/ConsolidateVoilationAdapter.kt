@@ -17,7 +17,7 @@ import com.humbhi.blackbox.ui.utils.ExplicitIntentUtil
 
 class ConsolidateVoilationAdapter(
     val context: Context,
-    val listData: List<ConsolidateVoilationData>
+    val listData: ArrayList<ConsolidateVoilationData>
 ) :
     RecyclerView.Adapter<ConsolidateVoilationAdapter.MyHolder>() {
 

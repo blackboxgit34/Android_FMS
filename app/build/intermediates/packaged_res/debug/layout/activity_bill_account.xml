@@ -47,5 +47,9 @@
             android:layout_below="@+id/rlSearch"/>
     </LinearLayout>
 
+    <include
+        android:id="@+id/progress"
+        android:visibility="gone"
+        layout="@layout/progress_bar"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

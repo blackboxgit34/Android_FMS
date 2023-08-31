@@ -1,6 +1,7 @@
 package com.humbhi.blackbox.ui.data.db
 
 import io.paperdb.Paper
+import java.util.Calendar
 
 object CommonData {
     private var PAPER_DEVICE_TOKEN = "paper_device_token"
@@ -12,9 +13,13 @@ object CommonData {
     private var PASSWORD = "password"
     private var FUELROD = "fuelrod"
     private var TEMPROD = "temprod"
+    private var skip = "no"
     private var ENCRYPASSWORD = "encrypassword"
     private var ReadNotification = "ReadNotification"
     private var BANNER = "banner"
+    private var aisCount = "AISCount"
+    private var firstTime = "firstTime"
+    private var firstTimeDays = "firstTimeDays"
 
     fun updateFcmToken(token:String){
         Paper.book().write(FIREBASE_TOKEN,token)
@@ -31,6 +36,39 @@ object CommonData {
     fun getCustIdFromDB():String{
         return Paper.book().read(PAPER_CUST_ID)?:""
     }
+
+    fun setFirstTime(FirstTime:String){
+        Paper.book().write(firstTime,FirstTime)
+    }
+
+    fun getFirstTime():String{
+        return Paper.book().read(firstTime)?:"true"
+    }
+
+    fun setFirstTimeDays(FirstTime:Calendar){
+        Paper.book().write(firstTimeDays,FirstTime)
+    }
+
+    fun getFirstTimeDays(): Calendar? {
+        return Paper.book().read(firstTimeDays)
+    }
+
+    fun setSkip(Skip:String){
+        Paper.book().write(skip,Skip)
+    }
+
+    fun getSkip():String{
+        return Paper.book().read(skip)?:""
+    }
+
+    fun setAisCount(Skip:String){
+        Paper.book().write(aisCount,Skip)
+    }
+
+    fun getAisCount():String{
+        return Paper.book().read(aisCount)?:""
+    }
+
     fun setFuelRodStatus(fuelRod:Boolean){
         Paper.book().write(FUELROD,fuelRod)
     }

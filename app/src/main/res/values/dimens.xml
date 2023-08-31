@@ -11,7 +11,10 @@
     <dimen name="profile_size">100dp</dimen>
     <dimen name="slider_image">250dp</dimen>
     <dimen name="margin_280">280dp</dimen>
-
+    <dimen name="notification_padding">16dp</dimen>
+    <dimen name="notification_title_text_size">18sp</dimen>
+    <dimen name="notification_text_size">14sp</dimen>
+    <dimen name="notification_text_margin_top">8dp</dimen>
     <dimen name="upload_icon">120dp</dimen>
     <dimen name="image_height">200dp</dimen>
     <dimen name="margin_top">35dp</dimen>

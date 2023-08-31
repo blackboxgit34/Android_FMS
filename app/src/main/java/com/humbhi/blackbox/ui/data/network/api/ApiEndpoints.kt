@@ -42,7 +42,7 @@ object ApiEndpoints {
 
     const val GET_ROUTE_PLAYBACK = "api/MapAPI/GetPlayBackDataResult?"
 
-    const val GET_ROUTE_PLAYBACK_DRIVER_BEHAVIOUR = "api/APPAPI/GetDBPlayBackDataResult?"
+    const val GET_ROUTE_PLAYBACK_DRIVER_BEHAVIOUR = "api/MapAPI/RouteWithDirectionApp?"
 
     const val GET_DRIVER_BEHAVIOUR_DASHBOARD = "api/ReportsApi/getDriverGraphPer?custid="
 

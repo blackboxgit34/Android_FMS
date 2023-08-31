@@ -41,6 +41,7 @@
     <color name="orange_gradient_bottom">#FE9E8A</color>
     <color name="tab_indicator_color">#5CB2FC</color>
     <color name="dms_back">#381F7F</color>
+    <color name="light_background">#61333333</color>
 
     <!--new color scheme-->
     <color name="primary_main_orange">#FF6D2D</color>

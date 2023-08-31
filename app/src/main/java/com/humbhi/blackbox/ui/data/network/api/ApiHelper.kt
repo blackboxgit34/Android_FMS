@@ -223,6 +223,7 @@ interface ApiHelper {
         tableName: String,
         fromDate: String,
         toDate: String,
+        vehicleName: String,
         mApiListener:ApiListener?
     )
 

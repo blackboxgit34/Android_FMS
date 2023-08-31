@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.github.mikephil.charting.charts.BarChart;
@@ -26,10 +27,16 @@ import java.lang.String;
 
 public final class FragmentDashboardBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final SwipeRefreshLayout rootView;
 
   @NonNull
   public final BarChart DistanceChart;
+
+  @NonNull
+  public final View blinkingPoint;
+
+  @NonNull
+  public final View blinkingPointBR;
 
   @NonNull
   public final LinearLayoutCompat clDriver;
@@ -65,6 +72,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final CardView cvTotalVehiclesDetail;
 
   @NonNull
+  public final FrameLayout dashFrgament;
+
+  @NonNull
+  public final TextView days;
+
+  @NonNull
+  public final TextView daysBR;
+
+  @NonNull
+  public final TextView expiredDevices;
+
+  @NonNull
   public final PieChart fleetChart;
 
   @NonNull
@@ -75,6 +94,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   @NonNull
   public final AppCompatImageView ivTotalVehicleIcon;
+
+  @NonNull
+  public final LinearLayoutCompat llAis140;
+
+  @NonNull
+  public final LinearLayoutCompat llAis140Details;
 
   @NonNull
   public final LinearLayoutCompat llAllVehicle;
@@ -90,6 +115,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayoutCompat llBatteryDisconnected;
+
+  @NonNull
+  public final LinearLayoutCompat llBillReminder;
 
   @NonNull
   public final LinearLayout llDrivingBehavProgress;
@@ -125,6 +153,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final LinearLayout llMovingPercentage;
 
   @NonNull
+  public final LinearLayout llNoFleet;
+
+  @NonNull
   public final LinearLayout llOverspeed;
 
   @NonNull
@@ -137,7 +168,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final LinearLayout llParkingPercentage;
 
   @NonNull
-  public final LinearLayout llSpeedAnalysis;
+  public final LinearLayoutCompat llSpeedAnalysis;
 
   @NonNull
   public final LinearLayoutCompat llTotalVehicleMain;
@@ -155,7 +186,22 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextView noFuelAvailable;
 
   @NonNull
+  public final TextView pdDevices;
+
+  @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
   public final RelativeLayout relativeLayout;
+
+  @NonNull
+  public final LinearLayoutCompat reminderLayout;
+
+  @NonNull
+  public final LinearLayout reminderProgress;
+
+  @NonNull
+  public final TextView renewalDevices;
 
   @NonNull
   public final RelativeLayout rlDriverBehavChart;
@@ -165,6 +211,15 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   @NonNull
   public final RelativeLayout rlFuelNotAvailable;
+
+  @NonNull
+  public final RelativeLayout rlSpeedAnalysis;
+
+  @NonNull
+  public final SwipeRefreshLayout swipeView;
+
+  @NonNull
+  public final TextView totalDevices;
 
   @NonNull
   public final AppCompatTextView tvAboveAvg;
@@ -256,30 +311,39 @@ public final class FragmentDashboardBinding implements ViewBinding {
   @NonNull
   public final AppCompatTextView tvUnreachVehicle;
 
-  private FragmentDashboardBinding(@NonNull FrameLayout rootView, @NonNull BarChart DistanceChart,
+  private FragmentDashboardBinding(@NonNull SwipeRefreshLayout rootView,
+      @NonNull BarChart DistanceChart, @NonNull View blinkingPoint, @NonNull View blinkingPointBR,
       @NonNull LinearLayoutCompat clDriver, @NonNull ConstraintLayout clFleet,
       @NonNull ConstraintLayout clFuel, @NonNull ConstraintLayout clTotalCountVehicle,
       @NonNull ConstraintLayout clTotalReminders, @NonNull ConstraintLayout clTotalVehicle,
       @NonNull CardView cvDriverAnalysis, @NonNull CardView cvFleet,
       @NonNull CardView cvFuelAnalysis, @NonNull CardView cvReminders,
-      @NonNull CardView cvTotalVehiclesDetail, @NonNull PieChart fleetChart,
-      @NonNull PieChart fuelChart, @NonNull AppCompatImageView ivTotalReminderIcon,
-      @NonNull AppCompatImageView ivTotalVehicleIcon, @NonNull LinearLayoutCompat llAllVehicle,
+      @NonNull CardView cvTotalVehiclesDetail, @NonNull FrameLayout dashFrgament,
+      @NonNull TextView days, @NonNull TextView daysBR, @NonNull TextView expiredDevices,
+      @NonNull PieChart fleetChart, @NonNull PieChart fuelChart,
+      @NonNull AppCompatImageView ivTotalReminderIcon,
+      @NonNull AppCompatImageView ivTotalVehicleIcon, @NonNull LinearLayoutCompat llAis140,
+      @NonNull LinearLayoutCompat llAis140Details, @NonNull LinearLayoutCompat llAllVehicle,
       @NonNull LinearLayout llAvgSpeed, @NonNull LinearLayout llAvgSpeedProgress,
       @NonNull LinearLayout llBars, @NonNull LinearLayoutCompat llBatteryDisconnected,
-      @NonNull LinearLayout llDrivingBehavProgress, @NonNull LinearLayoutCompat llDrivingBehaviour,
-      @NonNull LinearLayoutCompat llDrivingData, @NonNull LinearLayout llFleetProgress,
-      @NonNull LinearLayout llFuelProgress, @NonNull LinearLayoutCompat llHighspeed,
-      @NonNull LinearLayout llIdealPercentage, @NonNull LinearLayoutCompat llIgnitionOn,
-      @NonNull LinearLayoutCompat llMainLayout, @NonNull LinearLayoutCompat llMoving,
-      @NonNull LinearLayout llMovingPercentage, @NonNull LinearLayout llOverspeed,
+      @NonNull LinearLayoutCompat llBillReminder, @NonNull LinearLayout llDrivingBehavProgress,
+      @NonNull LinearLayoutCompat llDrivingBehaviour, @NonNull LinearLayoutCompat llDrivingData,
+      @NonNull LinearLayout llFleetProgress, @NonNull LinearLayout llFuelProgress,
+      @NonNull LinearLayoutCompat llHighspeed, @NonNull LinearLayout llIdealPercentage,
+      @NonNull LinearLayoutCompat llIgnitionOn, @NonNull LinearLayoutCompat llMainLayout,
+      @NonNull LinearLayoutCompat llMoving, @NonNull LinearLayout llMovingPercentage,
+      @NonNull LinearLayout llNoFleet, @NonNull LinearLayout llOverspeed,
       @NonNull LinearLayout llOverspeedProgress, @NonNull LinearLayoutCompat llParked,
-      @NonNull LinearLayout llParkingPercentage, @NonNull LinearLayout llSpeedAnalysis,
+      @NonNull LinearLayout llParkingPercentage, @NonNull LinearLayoutCompat llSpeedAnalysis,
       @NonNull LinearLayoutCompat llTotalVehicleMain, @NonNull LinearLayout llTotalVhclProgress,
       @NonNull LinearLayoutCompat llUnreachable, @NonNull TextView marqueeText,
-      @NonNull TextView noFuelAvailable, @NonNull RelativeLayout relativeLayout,
-      @NonNull RelativeLayout rlDriverBehavChart, @NonNull RelativeLayout rlDrivingNotAvailable,
-      @NonNull RelativeLayout rlFuelNotAvailable, @NonNull AppCompatTextView tvAboveAvg,
+      @NonNull TextView noFuelAvailable, @NonNull TextView pdDevices,
+      @NonNull ProgressBarBinding progress, @NonNull RelativeLayout relativeLayout,
+      @NonNull LinearLayoutCompat reminderLayout, @NonNull LinearLayout reminderProgress,
+      @NonNull TextView renewalDevices, @NonNull RelativeLayout rlDriverBehavChart,
+      @NonNull RelativeLayout rlDrivingNotAvailable, @NonNull RelativeLayout rlFuelNotAvailable,
+      @NonNull RelativeLayout rlSpeedAnalysis, @NonNull SwipeRefreshLayout swipeView,
+      @NonNull TextView totalDevices, @NonNull AppCompatTextView tvAboveAvg,
       @NonNull AppCompatTextView tvAboveAvgLabel, @NonNull AppCompatTextView tvAvgSpeed,
       @NonNull AppCompatTextView tvBatDisconnectionVehicle,
       @NonNull AppCompatTextView tvBatteryDisconneted, @NonNull AppCompatTextView tvDriving,
@@ -298,6 +362,8 @@ public final class FragmentDashboardBinding implements ViewBinding {
       @NonNull AppCompatTextView tvUnreachVehicle) {
     this.rootView = rootView;
     this.DistanceChart = DistanceChart;
+    this.blinkingPoint = blinkingPoint;
+    this.blinkingPointBR = blinkingPointBR;
     this.clDriver = clDriver;
     this.clFleet = clFleet;
     this.clFuel = clFuel;
@@ -309,15 +375,22 @@ public final class FragmentDashboardBinding implements ViewBinding {
     this.cvFuelAnalysis = cvFuelAnalysis;
     this.cvReminders = cvReminders;
     this.cvTotalVehiclesDetail = cvTotalVehiclesDetail;
+    this.dashFrgament = dashFrgament;
+    this.days = days;
+    this.daysBR = daysBR;
+    this.expiredDevices = expiredDevices;
     this.fleetChart = fleetChart;
     this.fuelChart = fuelChart;
     this.ivTotalReminderIcon = ivTotalReminderIcon;
     this.ivTotalVehicleIcon = ivTotalVehicleIcon;
+    this.llAis140 = llAis140;
+    this.llAis140Details = llAis140Details;
     this.llAllVehicle = llAllVehicle;
     this.llAvgSpeed = llAvgSpeed;
     this.llAvgSpeedProgress = llAvgSpeedProgress;
     this.llBars = llBars;
     this.llBatteryDisconnected = llBatteryDisconnected;
+    this.llBillReminder = llBillReminder;
     this.llDrivingBehavProgress = llDrivingBehavProgress;
     this.llDrivingBehaviour = llDrivingBehaviour;
     this.llDrivingData = llDrivingData;
@@ -329,6 +402,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
     this.llMainLayout = llMainLayout;
     this.llMoving = llMoving;
     this.llMovingPercentage = llMovingPercentage;
+    this.llNoFleet = llNoFleet;
     this.llOverspeed = llOverspeed;
     this.llOverspeedProgress = llOverspeedProgress;
     this.llParked = llParked;
@@ -339,10 +413,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
     this.llUnreachable = llUnreachable;
     this.marqueeText = marqueeText;
     this.noFuelAvailable = noFuelAvailable;
+    this.pdDevices = pdDevices;
+    this.progress = progress;
     this.relativeLayout = relativeLayout;
+    this.reminderLayout = reminderLayout;
+    this.reminderProgress = reminderProgress;
+    this.renewalDevices = renewalDevices;
     this.rlDriverBehavChart = rlDriverBehavChart;
     this.rlDrivingNotAvailable = rlDrivingNotAvailable;
     this.rlFuelNotAvailable = rlFuelNotAvailable;
+    this.rlSpeedAnalysis = rlSpeedAnalysis;
+    this.swipeView = swipeView;
+    this.totalDevices = totalDevices;
     this.tvAboveAvg = tvAboveAvg;
     this.tvAboveAvgLabel = tvAboveAvgLabel;
     this.tvAvgSpeed = tvAvgSpeed;
@@ -377,7 +459,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public SwipeRefreshLayout getRoot() {
     return rootView;
   }
 
@@ -405,6 +487,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
       id = R.id.DistanceChart;
       BarChart DistanceChart = ViewBindings.findChildViewById(rootView, id);
       if (DistanceChart == null) {
+        break missingId;
+      }
+
+      id = R.id.blinkingPoint;
+      View blinkingPoint = ViewBindings.findChildViewById(rootView, id);
+      if (blinkingPoint == null) {
+        break missingId;
+      }
+
+      id = R.id.blinkingPointBR;
+      View blinkingPointBR = ViewBindings.findChildViewById(rootView, id);
+      if (blinkingPointBR == null) {
         break missingId;
       }
 
@@ -474,6 +568,30 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.dash_frgament;
+      FrameLayout dashFrgament = ViewBindings.findChildViewById(rootView, id);
+      if (dashFrgament == null) {
+        break missingId;
+      }
+
+      id = R.id.days;
+      TextView days = ViewBindings.findChildViewById(rootView, id);
+      if (days == null) {
+        break missingId;
+      }
+
+      id = R.id.daysBR;
+      TextView daysBR = ViewBindings.findChildViewById(rootView, id);
+      if (daysBR == null) {
+        break missingId;
+      }
+
+      id = R.id.expiredDevices;
+      TextView expiredDevices = ViewBindings.findChildViewById(rootView, id);
+      if (expiredDevices == null) {
+        break missingId;
+      }
+
       id = R.id.fleetChart;
       PieChart fleetChart = ViewBindings.findChildViewById(rootView, id);
       if (fleetChart == null) {
@@ -495,6 +613,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
       id = R.id.ivTotalVehicleIcon;
       AppCompatImageView ivTotalVehicleIcon = ViewBindings.findChildViewById(rootView, id);
       if (ivTotalVehicleIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.llAis140;
+      LinearLayoutCompat llAis140 = ViewBindings.findChildViewById(rootView, id);
+      if (llAis140 == null) {
+        break missingId;
+      }
+
+      id = R.id.llAis140Details;
+      LinearLayoutCompat llAis140Details = ViewBindings.findChildViewById(rootView, id);
+      if (llAis140Details == null) {
         break missingId;
       }
 
@@ -525,6 +655,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
       id = R.id.llBatteryDisconnected;
       LinearLayoutCompat llBatteryDisconnected = ViewBindings.findChildViewById(rootView, id);
       if (llBatteryDisconnected == null) {
+        break missingId;
+      }
+
+      id = R.id.llBillReminder;
+      LinearLayoutCompat llBillReminder = ViewBindings.findChildViewById(rootView, id);
+      if (llBillReminder == null) {
         break missingId;
       }
 
@@ -594,6 +730,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.llNoFleet;
+      LinearLayout llNoFleet = ViewBindings.findChildViewById(rootView, id);
+      if (llNoFleet == null) {
+        break missingId;
+      }
+
       id = R.id.llOverspeed;
       LinearLayout llOverspeed = ViewBindings.findChildViewById(rootView, id);
       if (llOverspeed == null) {
@@ -619,7 +761,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
       }
 
       id = R.id.llSpeedAnalysis;
-      LinearLayout llSpeedAnalysis = ViewBindings.findChildViewById(rootView, id);
+      LinearLayoutCompat llSpeedAnalysis = ViewBindings.findChildViewById(rootView, id);
       if (llSpeedAnalysis == null) {
         break missingId;
       }
@@ -654,9 +796,40 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.pdDevices;
+      TextView pdDevices = ViewBindings.findChildViewById(rootView, id);
+      if (pdDevices == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
       id = R.id.relativeLayout;
       RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
       if (relativeLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.reminderLayout;
+      LinearLayoutCompat reminderLayout = ViewBindings.findChildViewById(rootView, id);
+      if (reminderLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.reminderProgress;
+      LinearLayout reminderProgress = ViewBindings.findChildViewById(rootView, id);
+      if (reminderProgress == null) {
+        break missingId;
+      }
+
+      id = R.id.renewalDevices;
+      TextView renewalDevices = ViewBindings.findChildViewById(rootView, id);
+      if (renewalDevices == null) {
         break missingId;
       }
 
@@ -675,6 +848,20 @@ public final class FragmentDashboardBinding implements ViewBinding {
       id = R.id.rlFuelNotAvailable;
       RelativeLayout rlFuelNotAvailable = ViewBindings.findChildViewById(rootView, id);
       if (rlFuelNotAvailable == null) {
+        break missingId;
+      }
+
+      id = R.id.rlSpeedAnalysis;
+      RelativeLayout rlSpeedAnalysis = ViewBindings.findChildViewById(rootView, id);
+      if (rlSpeedAnalysis == null) {
+        break missingId;
+      }
+
+      SwipeRefreshLayout swipeView = (SwipeRefreshLayout) rootView;
+
+      id = R.id.totalDevices;
+      TextView totalDevices = ViewBindings.findChildViewById(rootView, id);
+      if (totalDevices == null) {
         break missingId;
       }
 
@@ -858,22 +1045,25 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentDashboardBinding((FrameLayout) rootView, DistanceChart, clDriver, clFleet,
-          clFuel, clTotalCountVehicle, clTotalReminders, clTotalVehicle, cvDriverAnalysis, cvFleet,
-          cvFuelAnalysis, cvReminders, cvTotalVehiclesDetail, fleetChart, fuelChart,
-          ivTotalReminderIcon, ivTotalVehicleIcon, llAllVehicle, llAvgSpeed, llAvgSpeedProgress,
-          llBars, llBatteryDisconnected, llDrivingBehavProgress, llDrivingBehaviour, llDrivingData,
-          llFleetProgress, llFuelProgress, llHighspeed, llIdealPercentage, llIgnitionOn,
-          llMainLayout, llMoving, llMovingPercentage, llOverspeed, llOverspeedProgress, llParked,
+      return new FragmentDashboardBinding((SwipeRefreshLayout) rootView, DistanceChart,
+          blinkingPoint, blinkingPointBR, clDriver, clFleet, clFuel, clTotalCountVehicle,
+          clTotalReminders, clTotalVehicle, cvDriverAnalysis, cvFleet, cvFuelAnalysis, cvReminders,
+          cvTotalVehiclesDetail, dashFrgament, days, daysBR, expiredDevices, fleetChart, fuelChart,
+          ivTotalReminderIcon, ivTotalVehicleIcon, llAis140, llAis140Details, llAllVehicle,
+          llAvgSpeed, llAvgSpeedProgress, llBars, llBatteryDisconnected, llBillReminder,
+          llDrivingBehavProgress, llDrivingBehaviour, llDrivingData, llFleetProgress,
+          llFuelProgress, llHighspeed, llIdealPercentage, llIgnitionOn, llMainLayout, llMoving,
+          llMovingPercentage, llNoFleet, llOverspeed, llOverspeedProgress, llParked,
           llParkingPercentage, llSpeedAnalysis, llTotalVehicleMain, llTotalVhclProgress,
-          llUnreachable, marqueeText, noFuelAvailable, relativeLayout, rlDriverBehavChart,
-          rlDrivingNotAvailable, rlFuelNotAvailable, tvAboveAvg, tvAboveAvgLabel, tvAvgSpeed,
-          tvBatDisconnectionVehicle, tvBatteryDisconneted, tvDriving, tvFleetUnitilization,
-          tvFuelAnalysis, tvHarshAccCount, tvHarshBreakCount, tvHarshOverspeedCount, tvHighestAvg,
-          tvHighestLabel, tvHighspeed, tvIdeal, tvIdealPercentage, tvMoving, tvMovingPercentage,
-          tvMovingVehicle, tvOverspeed, tvParked, tvParkedPercentage, tvParkedVehicle,
-          tvRashTurnCount, tvReminderCount, tvReminderHeading, tvTotal, tvTotalVehicle,
-          tvTotalVehicleHeading, tvUnreachVehicle);
+          llUnreachable, marqueeText, noFuelAvailable, pdDevices, binding_progress, relativeLayout,
+          reminderLayout, reminderProgress, renewalDevices, rlDriverBehavChart,
+          rlDrivingNotAvailable, rlFuelNotAvailable, rlSpeedAnalysis, swipeView, totalDevices,
+          tvAboveAvg, tvAboveAvgLabel, tvAvgSpeed, tvBatDisconnectionVehicle, tvBatteryDisconneted,
+          tvDriving, tvFleetUnitilization, tvFuelAnalysis, tvHarshAccCount, tvHarshBreakCount,
+          tvHarshOverspeedCount, tvHighestAvg, tvHighestLabel, tvHighspeed, tvIdeal,
+          tvIdealPercentage, tvMoving, tvMovingPercentage, tvMovingVehicle, tvOverspeed, tvParked,
+          tvParkedPercentage, tvParkedVehicle, tvRashTurnCount, tvReminderCount, tvReminderHeading,
+          tvTotal, tvTotalVehicle, tvTotalVehicleHeading, tvUnreachVehicle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

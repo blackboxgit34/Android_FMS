@@ -4,7 +4,7 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -29,13 +29,7 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
   public final CardView cvDetails;
 
   @NonNull
-  public final EditText etSearch;
-
-  @NonNull
   public final ImageView icClose;
-
-  @NonNull
-  public final ImageView ivSearch;
 
   @NonNull
   public final LinearLayout llHiSpeed;
@@ -59,7 +53,10 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
   public final LinearLayout llTowed;
 
   @NonNull
-  public final TextView mapView;
+  public final ImageView mapView;
+
+  @NonNull
+  public final FrameLayout progress;
 
   @NonNull
   public final RadioButton rbHiSpeed;
@@ -81,9 +78,6 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
 
   @NonNull
   public final RadioButton rbUnreach;
-
-  @NonNull
-  public final RelativeLayout rlSearch;
 
   @NonNull
   public final ToolbarLayoutBinding toolbar;
@@ -131,26 +125,24 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
   public final AppCompatTextView tvVehicleName;
 
   private ActivityGlocationOnMapBinding(@NonNull RelativeLayout rootView,
-      @NonNull CardView cvDetails, @NonNull EditText etSearch, @NonNull ImageView icClose,
-      @NonNull ImageView ivSearch, @NonNull LinearLayout llHiSpeed, @NonNull LinearLayout llIdeal,
-      @NonNull LinearLayout llInactive, @NonNull LinearLayout llRunning,
-      @NonNull LinearLayout llStopped, @NonNull LinearLayout llTotal, @NonNull LinearLayout llTowed,
-      @NonNull TextView mapView, @NonNull RadioButton rbHiSpeed, @NonNull RadioButton rbIgnition,
-      @NonNull RadioButton rbMoving, @NonNull RadioButton rbParked, @NonNull RadioButton rbTotal,
-      @NonNull RadioButton rbTowed, @NonNull RadioButton rbUnreach,
-      @NonNull RelativeLayout rlSearch, @NonNull ToolbarLayoutBinding toolbar,
-      @NonNull AppCompatTextView tvDataDate, @NonNull AppCompatTextView tvDistance,
-      @NonNull TextView tvHighSpeedCount, @NonNull TextView tvIgnitionCount,
-      @NonNull AppCompatTextView tvLocation, @NonNull TextView tvMovingCount,
-      @NonNull TextView tvParkedVehicle, @NonNull AppCompatTextView tvProgressStatus,
-      @NonNull AppCompatTextView tvSpeed, @NonNull TextView tvTotalVehicles,
-      @NonNull TextView tvTowdCount, @NonNull AppCompatTextView tvUnits,
-      @NonNull TextView tvUnreachCount, @NonNull AppCompatTextView tvVehicleName) {
+      @NonNull CardView cvDetails, @NonNull ImageView icClose, @NonNull LinearLayout llHiSpeed,
+      @NonNull LinearLayout llIdeal, @NonNull LinearLayout llInactive,
+      @NonNull LinearLayout llRunning, @NonNull LinearLayout llStopped,
+      @NonNull LinearLayout llTotal, @NonNull LinearLayout llTowed, @NonNull ImageView mapView,
+      @NonNull FrameLayout progress, @NonNull RadioButton rbHiSpeed,
+      @NonNull RadioButton rbIgnition, @NonNull RadioButton rbMoving, @NonNull RadioButton rbParked,
+      @NonNull RadioButton rbTotal, @NonNull RadioButton rbTowed, @NonNull RadioButton rbUnreach,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull AppCompatTextView tvDataDate,
+      @NonNull AppCompatTextView tvDistance, @NonNull TextView tvHighSpeedCount,
+      @NonNull TextView tvIgnitionCount, @NonNull AppCompatTextView tvLocation,
+      @NonNull TextView tvMovingCount, @NonNull TextView tvParkedVehicle,
+      @NonNull AppCompatTextView tvProgressStatus, @NonNull AppCompatTextView tvSpeed,
+      @NonNull TextView tvTotalVehicles, @NonNull TextView tvTowdCount,
+      @NonNull AppCompatTextView tvUnits, @NonNull TextView tvUnreachCount,
+      @NonNull AppCompatTextView tvVehicleName) {
     this.rootView = rootView;
     this.cvDetails = cvDetails;
-    this.etSearch = etSearch;
     this.icClose = icClose;
-    this.ivSearch = ivSearch;
     this.llHiSpeed = llHiSpeed;
     this.llIdeal = llIdeal;
     this.llInactive = llInactive;
@@ -159,6 +151,7 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
     this.llTotal = llTotal;
     this.llTowed = llTowed;
     this.mapView = mapView;
+    this.progress = progress;
     this.rbHiSpeed = rbHiSpeed;
     this.rbIgnition = rbIgnition;
     this.rbMoving = rbMoving;
@@ -166,7 +159,6 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
     this.rbTotal = rbTotal;
     this.rbTowed = rbTowed;
     this.rbUnreach = rbUnreach;
-    this.rlSearch = rlSearch;
     this.toolbar = toolbar;
     this.tvDataDate = tvDataDate;
     this.tvDistance = tvDistance;
@@ -217,21 +209,9 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.etSearch;
-      EditText etSearch = ViewBindings.findChildViewById(rootView, id);
-      if (etSearch == null) {
-        break missingId;
-      }
-
       id = R.id.icClose;
       ImageView icClose = ViewBindings.findChildViewById(rootView, id);
       if (icClose == null) {
-        break missingId;
-      }
-
-      id = R.id.ivSearch;
-      ImageView ivSearch = ViewBindings.findChildViewById(rootView, id);
-      if (ivSearch == null) {
         break missingId;
       }
 
@@ -278,8 +258,14 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
       }
 
       id = R.id.mapView;
-      TextView mapView = ViewBindings.findChildViewById(rootView, id);
+      ImageView mapView = ViewBindings.findChildViewById(rootView, id);
       if (mapView == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      FrameLayout progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
         break missingId;
       }
 
@@ -322,12 +308,6 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
       id = R.id.rbUnreach;
       RadioButton rbUnreach = ViewBindings.findChildViewById(rootView, id);
       if (rbUnreach == null) {
-        break missingId;
-      }
-
-      id = R.id.rlSearch;
-      RelativeLayout rlSearch = ViewBindings.findChildViewById(rootView, id);
-      if (rlSearch == null) {
         break missingId;
       }
 
@@ -422,12 +402,12 @@ public final class ActivityGlocationOnMapBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityGlocationOnMapBinding((RelativeLayout) rootView, cvDetails, etSearch,
-          icClose, ivSearch, llHiSpeed, llIdeal, llInactive, llRunning, llStopped, llTotal, llTowed,
-          mapView, rbHiSpeed, rbIgnition, rbMoving, rbParked, rbTotal, rbTowed, rbUnreach, rlSearch,
-          binding_toolbar, tvDataDate, tvDistance, tvHighSpeedCount, tvIgnitionCount, tvLocation,
-          tvMovingCount, tvParkedVehicle, tvProgressStatus, tvSpeed, tvTotalVehicles, tvTowdCount,
-          tvUnits, tvUnreachCount, tvVehicleName);
+      return new ActivityGlocationOnMapBinding((RelativeLayout) rootView, cvDetails, icClose,
+          llHiSpeed, llIdeal, llInactive, llRunning, llStopped, llTotal, llTowed, mapView, progress,
+          rbHiSpeed, rbIgnition, rbMoving, rbParked, rbTotal, rbTowed, rbUnreach, binding_toolbar,
+          tvDataDate, tvDistance, tvHighSpeedCount, tvIgnitionCount, tvLocation, tvMovingCount,
+          tvParkedVehicle, tvProgressStatus, tvSpeed, tvTotalVehicles, tvTowdCount, tvUnits,
+          tvUnreachCount, tvVehicleName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.ActivityTemperatureDetailReportBinding
 import com.humbhi.blackbox.databinding.ActivityTemperatureSensorReportBinding
 import com.humbhi.blackbox.ui.adapters.TempDetailAdapter
@@ -17,6 +18,7 @@ import com.humbhi.blackbox.ui.data.network.RestClient
 import com.humbhi.blackbox.ui.ui.addonReports.temperature.TempSensorPresenter
 import com.humbhi.blackbox.ui.ui.addonReports.temperature.TempSensorPresenterImpl
 import com.humbhi.blackbox.ui.utils.CommonUtil
+import com.humbhi.blackbox.ui.utils.Constants
 
 class TemperatureDetailReport : AppCompatActivity(),TempDetailInterface {
 
@@ -94,7 +96,10 @@ class TemperatureDetailReport : AppCompatActivity(),TempDetailInterface {
     }
 
     override fun isNetworkConnected(): Boolean {
-        return true
+        if(com.humbhi.blackbox.ui.utils.Network.isNetworkAvailable(this)) {
+            return true
+        }
+        return false
     }
 
     override fun isShowLoading(): Boolean {

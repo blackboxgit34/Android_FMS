@@ -1,12 +1,17 @@
 package com.humbhi.blackbox.ui.ui.reports.dailyreport
 
+import android.net.DnsResolver.DnsException
+import android.os.Build
 import com.google.gson.Gson
+import com.humbhi.blackbox.R
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.DailyReportResponse
-import com.humbhi.blackbox.ui.data.models.VehicleLiveStatusModel
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
-import com.humbhi.blackbox.ui.ui.vehicleStatus.VehicleStatusView
+import com.humbhi.blackbox.ui.retofit.Retrofit2
+import com.humbhi.blackbox.ui.utils.Constants
+import org.chromium.net.NetworkException
+import java.net.SocketTimeoutException
 
 class DailyReportPresenterImpl(
     private val mDailyReportView: DailyReportView,
@@ -40,7 +45,17 @@ class DailyReportPresenterImpl(
 
                     override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                         mDailyReportView.isHideLoading()
-                        mDailyReportView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                        if (throwable is SocketTimeoutException) {
+                            mDailyReportView.showErrorMessage("Connection time out, please try again")
+                        } else if (throwable is java.net.UnknownHostException) {
+                            mDailyReportView.showErrorMessage("No internet available, please try again")
+                        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            if (throwable is DnsException) {
+                                mDailyReportView.showErrorMessage("Connectivity issue")
+                            }
+                        } else {
+                            mDailyReportView.showErrorMessage("Something went wrong")
+                        }
                     }
 
                 })

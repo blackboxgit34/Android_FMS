@@ -1,5 +1,7 @@
 package com.humbhi.blackbox.ui.ui.drivingBehaviour.driverVoilations
 
+import android.net.DnsResolver
+import android.os.Build
 import com.google.gson.Gson
 import com.humbhi.blackbox.ui.data.DataManager
 import com.humbhi.blackbox.ui.data.models.ExcellentDriverDataModel
@@ -7,6 +9,7 @@ import com.humbhi.blackbox.ui.data.models.RiskyDriverModel
 import com.humbhi.blackbox.ui.data.models.TotalVoilationDataModel
 import com.humbhi.blackbox.ui.data.network.ApiError
 import com.humbhi.blackbox.ui.data.network.api.ApiHelper
+import java.net.SocketTimeoutException
 
 class TotalVoilationPresenterImpl(
     private val mTotalVoilationView: TotalVoilationView,
@@ -36,7 +39,17 @@ class TotalVoilationPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mTotalVoilationView.isHideLoading()
-                            mTotalVoilationView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mTotalVoilationView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mTotalVoilationView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mTotalVoilationView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mTotalVoilationView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })
@@ -69,7 +82,17 @@ class TotalVoilationPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mTotalVoilationView.isHideLoading()
-                            mTotalVoilationView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mTotalVoilationView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mTotalVoilationView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mTotalVoilationView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mTotalVoilationView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })
@@ -102,7 +125,17 @@ class TotalVoilationPresenterImpl(
 
                         override fun onFailure(apiError: ApiError?, throwable: Throwable?) {
                             mTotalVoilationView.isHideLoading()
-                            mTotalVoilationView.showErrorMessage("Something went wrong. Please connect BlackBox team.")
+                            if (throwable is SocketTimeoutException) {
+                                mTotalVoilationView.showErrorMessage("Connection time out, please try again")
+                            } else if (throwable is java.net.UnknownHostException) {
+                                mTotalVoilationView.showErrorMessage("No internet available, please try again")
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                if (throwable is DnsResolver.DnsException) {
+                                    mTotalVoilationView.showErrorMessage("Connectivity issue")
+                                }
+                            } else {
+                                mTotalVoilationView.showErrorMessage("Something went wrong")
+                            }
                         }
 
                     })

@@ -4,6 +4,9 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,20 +23,77 @@ public final class AisVehicleAdapterBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView ivRoute;
+  public final TextView Status;
 
   @NonNull
-  public final TextView tvDistanceTravel;
+  public final TextView billAmount;
+
+  @NonNull
+  public final TextView deviceStatus;
+
+  @NonNull
+  public final TextView lateFee;
+
+  @NonNull
+  public final LinearLayout llBillAmount;
+
+  @NonNull
+  public final LinearLayout llLateFee;
+
+  @NonNull
+  public final LinearLayout llTotalPayment;
+
+  @NonNull
+  public final RadioButton radioButton1;
+
+  @NonNull
+  public final RadioButton radioButton2;
+
+  @NonNull
+  public final RadioGroup rgYearSubscription;
+
+  @NonNull
+  public final TextView totalFee;
+
+  @NonNull
+  public final TextView tvExpirationDate;
+
+  @NonNull
+  public final TextView tvPaid;
+
+  @NonNull
+  public final TextView tvPay;
 
   @NonNull
   public final TextView tvVehicleName;
 
-  private AisVehicleAdapterBinding(@NonNull ConstraintLayout rootView, @NonNull TextView ivRoute,
-      @NonNull TextView tvDistanceTravel, @NonNull TextView tvVehicleName) {
+  @NonNull
+  public final TextView validityStatus;
+
+  private AisVehicleAdapterBinding(@NonNull ConstraintLayout rootView, @NonNull TextView Status,
+      @NonNull TextView billAmount, @NonNull TextView deviceStatus, @NonNull TextView lateFee,
+      @NonNull LinearLayout llBillAmount, @NonNull LinearLayout llLateFee,
+      @NonNull LinearLayout llTotalPayment, @NonNull RadioButton radioButton1,
+      @NonNull RadioButton radioButton2, @NonNull RadioGroup rgYearSubscription,
+      @NonNull TextView totalFee, @NonNull TextView tvExpirationDate, @NonNull TextView tvPaid,
+      @NonNull TextView tvPay, @NonNull TextView tvVehicleName, @NonNull TextView validityStatus) {
     this.rootView = rootView;
-    this.ivRoute = ivRoute;
-    this.tvDistanceTravel = tvDistanceTravel;
+    this.Status = Status;
+    this.billAmount = billAmount;
+    this.deviceStatus = deviceStatus;
+    this.lateFee = lateFee;
+    this.llBillAmount = llBillAmount;
+    this.llLateFee = llLateFee;
+    this.llTotalPayment = llTotalPayment;
+    this.radioButton1 = radioButton1;
+    this.radioButton2 = radioButton2;
+    this.rgYearSubscription = rgYearSubscription;
+    this.totalFee = totalFee;
+    this.tvExpirationDate = tvExpirationDate;
+    this.tvPaid = tvPaid;
+    this.tvPay = tvPay;
     this.tvVehicleName = tvVehicleName;
+    this.validityStatus = validityStatus;
   }
 
   @Override
@@ -63,15 +123,87 @@ public final class AisVehicleAdapterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.ivRoute;
-      TextView ivRoute = ViewBindings.findChildViewById(rootView, id);
-      if (ivRoute == null) {
+      id = R.id.Status;
+      TextView Status = ViewBindings.findChildViewById(rootView, id);
+      if (Status == null) {
         break missingId;
       }
 
-      id = R.id.tvDistanceTravel;
-      TextView tvDistanceTravel = ViewBindings.findChildViewById(rootView, id);
-      if (tvDistanceTravel == null) {
+      id = R.id.billAmount;
+      TextView billAmount = ViewBindings.findChildViewById(rootView, id);
+      if (billAmount == null) {
+        break missingId;
+      }
+
+      id = R.id.deviceStatus;
+      TextView deviceStatus = ViewBindings.findChildViewById(rootView, id);
+      if (deviceStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.lateFee;
+      TextView lateFee = ViewBindings.findChildViewById(rootView, id);
+      if (lateFee == null) {
+        break missingId;
+      }
+
+      id = R.id.llBillAmount;
+      LinearLayout llBillAmount = ViewBindings.findChildViewById(rootView, id);
+      if (llBillAmount == null) {
+        break missingId;
+      }
+
+      id = R.id.llLateFee;
+      LinearLayout llLateFee = ViewBindings.findChildViewById(rootView, id);
+      if (llLateFee == null) {
+        break missingId;
+      }
+
+      id = R.id.llTotalPayment;
+      LinearLayout llTotalPayment = ViewBindings.findChildViewById(rootView, id);
+      if (llTotalPayment == null) {
+        break missingId;
+      }
+
+      id = R.id.radioButton1;
+      RadioButton radioButton1 = ViewBindings.findChildViewById(rootView, id);
+      if (radioButton1 == null) {
+        break missingId;
+      }
+
+      id = R.id.radioButton2;
+      RadioButton radioButton2 = ViewBindings.findChildViewById(rootView, id);
+      if (radioButton2 == null) {
+        break missingId;
+      }
+
+      id = R.id.rgYearSubscription;
+      RadioGroup rgYearSubscription = ViewBindings.findChildViewById(rootView, id);
+      if (rgYearSubscription == null) {
+        break missingId;
+      }
+
+      id = R.id.totalFee;
+      TextView totalFee = ViewBindings.findChildViewById(rootView, id);
+      if (totalFee == null) {
+        break missingId;
+      }
+
+      id = R.id.tvExpirationDate;
+      TextView tvExpirationDate = ViewBindings.findChildViewById(rootView, id);
+      if (tvExpirationDate == null) {
+        break missingId;
+      }
+
+      id = R.id.tvPaid;
+      TextView tvPaid = ViewBindings.findChildViewById(rootView, id);
+      if (tvPaid == null) {
+        break missingId;
+      }
+
+      id = R.id.tvPay;
+      TextView tvPay = ViewBindings.findChildViewById(rootView, id);
+      if (tvPay == null) {
         break missingId;
       }
 
@@ -81,8 +213,16 @@ public final class AisVehicleAdapterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new AisVehicleAdapterBinding((ConstraintLayout) rootView, ivRoute, tvDistanceTravel,
-          tvVehicleName);
+      id = R.id.validityStatus;
+      TextView validityStatus = ViewBindings.findChildViewById(rootView, id);
+      if (validityStatus == null) {
+        break missingId;
+      }
+
+      return new AisVehicleAdapterBinding((ConstraintLayout) rootView, Status, billAmount,
+          deviceStatus, lateFee, llBillAmount, llLateFee, llTotalPayment, radioButton1,
+          radioButton2, rgYearSubscription, totalFee, tvExpirationDate, tvPaid, tvPay,
+          tvVehicleName, validityStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

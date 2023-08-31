@@ -1,0 +1,28 @@
+<!-- activity_main.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/oldEmailTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Old Email: user@example.com"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/newEmailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/oldEmailTextView"
+        android:layout_marginTop="16dp"
+        android:hint="Enter new email"
+        android:paddingStart="@dimen/margin_x"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress" />
+
+</RelativeLayout>

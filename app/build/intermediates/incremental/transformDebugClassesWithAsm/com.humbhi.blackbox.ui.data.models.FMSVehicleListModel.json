@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.data.models.FMSVehicleListModel","classAnnotations":[],"interfaces":["java.io.Serializable","java.lang.Cloneable","java.lang.Iterable","java.util.Collection","java.util.List","java.util.RandomAccess"],"superClasses":["java.util.ArrayList","java.util.AbstractList","java.util.AbstractCollection","java.lang.Object"]}

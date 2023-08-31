@@ -4,14 +4,11 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -25,16 +22,10 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
   private final RelativeLayout rootView;
 
   @NonNull
-  public final Button btnAppy;
-
-  @NonNull
-  public final LinearLayout customDate;
-
-  @NonNull
   public final AppCompatEditText etSearchBar;
 
   @NonNull
-  public final LinearLayoutCompat llCustomDateRange;
+  public final CustomDateLayoutBinding llCustomDateRange;
 
   @NonNull
   public final TextView loadMore;
@@ -52,12 +43,6 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
   public final TextView tvCustom;
 
   @NonNull
-  public final TextView tvEndDate;
-
-  @NonNull
-  public final TextView tvStartDate;
-
-  @NonNull
   public final TextView tvToday;
 
   @NonNull
@@ -67,15 +52,12 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
   public final TextView tvYesterday;
 
   private ActivityOverstoppageReportActivtiyBinding(@NonNull RelativeLayout rootView,
-      @NonNull Button btnAppy, @NonNull LinearLayout customDate,
-      @NonNull AppCompatEditText etSearchBar, @NonNull LinearLayoutCompat llCustomDateRange,
+      @NonNull AppCompatEditText etSearchBar, @NonNull CustomDateLayoutBinding llCustomDateRange,
       @NonNull TextView loadMore, @NonNull ProgressBarBinding progressLayout,
       @NonNull RecyclerView rvRecycler, @NonNull ToolbarLayoutBinding toolbar,
-      @NonNull TextView tvCustom, @NonNull TextView tvEndDate, @NonNull TextView tvStartDate,
-      @NonNull TextView tvToday, @NonNull TextView tvWeek, @NonNull TextView tvYesterday) {
+      @NonNull TextView tvCustom, @NonNull TextView tvToday, @NonNull TextView tvWeek,
+      @NonNull TextView tvYesterday) {
     this.rootView = rootView;
-    this.btnAppy = btnAppy;
-    this.customDate = customDate;
     this.etSearchBar = etSearchBar;
     this.llCustomDateRange = llCustomDateRange;
     this.loadMore = loadMore;
@@ -83,8 +65,6 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
     this.tvCustom = tvCustom;
-    this.tvEndDate = tvEndDate;
-    this.tvStartDate = tvStartDate;
     this.tvToday = tvToday;
     this.tvWeek = tvWeek;
     this.tvYesterday = tvYesterday;
@@ -118,18 +98,6 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnAppy;
-      Button btnAppy = ViewBindings.findChildViewById(rootView, id);
-      if (btnAppy == null) {
-        break missingId;
-      }
-
-      id = R.id.customDate;
-      LinearLayout customDate = ViewBindings.findChildViewById(rootView, id);
-      if (customDate == null) {
-        break missingId;
-      }
-
       id = R.id.etSearchBar;
       AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
       if (etSearchBar == null) {
@@ -137,10 +105,11 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
       }
 
       id = R.id.llCustomDateRange;
-      LinearLayoutCompat llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
+      View llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
       if (llCustomDateRange == null) {
         break missingId;
       }
+      CustomDateLayoutBinding binding_llCustomDateRange = CustomDateLayoutBinding.bind(llCustomDateRange);
 
       id = R.id.loadMore;
       TextView loadMore = ViewBindings.findChildViewById(rootView, id);
@@ -174,18 +143,6 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
         break missingId;
       }
 
-      id = R.id.tvEndDate;
-      TextView tvEndDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvEndDate == null) {
-        break missingId;
-      }
-
-      id = R.id.tvStartDate;
-      TextView tvStartDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvStartDate == null) {
-        break missingId;
-      }
-
       id = R.id.tvToday;
       TextView tvToday = ViewBindings.findChildViewById(rootView, id);
       if (tvToday == null) {
@@ -204,9 +161,9 @@ public final class ActivityOverstoppageReportActivtiyBinding implements ViewBind
         break missingId;
       }
 
-      return new ActivityOverstoppageReportActivtiyBinding((RelativeLayout) rootView, btnAppy,
-          customDate, etSearchBar, llCustomDateRange, loadMore, binding_progressLayout, rvRecycler,
-          binding_toolbar, tvCustom, tvEndDate, tvStartDate, tvToday, tvWeek, tvYesterday);
+      return new ActivityOverstoppageReportActivtiyBinding((RelativeLayout) rootView, etSearchBar,
+          binding_llCustomDateRange, loadMore, binding_progressLayout, rvRecycler, binding_toolbar,
+          tvCustom, tvToday, tvWeek, tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

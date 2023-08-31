@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter
 import com.humbhi.blackbox.ui.data.db.CommonData
 import com.humbhi.blackbox.ui.data.models.AllVehicleModel
 import com.humbhi.blackbox.ui.data.models.ComplaintTypeModel
@@ -25,7 +26,7 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException
 
-class AddServiceRequestActivity : AppCompatActivity(), View.OnClickListener, RetrofitResponse {
+open class AddServiceRequestActivity : AppCompatActivity(), View.OnClickListener, RetrofitResponse {
     var spinnerservicerequest: Spinner? = null
     private var spComplaint: Spinner? = null
     var edtcomment: EditText? = null
@@ -122,16 +123,17 @@ class AddServiceRequestActivity : AppCompatActivity(), View.OnClickListener, Ret
         when (view.id) {
             R.id.btnsubmit ->
                 if (validation()) {
-                getAddServiceRequest()
-            }
+                    getAddServiceRequest()
+                }
         }
     }
 
     /*
      * Spinner
      * */
-    fun spinVehicles() {
-        spinnerservicerequest!!.adapter = CustSpinnerAdapter.getAdapter(this, vehiclelist)
+    private fun spinVehicles() {
+
+        spinnerservicerequest!!.adapter = SearchableAdapter(this, vehiclelist)
         spinnerservicerequest!!.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -156,7 +158,7 @@ class AddServiceRequestActivity : AppCompatActivity(), View.OnClickListener, Ret
      * Spinner
      * */
     fun spinComplaint() {
-        spComplaint?.adapter = CustSpinnerAdapter.getAdapter(this, complaintlist)
+        spComplaint?.adapter = SearchableAdapter(this, complaintlist)
         spComplaint?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
                 val tv = view as TextView

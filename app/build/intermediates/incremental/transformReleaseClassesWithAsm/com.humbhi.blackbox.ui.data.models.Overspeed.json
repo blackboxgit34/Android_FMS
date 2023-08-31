@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.data.models.Overspeed","classAnnotations":["kotlinx.parcelize.Parcelize"],"interfaces":["android.os.Parcelable"],"superClasses":["java.lang.Object"]}

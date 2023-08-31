@@ -5,12 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.github.anastr.speedviewlib.ImageLinearGauge;
@@ -25,19 +24,22 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
   private final LinearLayoutCompat rootView;
 
   @NonNull
-  public final Button btnAppy;
-
-  @NonNull
   public final LineChart chart1;
 
   @NonNull
-  public final LinearLayout customDate;
+  public final TextView fuelFillingLayoutTitle;
+
+  @NonNull
+  public final RecyclerView fuelFillingList;
 
   @NonNull
   public final ImageLinearGauge gauge;
 
   @NonNull
-  public final LinearLayoutCompat llCustomDateRange;
+  public final CustomDateLayoutBinding llCustomDateRange;
+
+  @NonNull
+  public final ProgressBarBinding progress;
 
   @NonNull
   public final LinearLayoutCompat searchLayout;
@@ -56,12 +58,6 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
 
   @NonNull
   public final TextView tvEmptyFuel;
-
-  @NonNull
-  public final TextView tvEndDate;
-
-  @NonNull
-  public final TextView tvFillingFuelLevel;
 
   @NonNull
   public final TextView tvFuelinTank;
@@ -85,43 +81,42 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
   public final TextView tvSelectedSpeed;
 
   @NonNull
-  public final TextView tvStartDate;
-
-  @NonNull
   public final TextView tvToday;
 
   @NonNull
   public final TextView tvTotalTankVolume;
 
   @NonNull
+  public final TextView tvWeek;
+
+  @NonNull
   public final TextView tvYesterday;
 
   private ActivityFuelGraphJavaBinding(@NonNull LinearLayoutCompat rootView,
-      @NonNull Button btnAppy, @NonNull LineChart chart1, @NonNull LinearLayout customDate,
-      @NonNull ImageLinearGauge gauge, @NonNull LinearLayoutCompat llCustomDateRange,
+      @NonNull LineChart chart1, @NonNull TextView fuelFillingLayoutTitle,
+      @NonNull RecyclerView fuelFillingList, @NonNull ImageLinearGauge gauge,
+      @NonNull CustomDateLayoutBinding llCustomDateRange, @NonNull ProgressBarBinding progress,
       @NonNull LinearLayoutCompat searchLayout, @NonNull AutoCompleteTextView spVehicles,
       @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvCustom,
-      @NonNull TextView tvDataDate, @NonNull TextView tvEmptyFuel, @NonNull TextView tvEndDate,
-      @NonNull TextView tvFillingFuelLevel, @NonNull TextView tvFuelinTank,
+      @NonNull TextView tvDataDate, @NonNull TextView tvEmptyFuel, @NonNull TextView tvFuelinTank,
       @NonNull TextView tvSelectVehicle, @NonNull TextView tvSelectedDateTime,
       @NonNull TextView tvSelectedDistance, @NonNull TextView tvSelectedFuel,
       @NonNull TextView tvSelectedLocation, @NonNull TextView tvSelectedSpeed,
-      @NonNull TextView tvStartDate, @NonNull TextView tvToday, @NonNull TextView tvTotalTankVolume,
+      @NonNull TextView tvToday, @NonNull TextView tvTotalTankVolume, @NonNull TextView tvWeek,
       @NonNull TextView tvYesterday) {
     this.rootView = rootView;
-    this.btnAppy = btnAppy;
     this.chart1 = chart1;
-    this.customDate = customDate;
+    this.fuelFillingLayoutTitle = fuelFillingLayoutTitle;
+    this.fuelFillingList = fuelFillingList;
     this.gauge = gauge;
     this.llCustomDateRange = llCustomDateRange;
+    this.progress = progress;
     this.searchLayout = searchLayout;
     this.spVehicles = spVehicles;
     this.toolbar = toolbar;
     this.tvCustom = tvCustom;
     this.tvDataDate = tvDataDate;
     this.tvEmptyFuel = tvEmptyFuel;
-    this.tvEndDate = tvEndDate;
-    this.tvFillingFuelLevel = tvFillingFuelLevel;
     this.tvFuelinTank = tvFuelinTank;
     this.tvSelectVehicle = tvSelectVehicle;
     this.tvSelectedDateTime = tvSelectedDateTime;
@@ -129,9 +124,9 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
     this.tvSelectedFuel = tvSelectedFuel;
     this.tvSelectedLocation = tvSelectedLocation;
     this.tvSelectedSpeed = tvSelectedSpeed;
-    this.tvStartDate = tvStartDate;
     this.tvToday = tvToday;
     this.tvTotalTankVolume = tvTotalTankVolume;
+    this.tvWeek = tvWeek;
     this.tvYesterday = tvYesterday;
   }
 
@@ -162,21 +157,21 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnAppy;
-      Button btnAppy = ViewBindings.findChildViewById(rootView, id);
-      if (btnAppy == null) {
-        break missingId;
-      }
-
       id = R.id.chart1;
       LineChart chart1 = ViewBindings.findChildViewById(rootView, id);
       if (chart1 == null) {
         break missingId;
       }
 
-      id = R.id.customDate;
-      LinearLayout customDate = ViewBindings.findChildViewById(rootView, id);
-      if (customDate == null) {
+      id = R.id.fuelFillingLayoutTitle;
+      TextView fuelFillingLayoutTitle = ViewBindings.findChildViewById(rootView, id);
+      if (fuelFillingLayoutTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.fuel_filling_list;
+      RecyclerView fuelFillingList = ViewBindings.findChildViewById(rootView, id);
+      if (fuelFillingList == null) {
         break missingId;
       }
 
@@ -187,10 +182,18 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
       }
 
       id = R.id.llCustomDateRange;
-      LinearLayoutCompat llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
+      View llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
       if (llCustomDateRange == null) {
         break missingId;
       }
+      CustomDateLayoutBinding binding_llCustomDateRange = CustomDateLayoutBinding.bind(llCustomDateRange);
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
 
       id = R.id.searchLayout;
       LinearLayoutCompat searchLayout = ViewBindings.findChildViewById(rootView, id);
@@ -226,18 +229,6 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
       id = R.id.tvEmptyFuel;
       TextView tvEmptyFuel = ViewBindings.findChildViewById(rootView, id);
       if (tvEmptyFuel == null) {
-        break missingId;
-      }
-
-      id = R.id.tvEndDate;
-      TextView tvEndDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvEndDate == null) {
-        break missingId;
-      }
-
-      id = R.id.tvFillingFuelLevel;
-      TextView tvFillingFuelLevel = ViewBindings.findChildViewById(rootView, id);
-      if (tvFillingFuelLevel == null) {
         break missingId;
       }
 
@@ -283,12 +274,6 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvStartDate;
-      TextView tvStartDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvStartDate == null) {
-        break missingId;
-      }
-
       id = R.id.tvToday;
       TextView tvToday = ViewBindings.findChildViewById(rootView, id);
       if (tvToday == null) {
@@ -301,17 +286,24 @@ public final class ActivityFuelGraphJavaBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvWeek;
+      TextView tvWeek = ViewBindings.findChildViewById(rootView, id);
+      if (tvWeek == null) {
+        break missingId;
+      }
+
       id = R.id.tvYesterday;
       TextView tvYesterday = ViewBindings.findChildViewById(rootView, id);
       if (tvYesterday == null) {
         break missingId;
       }
 
-      return new ActivityFuelGraphJavaBinding((LinearLayoutCompat) rootView, btnAppy, chart1,
-          customDate, gauge, llCustomDateRange, searchLayout, spVehicles, binding_toolbar, tvCustom,
-          tvDataDate, tvEmptyFuel, tvEndDate, tvFillingFuelLevel, tvFuelinTank, tvSelectVehicle,
-          tvSelectedDateTime, tvSelectedDistance, tvSelectedFuel, tvSelectedLocation,
-          tvSelectedSpeed, tvStartDate, tvToday, tvTotalTankVolume, tvYesterday);
+      return new ActivityFuelGraphJavaBinding((LinearLayoutCompat) rootView, chart1,
+          fuelFillingLayoutTitle, fuelFillingList, gauge, binding_llCustomDateRange,
+          binding_progress, searchLayout, spVehicles, binding_toolbar, tvCustom, tvDataDate,
+          tvEmptyFuel, tvFuelinTank, tvSelectVehicle, tvSelectedDateTime, tvSelectedDistance,
+          tvSelectedFuel, tvSelectedLocation, tvSelectedSpeed, tvToday, tvTotalTankVolume, tvWeek,
+          tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

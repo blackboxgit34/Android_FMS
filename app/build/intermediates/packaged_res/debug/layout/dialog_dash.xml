@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/whats_new_banner"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_v"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:src="@drawable/ic_close" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/margin_x"
+            android:layout_centerHorizontal="true"
+            app:lottie_rawRes="@raw/receipt"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AIS-140 Bill Payment"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="12sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You have 3 bills pending."
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="@dimen/font_11"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/payButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Here"
+        android:layout_marginTop="@dimen/margin_v"
+        android:layout_marginBottom="@dimen/margin_x"
+        android:layout_gravity="center"
+        android:paddingHorizontal="16dp"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:background="@drawable/round_bg_black_light"
+        android:backgroundTint="@color/primary_orange_secondary"/>
+</LinearLayout>

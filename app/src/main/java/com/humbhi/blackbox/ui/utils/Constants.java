@@ -12,8 +12,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Constants {
 	public static final int DEVICE_SDK_INT = Build.VERSION.SDK_INT;
@@ -38,14 +43,14 @@ public class Constants {
 	* @url used for api*/
 	public static final int NewCustomer = Integer.parseInt("13000");
 
-    public static String GET_BANNER="InvoiceAPI/GetAppBanner?";
+    public static final String GET_BANNER="InvoiceAPI/GetAppBanner?";
     public static final int REQ_GET_BANNER = 100;
 
 
-    public static String GET_UPDATE="api/adminapi/UpdateVesrion?";
+    public static final String GET_UPDATE="api/adminapi/UpdateVesrion?";
 	public static final int REQ_GET_UPDATE = 102;
 
-	public static String GET_OCCASION="";
+	public static final String GET_OCCASION="";
 	public static final int REQ_GET_OCCASION = 103;
 
 	public static String LOGIN="user/bbapplogin?";
@@ -54,7 +59,7 @@ public class Constants {
 	public static String GET_LIVE_STATUS="LiveStatus/LiveStatus?";
 	public static final int REQ_GET_LIVE_STATUS = 105;
 
-	public static String LOGOUT="appapi/LogOutforAndroid?";
+	public static final String LOGOUT="appapi/LogOutforAndroid?";
 	public static final int REQ_LOGOUT = 106;
 
 	public static String VEHICLE_COUNT = "livestatus/VehiclesStatusGraph?";
@@ -72,7 +77,7 @@ public class Constants {
 	public static String MONTHLY_REPORT = "Reportsapi/GetMonthlyReport?";
 	public static final int REQ_MONTHLY_REPORT = 111;
 
-	public static String LOCATION_ON_MAP = "blackbox/live/?";
+	public static String LOCATION_ON_MAP = "blackbox/live?";
 	public static final int REQ_LOCATION_ON_MAP = 112;
 
 	public  static  String DRIVERS_LIST = "ReportsApi/DrBgetDriverName?";
@@ -124,7 +129,7 @@ public class Constants {
 	public static String GET_ROUTE_PLAYBACK = "MapAPI/GetPlayBackDataResult?";
 	public static final int REQ_GET_ROUTE_PLAYBACK = 127;
 
-	public static String GET_NOTIFICATION_LIST = "pumas/getnotificationshistory/?";
+	public static String GET_NOTIFICATION_LIST = "AppApi/GetNotificationApp?";
 	public static final int REQ_GET_NOTIFICATION_LIST = 128;
 
 	public static String GET_DEL_NOTIFICATION = "pumas/PumaDeleteNotification?";
@@ -163,7 +168,7 @@ public class Constants {
 	public static String VEHICLES = "CommonApi/GetFuelVehicles?";
 	public static final int REQ_VEHICLES = 139;
 
-	public static String FORGOT_PASSWORD = "blackbox/updatepassword?";
+	public static String FORGOT_PASSWORD = "CommonApi/VerifyUser?";
 	public static final int REQ_FORGOT_PASSWORD = 140;
 
 	public static String EXPIRE_ACCOUNT_DETAILS = "AppApi/GetUserDetailsMainAccount?";
@@ -212,6 +217,10 @@ public class Constants {
 		alertDialog.show();
 	}
 
+	public static void Toastmsg(Context context, String msg) {
+		Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
+	}
+
 	public static void alertWithIntent(final Context context, String msg, final Class className) {
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -232,6 +241,34 @@ public class Constants {
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 
+	}
+
+	public static String dateAndTime(String inputDateString) {
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+		try {
+			Date date = inputFormat.parse(inputDateString);
+			if (date != null) {
+				return outputFormat.format(date);
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static Date dateAndTimeInDateFormat(String inputDateString) {
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+		try {
+			Date date = inputFormat.parse(inputDateString);
+			if (date != null) {
+				return date;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public static void hideKeyboard(Context context, View view)

@@ -4,10 +4,9 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -18,10 +17,7 @@ import java.lang.String;
 
 public final class ActivityFuelTheftDetailBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
-
-  @NonNull
-  public final TextView etSearchBar;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final RecyclerView rvRecycler;
@@ -29,18 +25,16 @@ public final class ActivityFuelTheftDetailBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
-  private ActivityFuelTheftDetailBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView etSearchBar, @NonNull RecyclerView rvRecycler,
-      @NonNull ToolbarLayoutBinding toolbar) {
+  private ActivityFuelTheftDetailBinding(@NonNull RelativeLayout rootView,
+      @NonNull RecyclerView rvRecycler, @NonNull ToolbarLayoutBinding toolbar) {
     this.rootView = rootView;
-    this.etSearchBar = etSearchBar;
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -65,12 +59,6 @@ public final class ActivityFuelTheftDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.etSearchBar;
-      TextView etSearchBar = ViewBindings.findChildViewById(rootView, id);
-      if (etSearchBar == null) {
-        break missingId;
-      }
-
       id = R.id.rvRecycler;
       RecyclerView rvRecycler = ViewBindings.findChildViewById(rootView, id);
       if (rvRecycler == null) {
@@ -84,8 +72,8 @@ public final class ActivityFuelTheftDetailBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityFuelTheftDetailBinding((ConstraintLayout) rootView, etSearchBar,
-          rvRecycler, binding_toolbar);
+      return new ActivityFuelTheftDetailBinding((RelativeLayout) rootView, rvRecycler,
+          binding_toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

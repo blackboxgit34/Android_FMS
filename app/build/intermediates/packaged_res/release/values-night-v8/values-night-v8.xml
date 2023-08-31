@@ -15,6 +15,7 @@
     <color name="green_alpha_three">#85A2B06D</color>
     <color name="green_dark">#848F59</color>
     <color name="grey_two">#DDDDDD</color>
+    <color name="light_background">#61333333</color>
     <color name="light_black">#444444</color>
     <color name="light_black2">#323232</color>
     <color name="light_blue">#E6F4FF</color>
@@ -90,6 +91,12 @@
     <string name="vehicle">Vehicle</string>
     <string name="vehicle_on_map">Vehicle On Map</string>
     <string name="welcome">Welcome</string>
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>
+    </style>
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+    </style>
     <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
@@ -119,5 +126,7 @@
         <item name="android:statusBarColor" ns1:targetApi="l">@color/dark_grey_status_bar</item>
         
         <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
+
+        <item name="pinViewStyle">@style/PinWidget.PinView</item>
     </style>
 </resources>

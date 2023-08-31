@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingVertical="@dimen/margin_v"
+        android:paddingHorizontal="@dimen/margin_xx"
+        android:layout_marginTop="@dimen/margin_v"
+        android:background="@drawable/white_curve_rect"
+        android:backgroundTint="@color/primaryblack"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/reminder_icon"
+            android:layout_width="@dimen/margin_25"
+            android:layout_height="@dimen/margin_25"
+            android:src="@drawable/ais_140_reminder" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/reminderType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/margin_x"
+            android:text="AIS-140 expiring"
+            android:drawableTint="@color/red"
+            android:drawableEnd="@drawable/ic_circle"
+            android:textColor="@color/white"
+            android:layout_weight="0.7"
+            android:textSize="@dimen/font_12" />
+
+        <TextView
+            android:id="@+id/remainingDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_curve_box"
+            android:backgroundTint="@color/primary_little_fade"
+            android:text="05 days"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/margin_v"
+            android:textSize="@dimen/font_10"
+            android:textColor="@color/grey_two" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

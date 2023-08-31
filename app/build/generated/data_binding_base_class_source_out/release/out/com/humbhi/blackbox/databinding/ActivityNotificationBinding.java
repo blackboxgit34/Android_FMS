@@ -4,10 +4,11 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.humbhi.blackbox.R;
@@ -17,7 +18,19 @@ import java.lang.String;
 
 public final class ActivityNotificationBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final SwipeRefreshLayout rootView;
+
+  @NonNull
+  public final TextView loadMore;
+
+  @NonNull
+  public final TextView noItemFound;
+
+  @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
+  public final SwipeRefreshLayout refreshLayout;
 
   @NonNull
   public final RecyclerView rvNotifications;
@@ -25,16 +38,22 @@ public final class ActivityNotificationBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
-  private ActivityNotificationBinding(@NonNull RelativeLayout rootView,
+  private ActivityNotificationBinding(@NonNull SwipeRefreshLayout rootView,
+      @NonNull TextView loadMore, @NonNull TextView noItemFound,
+      @NonNull ProgressBarBinding progress, @NonNull SwipeRefreshLayout refreshLayout,
       @NonNull RecyclerView rvNotifications, @NonNull ToolbarLayoutBinding toolbar) {
     this.rootView = rootView;
+    this.loadMore = loadMore;
+    this.noItemFound = noItemFound;
+    this.progress = progress;
+    this.refreshLayout = refreshLayout;
     this.rvNotifications = rvNotifications;
     this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public SwipeRefreshLayout getRoot() {
     return rootView;
   }
 
@@ -59,6 +78,27 @@ public final class ActivityNotificationBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.loadMore;
+      TextView loadMore = ViewBindings.findChildViewById(rootView, id);
+      if (loadMore == null) {
+        break missingId;
+      }
+
+      id = R.id.noItemFound;
+      TextView noItemFound = ViewBindings.findChildViewById(rootView, id);
+      if (noItemFound == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
+      SwipeRefreshLayout refreshLayout = (SwipeRefreshLayout) rootView;
+
       id = R.id.rvNotifications;
       RecyclerView rvNotifications = ViewBindings.findChildViewById(rootView, id);
       if (rvNotifications == null) {
@@ -72,8 +112,8 @@ public final class ActivityNotificationBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityNotificationBinding((RelativeLayout) rootView, rvNotifications,
-          binding_toolbar);
+      return new ActivityNotificationBinding((SwipeRefreshLayout) rootView, loadMore, noItemFound,
+          binding_progress, refreshLayout, rvNotifications, binding_toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,14 +4,11 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -29,19 +26,16 @@ public final class ActivityRashTurnBinding implements ViewBinding {
   public final BarChart DistanceChart;
 
   @NonNull
-  public final Button btnAppy;
-
-  @NonNull
-  public final LinearLayout customDate;
-
-  @NonNull
   public final AppCompatEditText etSearchBar;
 
   @NonNull
-  public final LinearLayoutCompat llCustomDateRange;
+  public final CustomDateLayoutBinding llCustomDateRange;
 
   @NonNull
   public final TextView loadMore;
+
+  @NonNull
+  public final ProgressBarBinding progress;
 
   @NonNull
   public final RecyclerView rvChart;
@@ -56,12 +50,6 @@ public final class ActivityRashTurnBinding implements ViewBinding {
   public final TextView tvCustom;
 
   @NonNull
-  public final TextView tvEndDate;
-
-  @NonNull
-  public final TextView tvStartDate;
-
-  @NonNull
   public final TextView tvToday;
 
   @NonNull
@@ -74,25 +62,21 @@ public final class ActivityRashTurnBinding implements ViewBinding {
   public final TextView tvYesterday;
 
   private ActivityRashTurnBinding(@NonNull RelativeLayout rootView, @NonNull BarChart DistanceChart,
-      @NonNull Button btnAppy, @NonNull LinearLayout customDate,
-      @NonNull AppCompatEditText etSearchBar, @NonNull LinearLayoutCompat llCustomDateRange,
-      @NonNull TextView loadMore, @NonNull RecyclerView rvChart, @NonNull RecyclerView rvRecycler,
-      @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvCustom,
-      @NonNull TextView tvEndDate, @NonNull TextView tvStartDate, @NonNull TextView tvToday,
+      @NonNull AppCompatEditText etSearchBar, @NonNull CustomDateLayoutBinding llCustomDateRange,
+      @NonNull TextView loadMore, @NonNull ProgressBarBinding progress,
+      @NonNull RecyclerView rvChart, @NonNull RecyclerView rvRecycler,
+      @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvCustom, @NonNull TextView tvToday,
       @NonNull TextView tvTotalCount, @NonNull TextView tvWeek, @NonNull TextView tvYesterday) {
     this.rootView = rootView;
     this.DistanceChart = DistanceChart;
-    this.btnAppy = btnAppy;
-    this.customDate = customDate;
     this.etSearchBar = etSearchBar;
     this.llCustomDateRange = llCustomDateRange;
     this.loadMore = loadMore;
+    this.progress = progress;
     this.rvChart = rvChart;
     this.rvRecycler = rvRecycler;
     this.toolbar = toolbar;
     this.tvCustom = tvCustom;
-    this.tvEndDate = tvEndDate;
-    this.tvStartDate = tvStartDate;
     this.tvToday = tvToday;
     this.tvTotalCount = tvTotalCount;
     this.tvWeek = tvWeek;
@@ -132,18 +116,6 @@ public final class ActivityRashTurnBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnAppy;
-      Button btnAppy = ViewBindings.findChildViewById(rootView, id);
-      if (btnAppy == null) {
-        break missingId;
-      }
-
-      id = R.id.customDate;
-      LinearLayout customDate = ViewBindings.findChildViewById(rootView, id);
-      if (customDate == null) {
-        break missingId;
-      }
-
       id = R.id.etSearchBar;
       AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
       if (etSearchBar == null) {
@@ -151,16 +123,24 @@ public final class ActivityRashTurnBinding implements ViewBinding {
       }
 
       id = R.id.llCustomDateRange;
-      LinearLayoutCompat llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
+      View llCustomDateRange = ViewBindings.findChildViewById(rootView, id);
       if (llCustomDateRange == null) {
         break missingId;
       }
+      CustomDateLayoutBinding binding_llCustomDateRange = CustomDateLayoutBinding.bind(llCustomDateRange);
 
       id = R.id.loadMore;
       TextView loadMore = ViewBindings.findChildViewById(rootView, id);
       if (loadMore == null) {
         break missingId;
       }
+
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
 
       id = R.id.rvChart;
       RecyclerView rvChart = ViewBindings.findChildViewById(rootView, id);
@@ -184,18 +164,6 @@ public final class ActivityRashTurnBinding implements ViewBinding {
       id = R.id.tvCustom;
       TextView tvCustom = ViewBindings.findChildViewById(rootView, id);
       if (tvCustom == null) {
-        break missingId;
-      }
-
-      id = R.id.tvEndDate;
-      TextView tvEndDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvEndDate == null) {
-        break missingId;
-      }
-
-      id = R.id.tvStartDate;
-      TextView tvStartDate = ViewBindings.findChildViewById(rootView, id);
-      if (tvStartDate == null) {
         break missingId;
       }
 
@@ -223,10 +191,9 @@ public final class ActivityRashTurnBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityRashTurnBinding((RelativeLayout) rootView, DistanceChart, btnAppy,
-          customDate, etSearchBar, llCustomDateRange, loadMore, rvChart, rvRecycler,
-          binding_toolbar, tvCustom, tvEndDate, tvStartDate, tvToday, tvTotalCount, tvWeek,
-          tvYesterday);
+      return new ActivityRashTurnBinding((RelativeLayout) rootView, DistanceChart, etSearchBar,
+          binding_llCustomDateRange, loadMore, binding_progress, rvChart, rvRecycler,
+          binding_toolbar, tvCustom, tvToday, tvTotalCount, tvWeek, tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -36,6 +36,9 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   public final ImageView ivLogo;
 
   @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
   public final TextView tvBackToLogin;
 
   @NonNull
@@ -47,12 +50,14 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   private ActivityForgotPasswordBinding(@NonNull RelativeLayout rootView,
       @NonNull TextView btSubmit, @NonNull ConstraintLayout clUserCredentials,
       @NonNull AppCompatEditText etEmail, @NonNull ImageView ivLogo,
-      @NonNull TextView tvBackToLogin, @NonNull AppCompatTextView tvText, @NonNull View vViewUser) {
+      @NonNull ProgressBarBinding progress, @NonNull TextView tvBackToLogin,
+      @NonNull AppCompatTextView tvText, @NonNull View vViewUser) {
     this.rootView = rootView;
     this.btSubmit = btSubmit;
     this.clUserCredentials = clUserCredentials;
     this.etEmail = etEmail;
     this.ivLogo = ivLogo;
+    this.progress = progress;
     this.tvBackToLogin = tvBackToLogin;
     this.tvText = tvText;
     this.vViewUser = vViewUser;
@@ -109,6 +114,13 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
       id = R.id.tvBackToLogin;
       TextView tvBackToLogin = ViewBindings.findChildViewById(rootView, id);
       if (tvBackToLogin == null) {
@@ -128,7 +140,7 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
       }
 
       return new ActivityForgotPasswordBinding((RelativeLayout) rootView, btSubmit,
-          clUserCredentials, etEmail, ivLogo, tvBackToLogin, tvText, vViewUser);
+          clUserCredentials, etEmail, ivLogo, binding_progress, tvBackToLogin, tvText, vViewUser);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

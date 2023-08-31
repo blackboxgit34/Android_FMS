@@ -4,9 +4,9 @@ package com.humbhi.blackbox.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -17,7 +17,7 @@ import java.lang.String;
 
 public final class ActivityOverspeedDetailBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final RecyclerView rvOverSpeed;
@@ -25,7 +25,7 @@ public final class ActivityOverspeedDetailBinding implements ViewBinding {
   @NonNull
   public final ToolbarLayoutBinding toolbar;
 
-  private ActivityOverspeedDetailBinding(@NonNull ConstraintLayout rootView,
+  private ActivityOverspeedDetailBinding(@NonNull RelativeLayout rootView,
       @NonNull RecyclerView rvOverSpeed, @NonNull ToolbarLayoutBinding toolbar) {
     this.rootView = rootView;
     this.rvOverSpeed = rvOverSpeed;
@@ -34,7 +34,7 @@ public final class ActivityOverspeedDetailBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -72,7 +72,7 @@ public final class ActivityOverspeedDetailBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityOverspeedDetailBinding((ConstraintLayout) rootView, rvOverSpeed,
+      return new ActivityOverspeedDetailBinding((RelativeLayout) rootView, rvOverSpeed,
           binding_toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);

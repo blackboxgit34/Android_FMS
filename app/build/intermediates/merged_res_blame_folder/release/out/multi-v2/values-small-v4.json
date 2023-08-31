@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-47:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-57:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\5a5d5902e2140adf9bd55cf409fbace6\\transformed\\material-1.4.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\2c6f75dfb481f62c5979ef41087b79da\\transformed\\material-1.4.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

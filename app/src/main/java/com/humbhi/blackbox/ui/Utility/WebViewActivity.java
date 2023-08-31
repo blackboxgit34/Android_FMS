@@ -19,7 +19,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
@@ -27,6 +29,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,6 +38,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.humbhi.blackbox.R;
+import com.humbhi.blackbox.databinding.ActivityMainPaymentBinding;
+import com.humbhi.blackbox.ui.ui.ais140.AIS140VehicleActivity;
+import com.humbhi.blackbox.ui.ui.billingPayments.BillAccountActivity;
 import com.humbhi.blackbox.ui.ui.dashboard.DashboardActivity;
 
 import java.io.UnsupportedEncodingException;
@@ -44,9 +50,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.zip.Inflater;
 
 public class WebViewActivity extends Activity implements Communicator {
-
     WebView myBrowser;
     WebSettings webSettings;
     private BroadcastReceiver mIntentReceiver;
@@ -61,7 +67,10 @@ public class WebViewActivity extends Activity implements Communicator {
     ActionBar actionBar;
     Intent mainIntent;
     String html, encVal;
+    Toolbar toolbar;
     int MyDeviceAPI;
+
+    String Status = "";
 
     /**
      * Async task class to get json by making HTTP call
@@ -77,12 +86,13 @@ public class WebViewActivity extends Activity implements Communicator {
         protected Void doInBackground(Void... arg0) {
             try {
 
-                if (!ServiceUtility.chkNull(vResponse).equals("")
-                        && !ServiceUtility.chkNull(vResponse).toString().contains("ERROR")) {
+                if (!ServiceUtility.chkNull(vResponse).equals("") && !ServiceUtility.chkNull(vResponse).toString().contains("ERROR")) {
                     StringBuffer vEncVal = new StringBuffer("");
                     vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.AMOUNT, mainIntent.getStringExtra(AvenuesParams.AMOUNT)));
                     vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.CURRENCY, mainIntent.getStringExtra(AvenuesParams.CURRENCY)));
-                    encVal = RSAUtility.encrypt(vEncVal.substring(0, vEncVal.length() - 1), vResponse);
+                    String plainText = vEncVal.substring(0, vEncVal.length() - 1);
+                    encVal = RSAUtility.encrypt(plainText, vResponse);
+                    Log.e("encrypted value",encVal);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -96,7 +106,6 @@ public class WebViewActivity extends Activity implements Communicator {
             // Dismiss the progress dialog
 
             LoadingDialog.cancelLoading();
-            @SuppressWarnings("unused")
             class MyJavaScriptInterface {
                 @JavascriptInterface
                 public void processHTML(String html) {
@@ -104,20 +113,25 @@ public class WebViewActivity extends Activity implements Communicator {
                         // process the html source code to get final status of transaction
                         Log.v("Logs", "-------------- Process HTML : " + html);
                         String status = null;
-                        if (html.indexOf("Failure") != -1) {
+                        if (html.contains("Transaction Declined!")) {
                             status = "Transaction Declined!";
-                        } else if (html.indexOf("Success") != -1) {
-                            status = "Transaction Successful!";
-                        } else if (html.indexOf("Aborted") != -1) {
+                        }
+                        else if (html.contains("Payment successful!")) {
+                            status = "Payment Successful!";
+                            Intent intent = new Intent(getApplicationContext(), StatusActivity.class);
+                            if(!Status.equals("")){
+                                intent.putExtra("status", Status);
+                            }
+                            intent.putExtra("transStatus", status);
+                            startActivity(intent);
+                        }
+                        else if (html.contains("Transaction Cancelled!")) {
                             status = "Transaction Cancelled!";
-                        } else {
+                        }
+                        else {
                             status = "Status Not Known!";
                         }
                         //Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(getApplicationContext(), StatusActivity.class);
-                        intent.putExtra("transStatus", status);
-                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                         Log.v("Logs", "-------------- Error : " + e);
@@ -155,10 +169,12 @@ public class WebViewActivity extends Activity implements Communicator {
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(myBrowser, url);
                     LoadingDialog.cancelLoading();
-                    if (url.indexOf("/ccavResponseHandler.jsp") != -1) {
+                    if (url.contains("/ccavResponseHandler.aspx")) {
                         myBrowser.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
+                    else{
 
+                    }
                     // calling load Waiting for otp fragment
                     if (loadCounter < 1) {
                         if (MyDeviceAPI >= 19) {
@@ -169,7 +185,6 @@ public class WebViewActivity extends Activity implements Communicator {
                     bankUrl = url;
                 }
 
-
                 @Override
                 public void onPageStarted(WebView view, String url, Bitmap favicon) {
                     super.onPageStarted(view, url, favicon);
@@ -178,15 +193,25 @@ public class WebViewActivity extends Activity implements Communicator {
             });
 
             try {
-                String postData = AvenuesParams.ACCESS_CODE + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), "UTF-8") + "&" + AvenuesParams.MERCHANT_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.MERCHANT_ID), "UTF-8") + "&" + AvenuesParams.ORDER_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ORDER_ID), "UTF-8") + "&" + AvenuesParams.REDIRECT_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL), "UTF-8") + "&" + AvenuesParams.CANCEL_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.CANCEL_URL), "UTF-8") + "&" + AvenuesParams.ENC_VAL + "=" + URLEncoder.encode(encVal, "UTF-8") + "&" + AvenuesParams.Billing_City + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_City), "UTF-8")
-                        + "&" + AvenuesParams.Billing_Name + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Name), "UTF-8") + "&" + AvenuesParams.Billing_Address + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Address), "UTF-8")
-                        + "&" + AvenuesParams.Billing_Zip_Code + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Zip_Code), "UTF-8") + "&" + AvenuesParams.Billing_State + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_State), "UTF-8")
-                        + "&" + AvenuesParams.Billing_Country + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Country), "UTF-8") + "&" + AvenuesParams.Billing_Mobile + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Mobile), "UTF-8")
-                        + "&" + AvenuesParams.Billing_Email + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Email), "UTF-8");
-
-                Log.e("Data for CC EVENUE ->",Constants.TRANS_URL+"?"+ Arrays.toString(postData.getBytes()));
+                String postData = "";
+                if(mainIntent.getStringExtra(AvenuesParams.merchant_param1)!=null && mainIntent.getStringExtra(AvenuesParams.merchant_param1)!=null) {
+                     postData = AvenuesParams.ACCESS_CODE + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), "UTF-8") + "&" + AvenuesParams.MERCHANT_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.MERCHANT_ID), "UTF-8") + "&" + AvenuesParams.ORDER_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ORDER_ID), "UTF-8") + "&" + AvenuesParams.REDIRECT_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL), "UTF-8") + "&" + AvenuesParams.CANCEL_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.CANCEL_URL), "UTF-8") + "&" + AvenuesParams.ENC_VAL + "=" + URLEncoder.encode(encVal, "UTF-8") + "&" + AvenuesParams.Billing_City + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_City), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Name + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Name), "UTF-8") + "&" + AvenuesParams.Billing_Address + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Address), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Zip_Code + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Zip_Code), "UTF-8") + "&" + AvenuesParams.Billing_State + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_State), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Country + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Country), "UTF-8") + "&" + AvenuesParams.Billing_Mobile + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Mobile), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Email + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Email), "UTF-8")
+                            + "&" + AvenuesParams.merchant_param1 + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.merchant_param1), "UTF-8")
+                            + "&" + AvenuesParams.merchant_param2 + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.merchant_param2), "UTF-8");
+                }
+                else{
+                    postData = AvenuesParams.ACCESS_CODE + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), "UTF-8") + "&" + AvenuesParams.MERCHANT_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.MERCHANT_ID), "UTF-8") + "&" + AvenuesParams.ORDER_ID + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.ORDER_ID), "UTF-8") + "&" + AvenuesParams.REDIRECT_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.REDIRECT_URL), "UTF-8") + "&" + AvenuesParams.CANCEL_URL + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.CANCEL_URL), "UTF-8") + "&" + AvenuesParams.ENC_VAL + "=" + URLEncoder.encode(encVal, "UTF-8") + "&" + AvenuesParams.Billing_City + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_City), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Name + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Name), "UTF-8") + "&" + AvenuesParams.Billing_Address + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Address), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Zip_Code + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Zip_Code), "UTF-8") + "&" + AvenuesParams.Billing_State + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_State), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Country + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Country), "UTF-8") + "&" + AvenuesParams.Billing_Mobile + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Mobile), "UTF-8")
+                            + "&" + AvenuesParams.Billing_Email + "=" + URLEncoder.encode(mainIntent.getStringExtra(AvenuesParams.Billing_Email), "UTF-8");
+                }
+                Log.e("Data for CC EVENUE ->",Constants.TRANS_URL+"?"+ postData);
                 myBrowser.postUrl(Constants.TRANS_URL, postData.getBytes());
-
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -194,11 +219,15 @@ public class WebViewActivity extends Activity implements Communicator {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_payment);
+        com.humbhi.blackbox.databinding.ActivityMainPaymentBinding binding = ActivityMainPaymentBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         actionBar=getActionBar();
 //        actionBar.hide();
 
@@ -216,12 +245,33 @@ public class WebViewActivity extends Activity implements Communicator {
 */
         mainIntent = getIntent();
         manager = getFragmentManager();
-
-        myBrowser = (WebView) findViewById(R.id.webView);
+        myBrowser = binding.webView;
         webSettings = myBrowser.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
+        binding.toolbar.tvTitle.setText("Bill Payment");
+        binding.toolbar.ivMenu.setVisibility(View.GONE);
+        binding.toolbar.ivBack.setVisibility( View.VISIBLE);
+        binding.toolbar.ivBell.setVisibility(View.GONE);
+        binding.toolbar.ivSort.setVisibility(View.GONE);
+        binding.toolbar.ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mainIntent.getStringExtra(AvenuesParams.merchant_param1)!=null && mainIntent.getStringExtra(AvenuesParams.merchant_param1)!=null) {
+                    Intent intent = new Intent(WebViewActivity.this, AIS140VehicleActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(WebViewActivity.this, BillAccountActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
         MyDeviceAPI = Build.VERSION.SDK_INT;
+        if(getIntent().hasExtra("status")){
+            Status = getIntent().getStringExtra("status");
+        }
         //get rsa key method
         get_RSA_key(mainIntent.getStringExtra(AvenuesParams.ACCESS_CODE), mainIntent.getStringExtra(AvenuesParams.ORDER_ID));
     }
@@ -286,12 +336,9 @@ public class WebViewActivity extends Activity implements Communicator {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                startActivity(new Intent(this, DashboardActivity.class));
-                finish();
-            default:
-
+        if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(this, DashboardActivity.class));
+            finish();
         }
         return true ;
     }
@@ -307,7 +354,6 @@ public class WebViewActivity extends Activity implements Communicator {
 
     // Method to load Waiting for OTP fragment
     public void loadWaitingFragment(String url) {
-
         // SBI Debit Card
         if (url.contains("https://acs.onlinesbi.com/sbi/")) {
             OtpFragment waitingFragment = new OtpFragment();
@@ -381,7 +427,8 @@ public class WebViewActivity extends Activity implements Communicator {
             transaction.add(R.id.otp_frame, waitingFragment, "OTPWaitingFrag");
             transaction.commit();
             startTimer();
-        } else {
+        }
+        else {
             removeWaitingFragment();
             removeApprovalFragment();
             stopTimerTask();
@@ -405,7 +452,6 @@ public class WebViewActivity extends Activity implements Communicator {
     public void loadApproveOTP(String otpText, String senderNo) {
         try {
             Integer vTemp = Integer.parseInt(otpText);
-
             if (bankUrl.contains("https://acs.onlinesbi.com/sbi/") && senderNo.contains("SBI") && (otpText.length() == 6 || otpText.length() == 8)) {
                 removeWaitingFragment();
                 stopTimerTask();
@@ -527,7 +573,6 @@ public class WebViewActivity extends Activity implements Communicator {
     }
 
     public void loadActionDialog() {
-
         try {
             actionDialog.show(getFragmentManager(), "ActionDialog");
             stopTimerTask();
@@ -539,10 +584,8 @@ public class WebViewActivity extends Activity implements Communicator {
     @Override
     protected void onResume() {
         super.onResume();
-
         IntentFilter intentFilter = new IntentFilter("SmsMessage.intent.MAIN");
         mIntentReceiver = new BroadcastReceiver() {
-            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onReceive(Context context, Intent intent) {
 
@@ -579,7 +622,6 @@ public class WebViewActivity extends Activity implements Communicator {
 
 
     // On click of Approve button
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void respond(String otpText) {
 
@@ -705,7 +747,6 @@ public class WebViewActivity extends Activity implements Communicator {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void actionSelected(String data) {
         try {
@@ -778,7 +819,6 @@ public class WebViewActivity extends Activity implements Communicator {
 
     public void get_RSA_key(final String ac, final String od) {
         LoadingDialog.showLoadingDialog(WebViewActivity.this, "Loading...");
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, mainIntent.getStringExtra(AvenuesParams.RSA_KEY_URL),
                 new Response.Listener<String>() {
                     @Override
@@ -786,9 +826,8 @@ public class WebViewActivity extends Activity implements Communicator {
                         //Toast.makeText(WebViewActivity.this,response,Toast.LENGTH_LONG).show();
                         LoadingDialog.cancelLoading();
                         vResponse = response;
-
                         if (vResponse.contains("!ERROR!")) {
-                            show_alert(vResponse);
+                             show_alert(vResponse);
                         } else {
                             new RenderView().execute();
                         }
@@ -809,21 +848,14 @@ public class WebViewActivity extends Activity implements Communicator {
                 params.put(AvenuesParams.ORDER_ID, od);
                 return params;
             }
-
         };
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-
     String vResponse;
 
-
     public void show_alert(String msg) {
-        AlertDialog alertDialog = new AlertDialog.Builder(
-                WebViewActivity.this).create();
-
+        AlertDialog alertDialog = new AlertDialog.Builder(WebViewActivity.this).create();
 
         alertDialog.setTitle("Error!!!");
         if (msg.contains("\n"))
@@ -831,16 +863,12 @@ public class WebViewActivity extends Activity implements Communicator {
 
         alertDialog.setMessage(msg);
 
-
         alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-
-
         alertDialog.show();
     }
 

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary_little_fade"
+    tools:context=".ui.ui.fms.AddDocumentActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="@dimen/margin_x">
+        <AutoCompleteTextView
+            android:id="@+id/spVehicles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_x"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:hint="Search vehicle"
+            android:textColorHint="@color/white"
+            android:background="@color/primary_little_fade"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/spRenewalType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_x"
+            android:padding="@dimen/margin_x"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:hint="Search Renewal Type"
+            android:textColorHint="@color/white"
+            android:background="@color/primary_little_fade"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+
+        <EditText
+            android:id="@+id/dueDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_x"
+            android:inputType="none"
+            android:textColor="@color/white"
+            android:background="@drawable/edittext_no_underline"
+            android:hint="Enter due date"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="@dimen/margin_x"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+
+        <EditText
+            android:id="@+id/ReminderDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_x"
+            android:background="@drawable/edittext_no_underline"
+            android:hint="Reminder Before"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="@dimen/margin_x"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+
+        <EditText
+            android:id="@+id/Remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_x"
+            android:hint="Enter Remarks"
+            android:background="@drawable/edittext_no_underline"
+            android:singleLine="false"
+            android:maxLines="50"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="@dimen/margin_x"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/tvSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_30"
+            android:paddingEnd="@dimen/margin_30"
+            android:paddingTop="@dimen/margin_x"
+            android:paddingBottom="@dimen/margin_x"
+            android:text="SUBMIT"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textSize="@dimen/font_18"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary_main_orange"
+            android:background="@drawable/round_bg_black_light"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:background="#8F323232"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include
+        layout="@layout/progress_bar"/>
+    </LinearLayout>
+
+</RelativeLayout>

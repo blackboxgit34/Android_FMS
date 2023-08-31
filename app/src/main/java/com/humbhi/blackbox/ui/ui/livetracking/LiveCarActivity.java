@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -33,7 +32,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.humbhi.blackbox.R;
 import com.humbhi.blackbox.databinding.ActivityLiveCarBinding;
 import com.humbhi.blackbox.ui.Utility.Constants;
@@ -60,14 +58,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.StringTokenizer;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -80,8 +76,8 @@ import retrofit2.Response;
 
 public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallback, RetrofitResponse,MqttHelper.MqttMessageCallback  {
     private static final long DELAY = 6000;
-    private static final long ANIMATION_TIME_PER_ROUTE = 6000;
-    private static final long ANIMATION_TIME_PER_ROUTE_FOR_LIVE_MOMENT = 2000;
+    private static final long ANIMATION_TIME_PER_ROUTE = 4500;
+    private static final long ANIMATION_TIME_PER_ROUTE_FOR_LIVE_MOMENT = 1500;
     GoogleMap googleMap;
     private SupportMapFragment mapFragment;
     private Handler handler;
@@ -100,6 +96,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
     private String vehicleName;
     private String vehicleType="",progresstatus="";
     private ActivityLiveCarBinding binding;
+
     private MqttAndroidClient client;
     private MqttHelper mqttHelper;
     private  ExecutorService executor;
@@ -112,7 +109,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
     private String vehicleStatus = "";
     String speed = "";
     String gmt = "";
-
+    Boolean isFirstTime = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,7 +148,9 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
             intent.putExtra("endDate",backendEndDate);
             intent.putExtra("vehicleName",vehicleName);
             intent.putExtra("flag","simple");
+            intent.putExtra("backToLive","yes");
             startActivity(intent);
+            finish();
         });
 
         binding.mapView.setOnClickListener(v -> {
@@ -204,11 +203,16 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap map) {
         this.googleMap = map;
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         googleMap.setTrafficEnabled(false);
         googleMap.setIndoorEnabled(false);
         googleMap.setBuildingsEnabled(false);
-        googleMap.getUiSettings().setScrollGesturesEnabled(false);
+        googleMap.moveCamera(CameraUpdateFactory
+                .newCameraPosition
+                        (new CameraPosition.Builder()
+                                .target(new LatLng(30.709588,76.810326))
+                                .zoom(17f)
+                                .build()));
     }
 
     private void runMQTTTask(){
@@ -254,6 +258,12 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
     }
 
     private void getDriverLocationUpdate() {
+        if(isFirstTime==true){
+            binding.progress.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.progress.setVisibility(View.GONE);
+        }
          new Retrofit2(LiveCarActivity.this, this, 200,
                 ApiEndpoints.GET_VEHICLE_DETAILS + "custid=" + CommonData.INSTANCE.getCustIdFromDB()
                         + "&StatusCode=&sEcho=0&iDisplayStart=0&iDisplayLength=1&sSearch="+vehicleName+"&iSortCol_0=0&sSortDir_0").callService(false);
@@ -276,7 +286,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                     .newCameraPosition
                             (new CameraPosition.Builder()
                                     .target(newPosition)
-                                    .zoom(15.5f)
+                                    .zoom(18f)
                                     .build()));
             startPosition = carMarker.getPosition();
         });
@@ -341,7 +351,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
             googleMap.moveCamera(CameraUpdateFactory
                     .newCameraPosition(new CameraPosition.Builder()
                                     .target(newPosition)
-                                    .zoom(15.5f)
+                                    .zoom(18f)
                                     .build()));
             startPosition = carMarker.getPosition();
         });
@@ -373,6 +383,8 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
         JSONObject obj = null;
         double angle = 0.0;
         try {
+            isFirstTime=false;
+            binding.progress.setVisibility(View.GONE);
             JSONObject object = new JSONObject(response.body().string());
             JSONArray data = object.getJSONArray("aaData");
             alertList.clear();
@@ -388,48 +400,26 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                 binding.tvDataDate.setText("Updated at: "+obj.getString("DataDateTime"));
                 binding.tvSpeed.setText(obj.getString("Speed")+" K/H");
                 binding.tvDistance.setText(obj.getString("Distance")+" KM");
-                Uri uriAc= Uri.parse("https://trackmaster.in"+obj.getString("AcStatus").replace("~",""));
-                Glide.with(this).load(uriAc).into(binding.tvAcStatus);
-                binding.tvFuelStatus.setText(obj.getString("FuelStatus"));
+                if(obj.getString("AcStatus").toString().contains("acoff")){
+                    binding.tvAcStatus.setText("OFF");
+                }
+                else{
+                    binding.tvAcStatus.setText("ON");
+                }
+                binding.tvFuelStatus.setText(obj.getString("FuelStatus")+" L");
                 Uri uriBattery = Uri.parse("https://trackmaster.in"+obj.getString("BatteryStatus").replace("~",""));
                 Glide.with(this).load(uriBattery).into(binding.tvBatteryStatus);
                 binding.tvIgnitionStatus.setText(obj.getString("IgnitionStatus"));
                 String stoppageTime = obj.getString("StoppageTime");
-                String parkAtLASTstoppageTime = obj.getString("ParkingTimeALasttStop");
-                String TotalParkingTime = obj.getString("TotalParkingTime");
-                String MovingFromLastStop = obj.getString("MovingFromLastStop");
-                String TotalMoving = obj.getString("TotalMoving");
-                String ParkAtLASTstoppageTime = calculateStoppageTime(parkAtLASTstoppageTime);
-                StringTokenizer ParkAtLASTstoppageTimetokenizer = new StringTokenizer(ParkAtLASTstoppageTime," ");
-                String ParkAtLASTstoppageTimeminutes = ParkAtLASTstoppageTimetokenizer.nextToken();
-                String ParkAtLASTstoppageTimeseconds = ParkAtLASTstoppageTimetokenizer.nextToken();
-                int ParkAtLASTstoppageTimeminutesValue  = Integer.parseInt(ParkAtLASTstoppageTimeminutes.replace("M",""));
-                int ParkAtLASTstoppageTimehour = ParkAtLASTstoppageTimeminutesValue/60;
-                int ParkAtLASTstoppageTimeMinutes = ParkAtLASTstoppageTimeminutesValue%60;
                 binding.tvStoppageTime.setText(calculateStoppageTime(stoppageTime));
-                binding.tvParkAtLastStop.setText(ParkAtLASTstoppageTimehour+"H "+ParkAtLASTstoppageTimeMinutes+"M");
-                String totalParkingTime = calculateStoppageTime(TotalParkingTime);
-                StringTokenizer totalParkingTimetokenizer = new StringTokenizer(calculateStoppageTime(totalParkingTime)," ");
-                String totalParkingTimeminutes = totalParkingTimetokenizer.nextToken();
-                String totalParkingTimeseconds = totalParkingTimetokenizer.nextToken();
-                int totalParkingTimeminutesValue  = Integer.parseInt(totalParkingTimeminutes.replace("M",""));
-                int  totalParkingTimehour = totalParkingTimeminutesValue/60;
-                int  totalParkingTimeMinutes = totalParkingTimeminutesValue%60;
-                binding.tvParkingTimeTotal.setText(totalParkingTimehour+"H "+totalParkingTimeMinutes+"M");
-                StringTokenizer movingFromLastStopTokenizer = new StringTokenizer(calculateStoppageTime(MovingFromLastStop)," ");
-                String movingFromLastStopminutes = movingFromLastStopTokenizer.nextToken();
-                String movingFromLastStopseconds = movingFromLastStopTokenizer.nextToken();
-                int movingFromLastStopminutesValue  = Integer.parseInt(movingFromLastStopminutes.replace("M",""));
-                int  movingFromLastStophour = movingFromLastStopminutesValue/60;
-                int  movingFromLastStopMinutes = movingFromLastStopminutesValue%60;
-                binding.tvMovingFromLastStop.setText(movingFromLastStophour+"H "+movingFromLastStopMinutes+"M");
-                StringTokenizer TotalMovingTokenizer = new StringTokenizer(calculateStoppageTime(TotalMoving)," ");
-                String TotalMovingminutes = TotalMovingTokenizer.nextToken();
-                String TotalMovingseconds = TotalMovingTokenizer.nextToken();
-                int TotalMovingminutesValue  = Integer.parseInt(TotalMovingminutes.replace("M",""));
-                int  TotalMovinghour = TotalMovingminutesValue/60;
-                int  TotalMovingMinutes = TotalMovingminutesValue%60;
-                binding.tvTotalMovingTime.setText(TotalMovinghour+"H "+TotalMovingMinutes+"M");
+                String parkAtLASTstoppageTime = obj.getString("ParkingTimeALasttStop");
+                binding.tvParkAtLastStop.setText(calculateStoppageTime(parkAtLASTstoppageTime));
+                String TotalParkingTime = obj.getString("TotalParkingTime");
+                binding.tvParkingTimeTotal.setText(calculateStoppageTime(TotalParkingTime));
+                String MovingFromLastStop = obj.getString("MovingFromLastStop");
+                binding.tvMovingFromLastStop.setText(calculateStoppageTime(MovingFromLastStop));
+                String TotalMoving = obj.getString("TotalMoving");
+                binding.tvTotalMovingTime.setText(calculateStoppageTime(TotalMoving));
                 gmt = obj.getString("GMT");
                 JSONArray alertData = obj.getJSONArray("AlertForApp");
                 for (int j = 0; j <alertData.length() ; j++) {
@@ -440,11 +430,20 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                 progresstatus = obj.getString("progresstatus");
                 binding.tvAlerts.setOnClickListener(v -> {
                     Intent intent = new Intent(LiveCarActivity.this, GNotifications.class);
+                    intent.putExtra("from",vehicleId);
+                    intent.putExtra("backToLive",vehicleName);
                     startActivity(intent);
+                    finish();
                 });
                 switch (progresstatus){
                     case "Unreachable":
                         binding.tvProgressStatus.setText("Unreachable");
+                        binding.tvProgressStatus.setTextColor(getResources().getColor(R.color.white));
+                        binding.tvProgressStatus.setBackgroundResource(R.drawable.round_bg_red);
+                        stopRepeatingTask();
+                        break;
+                    case "BD":
+                        binding.tvProgressStatus.setText("Battery Disconnection");
                         binding.tvProgressStatus.setTextColor(getResources().getColor(R.color.white));
                         binding.tvProgressStatus.setBackgroundResource(R.drawable.round_bg_red);
                         stopRepeatingTask();
@@ -501,22 +500,175 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                 vehicleType = obj.getString("type");
                 binding.tvSpeed.setText(obj.getString("Speed")+" K/H");
                 binding.tvDistance.setText(obj.getString("Distance")+" KM");
-                StringTokenizer stringTokenizer = new StringTokenizer(obj.getString("StoppageTime"),"-");
-                String days = stringTokenizer.nextToken();
-                binding.tvStoppageTime.setText(days);
             }
 
             Log.e("LATLONG--->", startLatitude + "--" + startLongitude);
+            if(startLatitude!=0.0 && startLongitude!=0.0) {
+                getAddress(this, startLatitude, startLongitude);
 
-            getAddress(this, startLatitude, startLongitude);
-
-            if (isFirstPosition) {
-                startPosition = new LatLng(startLatitude, startLongitude);
-                carMarker = googleMap.addMarker(new MarkerOptions().position(startPosition).flat(true).rotation((float) angle));
-                if (!vehicleType.equals("Other")){
-                    if(vehicleType.equalsIgnoreCase("OilTanker")) {
+                if (isFirstPosition) {
+                    startPosition = new LatLng(startLatitude, startLongitude);
+                    carMarker = googleMap.addMarker(new MarkerOptions().position(startPosition).anchor(0.5f,0.5f).flat(true).rotation((float) angle));
+                    if (!vehicleType.equals("Other")) {
+                        if (vehicleType.equalsIgnoreCase("OilTanker")) {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_green));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_white));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_blue));
+                                    break;
+                            }
+                        } else if (vehicleType.equalsIgnoreCase("Car"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_green_with_shadow));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_white));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_blue_with_shadow));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Bus"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_green));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_blue));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Ambulance"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Truck"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("RoadRoller")) {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        } else {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        }
+                    } else {
                         switch (progresstatus) {
                             case "Unreachable":
+                            case "BD":
                                 carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
                                 break;
                             case "Stopped":
@@ -536,177 +688,180 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                                 break;
                         }
                     }
-                    else if(vehicleType.equalsIgnoreCase("Car"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_red));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_yellow));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_orange));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_green_with_shadow));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_white));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_blue_with_shadow));
-                                break;
-                        }
-                    else if (vehicleType.equalsIgnoreCase("Bus"))
-                        switch (progresstatus) {
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_red));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_yellow));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_orange));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_green));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_blue));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("Ambulance"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("Truck"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("RoadRoller"))
-                    {
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    }
-                    else {
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    }
+                    // carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                    carMarker.setAnchor(0.5f, 0.5f);
+                    googleMap.moveCamera(CameraUpdateFactory
+                            .newCameraPosition(new CameraPosition.Builder()
+                                    .target(startPosition)
+                                    .zoom(18f)
+                                    .build()));
+
+                    isFirstPosition = false;
                 }
                 else {
-                    switch (progresstatus){
-                        case "Unreachable":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                            break;
-                        case "Stopped":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                            break;
-                        case "IgnitionOn":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                            break;
-                        case "Moving":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                            break;
-                        case "Towed":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                            break;
-                        case "Hispeed":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                            break;
-                    }
-                }
-               // carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                carMarker.setAnchor(0.5f, 0.5f);
-                googleMap.moveCamera(CameraUpdateFactory
-                        .newCameraPosition(new CameraPosition.Builder()
-                                .target(startPosition)
-                                .zoom(15.5f)
-                                .build()));
+                    endPosition = new LatLng(startLatitude, startLongitude);
 
-                isFirstPosition = false;
-
-            }
-            else {
-                endPosition = new LatLng(startLatitude, startLongitude);
-
-                Log.d(TAG, startPosition.latitude + "--" + endPosition.latitude + "--Check --" + startPosition.longitude + "--" + endPosition.longitude);
-                if (!vehicleType.equals("Other")){
-                    if(vehicleType.equalsIgnoreCase("OilTanker")) {
+                    Log.d(TAG, startPosition.latitude + "--" + endPosition.latitude + "--Check --" + startPosition.longitude + "--" + endPosition.longitude);
+                    if (!vehicleType.equals("Other")) {
+                        if (vehicleType.equalsIgnoreCase("OilTanker")) {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_green));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_white));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_oil_tanker_blue));
+                                    break;
+                            }
+                        } else if (vehicleType.equalsIgnoreCase("Car"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_green_with_shadow));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_white));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_blue_with_shadow));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Bus"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_red));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_yellow));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_orange));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_green));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_blue));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Ambulance"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("Truck"))
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        else if (vehicleType.equalsIgnoreCase("RoadRoller")) {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        } else {
+                            switch (progresstatus) {
+                                case "Unreachable":
+                                case "BD":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
+                                    break;
+                                case "Stopped":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
+                                    break;
+                                case "IgnitionOn":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
+                                    break;
+                                case "Moving":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
+                                    break;
+                                case "Towed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
+                                    break;
+                                case "Hispeed":
+                                    carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
+                                    break;
+                            }
+                        }
+                    } else {
                         switch (progresstatus) {
                             case "Unreachable":
+                            case "BD":
                                 carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
                                 break;
                             case "Stopped":
@@ -726,172 +881,16 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                                 break;
                         }
                     }
-                    else if(vehicleType.equalsIgnoreCase("Car"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_red));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_yellow));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_orange));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_green_with_shadow));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_white));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_car_blue_with_shadow));
-                                break;
-                        }
-                    else if (vehicleType.equalsIgnoreCase("Bus"))
-                        switch (progresstatus) {
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_red));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_yellow));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_orange));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_green));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_new_bus_blue));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("Ambulance"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("Truck"))
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    else if(vehicleType.equalsIgnoreCase("RoadRoller"))
-                    {
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
-                    }
-                    else {
-                        switch (progresstatus){
-                            case "Unreachable":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                                break;
-                            case "Stopped":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                                break;
-                            case "IgnitionOn":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                                break;
-                            case "Moving":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                                break;
-                            case "Towed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                                break;
-                            case "Hispeed":
-                                carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                                break;
-                        }
+                    if ((startPosition.latitude != endPosition.latitude) || (startPosition.longitude != endPosition.longitude)) {
+                        Log.e(TAG, "NOT SAME");
+                        startBikeAnimation(startPosition, endPosition, progresstatus, vehicleType);
+                    } else {
+                        Log.e(TAG, "SAMME");
                     }
                 }
-                else {
-                    switch (progresstatus){
-                        case "Unreachable":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_red_truck_final));
-                            break;
-                        case "Stopped":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_yellow_truck_final));
-                            break;
-                        case "IgnitionOn":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_orange_truck_final));
-                            break;
-                        case "Moving":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_green_truck_final));
-                            break;
-                        case "Towed":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_white_truck_final));
-                            break;
-                        case "Hispeed":
-                            carMarker.setIcon(bitmapDescriptorFromVector(this, R.drawable.ic_blue_truck_final));
-                            break;
-                    }
-                }
-                if ((startPosition.latitude != endPosition.latitude) || (startPosition.longitude != endPosition.longitude)) {
-                    Log.e(TAG, "NOT SAME");
-                    startBikeAnimation(startPosition, endPosition,progresstatus,vehicleType);
-                } else {
-                    Log.e(TAG, "SAMME");
-                }
             }
-        } catch (Exception e ) {
-            if (e instanceof SocketTimeoutException) {
-                Toast.makeText(LiveCarActivity.this, "Connection time out.", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                Toast.makeText(LiveCarActivity.this, "Something went wrong.", Toast.LENGTH_SHORT).show();
-            }
+        }
+        catch (Exception e ) {
         }
     }
 
@@ -918,21 +917,20 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
         brng = (brng + 360) % 360;
         return (float) brng;
     }
-    // get exact location using latitude and longi
+    // get exact location using latitude and longitude
 
-    public String getAddress(Context context, double lat, double lng) {
+    public void getAddress(Context context, double lat, double lng) {
+        executor.execute(()->{
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
             Address obj = addresses.get(0);
             String add = obj.getAddressLine(0);
             location = add;
-            return add;
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            return null;
         }
+        });
     }
 
     public LatLng getLocationFromAddress(Context context,String strAddress) {
@@ -983,17 +981,17 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                            binding.tvLocation.setText(address);
                        }
                    });
-                   carMarker = googleMap.addMarker(new MarkerOptions().position(startPosition).flat(true).rotation(Float.parseFloat(object.getString("angle"))));
+                   carMarker = googleMap.addMarker(new MarkerOptions().position(startPosition).flat(true).anchor(0.5f,0.5f).rotation(Float.parseFloat(object.getString("angle"))));
                    vehicleStatus = object.getString("ignition");
                    speed = object.getString("speed");
                    String oldTime = object.getString("datadate");
                    binding.tvDataDate.setText("Updated at: " + TimeConverter(oldTime,gmt));
                    binding.tvSpeed.setText(object.getString("speed") + " K/H");
-                   binding.tvDistance.setText(object.getString("distance") + " KM");
+              //     binding.tvDistance.setText(object.getString("distance") + " KM");
                    googleMap.moveCamera(CameraUpdateFactory
                            .newCameraPosition(new CameraPosition.Builder()
                                    .target(new LatLng(object.getDouble("lati"), object.getDouble("longi")))
-                                   .zoom(15.5f)
+                                   .zoom(18f)
                                    .build()));
                    isFirstPosition = false;
                } else {
@@ -1008,7 +1006,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                    String oldTime = object.getString("datadate");
                    binding.tvDataDate.setText("Updated at: " + TimeConverter(oldTime,gmt));
                    binding.tvSpeed.setText(object.getString("speed") + " K/H");
-                   binding.tvDistance.setText(object.getString("distance") + " KM");
+                //   binding.tvDistance.setText(object.getString("distance") + " KM");
                    Log.d(TAG, startPosition.latitude + "--" + endPosition.latitude + "--Check --" + startPosition.longitude + "--" + endPosition.longitude);
                    if(speed.equals("0.0")){
                        if(vehicleStatus.equals("1")){
@@ -1030,12 +1028,12 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                    if (!vehicleType.equals("Other")){
                        if(vehicleType.equalsIgnoreCase("OilTanker")) {
                            if (!speed.equals("0.0")) {
-                               carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_green_truck_final));
+                               carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_oil_tanker_green));
                            } else {
                                if (vehicleStatus.equals("1")) {
-                                   carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_orange_truck_final));
+                                   carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_oil_tanker_orange));
                                } else {
-                                   carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_yellow_truck_final));
+                                   carMarker.setIcon(bitmapDescriptorFromVector(LiveCarActivity.this, R.drawable.ic_oil_tanker_yellow));
                                }
                            }
                        }
@@ -1121,7 +1119,7 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                    }
                    if ((startPosition.latitude != endPosition.latitude) || (startPosition.longitude != endPosition.longitude)) {
                        Log.e(TAG, "NOT SAME");
-                       startBikeAnimationLiveMovement(startPosition, endPosition, Float.parseFloat(object.getString("angle")));
+                       startBikeAnimationLiveMovement(startPosition, endPosition,bearingBetweenLocations(startPosition,endPosition));
                    }
                }
         } catch (Exception e) {
@@ -1162,18 +1160,13 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
                 hours += minutes / 60;
                 minutes %= 60;
             }
-
-            if (hours == 0 && minutes == 0 && seconds == 0) {
-                return "0 seconds";
-            } else if (hours == 0 && minutes == 0) {
-                return seconds + " seconds";
-            } else if (hours == 0) {
-                return minutes + " minutes " + seconds + " seconds";
+            if (hours == 0) {
+                return "0 H "+ minutes + " M ";
             } else {
-                return hours + " hours " + minutes + " minutes " + seconds + " seconds";
+                return hours + " H " + minutes + " M ";
             }
         } else {
-            return sDays + " days";
+            return sDays + " D";
         }
     }
     private LatLng interpolate(LatLng startPosition, LatLng endPosition, float t) {
@@ -1200,4 +1193,5 @@ public class LiveCarActivity extends FragmentActivity implements OnMapReadyCallb
         }
         return updatedDateString != null ? updatedDateString : "";
     }
+
 }

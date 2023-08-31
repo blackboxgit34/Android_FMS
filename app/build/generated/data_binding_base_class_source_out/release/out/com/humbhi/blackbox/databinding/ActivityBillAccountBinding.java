@@ -21,6 +21,9 @@ public final class ActivityBillAccountBinding implements ViewBinding {
   private final LinearLayoutCompat rootView;
 
   @NonNull
+  public final ProgressBarBinding progress;
+
+  @NonNull
   public final RecyclerView rvBills;
 
   @NonNull
@@ -30,9 +33,10 @@ public final class ActivityBillAccountBinding implements ViewBinding {
   public final ToolbarLayoutBinding toolbar;
 
   private ActivityBillAccountBinding(@NonNull LinearLayoutCompat rootView,
-      @NonNull RecyclerView rvBills, @NonNull TabLayout tabLayout,
-      @NonNull ToolbarLayoutBinding toolbar) {
+      @NonNull ProgressBarBinding progress, @NonNull RecyclerView rvBills,
+      @NonNull TabLayout tabLayout, @NonNull ToolbarLayoutBinding toolbar) {
     this.rootView = rootView;
+    this.progress = progress;
     this.rvBills = rvBills;
     this.tabLayout = tabLayout;
     this.toolbar = toolbar;
@@ -65,6 +69,13 @@ public final class ActivityBillAccountBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.progress;
+      View progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
+        break missingId;
+      }
+      ProgressBarBinding binding_progress = ProgressBarBinding.bind(progress);
+
       id = R.id.rvBills;
       RecyclerView rvBills = ViewBindings.findChildViewById(rootView, id);
       if (rvBills == null) {
@@ -84,8 +95,8 @@ public final class ActivityBillAccountBinding implements ViewBinding {
       }
       ToolbarLayoutBinding binding_toolbar = ToolbarLayoutBinding.bind(toolbar);
 
-      return new ActivityBillAccountBinding((LinearLayoutCompat) rootView, rvBills, tabLayout,
-          binding_toolbar);
+      return new ActivityBillAccountBinding((LinearLayoutCompat) rootView, binding_progress,
+          rvBills, tabLayout, binding_toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

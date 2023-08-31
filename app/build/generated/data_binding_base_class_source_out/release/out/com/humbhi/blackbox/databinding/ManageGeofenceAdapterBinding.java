@@ -21,33 +21,24 @@ public final class ManageGeofenceAdapterBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final TextView fenceName;
+
+  @NonNull
+  public final ImageView ivCopy;
+
+  @NonNull
   public final ImageView ivDelete;
-
-  @NonNull
-  public final TextView tvDriving;
-
-  @NonNull
-  public final TextView tvIgnition;
-
-  @NonNull
-  public final TextView tvStoppagesCount;
 
   @NonNull
   public final TextView tvVehName;
 
-  @NonNull
-  public final TextView tvViewFence;
-
-  private ManageGeofenceAdapterBinding(@NonNull LinearLayout rootView, @NonNull ImageView ivDelete,
-      @NonNull TextView tvDriving, @NonNull TextView tvIgnition, @NonNull TextView tvStoppagesCount,
-      @NonNull TextView tvVehName, @NonNull TextView tvViewFence) {
+  private ManageGeofenceAdapterBinding(@NonNull LinearLayout rootView, @NonNull TextView fenceName,
+      @NonNull ImageView ivCopy, @NonNull ImageView ivDelete, @NonNull TextView tvVehName) {
     this.rootView = rootView;
+    this.fenceName = fenceName;
+    this.ivCopy = ivCopy;
     this.ivDelete = ivDelete;
-    this.tvDriving = tvDriving;
-    this.tvIgnition = tvIgnition;
-    this.tvStoppagesCount = tvStoppagesCount;
     this.tvVehName = tvVehName;
-    this.tvViewFence = tvViewFence;
   }
 
   @Override
@@ -77,27 +68,21 @@ public final class ManageGeofenceAdapterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.fence_name;
+      TextView fenceName = ViewBindings.findChildViewById(rootView, id);
+      if (fenceName == null) {
+        break missingId;
+      }
+
+      id = R.id.ivCopy;
+      ImageView ivCopy = ViewBindings.findChildViewById(rootView, id);
+      if (ivCopy == null) {
+        break missingId;
+      }
+
       id = R.id.ivDelete;
       ImageView ivDelete = ViewBindings.findChildViewById(rootView, id);
       if (ivDelete == null) {
-        break missingId;
-      }
-
-      id = R.id.tvDriving;
-      TextView tvDriving = ViewBindings.findChildViewById(rootView, id);
-      if (tvDriving == null) {
-        break missingId;
-      }
-
-      id = R.id.tvIgnition;
-      TextView tvIgnition = ViewBindings.findChildViewById(rootView, id);
-      if (tvIgnition == null) {
-        break missingId;
-      }
-
-      id = R.id.tvStoppagesCount;
-      TextView tvStoppagesCount = ViewBindings.findChildViewById(rootView, id);
-      if (tvStoppagesCount == null) {
         break missingId;
       }
 
@@ -107,14 +92,8 @@ public final class ManageGeofenceAdapterBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvViewFence;
-      TextView tvViewFence = ViewBindings.findChildViewById(rootView, id);
-      if (tvViewFence == null) {
-        break missingId;
-      }
-
-      return new ManageGeofenceAdapterBinding((LinearLayout) rootView, ivDelete, tvDriving,
-          tvIgnition, tvStoppagesCount, tvVehName, tvViewFence);
+      return new ManageGeofenceAdapterBinding((LinearLayout) rootView, fenceName, ivCopy, ivDelete,
+          tvVehName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

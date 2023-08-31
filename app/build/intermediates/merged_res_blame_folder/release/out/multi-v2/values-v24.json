@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-47:/values-v24/values-v24.xml",
+            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-57:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\af3bedfada838e1ac72c01174ced37ba\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\313e3ca2406341ae13b69edfc5c34d77\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\97dceacea2ec501ce93d655553c6d81d\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\40e1720f2fca991f26a1e4437dada6a3\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

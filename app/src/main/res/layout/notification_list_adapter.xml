@@ -78,7 +78,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:textSize="@dimen/font_14"
-                            android:layout_marginStart="@dimen/margin_x"
+                            android:layout_margin="@dimen/margin_x"
                             android:textColor="@color/white"/>
                         <TextView
                             android:id="@+id/tvMessage"
@@ -86,7 +86,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/font_12"
                             android:fontFamily="@font/poppins_regular"
-                            android:layout_marginStart="@dimen/margin_x"
+                            android:layout_margin="@dimen/margin_x"
                             android:textColor="@color/max_lightgrey"/>
                         <TextView
                             android:id="@+id/tvDate"
@@ -95,7 +95,7 @@
                             android:textSize="@dimen/font_12"
                             android:fontFamily="@font/poppins_bold"
                             android:layout_marginTop="@dimen/margin_x"
-                            android:layout_marginStart="@dimen/margin_x"
+                            android:layout_margin="@dimen/margin_x"
                             android:textColor="@color/white"/>
 
 

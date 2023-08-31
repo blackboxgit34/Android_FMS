@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -16,6 +17,7 @@ import com.humbhi.blackbox.R;
 import com.humbhi.blackbox.databinding.ActivityDrivingBehaviourBinding;
 import com.humbhi.blackbox.databinding.ActivityDrivingRouteInitialBinding;
 import com.humbhi.blackbox.ui.adapters.CustSpinnerAdapter;
+import com.humbhi.blackbox.ui.adapters.SearchableAdapter;
 import com.humbhi.blackbox.ui.data.db.CommonData;
 import com.humbhi.blackbox.ui.data.models.AllVehicleModel;
 import com.humbhi.blackbox.ui.retofit.Retrofit2;
@@ -102,21 +104,19 @@ public class DrivingRouteInitialActivity extends AppCompatActivity implements Re
      * */
     public void spinVehicles()
     {
-        binding.spVehicles.setThreshold(0); //will start working from first character
-        binding.spVehicles.setAdapter(CustSpinnerAdapter.getAdapter(this, vehicleList)); //setting the adapter data into the AutoCompleteTextView
+        SearchableAdapter adapter = new SearchableAdapter(this,vehicleList);
+        binding.spVehicles.setAdapter(adapter);
         binding.spVehicles.setOnItemClickListener((parent, view, position, id) -> {
-            String selection = (String) parent.getItemAtPosition(position);
-            int pos = -1;
-
-            for (int i = 0; i < vehicleList.size(); i++) {
-                if (vehicleList.get(i).equals(selection)) {
-                    pos = i;
-                    break;
-                }
+            ArrayList<String> originalData = adapter.getOriginalData();
+            String selection = originalData.get(position);
+            int originalPosition = adapter.getOriginalPosition(position);
+            if (originalPosition != -1) {
+                // Use the original position to retrieve the corresponding item
+                vehicleId = vehicleModel.get(originalPosition).getBbid();
+                vehicleName = vehicleModel.get(originalPosition).getVehname();
             }
-            vehicleId = vehicleModel.get(pos).getBbid();
-            vehicleName = vehicleModel.get(pos).getVehname();
         });
+
         binding.spVehicles.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus)
                 binding.spVehicles.showDropDown();
@@ -149,9 +149,7 @@ public class DrivingRouteInitialActivity extends AppCompatActivity implements Re
                             vehicleModel.add(model);
                             spinVehicles();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }
                 }
@@ -169,7 +167,7 @@ public class DrivingRouteInitialActivity extends AppCompatActivity implements Re
             case R.id.bt24Hour:
 //                if (binding.customDate.isShown())
 //                {
-                 binding.customDate.setVisibility(View.VISIBLE);
+                 binding.customDate.setVisibility(View.GONE);
 //                }
 //                else
 //                {
@@ -183,12 +181,32 @@ public class DrivingRouteInitialActivity extends AppCompatActivity implements Re
                 backendEndDate = formattedDate;
                 binding.tvStartDate.setText(backendStartDate);
                 binding.tvEndDate.setText(backendEndDate);
-
+                if (validation()){
+                    Intent intent = new Intent(this, RoutePlayBack.class);
+                    intent.putExtra("tableName",vehicleId);
+                    intent.putExtra("fromDate",backendStartDate);
+                    intent.putExtra("endDate",backendEndDate);
+                    intent.putExtra("vehicleName",vehicleName);
+                    intent.putExtra("flag","DrivingBehaveRoute");
+                    if(!startTime.equals("")){
+                        intent.putExtra("startTime",startTime);
+                    }
+                    if( !endTime.equals("")){
+                        intent.putExtra("endTime",endTime);
+                    }
+                    if (binding.switch1.isChecked()){
+                        intent.putExtra("showStoppages","1");
+                    }
+                    else {
+                        intent.putExtra("showStoppages","0");
+                    }
+                    startActivity(intent);
+                }
                 break;
             case R.id.btToday:
 //                if (binding.customDate.isShown())
 //                {
-                  binding.customDate.setVisibility(View.VISIBLE);
+                binding.customDate.setVisibility(View.GONE);
 //                }
 //                else
 //                {
@@ -201,7 +219,27 @@ public class DrivingRouteInitialActivity extends AppCompatActivity implements Re
                 backendEndDate = formattedDate;
                 binding.tvStartDate.setText(backendStartDate);
                 binding.tvEndDate.setText(backendEndDate);
-
+                if (validation()){
+                    Intent intent = new Intent(this, RoutePlayBack.class);
+                    intent.putExtra("tableName",vehicleId);
+                    intent.putExtra("fromDate",backendStartDate);
+                    intent.putExtra("endDate",backendEndDate);
+                    intent.putExtra("vehicleName",vehicleName);
+                    intent.putExtra("flag","DrivingBehaveRoute");
+                    if(!startTime.equals("")){
+                        intent.putExtra("startTime",startTime);
+                    }
+                    if( !endTime.equals("")){
+                        intent.putExtra("endTime",endTime);
+                    }
+                    if (binding.switch1.isChecked()){
+                        intent.putExtra("showStoppages","1");
+                    }
+                    else {
+                        intent.putExtra("showStoppages","0");
+                    }
+                    startActivity(intent);
+                }
                 break;
             case R.id.btCustom:
 //                if (binding.customDate.isShown())

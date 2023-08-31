@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -28,6 +30,12 @@ public final class ActivityScoreCardBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout customDate;
+
+  @NonNull
+  public final AppCompatEditText etSearchBar;
+
+  @NonNull
+  public final ImageView info;
 
   @NonNull
   public final LinearLayoutCompat llCustomDateRange;
@@ -66,7 +74,8 @@ public final class ActivityScoreCardBinding implements ViewBinding {
   public final TextView tvYesterday;
 
   private ActivityScoreCardBinding(@NonNull RelativeLayout rootView, @NonNull Button btnAppy,
-      @NonNull LinearLayout customDate, @NonNull LinearLayoutCompat llCustomDateRange,
+      @NonNull LinearLayout customDate, @NonNull AppCompatEditText etSearchBar,
+      @NonNull ImageView info, @NonNull LinearLayoutCompat llCustomDateRange,
       @NonNull TextView loadMore, @NonNull LinearLayoutCompat mainLayout,
       @NonNull ProgressBarBinding progressLayout, @NonNull RecyclerView rvScoreCard,
       @NonNull ToolbarLayoutBinding toolbar, @NonNull TextView tvCustom,
@@ -75,6 +84,8 @@ public final class ActivityScoreCardBinding implements ViewBinding {
     this.rootView = rootView;
     this.btnAppy = btnAppy;
     this.customDate = customDate;
+    this.etSearchBar = etSearchBar;
+    this.info = info;
     this.llCustomDateRange = llCustomDateRange;
     this.loadMore = loadMore;
     this.mainLayout = mainLayout;
@@ -125,6 +136,18 @@ public final class ActivityScoreCardBinding implements ViewBinding {
       id = R.id.customDate;
       LinearLayout customDate = ViewBindings.findChildViewById(rootView, id);
       if (customDate == null) {
+        break missingId;
+      }
+
+      id = R.id.etSearchBar;
+      AppCompatEditText etSearchBar = ViewBindings.findChildViewById(rootView, id);
+      if (etSearchBar == null) {
+        break missingId;
+      }
+
+      id = R.id.info;
+      ImageView info = ViewBindings.findChildViewById(rootView, id);
+      if (info == null) {
         break missingId;
       }
 
@@ -203,8 +226,9 @@ public final class ActivityScoreCardBinding implements ViewBinding {
       }
 
       return new ActivityScoreCardBinding((RelativeLayout) rootView, btnAppy, customDate,
-          llCustomDateRange, loadMore, mainLayout, binding_progressLayout, rvScoreCard,
-          binding_toolbar, tvCustom, tvEndDate, tvStartDate, tvToday, tvWeek, tvYesterday);
+          etSearchBar, info, llCustomDateRange, loadMore, mainLayout, binding_progressLayout,
+          rvScoreCard, binding_toolbar, tvCustom, tvEndDate, tvStartDate, tvToday, tvWeek,
+          tvYesterday);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

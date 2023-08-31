@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-47:/values-yo/values-yo.xml",
+            "outputFile": "com.humbhi.blackbox.app-mergeReleaseResources-57:/values-yo/values-yo.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\daafbca8b014c88358a91ef11a49d897\\transformed\\jetified-AppIntro-6.2.0\\res\\values-yo\\values-yo.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\c58acb984ccf4101102f91d225c8686a\\transformed\\jetified-AppIntro-6.2.0\\res\\values-yo\\values-yo.xml",
                     "from": {
                         "startLines": "2,3,4,5,6",
                         "startColumns": "4,4,4,4,4",

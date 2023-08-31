@@ -1,0 +1,1 @@
+{"className":"com.humbhi.blackbox.ui.utils.GpsTracker","classAnnotations":[],"interfaces":["android.content.ComponentCallbacks","android.content.ComponentCallbacks2","android.location.LocationListener"],"superClasses":["android.app.Service","android.content.ContextWrapper","android.content.Context","java.lang.Object"]}

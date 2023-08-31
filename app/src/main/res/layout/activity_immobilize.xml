@@ -9,60 +9,65 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_marginBottom="@dimen/margin_80"
         android:orientation="vertical">
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/dark_grey"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecycler"
+            android:layout_below="@id/view"
+            android:layout_above="@id/lowerLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/dark_grey"/>
+            android:layout_height="match_parent"/>
 
         <LinearLayout
+            android:id="@+id/lowerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="12sp"
-            android:layout_weight="1"
-            android:text="Live Data"
-            android:textColor="@color/white"
-            android:drawableStart="@drawable/moving"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textSize="12sp"
-            android:text="Data Delayed"
-            android:textColor="@color/white"
-            android:drawableStart="@drawable/unreachable"/>
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark_grey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:text="Live Data"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/moving"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="Data Delayed"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/unreachable"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

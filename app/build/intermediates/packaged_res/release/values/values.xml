@@ -19,6 +19,7 @@
     <color name="green_alpha_three">#85A2B06D</color>
     <color name="green_dark">#848F59</color>
     <color name="grey_two">#DDDDDD</color>
+    <color name="light_background">#61333333</color>
     <color name="light_black">#444444</color>
     <color name="light_black2">#323232</color>
     <color name="light_blue">#E6F4FF</color>
@@ -107,6 +108,10 @@
     <dimen name="margin_v">5dp</dimen>
     <dimen name="margin_x">10dp</dimen>
     <dimen name="margin_xx">15dp</dimen>
+    <dimen name="notification_padding">16dp</dimen>
+    <dimen name="notification_text_margin_top">8dp</dimen>
+    <dimen name="notification_text_size">14sp</dimen>
+    <dimen name="notification_title_text_size">18sp</dimen>
     <dimen name="profile_size">100dp</dimen>
     <dimen name="slider_image">250dp</dimen>
     <dimen name="upload_icon">120dp</dimen>
@@ -134,6 +139,7 @@
     <string name="default_web_client_id" translatable="false">645655243350-hphj66q8gj4oneudf0gnp91a88qg8np5.apps.googleusercontent.com</string>
     <string name="distance_report">Check Distance traveled by vehicles</string>
     <string name="dms">DMS</string>
+    <string name="dns_error">Connectivity issue</string>
     <string name="e_forms">e-Forms</string>
     <string name="firebase_database_url" translatable="false">https://stone-bongo-635.firebaseio.com</string>
     <string name="fleet_report">Fleet Report</string>
@@ -253,6 +259,7 @@
     <string name="merchant_id">Merchant Id</string>
     <string name="moving">Moving</string>
     <string name="my_bill">My Bill</string>
+    <string name="no_network">No internet available, please try again </string>
     <string name="office_review">Office Review</string>
     <string name="overspeed_analysis">Check Overspeed analysis</string>
     <string name="overstoppage_analysis">Check Overstop analysis</string>
@@ -271,7 +278,9 @@
     <string name="see_all_vehicle"><u>All vehicles</u></string>
     <string name="settings">Settings</string>
     <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="something_went_wrong">Something went wrong</string>
     <string name="stoppage_analysis">Check Stoppage analysis of vehicle</string>
+    <string name="time_out">Connection time out, please try again</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="title_activity_status">CCAvenueMobile</string>
     <string name="towed">Towed</string>
@@ -282,6 +291,12 @@
     <string name="vehicle_on_map">Live Tracking</string>
     <string name="vendor">Vendor</string>
     <string name="welcome">Welcome</string>
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>
+    </style>
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+    </style>
     <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
@@ -311,5 +326,7 @@
         <item name="android:statusBarColor" ns1:targetApi="l">@color/dark_grey_status_bar</item>
         
         <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
+
+        <item name="pinViewStyle">@style/PinWidget.PinView</item>
     </style>
 </resources>

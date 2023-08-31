@@ -98,10 +98,6 @@ public class GpsTracker extends Service implements LocationListener {
      * Stop using GPS listener
      * Calling this function will stop using GPS in your app
      * */
-    public void stopUsingGPS(){
-        if(locationManager != null){
-        }
-    }
     /**
      * Function to get latitude
      * */

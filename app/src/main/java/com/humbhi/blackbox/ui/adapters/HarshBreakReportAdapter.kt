@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.humbhi.blackbox.R
 import com.humbhi.blackbox.databinding.HarshBreakAdapterBinding
 import com.humbhi.blackbox.ui.data.models.HarshBreakData
-import com.humbhi.blackbox.ui.data.models.StoppageData
 
 class HarshBreakReportAdapter(val context: Context,val listData: List<HarshBreakData>) :
     RecyclerView.Adapter<HarshBreakReportAdapter.MyHolder>() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,15 +21,53 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvScoreBoard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_150"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"
+                app:cardCornerRadius="@dimen/margin_xx">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/scoreboard" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#5C111111" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="See drivers scoreboard"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_16" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cvTotalVehiclesDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
-                android:layout_margin="@dimen/margin_x"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,306 +88,332 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clTotalCountVehicle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/margin_x"
-                        android:layout_marginStart="@dimen/margin_x"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTotalVehicleHeading">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/ivTotalVehicleIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_car_icon_flat"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            android:scaleType="fitXY"
-                            android:layout_marginTop="@dimen/margin_2"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvTotalVehicle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/margin_x"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="-"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/font_18"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@+id/ivTotalVehicleIcon"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/margin_x"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="@string/vehicle"
-                            android:textColor="@color/med_grey"
-                            android:textSize="@dimen/font_12"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@+id/tvTotalVehicle"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                     <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/main_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/margin_xx"
-                        android:layout_marginTop="@dimen/margin_x"
-                        android:layout_marginBottom="@dimen/margin_xx"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/clTotalCountVehicle">
+                        android:visibility="invisible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTotalVehicleHeading"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clTotalCountVehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/margin_x"
+                            android:layout_marginStart="@dimen/margin_x"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTotalVehicleHeading">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivTotalVehicleIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_car_icon_flat"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                android:scaleType="fitXY"
+                                android:layout_marginTop="@dimen/margin_2"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTotalVehicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/margin_x"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="-"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/font_18"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/ivTotalVehicleIcon"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/margin_x"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/vehicle"
+                                android:textColor="@color/med_grey"
+                                android:textSize="@dimen/font_12"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/tvTotalVehicle"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginHorizontal="@dimen/margin_x"
+                            android:layout_marginTop="@dimen/margin_x"
+                            android:layout_marginBottom="@dimen/margin_x"
+                            android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:weightSum="2">
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/clTotalCountVehicle">
 
-                            <RelativeLayout
-                                android:id="@+id/relativeLayout"
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1.3"
-                                android:layout_marginHorizontal="@dimen/margin_20">
+                                android:orientation="horizontal"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:weightSum="2">
 
-                                <com.github.mikephil.charting.charts.PieChart
-                                    android:id="@+id/fuelChart"
-                                    android:layout_width="@dimen/profile_size"
-                                    android:layout_height="@dimen/profile_size" />
+                                <RelativeLayout
+                                    android:id="@+id/relativeLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1.3"
+                                    android:layout_marginHorizontal="@dimen/margin_20">
+
+                                    <com.github.mikephil.charting.charts.PieChart
+                                        android:id="@+id/fuelChart"
+                                        android:layout_width="@dimen/profile_size"
+                                        android:layout_height="@dimen/profile_size" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="98"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/font_18" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="@string/vehicle"
+                                            android:textColor="@color/white"
+                                            android:textSize="10sp" />
+
+                                    </LinearLayout>
+
+                                </RelativeLayout>
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical"
-                                    android:visibility="gone">
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.8"
+                                    android:orientation="vertical">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="98"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/font_18" />
+                                        android:orientation="horizontal">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
+                                        <TextView
+                                            android:id="@+id/tvHarshAcc"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:drawableTint="@color/blue"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21.67 %"
+                                            android:gravity="center"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/font_12" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="Harsh Acceleration"
+                                            android:textColor="@color/med_grey"
+                                            android:textSize="@dimen/font_10" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="@string/vehicle"
-                                        android:textColor="@color/white"
-                                        android:textSize="10sp" />
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:id="@+id/tvHarshBreak"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawableTint="@color/secondary_yellow"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21 %"/>
 
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/med_grey"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="Harsh Breaking"/>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:id="@+id/tvHarshOverspeed"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawableTint="@color/red"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21 %"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/med_grey"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="Overspeed"/>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:id="@+id/tvRashTurn"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawableTint="@color/voilet_red"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21 %"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/med_grey"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="Rash Turn"/>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:visibility="gone"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:id="@+id/tvTotalVoilationRiskyDrivers"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawableTint="@color/primary_orange"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:layout_weight="0.68"
+                                            android:gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21 %"/>
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/med_grey"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:layout_weight="0.32"
+                                            android:text="Risky Drivers"/>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:visibility="gone"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:id="@+id/tvTotalVoilationExDriver"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_12"
+                                            android:textColor="@color/white"
+                                            android:drawableStart="@drawable/ic_circle"
+                                            android:drawableTint="@color/green"
+                                            android:drawablePadding="@dimen/margin_v"
+                                            android:layout_weight="0.68"
+                                            android:gravity="center"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:text="21 %"/>
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/font_10"
+                                            android:textColor="@color/med_grey"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:layout_weight="0.32"
+                                            android:text="Safe Drivers"/>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
                                 </LinearLayout>
 
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.8"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/tvHarshAcc"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0.65"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:drawableTint="@color/blue"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"
-                                        android:gravity="center"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/font_12" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0.35"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="Harsh Acceleration"
-                                        android:textColor="@color/med_grey"
-                                        android:textSize="@dimen/font_10" />
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:id="@+id/tvHarshBreak"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_12"
-                                        android:textColor="@color/white"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawableTint="@color/secondary_yellow"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:layout_weight="0.65"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"/>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_10"
-                                        android:textColor="@color/med_grey"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:layout_weight="0.35"
-                                        android:text="Harsh Breaking"/>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:id="@+id/tvHarshOverspeed"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_12"
-                                        android:textColor="@color/white"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawableTint="@color/red"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:layout_weight="0.65"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"/>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_10"
-                                        android:textColor="@color/med_grey"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:layout_weight="0.35"
-                                        android:text="Overspeed"/>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:id="@+id/tvRashTurn"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_12"
-                                        android:textColor="@color/white"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawableTint="@color/voilet_red"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:layout_weight="0.65"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"/>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_10"
-                                        android:textColor="@color/med_grey"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:layout_weight="0.35"
-                                        android:text="Rash Turn"/>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:visibility="gone"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:id="@+id/tvTotalVoilationRiskyDrivers"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_12"
-                                        android:textColor="@color/white"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawableTint="@color/primary_orange"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:layout_weight="0.65"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"/>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_10"
-                                        android:textColor="@color/med_grey"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:layout_weight="0.35"
-                                        android:text="Risky Driver"/>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:visibility="gone"
-                                    android:orientation="horizontal">
-                                    <TextView
-                                        android:id="@+id/tvTotalVoilationExDriver"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_12"
-                                        android:textColor="@color/white"
-                                        android:drawableStart="@drawable/ic_circle"
-                                        android:drawableTint="@color/green"
-                                        android:drawablePadding="@dimen/margin_v"
-                                        android:layout_weight="0.65"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:text="21 %"/>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textSize="@dimen/font_10"
-                                        android:textColor="@color/med_grey"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:layout_weight="0.35"
-                                        android:text="Excellent Driver"/>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <LinearLayout
+                        android:id="@+id/llMainLayoutPeogress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTotalVehicleHeading"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text="Loading"/>
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="true"
+                            android:indeterminateTint="@color/white" />
+                    </LinearLayout>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -360,7 +425,8 @@
                 android:id="@+id/cvRoute"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_150"
-                android:layout_margin="@dimen/margin_xx"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"
                 app:cardCornerRadius="@dimen/margin_xx">
 
                 <RelativeLayout
@@ -388,26 +454,13 @@
                         android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
-                        android:text="Route Voilations"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_20" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvFuelSubHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvFuelHeading"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:gravity="center"
                         android:text="See driving voilations on map"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/font_12" />
+                        android:textSize="@dimen/font_16" />
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
-
 
 
             <androidx.cardview.widget.CardView
@@ -415,7 +468,8 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
-                android:layout_margin="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -538,8 +592,7 @@
                                         android:gravity="center_vertical"
                                         android:textSize="@dimen/font_10"
                                         android:layout_gravity="center_vertical"
-                                        android:text="Excellent Drivers"
-
+                                        android:text="Safe Drivers"
                                         />
                                 </LinearLayout>
 
@@ -611,7 +664,8 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
-                android:layout_margin="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -772,12 +826,13 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+          <!--  <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
                 android:layout_margin="@dimen/margin_x"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -936,7 +991,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView> -->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvDriverCompare"
@@ -944,7 +999,8 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
-                android:layout_margin="@dimen/margin_x"
+                android:layout_marginTop="@dimen/margin_xx"
+                android:layout_marginHorizontal="@dimen/margin_x"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1084,6 +1140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/margin_x"
                 android:layout_marginTop="@dimen/margin_xx"
                 android:layout_marginBottom="@dimen/margin_xx"
@@ -1377,7 +1434,7 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/primary_little_fade"
                 app:cardCornerRadius="@dimen/margin_x"
-                android:layout_marginTop="@dimen/margin_v"
+                android:layout_marginVertical="@dimen/margin_xx"
                 android:layout_marginHorizontal="@dimen/margin_x"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -1396,19 +1453,18 @@
                         android:fontFamily="@font/poppins_regular"
                         android:paddingHorizontal="@dimen/margin_xx"
                         android:paddingVertical="@dimen/margin_v"
-                        android:text="Driving Behaviour Reports"
+                        android:text="Voilation Reports"
                         android:textColor="@color/white"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/margin_xx"
                         android:layout_marginTop="@dimen/margin_x"
-                        android:layout_marginBottom="@dimen/margin_xx"
+                        android:layout_marginBottom="@dimen/margin_x"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -1709,6 +1765,97 @@
                                 android:layout_weight="1">
 
                                 <androidx.cardview.widget.CardView
+                                    android:id="@+id/cvOverSpeedReport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:cardBackgroundColor="@color/primaryblack"
+                                    app:cardCornerRadius="@dimen/margin_x">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:paddingVertical="@dimen/margin_v">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1.5"
+                                                android:gravity="center"
+                                                android:layout_gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:paddingVertical="@dimen/margin_x">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="30dp"
+                                                    android:src="@drawable/iv_overspeedicon" />
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="@dimen/margin_v"
+                                                android:layout_marginEnd="@dimen/margin_v"
+                                                android:layout_weight="0.5"
+                                                android:orientation="vertical">
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="@dimen/margin_v"
+                                                    android:fontFamily="@font/poppins_regular"
+                                                    android:text="Over Speed"
+                                                    android:textColor="@color/white"
+                                                    android:textSize="@dimen/font_12" />
+
+                                                <androidx.appcompat.widget.LinearLayoutCompat
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="2">
+
+                                                    <androidx.appcompat.widget.AppCompatTextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:text="Report"
+                                                        android:textColor="@color/med_grey"
+                                                        android:textSize="@dimen/font_10" />
+
+                                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginEnd="@dimen/margin_xx"
+                                            android:src="@drawable/ic_bx_chevron_right"/>
+                                    </RelativeLayout>
+
+
+
+                                </androidx.cardview.widget.CardView>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:layout_marginTop="@dimen/margin_v"
+                                android:paddingVertical="@dimen/margin_v"
+                                android:layout_weight="1">
+
+                                <androidx.cardview.widget.CardView
                                     android:id="@+id/cvConsolidateVoilationReport"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -1791,7 +1938,189 @@
                                 </androidx.cardview.widget.CardView>
                             </RelativeLayout>
 
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:layout_marginTop="@dimen/margin_v"
+                                android:paddingVertical="@dimen/margin_v"
+                                android:layout_weight="1">
 
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cvDrivingLimits"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:cardBackgroundColor="@color/primaryblack"
+                                    app:cardCornerRadius="@dimen/margin_x">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:paddingVertical="@dimen/margin_v">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1.5"
+                                                android:gravity="center"
+                                                android:layout_gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:paddingVertical="@dimen/margin_x">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="30dp"
+                                                    android:src="@drawable/ic_driven"
+                                                    app:tint="@color/blue" />
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="@dimen/margin_v"
+                                                android:layout_marginEnd="@dimen/margin_v"
+                                                android:layout_weight="0.5"
+                                                android:orientation="vertical">
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="@dimen/margin_v"
+                                                    android:fontFamily="@font/poppins_regular"
+                                                    android:text="Driving Limit"
+                                                    android:textColor="@color/white"
+                                                    android:textSize="@dimen/font_12" />
+
+                                                <androidx.appcompat.widget.LinearLayoutCompat
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="2">
+
+                                                    <androidx.appcompat.widget.AppCompatTextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:text="Report"
+                                                        android:textColor="@color/med_grey"
+                                                        android:textSize="@dimen/font_10" />
+
+                                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginEnd="@dimen/margin_xx"
+                                            android:src="@drawable/ic_bx_chevron_right"/>
+                                    </RelativeLayout>
+
+
+
+                                </androidx.cardview.widget.CardView>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/margin_v"
+                                android:layout_marginTop="@dimen/margin_v"
+                                android:paddingVertical="@dimen/margin_v"
+                                android:layout_weight="1">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cvNoDrivingHoursReport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:cardBackgroundColor="@color/primaryblack"
+                                    app:cardCornerRadius="@dimen/margin_x">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:paddingVertical="@dimen/margin_v">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1.5"
+                                                android:gravity="center"
+                                                android:layout_gravity="center_vertical"
+                                                android:orientation="vertical"
+                                                android:paddingVertical="@dimen/margin_x">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="30dp"
+                                                    android:src="@drawable/ic_time"
+                                                    app:tint="@color/red" />
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                            <androidx.appcompat.widget.LinearLayoutCompat
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="@dimen/margin_v"
+                                                android:layout_marginEnd="@dimen/margin_v"
+                                                android:layout_weight="0.5"
+                                                android:orientation="vertical">
+
+                                                <androidx.appcompat.widget.AppCompatTextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="@dimen/margin_v"
+                                                    android:fontFamily="@font/poppins_regular"
+                                                    android:text="No Driving Hours"
+                                                    android:textColor="@color/white"
+                                                    android:textSize="@dimen/font_12" />
+
+                                                <androidx.appcompat.widget.LinearLayoutCompat
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="2">
+
+                                                    <androidx.appcompat.widget.AppCompatTextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:text="Report"
+                                                        android:textColor="@color/med_grey"
+                                                        android:textSize="@dimen/font_10" />
+
+                                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginEnd="@dimen/margin_xx"
+                                            android:src="@drawable/ic_bx_chevron_right"/>
+                                    </RelativeLayout>
+
+
+
+                                </androidx.cardview.widget.CardView>
+                            </RelativeLayout>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -5,5 +5,6 @@ data class DrivingBehaviourRouteDataModel(
     val Drivingduration: String,
     val Idlingduration: String,
     val RouteDataList: List<RouteDataX>,
-    val Stoppageduration: String
+    val Stoppageduration: String,
+    val type: String
 )
